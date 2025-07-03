@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale-1.0">
+        <title>World Bank Navbar Clone</title>
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap"
+            rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/components/nav/nav_styles.css">
+        <link rel="stylesheet" href="nav.css">
+    </head>
+    <body class="bg-gray-100">
+
+        <nav class="navbar">
+            <div class="navbar-container">
+                
+                <div class="navbar-left">
+
+                    <!-- Hamburger Menu  -->
+                    <button id="menu-toggle" class="menu-toggle">
+                        <div class="hamburger-icon" id="hamburger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </button>
+
+                    <!-- VRA Logo -->
+                    <a href="#" class="vra-logo">
+                        <img class="icon" src="assets/images/logos/vra_logo.png"
+                            alt="Logo">
+                        <span class="text">VOLTA RIVER AUTHORITY</span>
+                    </a>
+                </div>
+
+                <div class="trending-data">
+                    <i class="fas fa-chart-line icon"></i>
+                    <span>Trending Data</span>
+                    <span class="separator">|</span>
+                    <a href="#">Around 700M live on less than $2.15...</a>
+                </div>
+
+                <div class="navbar-right">
+                    <div class="language-dropdown">
+                        <button id="language-dropdown-button"
+                            class="language-dropdown-button">
+                            <span>English</span>
+                            <i class="fas fa-chevron-down icon"></i>
+                        </button>
+                        <div id="language-dropdown-menu"
+                            class="language-dropdown-menu">
+                            <a href="#">Español</a>
+                            <a href="#">Français</a>
+                            <a href="#">العربية</a>
+                        </div>
+                    </div>
+
+                    <button class="search-button">
+                        <i class="fas fa-search icon"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="mobile-menu" class="mobile-menu">
+                <div class="mobile-menu-header">
+                    <button id="close-menu" class="close-menu-button">
+                        <i class="fas fa-times icon"></i>
+                    </button>
+                </div>
+                <div class="mobile-menu-content">
+                    <div>
+                        <ul class="space-y-2">
+                            <li>
+                                <a href="#" class="main-link">Who We Are</a>
+                                <ul class="ml-4 mt-2 space-y-1">
+                                    <li><a href="#" class="sub-link-active">&gt;
+                                            <span>What We Do</span></a></li>
+                                    <li><a href="#">Our Leadership</a></li>
+                                    <li><a href="#">Our History</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#" class="main-link">Where We
+                                    Work</a></li>
+                            <li><a href="#" class="main-link">How We
+                                    Work</a></li>
+                            <li><a href="#" class="main-link">Work With
+                                    Us</a></li>
+                            <li><a href="#" class="main-link">News</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3>Development Projects</h3>
+                        <ul class="space-y-2 mb-8">
+                            <li><a href="#">Projects</a></li>
+                            <li><a href="#">By Country</a></li>
+                            <li><a href="#">By Sector</a></li>
+                            <li><a href="#">By Theme</a></li>
+                            <li><a href="#">Country Engagement</a></li>
+                            <li><a href="#">Environmental & Social Policies for
+                                    Projects</a></li>
+                            <li><a href="#">Procurement for Projects &
+                                    Programs</a></li>
+                            <li><a href="#">Results</a></li>
+                        </ul>
+
+                        <h3>Products & Services</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#">Financing Products & Advisory
+                                    Services</a></li>
+                            <li><a href="#">Treasury</a></li>
+                            <li><a href="#">Asset Management</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3>Knowledge</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#">World Bank Group Academy</a></li>
+                            <li><a href="#">Research & Publications</a></li>
+                            <li><a href="#">Data</a></li>
+                            <li><a href="#">Learning</a></li>
+                            <li><a href="#">Development Topics</a></li>
+                            <li><a href="#">Open Knowledge Repository</a></li>
+                            <li><a href="#">Trust Fund Directory</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
+        </nav>
+
+        <script src="nav.js">
+       
+    </script>
+    </body>
+</html>
