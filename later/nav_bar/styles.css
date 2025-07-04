@@ -80,24 +80,24 @@
         }
 
         /* Middle section: Trending Data */
-        .trending-data {
+        .navbar-headline {
             display: none; /* hidden */
             align-items: center;
             gap: 1rem; /* space-x-4 */
             font-size: 0.875rem; /* text-sm */
             color: #4b5563; /* text-gray-600 */
         }
-        .trending-data i {
+        .navbar-headline i {
             color: #2563eb; /* text-blue-600 */
         }
-        .trending-data span:nth-child(3) {
+        .navbar-headline span:nth-child(3) {
             color: #d1d5db; /* text-gray-300 */
         }
-        .trending-data a {
+        .navbar-headline a {
             color: #2563eb; /* text-blue-600 */
             text-decoration: none;
         }
-        .trending-data a:hover {
+        .navbar-headline a:hover {
             text-decoration: underline; /* hover:underline */
         }
 
@@ -369,7 +369,7 @@
             .hamburger-button {
                 display: block; /* Hamburger always visible */
             }
-            .trending-data {
+            .navbar-headline {
                 display: flex; /* lg:flex */
             }
             .mobile-menu {

@@ -33,7 +33,7 @@ body {
 
 
 /* Middle section: Trending Data */
-.trending-data {
+.navbar-headline {
   display: none; /* hidden by default */
   align-items: center;
   gap: 1rem; /* space-x-4 */
@@ -41,20 +41,20 @@ body {
   color: #4b5563; /* text-gray-600 */
 }
 
-.trending-data .icon {
+.navbar-headline .icon {
   color: #2563eb; /* text-blue-600 */
 }
 
-.trending-data .separator {
+.navbar-headline .separator {
   color: #d1d5db; /* text-gray-300 */
 }
 
-.trending-data a {
+.navbar-headline a {
   color: #2563eb; /* text-blue-600 */
   text-decoration: none;
 }
 
-.trending-data a:hover {
+.navbar-headline a:hover {
   text-decoration: underline;
 }
 
@@ -269,14 +269,19 @@ body {
   z-index: 10;
 }
 
+/* Always show hamburger menu */
+.menu-toggle {
+  display: block !important;
+}
+
 /* Responsive adjustments */
 @media (min-width: 1024px) {
   /* lg breakpoint */
   .menu-toggle {
-    display: none; /* lg:hidden */
+    display: block !important;
   }
 
-  .trending-data {
+  .navbar-headline {
     display: flex; /* lg:flex */
   }
 
