@@ -87,7 +87,7 @@
         </div>
 
         <!-- Mobile Menu (hidden by default, slides in from left) -->
-        <div id="mobile-menu" class="fixed top-0 left-0 w-64 h-full bg-white shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out z-20 lg:hidden">
+        <div id="drawer" class="fixed top-0 left-0 w-64 h-full bg-white shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out z-20 lg:hidden">
             <div class="p-4 border-b border-gray-200 flex justify-end">
                 <button id="close-menu" class="text-gray-700 hover:text-blue-600 focus:outline-none p-2 rounded-md hover:bg-gray-100 transition-colors duration-200">
                     <i class="fas fa-times text-xl"></i>
@@ -110,14 +110,14 @@
         </div>
 
         <!-- Overlay for mobile menu -->
-        <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-10 lg:hidden"></div>
+        <div id="drawer-overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-10 lg:hidden"></div>
     </nav>
 
     <script>
         const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenu = document.getElementById('drawer');
         const closeMenu = document.getElementById('close-menu');
-        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const mobileMenuOverlay = document.getElementById('drawer-overlay');
         const hamburgerIcon = document.getElementById('hamburger');
 
         // Function to open the mobile menu

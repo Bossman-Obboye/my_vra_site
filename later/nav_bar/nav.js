@@ -1,17 +1,17 @@
  /* All JavaScript code is defined here */
         const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const mobileMenu = document.getElementById('drawer');
+        const mobileMenuOverlay = document.getElementById('drawer-overlay');
         const hamburgerIcon = document.getElementById('hamburger');
 
-        const mobileMenuHeader = document.getElementById('mobile-menu-header');
+        const mobileMenuHeader = document.getElementById('drawer-header');
         const backToMainMenuButton = document.getElementById('back-to-main-menu');
         const submenuTitle = document.getElementById('submenu-title');
         const closeMenuFromSubmenu = document.getElementById('close-menu-from-submenu');
         const closeMenuMain = document.getElementById('close-menu-main');
 
-        const mainMobileMenuContent = document.getElementById('main-mobile-menu-content');
-        const mobileMenuItems = document.querySelectorAll('.mobile-menu-item'); // All main menu items
+        const mainMobileMenuContent = document.getElementById('main-drawer-content');
+        const mobileMenuItems = document.querySelectorAll('.drawer-item'); // All main menu items
 
         let activeSubMenu = null; // To keep track of the currently active sub-menu
 

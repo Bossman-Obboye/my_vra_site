@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
     const menuToggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenu = document.getElementById('drawer');
     const closeMenu = document.getElementById('close-menu');
-    const overlay = document.getElementById('mobile-menu-overlay');
+    const overlay = document.getElementById('drawer-overlay');
     const hamburgerIcon = document.getElementById('hamburger');
 
     // Function to open the mobile menu

@@ -177,7 +177,7 @@
         }
 
         /* Mobile Menu */
-        .mobile-menu {
+        .drawer {
             position: fixed;
             top: 0;
             left: 0;
@@ -194,13 +194,13 @@
             overflow-y: auto;
             display: none; /* hidden by default, controlled by JS */
         }
-        .mobile-menu.active {
+        .drawer.active {
             transform: translateY(0);
             display: block;
         }
 
         /* Mobile Menu Header (for sub-menus) */
-        .mobile-menu-header {
+        .drawer-header {
             padding: 1rem; /* p-4 */
             display: flex;
             justify-content: space-between;
@@ -208,7 +208,7 @@
             background-color: #1c4ed8; /* bg-blue-800 */
             display: none; /* hidden by default, controlled by JS */
         }
-        .mobile-menu-header button {
+        .drawer-header button {
             color: #ffffff; /* text-white */
             border: none;
             background: none;
@@ -219,29 +219,29 @@
             transition-duration: 200ms;
             outline: none;
         }
-        .mobile-menu-header button:hover {
+        .drawer-header button:hover {
             color: #d1d5db; /* hover:text-gray-300 */
             background-color: #1e40af; /* hover:bg-blue-700 */
         }
-        .mobile-menu-header h2 {
+        .drawer-header h2 {
             font-size: 1.25rem; /* text-xl */
             font-weight: 700; /* font-bold */
         }
 
         /* Main Mobile Menu Content */
-        .main-mobile-menu-content {
+        .main-drawer-content {
             padding: 1rem; /* p-4 */
             display: flex;
             flex-direction: column; /* flex-col */
             height: 100%; /* h-full */
             justify-content: space-between;
         }
-        .main-mobile-menu-content .close-button-container {
+        .main-drawer-content .close-button-container {
             display: flex;
             justify-content: flex-end; /* justify-end */
             margin-bottom: 1rem; /* mb-4 */
         }
-        .main-mobile-menu-content .close-button-container button {
+        .main-drawer-content .close-button-container button {
             color: #ffffff;
             border: none;
             background: none;
@@ -252,11 +252,11 @@
             transition-duration: 200ms;
             outline: none;
         }
-        .main-mobile-menu-content .close-button-container button:hover {
+        .main-drawer-content .close-button-container button:hover {
             color: #d1d5db;
             background-color: #1c4ed8; /* hover:bg-blue-800 */
         }
-        .main-mobile-menu-content ul {
+        .main-drawer-content ul {
             list-style: none;
             padding: 0;
             margin: 0;
@@ -264,7 +264,7 @@
             flex-direction: column;
             gap: 0.5rem; /* space-y-2 */
         }
-        .main-mobile-menu-content ul li a {
+        .main-drawer-content ul li a {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -275,10 +275,10 @@
             color: #ffffff;
             border-radius: 0.375rem; /* rounded-md */
         }
-        .main-mobile-menu-content ul li a:hover {
+        .main-drawer-content ul li a:hover {
             background-color: #1c4ed8; /* hover:bg-blue-800 */
         }
-        .main-mobile-menu-content ul li a i {
+        .main-drawer-content ul li a i {
             font-size: 0.875rem; /* text-sm */
         }
 
@@ -356,7 +356,7 @@
         }
 
         /* Overlay */
-        .mobile-menu-overlay {
+        .drawer-overlay {
             position: fixed;
             inset: 0; /* top:0; right:0; bottom:0; left:0; */
             background-color: rgba(0, 0, 0, 0.5); /* bg-black bg-opacity-50 */
@@ -372,12 +372,12 @@
             .navbar-headline {
                 display: flex; /* lg:flex */
             }
-            .mobile-menu {
+            .drawer {
                 /* On desktop, the mobile menu should still be hidden initially */
                 /* and only appear when toggled, but it won't be lg:hidden anymore */
                 /* The overlay should also be shown on desktop if the menu is open */
             }
-            .mobile-menu-overlay {
+            .drawer-overlay {
                 /* Removed lg:hidden here so it appears on desktop too when menu is open */
             }
         }

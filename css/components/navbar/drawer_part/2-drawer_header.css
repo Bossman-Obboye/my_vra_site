@@ -1,0 +1,28 @@
+.drawer-header {
+  padding: 1rem; /* p-4 */
+  display: flex;
+  justify-content: flex-end;
+}
+
+.close-drawer-btn {
+  color: #ffffff; /* text-white */
+  padding: 0.5rem; /* p-2 */
+  border-radius: 0.375rem; /* rounded-md */
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; /* transition-colors duration-200, hover:text-gray-300, hover:bg-blue-800 */
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.close-drawer-btn:focus {
+  outline: none;
+}
+
+.close-drawer-btn:hover {
+  background-color: #1c4e80; /* hover:bg-blue-800 */
+  color: #d1d5db; /* hover:text-gray-300 */
+}
+
+.close-drawer-btn .icon {
+  font-size: 1.25rem; /* text-xl */
+}
