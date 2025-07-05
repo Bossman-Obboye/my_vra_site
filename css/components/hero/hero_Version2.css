@@ -1,0 +1,94 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f4f4f4;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 80vh;
+  min-height: 400px;
+  background-image: url('https://www.worldbank.org/content/dam/photos/780x439/2023/oct-7/AdobeStock_402986691.jpeg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 45, 98, 0.55); /* Blue overlay */
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 16px;
+}
+
+.hero h1 {
+  font-size: 2.6rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  line-height: 1.1;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.hero-btn {
+  display: inline-block;
+  padding: 14px 36px;
+  background: #ffd200;
+  color: #002d62;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  transition: background 0.3s, transform 0.1s;
+  outline: none;
+}
+
+.hero-btn:active {
+  background: #ffb700;
+  transform: scale(0.97);
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .hero h1 { font-size: 2.1rem; }
+  .hero p { font-size: 1rem; }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    height: 60vh;
+    min-height: 300px;
+    padding: 40px 0;
+  }
+  .hero h1 { font-size: 1.4rem; }
+  .hero-content { padding: 0 10px; }
+}
+
+/* More Section for Demo */
+.more-section {
+  padding: 48px 24px;
+  background: #fff;
+  text-align: center;
+}
+
+.more-section h2 {
+  color: #002d62;
+  margin-bottom: 16px;
+}

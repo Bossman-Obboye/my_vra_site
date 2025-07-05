@@ -1,0 +1,26 @@
+/* VRA Logo */
+.vra-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  text-decoration: none;
+}
+
+
+.vra-logo img {
+  height: 36px;
+  width: auto;
+}
+
+.vra-logo img:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+
+.vra-logo .text {
+  color: var(--primary-color); 
+  font-weight: 700; 
+  font-size: var(--h6-font-size); 
+  white-space: nowrap;
+}
