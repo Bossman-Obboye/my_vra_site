@@ -1,0 +1,22 @@
+
+@import "nav_part/1-navbar_container.css";
+@import "nav_part/2-hamburger_styles.css";
+@import "nav_part/3-vra_logo_styles.css";
+@import "nav_part/4-mobile_menu.css";
+@import "nav_part/5-navbar_headline.css";
+@import "drawer_part/1-drawer_container.css";
+@import "drawer_part/2-drawer_header.css";
+@import "drawer_part/3-drawer_content.css";
+@import "responsive-part/responsive_nav.css";
+
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f3f4f6; 
+  margin: 0;
+  overflow-x: hidden; 
+}
+
+
+
+

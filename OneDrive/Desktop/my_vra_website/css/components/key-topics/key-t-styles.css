@@ -1,0 +1,105 @@
+
+/* More Top Stories Section */
+.key-topics-section {
+    background-color: #2e3e50;
+    padding: 40px 20px;
+    text-align: center;
+    color: white;
+    position: relative;
+    margin-top: -50px; /* Pulls the section up to overlap with hero */
+}
+
+
+/* Add fade effect at top of key-t section */
+.key-topics-section::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 50px; 
+    background: linear-gradient(to top, #2e3e50 0%, transparent 100%);
+}
+
+.key-t-header {
+    display: flex;
+}
+
+.key-t-header hr {
+    flex-grow: 1;
+    border: none;
+    border-top: 2px solid #b0c4de; 
+    margin: 0 10px; 
+    align-self: center; /* Center the line vertically */
+}
+
+.key-t-header h2 {
+    font-size: var(--font-size-sms);
+    text-transform: uppercase;
+}
+
+.key-t-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.key-topic-card {
+    background-color: #3b4c5e; /* Slightly lighter dark blue for cards */
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: left;
+    padding-bottom: 20px; /* Space for text below image */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.key-topic-card:hover {
+    transform: translateY(-5px);
+}
+
+.key-topic-card img {
+    width: 100%;
+    height: 180px; /* Fixed height for images, adjust as needed */
+    object-fit: cover; /* Ensures images cover the area without distortion */
+    display: block; /* Removes extra space below image */
+}
+
+.key-topic-card h3 {
+    font-size: 1.2em;
+    margin: 15px 20px 10px;
+    color: #ffffff;
+}
+
+.key-topic-card .story-type {
+    font-size: 0.9em;
+    color: #b0c4de; /* Lighter grey for type */
+    margin: 0 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+
+
+
+
+@media (max-width: 480px) {
+     .key-t-grid {
+        grid-template-columns: 1fr; /* Stack cards on small screens */
+    }
+    .key-topic-card {
+        margin: 0 auto; /* Center single column cards */
+        max-width: 400px; /* Limit width of stacked cards */
+    }
+}
+
+
+
+@media (max-width: 480px) {
+      .key-t-header h2 {
+        font-size: 1.2em;
+    }
+}
+

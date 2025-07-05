@@ -1,0 +1,48 @@
+:root {
+  /*-- COLORS --*/
+  --white: rgb(255, 255, 255);
+  --black: rgb(0, 0, 0);
+  --gray: rgb(190, 200, 207);
+  --primary-color: rgb(0, 67, 112);
+  --secondary-color: rgb(22, 154, 242);
+
+  /*-- TYPOGRAPHY --*/
+  --default-font-family: "Open Sans", Roboto, Roboto-fallback;
+  --general-font-size: 16px;
+  --font-size-sm: 14px;
+  --font-size-xs: 12px;
+  --general-line-height: 1.6;
+
+  /* Heading Font Sizes */
+  --h1-font-size: 48px; 
+  --h2-font-size: 40px ;  
+  --h3-font-size: 32px;  
+  --h4-font-size: 28px ; 
+  --h5-font-size: 24px; 
+  --h6-font-size: 20px; 
+
+  /* Heading Line Heights */
+  --h1-line-height: 1.2;
+  --h2-line-height: 1.3;
+  --h3-line-height: 1.3;
+  --h4-line-height: 1.4;
+  --h5-line-height: 1.4;
+  --h6-line-height: 1.5;
+
+  /* — SPACING — */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 48px;
+  --spacing-xxl: 80px;
+
+  /* — BORDER RADIUS (PX) — */
+  --border-radius-sm: 4px;
+  --border_radius-md: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-xl: 16px;
+  --border-radius-xxl: 20px;
+  --border-radius-max: 40px;
+  --border-radius-circle: 50%;
+}
