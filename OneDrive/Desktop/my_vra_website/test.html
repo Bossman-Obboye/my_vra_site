@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Bank Inspired Layout</title>
+    <link rel="stylesheet" href="test.css">
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="about_us_wrapper">
+        <!-- Background Video -->
+        <video id="bgVideo"  loop muted autoplay playsinline>
+            <source src="assets/videos/akosombo_vid.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <!-- Overlay for content and circular graphic -->
+        <div class="hero-overlay">
+            <!-- Circular Graphic -->
+            <div class="circular-graphic">
+                <!-- Text Content -->
+                <div class="hero-text-content">
+                    <h1>
+                        TOGETHER WE CAN CREATE A WORLD FREE OF POVERTY ON A LIVABLE PLANET
+                    </h1>
+                </div>
+
+                <!-- About Us Button -->
+                <div class="about-us-btn-container">
+                    <button class="about-us-btn">
+                        About Us
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Play/Pause Button -->
+        <button id="playPauseBtn" class="play-pause-btn">
+            <!-- Pause Icon (default) -->
+            <svg id="pauseIcon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+            </svg>
+            <!-- Play Icon (hidden by default) -->
+            <svg id="playIcon" class="hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.025A1 1 0 0111 7.7V12.3a1 1 0 01-1.445.876L6.5 10.3A1 1 0 016.5 9.7l3.055-2.675z" clip-rule="evenodd"></path>
+            </svg>
+        </button>
+    </section>
+
+   
+
+    <script src="scripts/components/video_bg.js"></script>
+</body>
+</html>

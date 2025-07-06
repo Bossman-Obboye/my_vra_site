@@ -40,7 +40,7 @@
         }
 
         .footer-logo .icon {
-            font-size: 1.8rem; /* Larger globe icon */
+            width: 45px;
         }
 
         .footer-logo .text {
@@ -258,7 +258,7 @@
                 align-items: center;
             }
             .footer-logo .icon {
-                font-size: 2rem; /* Larger globe icon on large screens */
+                font-size: 38px; /* Larger globe icon on large screens */
             }
             .footer-logo .text {
                 font-size: 1.5rem; /* Larger logo text on large screens */
@@ -268,7 +268,7 @@
                 gap: 3rem; /* Larger gap for more space */
             }
             .footer-cta-section {
-                grid-column: span 2; /* Span two columns */
+                grid-column: span 2; 
             }
         }
 

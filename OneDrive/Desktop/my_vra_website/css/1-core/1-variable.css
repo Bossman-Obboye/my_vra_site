@@ -2,7 +2,7 @@
   /*-- COLORS --*/
   --white: rgb(255, 255, 255);
   --black: rgb(0, 0, 0);
-  --gray: rgb(190, 200, 207);
+  --grey: rgb(190, 200, 207);
   --primary-color: rgb(0, 67, 112);
   --secondary-color: rgb(22, 154, 242);
 
@@ -11,6 +11,7 @@
   --general-font-size: 16px;
   --font-size-sm: 14px;
   --font-size-xs: 12px;
+  --font-size-min: 8px;
   --general-line-height: 1.6;
 
   /* Heading Font Sizes */
@@ -39,7 +40,7 @@
 
   /* — BORDER RADIUS (PX) — */
   --border-radius-sm: 4px;
-  --border_radius-md: 8px;
+  --border-radius-md: 8px;
   --border-radius-lg: 12px;
   --border-radius-xl: 16px;
   --border-radius-xxl: 20px;

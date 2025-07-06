@@ -62,7 +62,7 @@
   font-size: 1.3em;
   margin-bottom: 30px;
   line-height: 1.6;
-  color: #ffffff; /* White text for paragraph */
+  color: var(--grey); /* White text for paragraph */
 }
 
 
