@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who We Are: Our Impacts - VRA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: "Warm Neutrals & Deep Blue" - A professional and calming palette using a deep blue for primary actions, a softer slate for secondary elements, and warm off-white/beige tones for backgrounds. -->
+    <!-- Application Structure Plan: This SPA is designed to showcase VRA's multifaceted impacts. It features a Hero section for context. An "Introduction" provides an overview of VRA's broad influence. The core "Our Key Impact Areas" section uses a visually distinct grid layout, where each impact area is highlighted with a large emoji and a concise description, making the information easily digestible and engaging. An "Impact at a Glance" section with dynamic counters offers a quick, quantitative summary of VRA's reach. This structure emphasizes visual appeal and clear communication of VRA's contributions. -->
+    <!-- Visualization & Content Choices: - Report Info: VRA's contributions across various sectors (economic, social, environmental). -> Goal: Showcase & Inform. -> Viz/Presentation Method: Grid layout with prominent Emojis as visual cues for each impact area. -> Interaction: None for content, dynamic counters for engagement. -> Justification: Emojis provide simple, scalable, and universally understood visual representations, adhering to the constraint of no raster images or complex SVGs. The grid layout offers a clean, scannable presentation. Dynamic counters add a compelling quantitative summary. -> Library/Method: Vanilla JS with IntersectionObserver for counters. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        /* RESET MARGINS, PADDING, AND BORDERS */
+        *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* SITE SETTINGS VARIABLES */
+        :root {
+            /*-- COLORS --*/
+            --white: rgb(255, 255, 255);
+            --black: rgb(0, 0, 0);
+            --grey: rgb(190, 200, 207);
+            --primary-color: rgb(0, 67, 112);
+            --secondary-color: rgb(22, 154, 242);
+
+            /* Custom colors for SPA, mapped or retained */
+            --color-dark-blue-active-tab: rgb(30, 58, 138); /* 1E3A8A */
+            --color-light-indigo-inactive-tab: rgb(224, 231, 255); /* E0E7FF */
+            --color-background-light: rgb(253, 253, 251); /* FDFDFB */
+            --color-text-secondary: rgb(113, 128, 150); /* 718096 for gray-600 */
+            --color-text-primary-dark: rgb(43, 108, 176); /* 2B6CB0 for blue-800 */
+            --color-light-blue-bg: rgb(235, 248, 255); /* EBF8FF for blue-50 equivalent */
+
+
+            /*-- TYPOGRAPHY --*/
+            --default-font-family: "Open Sans", Roboto, Roboto-fallback;
+            --general-font-size: 16px;
+            --font-size-sm: 14px;
+            --font-size-xs: 12px;
+            --font-size-min: 8px;
+            --general-line-height: 1.6;
+
+            /* Heading Font Sizes */
+            --h1-font-size: 48px;
+            --h2-font-size: 40px ;
+            --h3-font-size: 32px;
+            --h4-font-size: 28px ;
+            --h5-font-size: 24px;
+            --h6-font-size: 20px;
+
+            /* Heading Line Heights */
+            --h1-line-height: 1.2;
+            --h2-line-height: 1.3;
+            --h3-line-height: 1.3;
+            --h4-line-height: 1.4;
+            --h5-line-height: 1.4;
+            --h6-line-height: 1.5;
+
+            /* — SPACING — (Mapped to user's provided values) */
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 48px;
+            --spacing-xxl: 80px;
+            --spacing-xxxl: 120px; /* From previous turn */
+
+            /* Custom spacing values from SPA that don't directly map to user's provided ones, using rem for consistency */
+            --spacing-12px: 0.75rem; /* For original spacing-3 */
+            --spacing-32px: 2rem;    /* For original spacing-8 */
+            --spacing-40px: 2.5rem;  /* For original spacing-10 */
+            --spacing-112px: 7rem;   /* For original spacing-28 */
+            --spacing-160px: 10rem;  /* For original spacing-40 */
+
+
+            /* — BORDER RADIUS (PX) — */
+            --border-radius-sm: 4px;
+            --border-radius-md: 8px;
+            --border-radius-lg: 12px;
+            --border-radius-xl: 16px;
+            --border-radius-xxl: 20px;
+            --border-radius-max: 40px;
+            --border-radius-circle: 50%;
+
+            /* Custom border radius from SPA */
+            --border-radius-2xl: 1rem; /* 16px, maps to var(--border-radius-xl) */
+            --border-radius-full: 9999px; /* Retain for full circle */
+
+            /* Transitions */
+            --transition-speed: 0.3s;
+            --transition-ease: ease-in-out;
+        }
+
+        /* SET CONSISTENT HTML */
+        html {
+            font-size: 100%;
+            scroll-behavior: smooth;
+        }
+
+        /* SET BODY BASELINE */
+        body {
+            min-height: 100vh;
+            line-height: var(--general-line-height);
+            background-color: var(--white);
+            color: var(--black);
+            text-rendering: optimizeLegibility;
+            font-family: var(--default-font-family); /* Apply default font family */
+            font-size: var(--general-font-size); /* Apply general font size */
+        }
+
+        /* SETTING DEFAULT STYLES */
+        button, select, input, textarea {
+            font-family: inherit;
+            font-size: inherit;
+        }
+
+        /* LIST DEFAULT SETTINGS */
+        ul, ol {
+            list-style: none;
+        }
+
+        /* PROVIDING GENERAL STYLES TO HEADINGS */
+        h1, .h1 {
+            font-size: var(--h1-font-size);
+            line-height: var(--h1-line-height);
+            margin-bottom: var(--spacing-md);
+            font-family: var(--font-family-display); /* Specific font for display headings */
+        }
+
+        h2, .h2 {
+            font-size: var(--h2-font-size);
+            line-height: var(--h2-line-height);
+            margin-bottom: var(--spacing-md);
+            font-family: var(--font-family-display); /* Specific font for display headings */
+        }
+
+        h3, .h3 {
+            font-size: var(--h3-font-size);
+            line-height: var(--h3-line-height);
+            margin-bottom: var(--spacing-sm);
+            font-family: var(--font-family-display); /* Specific font for display headings */
+        }
+
+        h4, .h4 {
+            font-size: var(--h4-font-size);
+            line-height: var(--h4-line-height);
+            margin-bottom: var(--spacing-sm);
+            font-family: var(--font-family-display); /* Specific font for display headings */
+        }
+
+        h5, .h5 {
+            font-size: var(--h5-font-size);
+            line-height: var(--h5-line-height);
+            margin-bottom: var(--spacing-sm);
+            font-family: var(--font-family-display); /* Specific font for display headings */
+        }
+
+        h6, .h6 {
+            font-size: var(--h6-font-size);
+            line-height: var(--h6-line-height);
+            margin-bottom: var(--spacing-sm);
+            font-weight: normal;
+            color: #555; /* Specific color for h6 */
+            font-family: var(--font-family-display); /* Specific font for display headings */
+        }
+
+        /* APPLYING DEFAULT STYLE TO LINKS */
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color var(--transition-speed) var(--transition-ease);
+        }
+
+        a:hover, a:focus {
+            color: var(--secondary-color);
+            outline: none;
+        }
+
+        /* IMAGES */
+        img { 
+            max-width: 100%;
+            display: block;
+        }
+
+        /* Button Styles (integrated from your settings) */
+        .white-btn {
+            padding: 15px 30px;
+            background-color: var(--white);
+            color: var(--primary-color);
+            font-size: var(--general-font-size);
+            transition: background-color 0.3s ease;
+            border-radius: var(--border-radius-max);
+            border: none; /* Ensure no default button border */
+            cursor: pointer;
+        }
+        .white-btn:hover, .white-btn:focus {
+            color: var(--primary-color);
+            background-color: var(--secondary-color);
+        }
+
+        .primary-btn {
+            padding: 15px 30px;
+            background-color: var(--primary-color);
+            color: var(--white); 
+            font-size: var(--general-font-size);
+            transition: background-color 0.3s ease;
+            border-radius: var(--border-radius-max);
+            border: none; /* Ensure no default button border */
+            cursor: pointer;
+        }
+        .primary-btn:hover, .primary-btn:focus {
+            color: var(--primary-color);
+            background-color: var(--secondary-color);
+        }
+
+        .outlined-btn {
+            padding: var(--spacing-sm) var(--spacing-md);
+            background-color: transparent; 
+            color: var(--primary-color);
+            font-size: var(--general-font-size);
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius-max);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            cursor: pointer;
+        }
+        .outlined-btn:hover, .outlined-btn:focus {
+            color: var(--primary-color);
+            background-color: var(--secondary-color);
+            border: 2px solid var(--secondary-color);
+        }
+
+
+        /* SPA Specific Styles (Adjusted to use new variables) */
+        .container {
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: var(--spacing-lg);
+            padding-right: var(--spacing-lg);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            background-color: var(--primary-color); /* Solid color background */
+            color: var(--white);
+            text-align: center;
+            padding-top: var(--spacing-160px);
+            padding-bottom: var(--spacing-160px);
+            overflow: hidden;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 960px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: var(--spacing-lg);
+            padding-right: var(--spacing-lg);
+        }
+        .hero-section h1 {
+            font-size: var(--h1-font-size);
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+        }
+        .hero-section p {
+            font-size: var(--h5-font-size);
+            max-width: 768px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Section Styling */
+        .page-section {
+            padding-top: var(--spacing-xxl);
+            padding-bottom: var(--spacing-xxl);
+            background-color: var(--white);
+            border-bottom: 1px solid var(--grey); /* Subtle separator */
+        }
+        .page-section:last-of-type {
+            border-bottom: none;
+        }
+        .page-section.bg-light {
+            background-color: var(--color-light-blue-bg);
+        }
+
+        .page-section h2 {
+            font-size: var(--h2-font-size);
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-xl);
+            text-align: center;
+        }
+        .page-section h3 {
+            font-size: var(--h4-font-size);
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-md);
+        }
+        .page-section p, .page-section ul {
+            font-size: var(--general-font-size);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+        .page-section ul {
+            list-style: none; /* Override default list-style for specific sections */
+            padding: 0;
+            margin: 0;
+        }
+        .page-section ul li {
+            margin-bottom: var(--spacing-sm);
+        }
+        .page-section ul li:last-child {
+            margin-bottom: 0;
+        }
+        .page-section a {
+            color: var(--primary-color);
+        }
+        .page-section a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Impact Areas Grid */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-xl);
+        }
+        @media (min-width: 768px) {
+            .impact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (min-width: 1024px) {
+            .impact-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .impact-item {
+            background-color: var(--white);
+            padding: var(--spacing-xl);
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .impact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .impact-item .emoji {
+            font-size: 4rem; /* Large emoji size */
+            margin-bottom: var(--spacing-md);
+            display: block; /* Ensure it takes full width for centering */
+            line-height: 1; /* Remove extra line height for emoji */
+        }
+
+        .impact-item h3 {
+            color: var(--primary-color);
+            font-size: var(--h4-font-size);
+            margin-bottom: var(--spacing-sm);
+            margin-top: 0; /* Override default h3 margin-top */
+        }
+
+        .impact-item p {
+            color: var(--color-text-secondary);
+            font-size: var(--general-font-size);
+            margin-bottom: 0; /* Remove default p margin-bottom if it's the last element */
+        }
+
+        /* Key Figures/Counters (reused from previous SPAs) */
+        .glance-section {
+            padding-top: var(--spacing-xxl);
+            padding-bottom: var(--spacing-xxl);
+            background-color: var(--white);
+        }
+        .glance-section h2 {
+            font-size: var(--h2-font-size);
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-xl);
+            text-align: center;
+        }
+        .glance-grid {
+            display: grid;
+            gap: var(--spacing-32px);
+        }
+        .glance-item {
+            background-color: var(--color-light-blue-bg);
+            padding: var(--spacing-32px);
+            border-radius: var(--border-radius-2xl);
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--color-text-primary-dark);
+        }
+        .stat-number-suffix {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--color-text-primary-dark);
+        }
+        .glance-item p {
+            font-size: var(--general-font-size);
+            margin-top: var(--spacing-sm);
+            color: var(--color-text-secondary);
+        }
+
+        /* Footer */
+        .main-footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding-top: var(--spacing-40px);
+            padding-bottom: var(--spacing-40px);
+            text-align: center;
+        }
+        .main-footer .container {
+            padding-left: var(--spacing-lg);
+            padding-right: var(--spacing-lg);
+        }
+
+        /* Responsive Adjustments */
+        @media (min-width: 768px) {
+            .hero-section h1 {
+                font-size: var(--h1-font-size);
+            }
+            .hero-section p {
+                font-size: var(--h5-font-size);
+            }
+            .page-section h2 {
+                font-size: var(--h2-font-size);
+            }
+            .page-section h3 {
+                font-size: var(--h3-font-size);
+            }
+            .glance-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="hero-content">
+            <h1>Our Impacts</h1>
+            <p>Discover how the Volta River Authority's operations and initiatives drive positive change across Ghana's economy, society, and environment.</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- Introduction Section -->
+        <section id="introduction" class="page-section">
+            <div class="container">
+                <h2>Transforming Lives, Powering Progress</h2>
+                <p style="max-width: 960px; margin: 0 auto var(--spacing-xl); text-align: center;">The Volta River Authority's influence extends far beyond electricity generation. We are deeply committed to creating sustainable value and fostering socio-economic development in the communities we serve and across the nation. Our impacts are multifaceted, touching various aspects of Ghanaian life.</p>
+            </div>
+        </section>
+
+        <!-- Our Key Impact Areas Section -->
+        <section id="impact-areas" class="page-section bg-light">
+            <div class="container">
+                <h2>Our Key Impact Areas</h2>
+                <div class="impact-grid">
+                    <div class="impact-item">
+                        <span class="emoji" role="img" aria-label="Lightbulb">💡</span>
+                        <h3>Energy Security & Access</h3>
+                        <p>Providing reliable and affordable electricity that powers homes, industries, and public services, ensuring national energy security and expanding access to underserved areas.</p>
+                    </div>
+                    <div class="impact-item">
+                        <span class="emoji" role="img" aria-label="Chart Increasing">📈</span>
+                        <h3>Economic Growth & Industrialization</h3>
+                        <p>Serving as the backbone for industrial development, attracting investments, and enabling businesses to thrive, thereby contributing significantly to Ghana's GDP and job creation.</p>
+                    </div>
+                    <div class="impact-item">
+                        <span class="emoji" role="img" aria-label="Family">👨‍👩‍👧‍👦</span>
+                        <h3>Community Development & Livelihoods</h3>
+                        <p>Implementing social intervention programs, providing essential services, and supporting income-generating activities in communities affected by our operations, fostering improved livelihoods.</p>
+                    </div>
+                    <div class="impact-item">
+                        <span class="emoji" role="img" aria-label="Tree">🌳</span>
+                        <h3>Environmental Stewardship</h3>
+                        <p>Managing the Volta Lake ecosystem, promoting sustainable land and water use, and investing in renewable energy to mitigate climate change impacts and protect natural resources.</p>
+                    </div>
+                    <div class="impact-item">
+                        <span class="emoji" role="img" aria-label="School">🏫</span>
+                        <h3>Education & Health</h3>
+                        <p>Operating and supporting educational institutions and health facilities, contributing to human capital development and improving access to quality healthcare for employees and local communities.</p>
+                    </div>
+                    <div class="impact-item">
+                        <span class="emoji" role="img" aria-label="Globe">🌍</span>
+                        <h3>Regional Integration</h3>
+                        <p>Playing a leading role in regional power initiatives (WAPP), facilitating energy trade, and fostering economic cooperation across West Africa.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact at a Glance Section -->
+        <section id="impact-glance" class="glance-section">
+            <div class="container">
+                <h2>Our Impact at a Glance</h2>
+                <div class="glance-grid">
+                    <div class="glance-item">
+                        <span class="stat-number" data-target="90">0</span><span class="stat-number-suffix">%+</span>
+                        <p>National Grid Contribution</p>
+                    </div>
+                    <div class="glance-item">
+                        <span class="stat-number" data-target="500000">0</span><span class="stat-number-suffix">+</span>
+                        <p>Beneficiaries of Social Programs</p>
+                    </div>
+                    <div class="glance-item">
+                        <span class="stat-number" data-target="10">0</span><span class="stat-number-suffix">Billion GHS+</span>
+                        <p>Economic Value Generated</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; <span id="currentYear"></span> Volta River Authority. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Dynamic number counter logic for "At a Glance" section
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const speed = 200; // Animation speed
+
+            const animateNumber = (element) => {
+                const target = +element.dataset.target;
+                let current = 0;
+                const increment = target / speed; // Calculate increment per step
+
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        element.innerText = Math.floor(current); // Use Math.floor to show whole numbers
+                        requestAnimationFrame(updateCounter); // Use requestAnimationFrame for smoother animation
+                    } else {
+                        element.innerText = target; // Ensure final target is reached
+                    }
+                };
+                updateCounter(); // Start animation
+            };
+            
+            // Intersection Observer to trigger animation when section is in view
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        const el = entry.target;
+                        animateNumber(el);
+                        observer.unobserve(el); // Stop observing once animated
+                    }
+                });
+            }, {
+                threshold: 0.5 // Trigger when 50% of the element is visible
+            });
+
+            statNumbers.forEach(number => {
+                observer.observe(number);
+            });
+
+            // Set current year in footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>

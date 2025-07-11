@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who We Are: Our Values - VRA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: "Warm Neutrals & Deep Blue" - A professional and calming palette using a deep blue for primary actions, a softer slate for secondary elements, and warm off-white/beige tones for backgrounds. -->
+    <!-- Application Structure Plan: This SPA is designed to articulate VRA's core values. It features a Hero section for context. An "Introduction" emphasizes the importance of these values. The core "Our Core Values" section uses a responsive grid layout, where each value is presented within a distinct "feature block" or "value card." Each card includes a unique color-coded circle as a visual identifier, the value name, and a concise description. A "Living Our Values" section concludes by explaining how these values are integrated into daily operations. This structure provides a clear, visually distinct, and engaging presentation of VRA's foundational values. -->
+    <!-- Visualization & Content Choices: - Report Info: VRA's core organizational values. -> Goal: Inform & Inspire. -> Viz/Presentation Method: Responsive Grid of "Value Cards" with unique color-coded circular markers. -> Interaction: None (direct presentation). -> Justification: This layout offers a clean, modern, and visually distinct way to present multiple values. The color-coded circles provide a simple, scalable, and non-raster visual cue for each value, adhering to constraints while offering a fresh aesthetic. The grid adapts well to different screen sizes. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        /* RESET MARGINS, PADDING, AND BORDERS */
+        *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* SITE SETTINGS VARIABLES */
+        :root {
+            /*-- COLORS --*/
+            --white: rgb(255, 255, 255);
+            --black: rgb(0, 0, 0);
+            --grey: rgb(190, 200, 207);
+            --primary-color: rgb(0, 67, 112);
+            --secondary-color: rgb(22, 154, 242);
+
+            /* Custom colors for SPA, mapped or retained */
+            --color-dark-blue-active-tab: rgb(30, 58, 138); /* 1E3A8A */
+            --color-light-indigo-inactive-tab: rgb(224, 231, 255); /* E0E7FF */
+            --color-background-light: rgb(253, 253, 251); /* FDFDFB */
+            --color-text-secondary: rgb(113, 128, 150); /* 718096 for gray-600 */
+            --color-text-primary-dark: rgb(43, 108, 176); /* 2B6CB0 for blue-800 */
+            --color-light-blue-bg: rgb(235, 248, 255); /* EBF8FF for blue-50 equivalent */
+
+            /* Specific colors for value circles */
+            --value-color-1: #007bff; /* Blue */
+            --value-color-2: #28a745; /* Green */
+            --value-color-3: #ffc107; /* Yellow */
+            --value-color-4: #dc3545; /* Red */
+            --value-color-5: #6f42c1; /* Purple */
+            --value-color-6: #17a2b8; /* Cyan */
+
+
+            /*-- TYPOGRAPHY --*/
+            --default-font-family: "Open Sans", Roboto, Roboto-fallback;
+            --general-font-size: 16px;
+            --font-size-sm: 14px;
+            --font-size-xs: 12px;
+            --font-size-min: 8px;
+            --general-line-height: 1.6;
+
+            /* Heading Font Sizes */
+            --h1-font-size: 48px;
+            --h2-font-size: 40px ;
+            --h3-font-size: 32px;
+            --h4-font-size: 28px ;
+            --h5-font-size: 24px;
+            --h6-font-size: 20px;
+
+            /* Heading Line Heights */
+            --h1-line-height: 1.2;
+            --h2-line-height: 1.3;
+            --h3-line-height: 1.3;
+            --h4-line-height: 1.4;
+            --h5-line-height: 1.4;
+            --h6-line-height: 1.5;
+
+            /* — SPACING — (Mapped to user's provided values) */
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 48px;
+            --spacing-xxl: 80px;
+            --spacing-xxxl: 120px; /* From previous turn */
+
+            /* Custom spacing values from SPA that don't directly map to user's provided ones, using rem for consistency */
+            --spacing-12px: 0.75rem; /* For original spacing-3 */
+            --spacing-32px: 2rem;    /* For original spacing-8 */
+            --spacing-40px: 2.5rem;  /* For original spacing-10 */
+            --spacing-112px: 7rem;   /* For original spacing-28 */
+            --spacing-160px: 10rem;  /* For original spacing-40 */
+
+
+            /* — BORDER RADIUS (PX) — */
+            --border-radius-sm: 4px;
+            --border-radius-md: 8px;
+            --border-radius-lg: 12px;
+            --border-radius-xl: 16px;
+            --border-radius-xxl: 20px;
+            --border-radius-max: 40px;
+            --border-radius-circle: 50%;
+
+            /* Custom border radius from SPA */
+            --border-radius-2xl: 1rem; /* 16px, maps to var(--border-radius-xl) */
+            --border-radius-full: 9999px; /* Retain for full circle */
+
+            /* Transitions */
+            --transition-speed: 0.3s;
+            --transition-ease: ease-in-out;
+        }
+
+        /* SET CONSISTENT HTML */
+        html {
+            font-size: 100%;
+            scroll-behavior: smooth;
+        }
+
+        /* SET BODY BASELINE */
+        body {
+            min-height: 100vh;
+            line-height: var(--general-line-height);
+            background-color: var(--white);
+            color: var(--black);
+            text-rendering: optimizeLegibility;
+            font-family: var(--default-font-family); /* Apply default font family */
+            font-size: var(--general-font-size); /* Apply general font size */
+        }
+
+        /* SETTING DEFAULT STYLES */
+        button, select, input, textarea {
+            font-family: inherit;
+            font-size: inherit;
+        }
+
+        /* LIST DEFAULT SETTINGS */
+        ul, ol {
+            list-style: none;
+        }
+
+        /* PROVIDING GENERAL STYLES TO HEADINGS */
+        h1, .h1 {
+            font-size: var(--h1-font-size);
+            line-height: var(--h1-line-height);
+            margin-bottom: var(--spacing-md);
+            font-family: var(--font-family-display); /* Specific font for display headings */
+        }
+
+        h2, .h2 {
+            font-size: var(--h2-font-size);
+            line-height: var(--h2-line-height);
+            margin-bottom: var(--spacing-md);
+            font-family: var(--font-family-display); /* Specific font for display headings */
+        }
+
+        h3, .h3 {
+            font-size: var(--h3-font-size);
+            line-height: var(--h3-line-height);
+            margin-bottom: var(--spacing-sm);
+            font-family: var(--font-family-display); /* Specific font for display headings */
+        }
+
+        h4, .h4 {
+            font-size: var(--h4-font-size);
+            line-height: var(--h4-line-height);
+            margin-bottom: var(--spacing-sm);
+            font-family: var(--font-family-display); /* Specific font for display headings */
+        }
+
+        h5, .h5 {
+            font-size: var(--h5-font-size);
+            line-height: var(--h5-line-height);
+            margin-bottom: var(--spacing-sm);
+            font-family: var(--font-family-display); /* Specific font for display headings */
+        }
+
+        h6, .h6 {
+            font-size: var(--h6-font-size);
+            line-height: var(--h6-line-height);
+            margin-bottom: var(--spacing-sm);
+            font-weight: normal;
+            color: #555; /* Specific color for h6 */
+            font-family: var(--font-family-display); /* Specific font for display headings */
+        }
+
+        /* APPLYING DEFAULT STYLE TO LINKS */
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color var(--transition-speed) var(--transition-ease);
+        }
+
+        a:hover, a:focus {
+            color: var(--secondary-color);
+            outline: none;
+        }
+
+        /* IMAGES */
+        img { 
+            max-width: 100%;
+            display: block;
+        }
+
+        /* Button Styles (integrated from your settings) */
+        .white-btn {
+            padding: 15px 30px;
+            background-color: var(--white);
+            color: var(--primary-color);
+            font-size: var(--general-font-size);
+            transition: background-color 0.3s ease;
+            border-radius: var(--border-radius-max);
+            border: none; /* Ensure no default button border */
+            cursor: pointer;
+        }
+        .white-btn:hover, .white-btn:focus {
+            color: var(--primary-color);
+            background-color: var(--secondary-color);
+        }
+
+        .primary-btn {
+            padding: 15px 30px;
+            background-color: var(--primary-color);
+            color: var(--white); 
+            font-size: var(--general-font-size);
+            transition: background-color 0.3s ease;
+            border-radius: var(--border-radius-max);
+            border: none; /* Ensure no default button border */
+            cursor: pointer;
+        }
+        .primary-btn:hover, .primary-btn:focus {
+            color: var(--primary-color);
+            background-color: var(--secondary-color);
+        }
+
+        .outlined-btn {
+            padding: var(--spacing-sm) var(--spacing-md);
+            background-color: transparent; 
+            color: var(--primary-color);
+            font-size: var(--general-font-size);
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius-max);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            cursor: pointer;
+        }
+        .outlined-btn:hover, .outlined-btn:focus {
+            color: var(--primary-color);
+            background-color: var(--secondary-color);
+            border: 2px solid var(--secondary-color);
+        }
+
+
+        /* SPA Specific Styles (Adjusted to use new variables) */
+        .container {
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: var(--spacing-lg);
+            padding-right: var(--spacing-lg);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            background-color: var(--primary-color); /* Solid color background */
+            color: var(--white);
+            text-align: center;
+            padding-top: var(--spacing-160px);
+            padding-bottom: var(--spacing-160px);
+            overflow: hidden;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 960px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: var(--spacing-lg);
+            padding-right: var(--spacing-lg);
+        }
+        .hero-section h1 {
+            font-size: var(--h1-font-size);
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+        }
+        .hero-section p {
+            font-size: var(--h5-font-size);
+            max-width: 768px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Section Styling */
+        .page-section {
+            padding-top: var(--spacing-xxl);
+            padding-bottom: var(--spacing-xxl);
+            background-color: var(--white);
+            border-bottom: 1px solid var(--grey); /* Subtle separator */
+        }
+        .page-section:last-of-type {
+            border-bottom: none;
+        }
+        .page-section.bg-light {
+            background-color: var(--color-light-blue-bg);
+        }
+
+        .page-section h2 {
+            font-size: var(--h2-font-size);
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-xl);
+            text-align: center;
+        }
+        .page-section h3 {
+            font-size: var(--h4-font-size);
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-md);
+            margin-top: var(--spacing-lg); /* Space above sub-headings */
+        }
+        .page-section p, .page-section ul {
+            font-size: var(--general-font-size);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+        .page-section ul {
+            list-style: none; /* Override default list-style for specific sections */
+            padding: 0;
+            margin: 0;
+        }
+        .page-section ul li {
+            margin-bottom: var(--spacing-sm);
+        }
+        .page-section ul li:last-child {
+            margin-bottom: 0;
+        }
+        .page-section a {
+            color: var(--primary-color);
+        }
+        .page-section a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Values Grid Layout */
+        .values-grid {
+            display: grid;
+            grid-template-columns: 1fr; /* Default to one column on small screens */
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
+        }
+        @media (min-width: 640px) { /* Small breakpoint */
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr); /* Two columns on small tablets */
+            }
+        }
+        @media (min-width: 1024px) { /* Large breakpoint */
+            .values-grid {
+                grid-template-columns: repeat(3, 1fr); /* Three columns on desktop */
+            }
+        }
+
+        .value-card {
+            background-color: var(--white);
+            padding: var(--spacing-xl);
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--border-radius-circle);
+            margin: 0 auto var(--spacing-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem; /* Size for potential icon/initial if used */
+            color: var(--white); /* Text color for icon */
+            font-weight: 700;
+        }
+
+        /* Specific background colors for each value icon */
+        .value-icon.integrity { background-color: var(--value-color-1); }
+        .value-icon.excellence { background-color: var(--value-color-2); }
+        .value-icon.sustainability { background-color: var(--value-color-3); }
+        .value-icon.teamwork { background-color: var(--value-color-4); }
+        .value-icon.customer-focus { background-color: var(--value-color-5); }
+        .value-icon.innovation { background-color: var(--value-color-6); }
+
+
+        .value-card h3 {
+            color: var(--primary-color);
+            font-size: var(--h4-font-size);
+            margin-bottom: var(--spacing-sm);
+            margin-top: 0; /* Override default h3 margin-top */
+        }
+
+        .value-card p {
+            color: var(--color-text-secondary);
+            font-size: var(--general-font-size);
+            margin-bottom: 0; /* Remove default p margin-bottom if it's the last element */
+        }
+
+        /* Living Our Values Section */
+        .living-values-section .info-block {
+            background-color: var(--white);
+            padding: var(--spacing-xl);
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            max-width: 960px;
+            margin: var(--spacing-xl) auto 0;
+            text-align: left;
+        }
+        .living-values-section ul {
+            list-style: disc;
+            padding-left: 1.5rem;
+            list-style-position: inside;
+        }
+        .living-values-section ul li {
+            margin-bottom: var(--spacing-sm);
+        }
+
+
+        /* Footer */
+        .main-footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding-top: var(--spacing-40px);
+            padding-bottom: var(--spacing-40px);
+            text-align: center;
+        }
+        .main-footer .container {
+            padding-left: var(--spacing-lg);
+            padding-right: var(--spacing-lg);
+        }
+
+        /* Responsive Adjustments */
+        @media (min-width: 768px) {
+            .hero-section h1 {
+                font-size: var(--h1-font-size);
+            }
+            .hero-section p {
+                font-size: var(--h5-font-size);
+            }
+            .page-section h2 {
+                font-size: var(--h2-font-size);
+            }
+            .page-section h3 {
+                font-size: var(--h3-font-size);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="hero-content">
+            <h1>Our Values</h1>
+            <p>The fundamental principles that guide every action, decision, and interaction at the Volta River Authority.</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- Introduction Section -->
+        <section id="introduction" class="page-section">
+            <div class="container">
+                <h2>The Foundation of Our Success</h2>
+                <p style="max-width: 960px; margin: 0 auto var(--spacing-xl); text-align: center;">At the Volta River Authority, our values are more than just words; they are the bedrock of our culture, defining who we are and how we operate. They inspire us to achieve excellence, foster innovation, and contribute meaningfully to Ghana's development. These core values guide our relationships with employees, customers, partners, and the communities we serve.</p>
+            </div>
+        </section>
+
+        <!-- Our Core Values Section -->
+        <section id="core-values" class="page-section bg-light">
+            <div class="container">
+                <h2>Our Core Values</h2>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon integrity"></div>
+                        <h3>Integrity</h3>
+                        <p>We uphold the highest ethical standards, acting with honesty, transparency, and accountability in all our dealings.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon excellence"></div>
+                        <h3>Excellence</h3>
+                        <p>We are committed to continuous improvement, striving for superior performance in every aspect of our operations and services.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon sustainability"></div>
+                        <h3>Sustainability</h3>
+                        <p>We are dedicated to environmentally responsible practices and ensuring the long-term viability of our resources and impacts.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon teamwork"></div>
+                        <h3>Teamwork</h3>
+                        <p>We foster a collaborative environment, valuing diverse perspectives and working together to achieve shared goals.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon customer-focus"></div>
+                        <h3>Customer Focus</h3>
+                        <p>We prioritize the needs of our customers and stakeholders, delivering reliable services and building strong, trusting relationships.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon innovation"></div>
+                        <h3>Innovation</h3>
+                        <p>We embrace creativity and new technologies, constantly seeking innovative solutions to energy challenges and operational efficiencies.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Living Our Values Section -->
+        <section id="living-values" class="page-section living-values-section">
+            <div class="container">
+                <h2>Living Our Values Every Day</h2>
+                <p style="max-width: 960px; margin: 0 auto var(--spacing-md); text-align: center;">Our values are not just statements; they are embedded in our daily operations, decision-making processes, and interactions. We believe that by consistently living these values, we can achieve our mission and contribute positively to Ghana's future.</p>
+                <div class="info-block">
+                    <h3>How We Practice Our Values:</h3>
+                    <ul>
+                        <li><strong>Ethical Decision-Making:</strong> Ensuring all business decisions are made with integrity and transparency.</li>
+                        <li><strong>Quality Assurance:</strong> Implementing rigorous standards to maintain the highest quality in our energy generation and services.</li>
+                        <li><strong>Environmental Responsibility:</strong> Investing in sustainable technologies and practices to protect our natural resources.</li>
+                        <li><strong>Employee Development:</strong> Providing opportunities for growth and fostering a supportive work environment.</li>
+                        <li><strong>Stakeholder Engagement:</strong> Actively listening to and collaborating with our customers, communities, and partners.</li>
+                        <li><strong>Research & Development:</strong> Continuously exploring new technologies and methods to improve our operations.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; <span id="currentYear"></span> Volta River Authority. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set current year in footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>

@@ -1,56 +1,96 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>World Bank Inspired Layout</title>
-    <link rel="stylesheet" href="test.css">
-</head>
-<body>
+  <footer class="footer">
+            <div class="footer-container">
+                <!-- Footer Top Section: Logo, Sub-links, Social Media -->
+                <div class="footer-top-section">
+                    <div class="footer-logo-and-sublinks">
+                        <!-- Logo Section -->
+                        <a href="#" class="footer-logo">
+                            <img class="icon" src="https://placehold.co/45x45/000000/FFFFFF?text=VRA" alt="VRA Logo">
+                            <span class="text">VOLTA RIVER AUTHORITY</span>
+                        </a>
+                        <!-- Sub-links -->
+                        <ul class="footer-sub-links">
+                            <li><a href="htmls/pages/about_us/our_impact.html">CSR</a></li>
+                            <li><a href="htmls/pages/rti/rti.html">RTI</a></li>
+                            <li><a href="htmls/pages/contact/vas.html">VAS</a></li>
+                        </ul>
+                    </div>
 
-    <!-- Hero Section -->
-    <section class="about_us_wrapper">
-        <!-- Background Video -->
-        <video id="bgVideo"  loop muted autoplay playsinline>
-            <source src="assets/videos/akosombo_vid.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-
-        <!-- Overlay for content and circular graphic -->
-        <div class="hero-overlay">
-            <!-- Circular Graphic -->
-            <div class="circular-graphic">
-                <!-- Text Content -->
-                <div class="hero-text-content">
-                    <h1>
-                        TOGETHER WE CAN CREATE A WORLD FREE OF POVERTY ON A LIVABLE PLANET
-                    </h1>
+                    <!-- Social Buttons -->
+                    <div class="footer-social-media">
+                        <a href="https://www.facebook.com/vraghana" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.twitter.com/vraghana" target="_blank" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://www.youtube.com/channel/UC2EEOLsbn2tt9MoCaP3yUwA?feature=watch" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
 
-                <!-- About Us Button -->
-                <div class="about-us-btn-container">
-                    <button class="about-us-btn">
-                        About Us
-                    </button>
+                <!-- Footer Middle Section: Link Columns -->
+                <div class="footer-middle-section">
+                    <!-- Column 1: Who We Are -->
+                    <div class="footer-links-column">
+                        <h3>Who We Are</h3>
+                        <ul>
+                            <li><a href="htmls/pages/about_us/about_us.html">Our Vision, Mission and Values</a></li>
+                            <li><a href="htmls/pages/about_us/our_impact.html">Our Impact</a></li>
+                            <li><a href="htmls/pages/about_us/out_project.html">Our Projects</a></li>
+                            <li><a href="htmls/pages/about_us/visiting_our_plants.html">Visiting Our Plants</a></li>
+                            <li><a href="htmls/pages/about_us/board_members.html">Board Members</a></li>
+                            <li><a href="htmls/pages/about_us/chief_exe.html">About Chief Executive</a></li>
+                            <li><a href="htmls/pages/about_us/management_team.html">Management Team</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 2: Our Companies -->
+                    <div class="footer-links-column">
+                        <h3>Our Companies</h3>
+                        <ul>
+                            <li><a href="htmls/pages/companies/akosombo_details.html">Akosombo</a></li>
+                            <li><a href="htmls/pages/companies/kpong_farms.html">Projects & Operations</a></li>
+                            <li><a href="htmls/pages/companies/northern_electricity_com.html">Topics</a></li>
+                            <li><a href="htmls/pages/companies/volta_lake_transport.html">Data</a></li>
+                            <li><a href="htmls/pages/companies/vra_health_service.html">Publications</a></li>
+                            <li><a href="htmls/pages/companies/vra_international_schools.html">Learning</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 3: News & Media -->
+                    <div class="footer-links-column">
+                        <h3>News & Media</h3>
+                        <ul>
+                            <li><a href="#">Latest News</a></li>
+                            <li><a href="#">Archived News</a></li>
+                            <li><a href="#">Tenders</a></li>
+                            <li><a href="#">Press Releases</a></li>
+                            <li><a href="#">Scoping Reports / Notices</a></li>
+                            <li><a href="#">Akosombo Spillage Controlled</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 4: Others -->
+                    <div class="footer-links-column">
+                        <h3>Others</h3>
+                        <ul>
+                            <li><a href="htmls/pages/others/resources.html">Resources</a></li>
+                            <li><a href="htmls/pages/contact/contant_details.html">Contact</a></li>
+                            <li><a href="htmls/pages/about_us/our_scholarship_forms.html">Scholarship Forms</a></li>
+                            <li><a href="htmls/pages/news/newsletters.html">Newsletters</a></li>
+                            <li><a href="htmls/pages/about_us/our_partners.html">Partners</a></li>
+                            <li><a href="htmls/pages/about_us/power_generation.html">Fact & Figures</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Footer Bottom Section: Copyright & Legal Links -->
+                <div class="footer-bottom-section">
+                    <span class="footer-copyright">© 2025 World Bank Group. All Rights Reserved.</span>
+                    <ul class="footer-legal-links">
+                        <li><a href="#">Legal</a></li>
+                        <li><a href="#">Privacy Notice</a></li>
+                        <li><a href="#">Site Accessibility</a></li>
+                        <li><a href="#">Access to Information</a></li>
+                        <li><a href="#">Jobs</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
                 </div>
             </div>
-        </div>
-
-        <!-- Play/Pause Button -->
-        <button id="playPauseBtn" class="play-pause-btn">
-            <!-- Pause Icon (default) -->
-            <svg id="pauseIcon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path>
-            </svg>
-            <!-- Play Icon (hidden by default) -->
-            <svg id="playIcon" class="hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.025A1 1 0 0111 7.7V12.3a1 1 0 01-1.445.876L6.5 10.3A1 1 0 016.5 9.7l3.055-2.675z" clip-rule="evenodd"></path>
-            </svg>
-        </button>
-    </section>
-
-   
-
-    <script src="scripts/components/video_bg.js"></script>
-</body>
-</html>
+        </footer>

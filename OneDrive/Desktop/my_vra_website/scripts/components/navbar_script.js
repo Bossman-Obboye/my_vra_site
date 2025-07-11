@@ -1,69 +1,60 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const menuToggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('drawer');
-    const closeMenu = document.getElementById('close-menu');
-    const overlay = document.getElementById('drawer-overlay');
-    const hamburgerIcon = document.getElementById('hamburger');
+ const menuToggle = document.getElementById('menu-toggle');
+        const closeMenuBtn = document.getElementById('close-menu');
+        const drawer = document.getElementById('drawer');
+        const hamburgerIcon = document.getElementById('hamburger');
+        const drawerMenuItems = document.querySelectorAll('.drawer-menu-item');
+        const subMenuContentDiv = document.getElementById('sub-menu-content');
 
-    // Function to open the mobile menu
-    function openMenu() {
-        mobileMenu.classList.add('open');
-        mobileMenu.style.display = 'block';
-        overlay.style.display = 'block';
-        hamburgerIcon.classList.add('open');
-        document.body.style.overflow = 'hidden'; // Prevent scrolling on body
-    }
-
-    // Function to close the mobile menu
-    function closeMenuDrawer() {
-        mobileMenu.classList.remove('open');
-        mobileMenu.style.display = 'none';
-        overlay.style.display = 'none';
-        hamburgerIcon.classList.remove('open');
-        document.body.style.overflow = ''; // Restore scrolling on body
-    }
-
-    // Event listeners for opening and closing the mobile menu
-    menuToggle.addEventListener('click', openMenu);
-    closeMenu.addEventListener('click', closeMenuDrawer);
-    overlay.addEventListener('click', closeMenuDrawer); // Close when clicking outside
-
-    // Language Dropdown functionality
-    const languageDropdownButton = document.getElementById('language-dropdown-button');
-    const languageDropdownMenu = document.getElementById('language-dropdown-menu');
-
-    languageDropdownButton.addEventListener('click', () => {
-        languageDropdownMenu.style.display = languageDropdownMenu.style.display === 'block' ? 'none' : 'block';
-    });
-
-    // Close language dropdown when clicking outside
-    document.addEventListener('click', (event) => {
-        if (!languageDropdownButton.contains(event.target) && !languageDropdownMenu.contains(event.target)) {
-            languageDropdownMenu.style.display = 'none';
+        // Function to open the drawer
+        function openDrawer() {
+            drawer.classList.add('open');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling body when drawer is open
         }
-    });
 
-    // Close mobile menu on resize if it's open and screen becomes large
-    window.addEventListener('resize', () => {
-        if (window.innerWidth >= 1024 && mobileMenu.classList.contains('open')) {
-            closeMenuDrawer();
+        // Function to close the drawer
+        function closeDrawer() {
+            drawer.classList.remove('open');
+            document.body.style.overflow = ''; // Restore body scrolling
         }
-    });
 
-    // Handle initial display of mobile menu based on screen size
-    window.addEventListener('load', () => {
-        if (window.innerWidth < 1024) {
-            mobileMenu.style.display = 'block';
-        } else {
-            mobileMenu.style.display = 'none';
-        }
-    });
+        // Event listeners for opening and closing the drawer
+        menuToggle.addEventListener('click', openDrawer);
+        closeMenuBtn.addEventListener('click', closeDrawer);
 
-    window.addEventListener('resize', () => {
-        if (window.innerWidth < 1024) {
-            mobileMenu.style.display = 'block';
-        } else {
-            mobileMenu.style.display = 'none';
-        }
-    });
-});
+        // Handle clicks on main drawer menu items
+        drawerMenuItems.forEach(item => {
+            item.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent default link behavior
+
+                // Remove 'active' class from all main menu items
+                drawerMenuItems.forEach(el => el.classList.remove('active'));
+
+                // Add 'active' class to the clicked item
+                this.classList.add('active');
+
+                // Get the target sub-menu ID from data-target attribute
+                const targetId = this.dataset.target;
+
+                // Hide all sub-menus
+                const allSubMenus = subMenuContentDiv.querySelectorAll('ul');
+                allSubMenus.forEach(ul => ul.style.display = 'none');
+
+                // Show the relevant sub-menu
+                const targetSubMenu = document.getElementById(targetId + '-sub-menu');
+                if (targetSubMenu) {
+                    targetSubMenu.style.display = 'block';
+                }
+            });
+        });
+
+        // Initialize with "Where We Work" active on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const initialActiveItem = document.querySelector('.drawer-menu-item.active');
+            if (initialActiveItem) {
+                const targetId = initialActiveItem.dataset.target;
+                const targetSubMenu = document.getElementById(targetId + '-sub-menu');
+                if (targetSubMenu) {
+                    targetSubMenu.style.display = 'block';
+                }
+            }
+        });

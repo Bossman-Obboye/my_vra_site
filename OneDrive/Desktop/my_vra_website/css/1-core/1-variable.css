@@ -1,3 +1,6 @@
+/* ABOUT US PAGE STYLES - REDESIGNED WITH COLLAPSIBLE SIDEBAR & GIF TOC ICON */
+
+/* Root variables are assumed to be defined externally as per user's prompt */
 :root {
   /*-- COLORS --*/
   --white: rgb(255, 255, 255);
@@ -5,6 +8,7 @@
   --grey: rgb(190, 200, 207);
   --primary-color: rgb(0, 67, 112);
   --secondary-color: rgb(22, 154, 242);
+  --light-grey: rgb(245, 245, 245); /* Added for subtle section backgrounds */
 
   /*-- TYPOGRAPHY --*/
   --default-font-family: "Open Sans", Roboto, Roboto-fallback;
@@ -13,14 +17,15 @@
   --font-size-xs: 12px;
   --font-size-min: 8px;
   --general-line-height: 1.6;
+  --header-height: 80px;  /* Example: If your header is 80px tall */
 
   /* Heading Font Sizes */
-  --h1-font-size: 48px; 
-  --h2-font-size: 40px ;  
-  --h3-font-size: 32px;  
-  --h4-font-size: 28px ; 
-  --h5-font-size: 24px; 
-  --h6-font-size: 20px; 
+  --h1-font-size: 48px;
+  --h2-font-size: 40px ;
+  --h3-font-size: 32px;
+  --h4-font-size: 28px ;
+  --h5-font-size: 24px;
+  --h6-font-size: 20px;
 
   /* Heading Line Heights */
   --h1-line-height: 1.2;
@@ -29,7 +34,7 @@
   --h4-line-height: 1.4;
   --h5-line-height: 1.4;
   --h6-line-height: 1.5;
-
+  
   /* — SPACING — */
   --spacing-xs: 4px;
   --spacing-sm: 8px;
@@ -37,6 +42,7 @@
   --spacing-lg: 24px;
   --spacing-xl: 48px;
   --spacing-xxl: 80px;
+  --spacing-xxxl: 120px; /* Added larger spacing for hero/major sections */
 
   /* — BORDER RADIUS (PX) — */
   --border-radius-sm: 4px;
@@ -46,4 +52,5 @@
   --border-radius-xxl: 20px;
   --border-radius-max: 40px;
   --border-radius-circle: 50%;
+
 }

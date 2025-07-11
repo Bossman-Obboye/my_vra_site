@@ -1,22 +1,280 @@
 
-@import "nav_part/1-navbar_container.css";
-@import "nav_part/2-hamburger_styles.css";
-@import "nav_part/3-vra_logo_styles.css";
-@import "nav_part/4-mobile_menu.css";
-@import "nav_part/5-navbar_headline.css";
-@import "drawer_part/1-drawer_container.css";
-@import "drawer_part/2-drawer_header.css";
-@import "drawer_part/3-drawer_content.css";
-@import "responsive-part/responsive_nav.css";
 
+/* Navbar Styles */
+        .navbar {
+            background-color: var(--white); /* Dark blue */
+            color: var(--primary-color);
+            padding: 1rem 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
 
-body {
-  font-family: "Inter", sans-serif;
-  background-color: #f3f4f6; 
-  margin: 0;
-  overflow-x: hidden; 
-}
+        .navbar-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
+        .navbar-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* Hamburger Menu Toggle */
+        .menu-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hamburger-icon {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 25px;
+            height: 20px;
+        }
+
+        .hamburger-icon span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* VRA Logo */
+        .vra-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .vra-logo .icon {
+            width: 40px;
+            height: auto;
+            border-radius: 50%;
+        }
+
+        .vra-logo .text {
+            font-weight: 700;
+            font-size: 1.1rem;
+            white-space: nowrap;
+        }
+
+        /* Navbar Headline */
+        .navbar-headline {
+            display: none; /* Hidden by default on small screens */
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #d1d5db; /* Light gray */
+        }
+
+        .navbar-headline .separator {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .navbar-headline a {
+            color: #93c5fd; /* Blue-300 */
+            text-decoration: none;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .navbar-headline a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        /* DRAWER STYLES */
+        .drawer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0b2241; /* Dark blue */
+            z-index: 150;
+            transform: translateX(-100%); /* Hidden by default */
+            transition: transform 0.4s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto; /* Enable scrolling for drawer content */
+        }
+
+        .drawer.open {
+            transform: translateX(0); /* Slide in */
+        }
+
+        .drawer-header {
+            padding: 1.5rem 1rem;
+            display: flex;
+            justify-content: flex-start; /* Align close button to start */
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .close-drawer-btn {
+            background: none;
+            border: 2px solid #ffffff; /* White border */
+            border-radius: 50%; /* Circular button */
+            color: #ffffff;
+            font-size: 1.5rem; /* Larger icon */
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .close-drawer-btn:hover {
+            background-color: #ffffff;
+            color: #0b2241; /* Dark blue on hover */
+            transform: rotate(90deg); /* Spin effect */
+        }
+
+        .drawer-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column; /* Stack columns on small screens */
+            padding: 1rem;
+            color: #ffffff;
+        }
+
+        .main-drawer-menus-wrapper {
+            flex: 1; /* Takes full width on small screens */
+            padding-right: 0; /* No right padding on small screens */
+            border-right: none; /* No vertical bar on small screens */
+            margin-bottom: 2rem; /* Space between sections on small screens */
+        }
+
+        .main-drawer-menus-wrapper ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .main-drawer-menus-wrapper li {
+            margin-bottom: 0.5rem;
+        }
+
+        .main-drawer-menus-wrapper a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.25rem; /* Larger text */
+            font-weight: 600; /* Semibold */
+            border-radius: 0.25rem;
+            transition: background-color 0.2s ease-in-out;
+            position: relative;
+        }
+
+        .main-drawer-menus-wrapper a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .main-drawer-menus-wrapper a.active {
+            background-color: #1d4ed8; /* Darker blue for active */
+            font-weight: 700; /* Bold for active */
+        }
+
+        .main-drawer-menus-wrapper a.active .arrow-icon {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .arrow-icon {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%) translateX(-10px); /* Initial position off-screen */
+            font-size: 1rem;
+            opacity: 0;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Sub-menu/Details Section */
+        .drawer-sub-menu-section {
+            flex: 1; /* Takes full width on small screens */
+            padding-left: 0; /* No left padding on small screens */
+            padding-top: 1.5rem; /* Space from top on small screens */
+            border-top: 1px solid rgba(255, 255, 255, 0.1); /* Horizontal separator on small screens */
+        }
+
+        .drawer-sub-menu-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .drawer-sub-menu-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .drawer-sub-menu-section a {
+            display: block;
+            padding: 0.5rem 0;
+            color: #d1d5db; /* Light gray */
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .drawer-sub-menu-section a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        /* Responsive Adjustments */
+        @media (min-width: 768px) {
+            .navbar-headline {
+                display: flex; /* Show on medium screens and up */
+            }
+
+            .vra-logo .text {
+                font-size: 1.25rem; /* Larger text on medium screens */
+            }
+
+            .drawer-content {
+                flex-direction: row; /* Two columns on medium screens and up */
+                padding: 2rem;
+            }
+
+            .main-drawer-menus-wrapper {
+                flex: 0 0 300px; /* Fixed width for left column */
+                padding-right: 2rem; /* Space before vertical bar */
+                border-right: 1px solid rgba(255, 255, 255, 0.1); /* Vertical bar */
+                margin-bottom: 0; /* Remove bottom margin */
+            }
+
+            .drawer-sub-menu-section {
+                flex: 1; /* Remaining width for right column */
+                padding-left: 2rem; /* Space after vertical bar */
+                padding-top: 0; /* Remove top padding */
+                border-top: none; /* Remove horizontal separator */
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .navbar {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+        }
 
 
 

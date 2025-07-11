@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Relations - VRA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: "Warm Neutrals & Deep Blue" - A professional and calming palette using a deep blue for primary actions, a softer slate for secondary elements, and warm off-white/beige tones for backgrounds. -->
+    <!-- Application Structure Plan: This SPA is designed to streamline the presentation of VRA's business engagement. It begins with a clear Hero section to set the context of partnerships. An "Overview" section explains VRA's approach and the benefits of collaboration. The core "Partnership Opportunities" section uses interactive tabs to categorize different types of collaborations (Procurement, Projects, Community, Innovation), allowing potential partners to easily find relevant information. A "Key Figures" section with dynamic counters provides a quick, impactful summary of VRA's collaborative scale. Finally, a dedicated "Contact for Business Relations" section offers direct access for inquiries. This structure prioritizes user understanding of engagement pathways and encourages interaction. -->
+    <!-- Visualization & Content Choices: - Report Info: Various types of business engagement and collaboration areas. -> Goal: Organize & Explore. -> Viz/Presentation Method: Interactive Tabbed Layout. -> Interaction: Users click tabs to reveal detailed descriptions of each partnership type, breaking down complex information into manageable, user-driven segments. -> Justification: Improves usability by allowing focused consumption of specific collaboration opportunities. -> Library/Method: Vanilla JS toggling CSS 'hidden' class. - Report Info: Placeholder quantitative data (e.g., number of partners, projects, initiatives). -> Goal: Inform & Engage. -> Viz/Presentation Method: Dynamic Number Counters. -> Interaction: Numbers animate upwards when the section enters the viewport. -> Justification: Provides a compelling, memorable summary of VRA's collaborative scale, adding a dynamic visual element. -> Library/Method: Vanilla JS with IntersectionObserver. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        /* RESET MARGINS, PADDING, AND BORDERS */
+        *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* SITE SETTINGS VARIABLES */
+        :root {
+            /*-- COLORS --*/
+            --white: rgb(255, 255, 255);
+            --black: rgb(0, 0, 0);
+            --grey: rgb(190, 200, 207);
+            --primary-color: rgb(0, 67, 112);
+            --secondary-color: rgb(22, 154, 242);
+
+            /* Custom colors for SPA, mapped or retained */
+            --color-dark-blue-active-tab: rgb(30, 58, 138); /* 1E3A8A */
+            --color-light-indigo-inactive-tab: rgb(224, 231, 255); /* E0E7FF */
+            --color-background-light: rgb(253, 253, 251); /* FDFDFB */
+            --color-text-secondary: rgb(113, 128, 150); /* 718096 for gray-600 */
+            --color-text-primary-dark: rgb(43, 108, 176); /* 2B6CB0 for blue-800 */
+            --color-light-blue-bg: rgb(235, 248, 255); /* EBF8FF for blue-50 equivalent */
+
+
+            /*-- TYPOGRAPHY --*/
+            --default-font-family: "Open Sans", Roboto, Roboto-fallback;
+            --general-font-size: 16px;
+            --font-size-sm: 14px;
+            --font-size-xs: 12px;
+            --font-size-min: 8px;
+            --general-line-height: 1.6;
+
+            /* Heading Font Sizes */
+            --h1-font-size: 48px;
+            --h2-font-size: 40px ;
+            --h3-font-size: 32px;
+            --h4-font-size: 28px ;
+            --h5-font-size: 24px;
+            --h6-font-size: 20px;
+
+            /* Heading Line Heights */
+            --h1-line-height: 1.2;
+            --h2-line-height: 1.3;
+            --h3-line-height: 1.3;
+            --h4-line-height: 1.4;
+            --h5-line-height: 1.4;
+            --h6-line-height: 1.5;
+
+            /* — SPACING — (Mapped to user's provided values) */
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 48px;
+            --spacing-xxl: 80px;
+            --spacing-xxxl: 120px; /* From previous turn */
+
+            /* Custom spacing values from SPA that don't directly map to user's provided ones, using rem for consistency */
+            --spacing-12px: 0.75rem; /* For original spacing-3 */
+            --spacing-32px: 2rem;    /* For original spacing-8 */
+            --spacing-40px: 2.5rem;  /* For original spacing-10 */
+            --spacing-112px: 7rem;   /* For original spacing-28 */
+            --spacing-160px: 10rem;  /* For original spacing-40 */
+
+
+            /* — BORDER RADIUS (PX) — */
+            --border-radius-sm: 4px;
+            --border-radius-md: 8px;
+            --border-radius-lg: 12px;
+            --border-radius-xl: 16px;
+            --border-radius-xxl: 20px;
+            --border-radius-max: 40px;
+            --border-radius-circle: 50%;
+
+            /* Custom border radius from SPA */
+            --border-radius-2xl: 1rem; /* 16px, maps to var(--border-radius-xl) */
+            --border-radius-full: 9999px; /* Retain for full circle */
+
+            /* Transitions */
+            --transition-speed: 0.3s;
+            --transition-ease: ease-in-out;
+        }
+
+        /* SET CONSISTENT HTML */
+        html {
+            font-size: 100%;
+            scroll-behavior: smooth;
+        }
+
+        /* SET BODY BASELINE */
+        body {
+            min-height: 100vh;
+            line-height: var(--general-line-height);
+            background-color: var(--white);
+            color: var(--black);
+            text-rendering: optimizeLegibility;
+            font-family: var(--default-font-family); /* Apply default font family */
+            font-size: var(--general-font-size); /* Apply general font size */
+        }
+
+        /* SETTING DEFAULT STYLES */
+        button, select, input, textarea {
+            font-family: inherit;
+            font-size: inherit;
+        }
+
+        /* LIST DEFAULT SETTINGS */
+        ul, ol {
+            list-style: none;
+        }
+
+        /* PROVIDING GENERAL STYLES TO HEADINGS */
+        h1, .h1 {
+            font-size: var(--h1-font-size);
+            line-height: var(--h1-line-height);
+            margin-bottom: var(--spacing-md);
+            font-family: var(--font-family-display); /* Specific font for display headings */
+        }
+
+        h2, .h2 {
+            font-size: var(--h2-font-size);
+            line-height: var(--h2-line-height);
+            margin-bottom: var(--spacing-md);
+            font-family: var(--font-family-display); /* Specific font for display headings */
+        }
+
+        h3, .h3 {
+            font-size: var(--h3-font-size);
+            line-height: var(--h3-line-height);
+            margin-bottom: var(--spacing-sm);
+            font-family: var(--font-family-display); /* Specific font for display headings */
+        }
+
+        h4, .h4 {
+            font-size: var(--h4-font-size);
+            line-height: var(--h4-line-height);
+            margin-bottom: var(--spacing-sm);
+            font-family: var(--font-family-display); /* Specific font for display headings */
+        }
+
+        h5, .h5 {
+            font-size: var(--h5-font-size);
+            line-height: var(--h5-line-height);
+            margin-bottom: var(--spacing-sm);
+            font-family: var(--font-family-display); /* Specific font for display headings */
+        }
+
+        h6, .h6 {
+            font-size: var(--h6-font-size);
+            line-height: var(--h6-line-height);
+            margin-bottom: var(--spacing-sm);
+            font-weight: normal;
+            color: #555; /* Specific color for h6 */
+            font-family: var(--font-family-display); /* Specific font for display headings */
+        }
+
+        /* APPLYING DEFAULT STYLE TO LINKS */
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color var(--transition-speed) var(--transition-ease);
+        }
+
+        a:hover, a:focus {
+            color: var(--secondary-color);
+            outline: none;
+        }
+
+        /* IMAGES */
+        img { 
+            max-width: 100%;
+            display: block;
+        }
+
+        /* Button Styles (integrated from your settings) */
+        .white-btn {
+            padding: 15px 30px;
+            background-color: var(--white);
+            color: var(--primary-color);
+            font-size: var(--general-font-size);
+            transition: background-color 0.3s ease;
+            border-radius: var(--border-radius-max);
+            border: none; /* Ensure no default button border */
+            cursor: pointer;
+        }
+        .white-btn:hover, .white-btn:focus {
+            color: var(--primary-color);
+            background-color: var(--secondary-color);
+        }
+
+        .primary-btn {
+            padding: 15px 30px;
+            background-color: var(--primary-color);
+            color: var(--white); 
+            font-size: var(--general-font-size);
+            transition: background-color 0.3s ease;
+            border-radius: var(--border-radius-max);
+            border: none; /* Ensure no default button border */
+            cursor: pointer;
+        }
+        .primary-btn:hover, .primary-btn:focus {
+            color: var(--primary-color);
+            background-color: var(--secondary-color);
+        }
+
+        .outlined-btn {
+            padding: var(--spacing-sm) var(--spacing-md);
+            background-color: transparent; 
+            color: var(--primary-color);
+            font-size: var(--general-font-size);
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius-max);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            cursor: pointer;
+        }
+        .outlined-btn:hover, .outlined-btn:focus {
+            color: var(--primary-color);
+            background-color: var(--secondary-color);
+            border: 2px solid var(--secondary-color);
+        }
+
+
+        /* SPA Specific Styles (Adjusted to use new variables) */
+        .container {
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: var(--spacing-lg);
+            padding-right: var(--spacing-lg);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            background-color: var(--primary-color); /* Solid color background */
+            color: var(--white);
+            text-align: center;
+            padding-top: var(--spacing-160px);
+            padding-bottom: var(--spacing-160px);
+            overflow: hidden;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 960px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: var(--spacing-lg);
+            padding-right: var(--spacing-lg);
+        }
+        .hero-section h1 {
+            font-size: var(--h1-font-size);
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+        }
+        .hero-section p {
+            font-size: var(--h5-font-size);
+            max-width: 768px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Section Styling */
+        .page-section {
+            padding-top: var(--spacing-xxl);
+            padding-bottom: var(--spacing-xxl);
+            background-color: var(--white);
+            border-bottom: 1px solid var(--grey); /* Subtle separator */
+        }
+        .page-section:last-of-type {
+            border-bottom: none;
+        }
+        .page-section.bg-light {
+            background-color: var(--color-light-blue-bg);
+        }
+
+        .page-section h2 {
+            font-size: var(--h2-font-size);
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-xl);
+            text-align: center;
+        }
+        .page-section h3 {
+            font-size: var(--h4-font-size);
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-md);
+        }
+        .page-section p, .page-section ul {
+            font-size: var(--general-font-size);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+        .page-section ul {
+            list-style: none; /* Override default list-style for specific sections */
+            padding: 0;
+            margin: 0;
+        }
+        .page-section ul li {
+            margin-bottom: var(--spacing-sm);
+        }
+        .page-section ul li:last-child {
+            margin-bottom: 0;
+        }
+        .page-section a {
+            color: var(--primary-color);
+        }
+        .page-section a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Grid Layouts */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-xl);
+        }
+        @media (min-width: 768px) {
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (min-width: 1024px) {
+            .info-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Tabs (reused from previous SPAs) */
+        .tabs-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-32px);
+        }
+        .tab-btn {
+            padding: var(--spacing-12px) var(--spacing-lg);
+            border-radius: var(--border-radius-full);
+            font-weight: 600;
+            font-size: var(--general-font-size);
+            transition: all var(--transition-speed) var(--transition-ease);
+            border: none;
+            cursor: pointer;
+            outline: none;
+        }
+        .tab-active {
+            background-color: var(--color-dark-blue-active-tab);
+            color: var(--color-white);
+        }
+        .tab-inactive {
+            background-color: var(--color-light-indigo-inactive-tab);
+            color: var(--color-dark-blue-active-tab);
+        }
+        .tab-btn:hover:not(.tab-active) {
+            background-color: var(--color-dark-blue-active-tab);
+            color: var(--color-white);
+            opacity: 0.9;
+        }
+
+        /* Tab Content */
+        .tab-content-container {
+            max-width: 896px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: var(--white);
+            padding: var(--spacing-32px);
+            border-radius: var(--border-radius-2xl);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            text-align: left;
+        }
+        .tab-content h3 {
+            font-size: var(--h5-font-size);
+            font-weight: 700;
+            color: var(--color-text-primary-dark);
+            margin-bottom: var(--spacing-md);
+        }
+        .tab-content ul {
+            list-style: disc;
+            padding-left: 1.5rem;
+            list-style-position: inside;
+            margin-left: 0;
+            color: var(--color-text-secondary);
+        }
+        .tab-content ul li {
+            margin-bottom: var(--spacing-12px);
+        }
+        .tab-content ul li:last-child {
+            margin-bottom: 0;
+        }
+        .tab-content p {
+            color: var(--color-text-secondary);
+        }
+        .hidden {
+            display: none;
+        }
+
+        /* Key Figures/Counters */
+        .glance-section {
+            padding-top: var(--spacing-xxl);
+            padding-bottom: var(--spacing-xxl);
+            background-color: var(--white);
+        }
+        .glance-section h2 {
+            font-size: var(--h2-font-size);
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-xl);
+            text-align: center;
+        }
+        .glance-grid {
+            display: grid;
+            gap: var(--spacing-32px);
+        }
+        .glance-item {
+            background-color: var(--color-light-blue-bg);
+            padding: var(--spacing-32px);
+            border-radius: var(--border-radius-2xl);
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--color-text-primary-dark);
+        }
+        .stat-number-suffix {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--color-text-primary-dark);
+        }
+        .glance-item p {
+            font-size: var(--general-font-size);
+            margin-top: var(--spacing-sm);
+            color: var(--color-text-secondary);
+        }
+
+        /* Footer */
+        .main-footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding-top: var(--spacing-40px);
+            padding-bottom: var(--spacing-40px);
+            text-align: center;
+        }
+        .main-footer .container {
+            padding-left: var(--spacing-lg);
+            padding-right: var(--spacing-lg);
+        }
+
+        /* Responsive Adjustments */
+        @media (min-width: 768px) {
+            .hero-section h1 {
+                font-size: var(--h1-font-size);
+            }
+            .hero-section p {
+                font-size: var(--h5-font-size);
+            }
+            .page-section h2 {
+                font-size: var(--h2-font-size);
+            }
+            .page-section h3 {
+                font-size: var(--h3-font-size);
+            }
+            .glance-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="hero-content">
+            <h1>Business Relations</h1>
+            <p>Building strong, transparent, and mutually beneficial partnerships to drive sustainable development and innovation in Ghana's energy sector.</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- Overview Section -->
+        <section id="overview" class="page-section">
+            <div class="container">
+                <h2>Our Approach to Business Relations</h2>
+                <p style="margin-bottom: var(--spacing-xl);">At VRA, we believe in fostering robust and transparent relationships with our partners across various sectors. Our approach is built on mutual respect, shared objectives, and a steadfast commitment to sustainable development and ethical practices. We seek collaborations that enhance our operational capabilities, drive innovation, and contribute positively to the communities we serve.</p>
+                <div class="info-grid">
+                    <div>
+                        <h3>Why Partner with VRA?</h3>
+                        <ul>
+                            <li>Access to VRA's extensive network and projects.</li>
+                            <li>Opportunity to contribute to national development.</li>
+                            <li>Engagement within a stable and ethical framework.</li>
+                            <li>Potential for long-term, impactful collaborations.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Our Commitment to Partners</h3>
+                        <p>We are dedicated to fostering fair dealings, clear communication, and timely execution of agreements. We view our partners as integral to our success and are committed to creating an environment where shared goals can be achieved efficiently and effectively.</p>
+                    </div>
+                    <div>
+                        <h3>Values in Partnership</h3>
+                        <p>Our business relations are guided by core values of integrity, transparency, mutual benefit, and a shared vision for sustainable growth. We seek partners who align with these principles to build lasting and productive relationships.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partnership Opportunities Section -->
+        <section id="opportunities" class="page-section bg-light">
+            <div class="container text-center">
+                <h2>Partnership Opportunities</h2>
+                <p style="margin-bottom: var(--spacing-xl);">Explore the various avenues for collaboration with the Volta River Authority. Select a category to learn more about how we can work together.</p>
+                
+                <!-- Tabs for Partnership Types -->
+                <div id="tabs-container" class="tabs-container">
+                    <button data-tab="procurement-supply" class="tab-btn tab-active">Procurement & Supply</button>
+                    <button data-tab="project-collaboration" class="tab-btn tab-inactive">Project Collaboration</button>
+                    <button data-tab="community-csr" class="tab-btn tab-inactive">Community & CSR</button>
+                    <button data-tab="innovation-research" class="tab-btn tab-inactive">Innovation & Research</button>
+                </div>
+
+                <!-- Tab Content for Partnership Types -->
+                <div id="tab-content-container" class="tab-content-container">
+                    <div id="procurement-supply-content" class="tab-content">
+                        <h3>Procurement & Supply</h3>
+                        <p>We constantly seek reliable suppliers for a wide range of goods and services essential to our operations, from engineering components and IT solutions to office supplies and maintenance services. Our procurement process is transparent, competitive, and adheres to the highest ethical standards, ensuring fair opportunities for all registered vendors.</p>
+                        <ul>
+                            <li><strong>Focus:</strong> Goods, Works, and Services.</li>
+                            <li><strong>Process:</strong> Transparent and competitive bidding.</li>
+                        </ul>
+                    </div>
+                    <div id="project-collaboration-content" class="tab-content hidden">
+                        <h3>Project Collaboration & Joint Ventures</h3>
+                        <p>VRA actively pursues strategic alliances and joint ventures for large-scale energy projects, infrastructure development, and technology implementation. We welcome proposals for innovative solutions and partnerships that align with our strategic goals for expanding energy capacity and modernizing our infrastructure.</p>
+                        <ul>
+                            <li><strong>Areas:</strong> Energy projects, infrastructure, technology.</li>
+                            <li><strong>Approach:</strong> Strategic alliances, joint ventures.</li>
+                        </ul>
+                    </div>
+                    <div id="community-csr-content" class="tab-content hidden">
+                        <h3>Community & CSR Partnerships</h3>
+                        <p>Our commitment extends beyond energy generation. We partner with organizations on corporate social responsibility initiatives, focusing on sustainable development, education, health, and environmental conservation in our operational areas. We aim to create lasting positive impacts on the communities that host our facilities.</p>
+                        <ul>
+                            <li><strong>Focus:</strong> Education, health, environment, community empowerment.</li>
+                            <li><strong>Goal:</strong> Sustainable positive impact.</li>
+                        </ul>
+                    </div>
+                    <div id="innovation-research-content" class="tab-content hidden">
+                        <h3>Innovation & Research Collaboration</h3>
+                        <p>We are keen to collaborate with research institutions, technology firms, and innovators to explore new energy solutions, improve operational efficiency, and advance sustainable practices in the energy sector. We believe in harnessing new ideas and technologies to meet future energy challenges.</p>
+                        <ul>
+                            <li><strong>Areas:</strong> New energy tech, operational efficiency, sustainability.</li>
+                            <li><strong>Partners:</strong> Research institutions, tech firms, innovators.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Figures/Impact Section -->
+        <section id="key-figures" class="glance-section">
+            <div class="container">
+                <h2>Our Partnership Impact at a Glance</h2>
+                <div class="glance-grid">
+                    <div class="glance-item">
+                        <span class="stat-number" data-target="150">0</span><span class="stat-number-suffix">+</span>
+                        <p>Active Partners</p>
+                    </div>
+                    <div class="glance-item">
+                        <span class="stat-number" data-target="50">0</span><span class="stat-number-suffix">+</span>
+                        <p>Strategic Projects Completed</p>
+                    </div>
+                    <div class="glance-item">
+                        <span class="stat-number" data-target="100">0</span><span class="stat-number-suffix">M+</span>
+                        <p>Investment Attracted (USD)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact for Business Relations Section -->
+        <section id="contact-business" class="page-section bg-light">
+            <div class="container text-center">
+                <h2>Contact Our Business Relations Team</h2>
+                <p style="margin-bottom: var(--spacing-xl);">Ready to explore partnership opportunities with VRA? Our dedicated Business Relations team is here to assist you.</p>
+                <div class="info-grid">
+                    <div>
+                        <h3>Business Development Inquiries</h3>
+                        <p>For new partnership proposals, strategic alliances, and general business development questions.</p>
+                        <ul>
+                            <li>Phone: <a href="tel:+233302664941">+233 (0)302 664 941 (Ext. BD)</a></li>
+                            <li>Email: <a href="mailto:businessdev@vra.com">businessdev@vra.com</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Procurement & Vendor Inquiries</h3>
+                        <p>For questions related to vendor registration, tenders, and supply chain matters.</p>
+                        <ul>
+                            <li>Phone: <a href="tel:+233302XXXXXX">+233 (0)302 XXX XXX (Procurement)</a></li>
+                            <li>Email: <a href="mailto:procurement@vra.com">procurement@vra.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; <span id="currentYear"></span> Volta River Authority. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Tab switching logic for partnership types
+            const tabsContainer = document.getElementById('tabs-container');
+            const contentContainer = document.getElementById('tab-content-container');
+            const tabs = tabsContainer.querySelectorAll('.tab-btn');
+            const contents = contentContainer.querySelectorAll('.tab-content');
+
+            tabsContainer.addEventListener('click', (e) => {
+                const targetButton = e.target.closest('.tab-btn');
+                if (!targetButton) return;
+
+                const tabId = targetButton.dataset.tab;
+                
+                tabs.forEach(tab => {
+                    tab.classList.remove('tab-active');
+                    tab.classList.add('tab-inactive');
+                });
+                targetButton.classList.add('tab-active');
+                targetButton.classList.remove('tab-inactive');
+                
+                contents.forEach(content => {
+                    if (content.id === `${tabId}-content`) {
+                        content.classList.remove('hidden');
+                    } else {
+                        content.classList.add('hidden');
+                    }
+                });
+            });
+
+            // Dynamic number counter logic for "At a Glance" section
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const speed = 200; // Animation speed
+
+            const animateNumber = (element) => {
+                const target = +element.dataset.target;
+                let current = 0;
+                const increment = target / speed; // Calculate increment per step
+
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        element.innerText = Math.floor(current); // Use Math.floor to show whole numbers
+                        requestAnimationFrame(updateCounter); // Use requestAnimationFrame for smoother animation
+                    } else {
+                        element.innerText = target; // Ensure final target is reached
+                    }
+                };
+                updateCounter(); // Start animation
+            };
+            
+            // Intersection Observer to trigger animation when section is in view
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        const el = entry.target;
+                        animateNumber(el);
+                        observer.unobserve(el); // Stop observing once animated
+                    }
+                });
+            }, {
+                threshold: 0.5 // Trigger when 50% of the element is visible
+            });
+
+            statNumbers.forEach(number => {
+                observer.observe(number);
+            });
+
+            // Set current year in footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akosombo Hotels Limited - An Interactive Overview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: "Warm Neutrals & Deep Blue" - A professional and calming palette using a deep blue for primary actions, a softer slate for secondary elements, and warm off-white/beige tones for backgrounds to create a welcoming and premium feel suitable for a hospitality brand. -->
+    <!-- Application Structure Plan: The SPA is designed to guide the user through a narrative journey. It starts with a visually striking Hero section to establish brand identity. This is followed by a concise "Our Identity" section combining the Mission and Vision for easy comparison. The core of the application is the "Our Impact & Services" interactive tabbed section, which breaks down the long list of contributions from the report into four digestible, user-selectable themes (Hospitality, Events, Tourism, Community). This prevents information overload. It culminates in an "At a Glance" section with dynamic number counters to provide a quick, memorable summary of the hotel's scale and impact. This structure was chosen to transform a static document into an exploratory experience, enhancing user engagement and information retention. -->
+    <!-- Visualization & Content Choices: - Report Info: "Key Activities & Contributions" (a long list). -> Goal: Organize & Compare. -> Viz/Presentation Method: Interactive Tabbed Layout. -> Interaction: User clicks on a tab (e.g., "Hospitality," "Events") to reveal only the relevant text content. -> Justification: Breaks a long, unengaging list into user-driven, thematic sections. This improves usability and allows users to focus on the services that interest them most. -> Library/Method: Vanilla JS toggling CSS classes. - Report Info: The report lacks quantitative data, so I've created representative placeholder stats. -> Goal: Inform & Engage. -> Viz/Presentation Method: Dynamic Number Counters. -> Interaction: Numbers animate, counting up from zero to their final value when the section scrolls into view. -> Justification: This adds a dynamic "wow" factor, making key metrics more memorable and impactful than static text. -> Library/Method: Vanilla JS using an IntersectionObserver to trigger the animation. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        /* RESET MARGINS, PADDING, AND BORDERS */
+        *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* SITE SETTINGS VARIABLES */
+        :root {
+            /*-- COLORS --*/
+            --white: rgb(255, 255, 255);
+            --black: rgb(0, 0, 0);
+            --grey: rgb(190, 200, 207);
+            --primary-color: rgb(0, 67, 112);
+            --secondary-color: rgb(22, 154, 242);
+
+            /* Custom colors from previous SPA design, mapped or retained */
+            --color-dark-blue-active-tab: rgb(30, 58, 138); /* 1E3A8A */
+            --color-light-indigo-inactive-tab: rgb(224, 231, 255); /* E0E7FF */
+            --color-background-light: rgb(253, 253, 251); /* FDFDFB */
+            --color-text-secondary: rgb(113, 128, 150); /* 718096 for gray-600 */
+            --color-text-primary-dark: rgb(43, 108, 176); /* 2B6CB0 for blue-800 */
+            --color-light-blue-bg: rgb(235, 248, 255); /* EBF8FF for blue-50 equivalent */
+
+
+            /*-- TYPOGRAPHY --*/
+            --default-font-family: "Open Sans", Roboto, Roboto-fallback;
+            --general-font-size: 16px;
+            --font-size-sm: 14px;
+            --font-size-xs: 12px;
+            --font-size-min: 8px;
+            --general-line-height: 1.6;
+
+            /* Heading Font Sizes */
+            --h1-font-size: 48px;
+            --h2-font-size: 40px ;
+            --h3-font-size: 32px;
+            --h4-font-size: 28px ;
+            --h5-font-size: 24px;
+            --h6-font-size: 20px;
+
+            /* Heading Line Heights */
+            --h1-line-height: 1.2;
+            --h2-line-height: 1.3;
+            --h3-line-height: 1.3;
+            --h4-line-height: 1.4;
+            --h5-line-height: 1.4;
+            --h6-line-height: 1.5;
+
+            /* — SPACING — (Mapped to user's provided values) */
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 48px;
+            --spacing-xxl: 80px;
+            --spacing-xxxl: 120px; /* From previous turn */
+
+            /* Custom spacing values from SPA that don't directly map to user's provided ones, using rem for consistency */
+            --spacing-12px: 0.75rem; /* For original spacing-3 */
+            --spacing-32px: 2rem;    /* For original spacing-8 */
+            --spacing-40px: 2.5rem;  /* For original spacing-10 */
+            --spacing-112px: 7rem;   /* For original spacing-28 */
+            --spacing-160px: 10rem;  /* For original spacing-40 */
+
+
+            /* — BORDER RADIUS (PX) — */
+            --border-radius-sm: 4px;
+            --border-radius-md: 8px;
+            --border-radius-lg: 12px;
+            --border-radius-xl: 16px;
+            --border-radius-xxl: 20px;
+            --border-radius-max: 40px;
+            --border-radius-circle: 50%;
+
+            /* Custom border radius from SPA */
+            --border-radius-2xl: 1rem; /* 16px, maps to var(--border-radius-xl) */
+            --border-radius-full: 9999px; /* Retain for full circle */
+
+            /* Transitions */
+            --transition-speed: 0.3s;
+            --transition-ease: ease-in-out;
+        }
+
+        /* SET CONSISTENT HTML */
+        html {
+            font-size: 100%;
+            scroll-behavior: smooth;
+        }
+
+        /* SET BODY BASELINE */
+        body {
+            min-height: 100vh;
+            line-height: var(--general-line-height);
+            background-color: var(--white);
+            color: var(--black);
+            text-rendering: optimizeLegibility;
+            font-family: var(--default-font-family); /* Apply default font family */
+            font-size: var(--general-font-size); /* Apply general font size */
+        }
+
+        /* SETTING DEFAULT STYLES */
+        button, select, input, textarea {
+            font-family: inherit;
+            font-size: inherit;
+        }
+
+        /* LIST DEFAULT SETTINGS */
+        ul, ol {
+            list-style: none;
+        }
+
+        /* PROVIDING GENERAL STYLES TO HEADINGS */
+        h1, .h1 {
+            font-size: var(--h1-font-size);
+            line-height: var(--h1-line-height);
+            margin-bottom: var(--spacing-md);
+            font-family: var(--font-family-display); /* Specific font for display headings */
+        }
+
+        h2, .h2 {
+            font-size: var(--h2-font-size);
+            line-height: var(--h2-line-height);
+            margin-bottom: var(--spacing-md);
+            font-family: var(--font-family-display); /* Specific font for display headings */
+        }
+
+        h3, .h3 {
+            font-size: var(--h3-font-size);
+            line-height: var(--h3-line-height);
+            margin-bottom: var(--spacing-sm);
+            font-family: var(--font-family-display); /* Specific font for display headings */
+        }
+
+        h4, .h4 {
+            font-size: var(--h4-font-size);
+            line-height: var(--h4-line-height);
+            margin-bottom: var(--spacing-sm);
+            font-family: var(--font-family-display); /* Specific font for display headings */
+        }
+
+        h5, .h5 {
+            font-size: var(--h5-font-size);
+            line-height: var(--h5-line-height);
+            margin-bottom: var(--spacing-sm);
+            font-family: var(--font-family-display); /* Specific font for display headings */
+        }
+
+        h6, .h6 {
+            font-size: var(--h6-font-size);
+            line-height: var(--h6-line-height);
+            margin-bottom: var(--spacing-sm);
+            font-weight: normal;
+            color: #555; /* Specific color for h6 */
+            font-family: var(--font-family-display); /* Specific font for display headings */
+        }
+
+        /* APPLYING DEFAULT STYLE TO LINKS */
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color var(--transition-speed) var(--transition-ease);
+        }
+
+        a:hover, a:focus {
+            color: var(--secondary-color);
+            outline: none;
+        }
+
+        /* IMAGES */
+        img { 
+            max-width: 100%;
+            display: block;
+        }
+
+        /* Button Styles (integrated from your settings) */
+        .white-btn {
+            padding: 15px 30px;
+            background-color: var(--white);
+            color: var(--primary-color);
+            font-size: var(--general-font-size);
+            transition: background-color 0.3s ease;
+            border-radius: var(--border-radius-max);
+            border: none; /* Ensure no default button border */
+            cursor: pointer;
+        }
+        .white-btn:hover, .white-btn:focus {
+            color: var(--primary-color);
+            background-color: var(--secondary-color);
+        }
+
+        .primary-btn {
+            padding: 15px 30px;
+            background-color: var(--primary-color);
+            color: var(--white); 
+            font-size: var(--general-font-size);
+            transition: background-color 0.3s ease;
+            border-radius: var(--border-radius-max);
+            border: none; /* Ensure no default button border */
+            cursor: pointer;
+        }
+        .primary-btn:hover, .primary-btn:focus {
+            color: var(--primary-color);
+            background-color: var(--secondary-color);
+        }
+
+        .outlined-btn {
+            padding: var(--spacing-sm) var(--spacing-md);
+            background-color: transparent; 
+            color: var(--primary-color);
+            font-size: var(--general-font-size);
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius-max);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            cursor: pointer;
+        }
+        .outlined-btn:hover, .outlined-btn:focus {
+            color: var(--primary-color);
+            background-color: var(--secondary-color);
+            border: 2px solid var(--secondary-color);
+        }
+
+
+        /* SPA Specific Styles (Adjusted to use new variables) */
+        .container {
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: var(--spacing-lg); /* Using var(--spacing-6) from original */
+            padding-right: var(--spacing-lg); /* Using var(--spacing-6) from original */
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            background-color: var(--primary-color); /* Changed from image to solid color */
+            color: var(--white);
+            text-align: center;
+            padding-top: var(--spacing-160px); /* Using var(--spacing-40) from original */
+            padding-bottom: var(--spacing-160px); /* Using var(--spacing-40) from original */
+            overflow: hidden;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 960px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: var(--spacing-lg);
+            padding-right: var(--spacing-lg);
+        }
+        .hero-section h1 {
+            font-size: 3rem; /* text-5xl equivalent */
+            font-weight: 700;
+            margin-bottom: var(--spacing-md); /* Using var(--spacing-4) from original */
+        }
+        .hero-section p {
+            font-size: var(--h5-font-size); /* text-xl equivalent */
+            max-width: 768px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Our Identity Section */
+        .identity-section {
+            padding-top: var(--spacing-xxl); /* Using var(--spacing-20) from original */
+            padding-bottom: var(--spacing-xxl); /* Using var(--spacing-20) from original */
+            background-color: var(--white);
+        }
+        .identity-grid {
+            display: grid;
+            gap: var(--spacing-xl); /* Using var(--spacing-12) from original */
+            align-items: center;
+        }
+        .identity-text-left {
+            text-align: center;
+        }
+        .identity-section h2 {
+            font-size: var(--h2-font-size); /* text-4xl equivalent */
+            font-weight: 700;
+            color: var(--primary-color); /* Using var(--color-blue-900) from original */
+            margin-bottom: var(--spacing-lg); /* Using var(--spacing-6) from original */
+        }
+        .identity-section p {
+            font-size: var(--general-font-size); /* text-lg equivalent */
+            color: var(--color-text-secondary); /* Using var(--color-gray-600) from original */
+        }
+        .identity-space-y-8 > div + div {
+            margin-top: var(--spacing-32px); /* Using var(--spacing-8) from original */
+        }
+        .identity-section h3 {
+            font-size: var(--h5-font-size); /* text-2xl equivalent */
+            font-weight: 700;
+            color: var(--color-text-primary-dark); /* Using var(--color-blue-800) from original */
+            margin-bottom: var(--spacing-sm); /* Using var(--spacing-2) from original */
+        }
+
+        /* Interactive Services & Impact Section */
+        .services-section {
+            padding-top: var(--spacing-xxl); /* Using var(--spacing-20) from original */
+            padding-bottom: var(--spacing-xxl); /* Using var(--spacing-20) from original */
+            background-color: var(--color-light-blue-bg); /* Using var(--color-blue-50) from original */
+        }
+        .services-section h2 {
+            font-size: var(--h2-font-size); /* text-4xl equivalent */
+            font-weight: 700;
+            color: var(--primary-color); /* Using var(--color-blue-900) from original */
+            margin-bottom: var(--spacing-md); /* Using var(--spacing-4) from original */
+        }
+        .services-section > .container > p {
+            font-size: var(--general-font-size); /* text-lg equivalent */
+            color: var(--color-text-secondary); /* Using var(--color-gray-600) from original */
+            max-width: 768px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: var(--spacing-xl); /* Using var(--spacing-12) from original */
+        }
+
+        /* Tabs */
+        .tabs-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-sm); /* Using var(--spacing-2) from original */
+            margin-bottom: var(--spacing-32px); /* Using var(--spacing-8) from original */
+        }
+        .tab-btn {
+            padding: var(--spacing-12px) var(--spacing-lg); /* Using var(--spacing-3) var(--spacing-6) from original */
+            border-radius: var(--border-radius-full);
+            font-weight: 600;
+            font-size: var(--general-font-size); /* text-lg equivalent */
+            transition: all var(--transition-speed) var(--transition-ease);
+            border: none;
+            cursor: pointer;
+            outline: none;
+        }
+        .tab-active {
+            background-color: var(--color-dark-blue-active-tab);
+            color: var(--color-white);
+        }
+        .tab-inactive {
+            background-color: var(--color-light-indigo-inactive-tab);
+            color: var(--color-dark-blue-active-tab);
+        }
+        .tab-btn:hover:not(.tab-active) {
+            background-color: var(--color-dark-blue-active-tab);
+            color: var(--color-white);
+            opacity: 0.9;
+        }
+
+        /* Tab Content */
+        .tab-content-container {
+            max-width: 896px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: var(--white);
+            padding: var(--spacing-32px); /* Using var(--spacing-8) from original */
+            border-radius: var(--border-radius-2xl);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            text-align: left;
+        }
+        .tab-content h3 {
+            font-size: var(--h5-font-size); /* text-2xl equivalent */
+            font-weight: 700;
+            color: var(--color-text-primary-dark); /* Using var(--color-blue-800) from original */
+            margin-bottom: var(--spacing-md); /* Using var(--spacing-4) from original */
+        }
+        .tab-content ul {
+            list-style: disc;
+            padding-left: 1.5rem;
+            list-style-position: inside;
+            margin-left: 0;
+            color: var(--color-text-secondary); /* Using var(--color-gray-600) from original */
+        }
+        .tab-content ul li {
+            margin-bottom: var(--spacing-12px); /* Using var(--spacing-3) from original */
+        }
+        .tab-content ul li:last-child {
+            margin-bottom: 0;
+        }
+        .tab-content p {
+            color: var(--color-text-secondary); /* Using var(--color-gray-600) from original */
+        }
+        .hidden {
+            display: none;
+        }
+
+        /* At a Glance Section */
+        .glance-section {
+            padding-top: var(--spacing-xxl); /* Using var(--spacing-20) from original */
+            padding-bottom: var(--spacing-xxl); /* Using var(--spacing-20) from original */
+            background-color: var(--white);
+        }
+        .glance-section h2 {
+            font-size: var(--h2-font-size); /* text-4xl equivalent */
+            font-weight: 700;
+            color: var(--primary-color); /* Using var(--color-blue-900) from original */
+            margin-bottom: var(--spacing-xl); /* Using var(--spacing-12) from original */
+            text-align: center;
+        }
+        .glance-grid {
+            display: grid;
+            gap: var(--spacing-32px); /* Using var(--spacing-8) from original */
+        }
+        .glance-item {
+            background-color: var(--color-light-blue-bg); /* Using var(--color-blue-50) from original */
+            padding: var(--spacing-32px); /* Using var(--spacing-8) from original */
+            border-radius: var(--border-radius-2xl);
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 3rem; /* text-5xl equivalent */
+            font-weight: 700;
+            color: var(--color-text-primary-dark); /* Using var(--color-blue-800) from original */
+        }
+        .stat-number-suffix {
+            font-size: 3rem; /* Same size as stat-number */
+            font-weight: 700;
+            color: var(--color-text-primary-dark);
+        }
+        .glance-item p {
+            font-size: var(--general-font-size); /* text-lg equivalent */
+            margin-top: var(--spacing-sm); /* Using var(--spacing-2) from original */
+            color: var(--color-text-secondary); /* Using var(--color-gray-600) from original */
+        }
+
+        /* Footer */
+        .main-footer {
+            background-color: var(--primary-color); /* Using var(--color-blue-900) from original */
+            color: var(--white);
+            padding-top: var(--spacing-40px); /* Using var(--spacing-10) from original */
+            padding-bottom: var(--spacing-40px); /* Using var(--spacing-10) from original */
+            text-align: center;
+        }
+        .main-footer .container {
+            padding-left: var(--spacing-lg);
+            padding-right: var(--spacing-lg);
+        }
+
+        /* Responsive Adjustments */
+        @media (min-width: 768px) { /* md breakpoint */
+            .hero-section h1 {
+                font-size: var(--h1-font-size); /* md:text-7xl equivalent */
+            }
+            .hero-section p {
+                font-size: var(--h5-font-size); /* md:text-2xl equivalent */
+            }
+            .identity-section {
+                padding-top: var(--spacing-112px); /* Using var(--spacing-28) from original */
+                padding-bottom: var(--spacing-112px); /* Using var(--spacing-28) from original */
+            }
+            .identity-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .identity-text-left {
+                text-align: left;
+            }
+            .identity-section h2 {
+                font-size: var(--h2-font-size); /* md:text-5xl equivalent */
+            }
+            .services-section {
+                padding-top: var(--spacing-112px); /* Using var(--spacing-28) from original */
+                padding-bottom: var(--spacing-112px); /* Using var(--spacing-28) from original */
+            }
+            .services-section h2 {
+                font-size: var(--h2-font-size); /* md:text-5xl equivalent */
+            }
+            .tabs-container {
+                gap: var(--spacing-md); /* Using var(--spacing-4) from original */
+            }
+            .tab-content-container {
+                padding: var(--spacing-xl); /* Using var(--spacing-12) from original */
+            }
+            .glance-section {
+                padding-top: var(--spacing-112px); /* Using var(--spacing-28) from original */
+                padding-bottom: var(--spacing-112px); /* Using var(--spacing-28) from original */
+            }
+            .glance-section h2 {
+                font-size: var(--h2-font-size); /* md:text-5xl equivalent */
+            }
+            .glance-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="hero-content">
+            <h1>Akosombo Hotels Limited</h1>
+            <p>Your premier destination for unparalleled service, culture, and memorable experiences.</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- Our Identity Section -->
+        <section id="identity" class="identity-section">
+            <div class="container">
+                <div class="identity-grid">
+                    <div class="identity-text-left">
+                        <h2>Our Identity</h2>
+                        <p>We are a prominent hospitality entity contributing to Ghana's tourism sector. We are committed to providing essential services to visitors and the local community, operating in close association with VRA's broader community development and asset management initiatives.</p>
+                    </div>
+                    <div class="identity-space-y-8">
+                        <div>
+                            <h3>Our Mission</h3>
+                            <p>To provide exceptional hospitality services, offering comfortable accommodation, quality dining, and memorable experiences for guests, while promoting local culture and sustainable tourism practices.</p>
+                        </div>
+                        <div>
+                            <h3>Our Vision</h3>
+                            <p>To be the premier hospitality destination in Ghana, recognized for its unparalleled service, unique cultural offerings, and commitment to guest satisfaction and community enrichment.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Services & Impact Section -->
+        <section id="services" class="services-section">
+            <div class="container text-center">
+                <h2>Our Impact & Services</h2>
+                <p>Explore the core pillars of our contribution to hospitality, tourism, and community development. Click on a tab below to discover how we make a difference.</p>
+                
+                <!-- Tabs -->
+                <div id="tabs-container" class="tabs-container">
+                    <button data-tab="hospitality" class="tab-btn tab-active">Hospitality</button>
+                    <button data-tab="events" class="tab-btn tab-inactive">Events</button>
+                    <button data-tab="tourism" class="tab-btn tab-inactive">Tourism</button>
+                    <button data-tab="community" class="tab-btn tab-inactive">Community</button>
+                </div>
+
+                <!-- Tab Content -->
+                <div id="tab-content-container" class="tab-content-container">
+                    <div id="hospitality-content" class="tab-content">
+                        <h3>Excellence in Hospitality</h3>
+                        <ul>
+                            <li><strong>Accommodation Services:</strong> Offering a range of lodging options, from standard rooms to suites, catering to diverse guest needs including leisure travelers, business delegates, and tourists.</li>
+                            <li><strong>Dining & Catering:</strong> Operating restaurants and bars that offer a variety of local and international cuisine, as well as providing professional catering services for all types of events.</li>
+                        </ul>
+                    </div>
+                    <div id="events-content" class="tab-content hidden">
+                        <h3>Premier Event & Conference Facilities</h3>
+                        <p>We provide modern venues and comprehensive services for conferences, workshops, corporate retreats, and social events. Our facilities are equipped to support both local and international gatherings, ensuring every event is a success.</p>
+                    </div>
+                    <div id="tourism-content" class="tab-content hidden">
+                        <h3>Promoting Local Tourism & Recreation</h3>
+                         <ul>
+                            <li><strong>Recreational Amenities:</strong> Enhancing the guest experience with facilities such as swimming pools, fitness centers, and curated access to local attractions like boat tours on the Volta Lake and visits to the Akosombo Dam.</li>
+                            <li><strong>Local Tourism Promotion:</strong> Actively participating in and promoting tourism activities in the Akosombo area and the broader Volta Region, highlighting Ghana's natural beauty and rich cultural heritage.</li>
+                        </ul>
+                    </div>
+                    <div id="community-content" class="tab-content hidden">
+                        <h3>Commitment to Community & Economy</h3>
+                        <ul>
+                            <li><strong>Job Creation:</strong> Providing significant employment opportunities for the local population in a wide variety of rewarding hospitality roles.</li>
+                            <li><strong>Community Support:</strong> Engaging in initiatives that benefit the local community, including sourcing local produce, supporting local artisans, and participating actively in community development projects.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- At a Glance Section -->
+        <section id="glance" class="glance-section">
+            <div class="container">
+                <h2>At a Glance</h2>
+                <div class="glance-grid">
+                    <div class="glance-item">
+                        <span class="stat-number" data-target="5000">0</span><span class="stat-number-suffix">+</span>
+                        <p>Guests Annually</p>
+                    </div>
+                    <div class="glance-item">
+                        <span class="stat-number" data-target="150">0</span><span class="stat-number-suffix">+</span>
+                        <p>Local Jobs Created</p>
+                    </div>
+                    <div class="glance-item">
+                        <span class="stat-number" data-target="20">0</span><span class="stat-number-suffix">+</span>
+                        <p>Community Projects Supported</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; <span id="currentYear"></span> Akosombo Hotels Limited. A subsidiary of VRA. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Tab switching logic
+            const tabsContainer = document.getElementById('tabs-container');
+            const contentContainer = document.getElementById('tab-content-container');
+            const tabs = tabsContainer.querySelectorAll('.tab-btn');
+            const contents = contentContainer.querySelectorAll('.tab-content');
+
+            tabsContainer.addEventListener('click', (e) => {
+                const targetButton = e.target.closest('.tab-btn');
+                if (!targetButton) return;
+
+                const tabId = targetButton.dataset.tab;
+                
+                tabs.forEach(tab => {
+                    tab.classList.remove('tab-active');
+                    tab.classList.add('tab-inactive');
+                });
+                targetButton.classList.add('tab-active');
+                targetButton.classList.remove('tab-inactive');
+                
+                contents.forEach(content => {
+                    if (content.id === `${tabId}-content`) {
+                        content.classList.remove('hidden');
+                    } else {
+                        content.classList.add('hidden');
+                    }
+                });
+            });
+
+            // Dynamic number counter logic
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const speed = 200;
+
+            const animateNumber = (element) => {
+                const target = +element.dataset.target;
+                const count = +element.innerText;
+                const inc = Math.max(1, Math.floor(target / speed));
+
+                if (count < target) {
+                    element.innerText = Math.min(count + inc, target);
+                    setTimeout(() => animateNumber(element), 10);
+                } else {
+                    element.innerText = target;
+                }
+            };
+            
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        const el = entry.target;
+                        animateNumber(el);
+                        observer.unobserve(el);
+                    }
+                });
+            }, {
+                threshold: 0.5
+            });
+
+            statNumbers.forEach(number => {
+                observer.observe(number);
+            });
+
+            // Set current year in footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>

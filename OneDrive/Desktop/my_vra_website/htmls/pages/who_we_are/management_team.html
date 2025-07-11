@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who We Are: Management Team - VRA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: "Warm Neutrals & Deep Blue" - A professional and calming palette using a deep blue for primary actions, a softer slate for secondary elements, and warm off-white/beige tones for backgrounds. -->
+    <!-- Application Structure Plan: This SPA is designed to introduce VRA's Management Team. It features a Hero section. An "Introduction" provides an overview of the team's role. The core "Meet Our Leaders" section uses a responsive grid layout to display individual team member profiles. Each profile includes a CSS-generated circular photo placeholder, name, title, and a brief description. This layout offers a clean and organized way to present multiple individuals. A "Leadership Philosophy" section outlines the guiding principles of the team. -->
+    <!-- Visualization & Content Choices: - Report Info: Individual profiles of management team members. -> Goal: Inform & Introduce. -> Viz/Presentation Method: Responsive Grid of Profile Cards with CSS-generated circular "photo" placeholders. -> Interaction: None (direct presentation). -> Justification: A grid is ideal for displaying multiple distinct items (profiles) in an organized and visually appealing manner. Using CSS for photo placeholders adheres to the no-raster-image constraint while still conveying the presence of a profile picture. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        /* RESET MARGINS, PADDING, AND BORDERS */
+        *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* SITE SETTINGS VARIABLES */
+        :root {
+            /*-- COLORS --*/
+            --white: rgb(255, 255, 255);
+            --black: rgb(0, 0, 0);
+            --grey: rgb(190, 200, 207);
+            --primary-color: rgb(0, 67, 112);
+            --secondary-color: rgb(22, 154, 242);
+
+            /* Custom colors for SPA, mapped or retained */
+            --color-dark-blue-active-tab: rgb(30, 58, 138); /* 1E3A8A */
+            --color-light-indigo-inactive-tab: rgb(224, 231, 255); /* E0E7FF */
+            --color-background-light: rgb(253, 253, 251); /* FDFDFB */
+            --color-text-secondary: rgb(113, 128, 150); /* 718096 for gray-600 */
+            --color-text-primary-dark: rgb(43, 108, 176); /* 2B6CB0 for blue-800 */
+            --color-light-blue-bg: rgb(235, 248, 255); /* EBF8FF for blue-50 equivalent */
+
+
+            /*-- TYPOGRAPHY --*/
+            --default-font-family: "Open Sans", Roboto, Roboto-fallback;
+            --general-font-size: 16px;
+            --font-size-sm: 14px;
+            --font-size-xs: 12px;
+            --font-size-min: 8px;
+            --general-line-height: 1.6;
+
+            /* Heading Font Sizes */
+            --h1-font-size: 48px;
+            --h2-font-size: 40px ;
+            --h3-font-size: 32px;
+            --h4-font-size: 28px ;
+            --h5-font-size: 24px;
+            --h6-font-size: 20px;
+
+            /* Heading Line Heights */
+            --h1-line-height: 1.2;
+            --h2-line-height: 1.3;
+            --h3-line-height: 1.3;
+            --h4-line-height: 1.4;
+            --h5-line-height: 1.4;
+            --h6-line-height: 1.5;
+
+            /* — SPACING — (Mapped to user's provided values) */
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 48px;
+            --spacing-xxl: 80px;
+            --spacing-xxxl: 120px; /* From previous turn */
+
+            /* Custom spacing values from SPA that don't directly map to user's provided ones, using rem for consistency */
+            --spacing-12px: 0.75rem; /* For original spacing-3 */
+            --spacing-32px: 2rem;    /* For original spacing-8 */
+            --spacing-40px: 2.5rem;  /* For original spacing-10 */
+            --spacing-112px: 7rem;   /* For original spacing-28 */
+            --spacing-160px: 10rem;  /* For original spacing-40 */
+
+
+            /* — BORDER RADIUS (PX) — */
+            --border-radius-sm: 4px;
+            --border-radius-md: 8px;
+            --border-radius-lg: 12px;
+            --border-radius-xl: 16px;
+            --border-radius-xxl: 20px;
+            --border-radius-max: 40px;
+            --border-radius-circle: 50%;
+
+            /* Custom border radius from SPA */
+            --border-radius-2xl: 1rem; /* 16px, maps to var(--border-radius-xl) */
+            --border-radius-full: 9999px; /* Retain for full circle */
+
+            /* Transitions */
+            --transition-speed: 0.3s;
+            --transition-ease: ease-in-out;
+        }
+
+        /* SET CONSISTENT HTML */
+        html {
+            font-size: 100%;
+            scroll-behavior: smooth;
+        }
+
+        /* SET BODY BASELINE */
+        body {
+            min-height: 100vh;
+            line-height: var(--general-line-height);
+            background-color: var(--white);
+            color: var(--black);
+            text-rendering: optimizeLegibility;
+            font-family: var(--default-font-family); /* Apply default font family */
+            font-size: var(--general-font-size); /* Apply general font size */
+        }
+
+        /* SETTING DEFAULT STYLES */
+        button, select, input, textarea {
+            font-family: inherit;
+            font-size: inherit;
+        }
+
+        /* LIST DEFAULT SETTINGS */
+        ul, ol {
+            list-style: none;
+        }
+
+        /* PROVIDING GENERAL STYLES TO HEADINGS */
+        h1, .h1 {
+            font-size: var(--h1-font-size);
+            line-height: var(--h1-line-height);
+            margin-bottom: var(--spacing-md);
+            font-family: var(--font-family-display); /* Specific font for display headings */
+        }
+
+        h2, .h2 {
+            font-size: var(--h2-font-size);
+            line-height: var(--h2-line-height);
+            margin-bottom: var(--spacing-md);
+            font-family: var(--font-family-display); /* Specific font for display headings */
+        }
+
+        h3, .h3 {
+            font-size: var(--h3-font-size);
+            line-height: var(--h3-line-height);
+            margin-bottom: var(--spacing-sm);
+            font-family: var(--font-family-display); /* Specific font for display headings */
+        }
+
+        h4, .h4 {
+            font-size: var(--h4-font-size);
+            line-height: var(--h4-line-height);
+            margin-bottom: var(--spacing-sm);
+            font-family: var(--font-family-display); /* Specific font for display headings */
+        }
+
+        h5, .h5 {
+            font-size: var(--h5-font-size);
+            line-height: var(--h5-line-height);
+            margin-bottom: var(--spacing-sm);
+            font-family: var(--font-family-display); /* Specific font for display headings */
+        }
+
+        h6, .h6 {
+            font-size: var(--h6-font-size);
+            line-height: var(--h6-line-height);
+            margin-bottom: var(--spacing-sm);
+            font-weight: normal;
+            color: #555; /* Specific color for h6 */
+            font-family: var(--font-family-display); /* Specific font for display headings */
+        }
+
+        /* APPLYING DEFAULT STYLE TO LINKS */
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color var(--transition-speed) var(--transition-ease);
+        }
+
+        a:hover, a:focus {
+            color: var(--secondary-color);
+            outline: none;
+        }
+
+        /* IMAGES */
+        img { 
+            max-width: 100%;
+            display: block;
+        }
+
+        /* Button Styles (integrated from your settings) */
+        .white-btn {
+            padding: 15px 30px;
+            background-color: var(--white);
+            color: var(--primary-color);
+            font-size: var(--general-font-size);
+            transition: background-color 0.3s ease;
+            border-radius: var(--border-radius-max);
+            border: none; /* Ensure no default button border */
+            cursor: pointer;
+        }
+        .white-btn:hover, .white-btn:focus {
+            color: var(--primary-color);
+            background-color: var(--secondary-color);
+        }
+
+        .primary-btn {
+            padding: 15px 30px;
+            background-color: var(--primary-color);
+            color: var(--white); 
+            font-size: var(--general-font-size);
+            transition: background-color 0.3s ease;
+            border-radius: var(--border-radius-max);
+            border: none; /* Ensure no default button border */
+            cursor: pointer;
+        }
+        .primary-btn:hover, .primary-btn:focus {
+            color: var(--primary-color);
+            background-color: var(--secondary-color);
+        }
+
+        .outlined-btn {
+            padding: var(--spacing-sm) var(--spacing-md);
+            background-color: transparent; 
+            color: var(--primary-color);
+            font-size: var(--general-font-size);
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius-max);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            cursor: pointer;
+        }
+        .outlined-btn:hover, .outlined-btn:focus {
+            color: var(--primary-color);
+            background-color: var(--secondary-color);
+            border: 2px solid var(--secondary-color);
+        }
+
+
+        /* SPA Specific Styles (Adjusted to use new variables) */
+        .container {
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: var(--spacing-lg);
+            padding-right: var(--spacing-lg);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            background-color: var(--primary-color); /* Solid color background */
+            color: var(--white);
+            text-align: center;
+            padding-top: var(--spacing-160px);
+            padding-bottom: var(--spacing-160px);
+            overflow: hidden;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 960px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: var(--spacing-lg);
+            padding-right: var(--spacing-lg);
+        }
+        .hero-section h1 {
+            font-size: var(--h1-font-size);
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+        }
+        .hero-section p {
+            font-size: var(--h5-font-size);
+            max-width: 768px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Section Styling */
+        .page-section {
+            padding-top: var(--spacing-xxl);
+            padding-bottom: var(--spacing-xxl);
+            background-color: var(--white);
+            border-bottom: 1px solid var(--grey); /* Subtle separator */
+        }
+        .page-section:last-of-type {
+            border-bottom: none;
+        }
+        .page-section.bg-light {
+            background-color: var(--color-light-blue-bg);
+        }
+
+        .page-section h2 {
+            font-size: var(--h2-font-size);
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-xl);
+            text-align: center;
+        }
+        .page-section h3 {
+            font-size: var(--h4-font-size);
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-md);
+            margin-top: var(--spacing-lg); /* Space above sub-headings */
+        }
+        .page-section p, .page-section ul {
+            font-size: var(--general-font-size);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+        .page-section ul {
+            list-style: none; /* Override default list-style for specific sections */
+            padding: 0;
+            margin: 0;
+        }
+        .page-section ul li {
+            margin-bottom: var(--spacing-sm);
+        }
+        .page-section ul li:last-child {
+            margin-bottom: 0;
+        }
+        .page-section a {
+            color: var(--primary-color);
+        }
+        .page-section a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Management Team Grid */
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr; /* Default to one column on small screens */
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
+        }
+        @media (min-width: 640px) { /* Small breakpoint */
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr); /* Two columns on small tablets */
+            }
+        }
+        @media (min-width: 1024px) { /* Large breakpoint */
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr); /* Three columns on desktop */
+            }
+        }
+
+        .team-member-card {
+            background-color: var(--white);
+            padding: var(--spacing-xl);
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .team-member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-photo-placeholder {
+            width: 120px;
+            height: 120px;
+            background-color: var(--grey); /* Placeholder color */
+            border-radius: var(--border-radius-circle);
+            margin: 0 auto var(--spacing-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem; /* Initial for text/icon if needed */
+            color: var(--primary-color);
+            border: 3px solid var(--primary-color); /* Border for emphasis */
+            overflow: hidden; /* Ensure content stays within circle */
+        }
+        .profile-photo-placeholder span {
+            font-size: 3rem; /* Larger for emoji */
+            line-height: 1;
+        }
+
+        .team-member-card h4 {
+            color: var(--primary-color);
+            font-size: var(--h5-font-size);
+            margin-bottom: var(--spacing-xs);
+            margin-top: 0; /* Override default h4 margin-top */
+        }
+
+        .team-member-card .title {
+            font-size: var(--general-font-size);
+            color: var(--secondary-color);
+            font-weight: 500;
+            margin-bottom: var(--spacing-md);
+            display: block; /* Ensure it's on its own line */
+        }
+
+        .team-member-card p {
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-sm);
+            margin-bottom: 0; /* Remove default p margin-bottom if it's the last element */
+        }
+
+        /* Footer */
+        .main-footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding-top: var(--spacing-40px);
+            padding-bottom: var(--spacing-40px);
+            text-align: center;
+        }
+        .main-footer .container {
+            padding-left: var(--spacing-lg);
+            padding-right: var(--spacing-lg);
+        }
+
+        /* Responsive Adjustments */
+        @media (min-width: 768px) {
+            .hero-section h1 {
+                font-size: var(--h1-font-size);
+            }
+            .hero-section p {
+                font-size: var(--h5-font-size);
+            }
+            .page-section h2 {
+                font-size: var(--h2-font-size);
+            }
+            .page-section h3 {
+                font-size: var(--h3-font-size);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="hero-content">
+            <h1>Our Management Team</h1>
+            <p>Meet the dedicated leaders steering the Volta River Authority towards a sustainable and prosperous energy future for Ghana.</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- Introduction Section -->
+        <section id="introduction" class="page-section">
+            <div class="container">
+                <h2>Visionary Leadership, Driving Excellence</h2>
+                <p style="max-width: 960px; margin: 0 auto var(--spacing-xl); text-align: center;">The success of the Volta River Authority is underpinned by the strategic vision, profound expertise, and unwavering commitment of our management team. Comprising seasoned professionals from diverse backgrounds, our leaders are dedicated to upholding VRA's mandate, fostering innovation, and ensuring operational excellence.</p>
+            </div>
+        </section>
+
+        <!-- Meet Our Leaders Section -->
+        <section id="meet-leaders" class="page-section bg-light">
+            <div class="container">
+                <h2>Meet Our Leaders</h2>
+                <div class="team-grid">
+                    <!-- Member 1: Chief Executive -->
+                    <div class="team-member-card">
+                        <div class="profile-photo-placeholder">
+                            <span role="img" aria-label="Person">👤</span>
+                        </div>
+                        <h4>Mr. Kwabena Mensah</h4>
+                        <span class="title">Chief Executive Officer</span>
+                        <p>Leads the overall strategic direction and operations of VRA, ensuring alignment with national energy policies and sustainable growth objectives.</p>
+                    </div>
+
+                    <!-- Member 2: Deputy Chief Executive (Finance) -->
+                    <div class="team-member-card">
+                        <div class="profile-photo-placeholder">
+                            <span role="img" aria-label="Person">👤</span>
+                        </div>
+                        <h4>Ms. Akua Boateng</h4>
+                        <span class="title">Deputy Chief Executive, Finance</span>
+                        <p>Responsible for VRA's financial management, budgeting, and investment strategies, ensuring fiscal prudence and sustainability.</p>
+                    </div>
+
+                    <!-- Member 3: Deputy Chief Executive (Engineering & Operations) -->
+                    <div class="team-member-card">
+                        <div class="profile-photo-placeholder">
+                            <span role="img" aria-label="Person">👤</span>
+                        </div>
+                        <h4>Dr. Kwame Nkrumah</h4>
+                        <span class="title">Deputy Chief Executive, Engineering & Operations</span>
+                        <p>Oversees all engineering, generation, and operational aspects, driving efficiency, reliability, and technical innovation.</p>
+                    </div>
+
+                    <!-- Member 4: Director, Human Resources -->
+                    <div class="team-member-card">
+                        <div class="profile-photo-placeholder">
+                            <span role="img" aria-label="Person">👤</span>
+                        </div>
+                        <h4>Mrs. Ama Serwaa</h4>
+                        <span class="title">Director, Human Resources</span>
+                        <p>Manages human capital development, employee relations, and talent acquisition, fostering a high-performance work culture.</p>
+                    </div>
+
+                    <!-- Member 5: Director, Corporate Services -->
+                    <div class="team-member-card">
+                        <div class="profile-photo-placeholder">
+                            <span role="img" aria-label="Person">👤</span>
+                        </div>
+                        <h4>Mr. Kofi Owusu</h4>
+                        <span class="title">Director, Corporate Services</span>
+                        <p>Responsible for legal affairs, corporate governance, and administrative services, ensuring compliance and smooth operations.</p>
+                    </div>
+
+                    <!-- Member 6: Director, Technical Services -->
+                    <div class="team-member-card">
+                        <div class="profile-photo-placeholder">
+                            <span role="img" aria-label="Person">👤</span>
+                        </div>
+                        <h4>Eng. Adwoa Mensah</h4>
+                        <span class="title">Director, Technical Services</span>
+                        <p>Leads technical research, development, and specialized services, ensuring VRA remains at the forefront of energy technology.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Leadership Philosophy Section -->
+        <section id="leadership-philosophy" class="page-section">
+            <div class="container">
+                <h2>Our Leadership Philosophy</h2>
+                <div class="info-grid">
+                    <div>
+                        <h3>Strategic Acumen</h3>
+                        <p>Our leaders possess a deep understanding of the energy sector, enabling them to navigate complex challenges and identify opportunities for growth and innovation.</p>
+                    </div>
+                    <div>
+                        <h3>Commitment to Sustainability</h3>
+                        <p>Sustainability is at the core of our leadership. We are dedicated to environmentally responsible practices and ensuring long-term value creation for all stakeholders.</p>
+                    </div>
+                    <div>
+                        <h3>People-Centric Approach</h3>
+                        <p>We believe in empowering our employees, fostering a culture of continuous learning, and prioritizing their well-being to achieve collective success.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; <span id="currentYear"></span> Volta River Authority. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set current year in footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>
