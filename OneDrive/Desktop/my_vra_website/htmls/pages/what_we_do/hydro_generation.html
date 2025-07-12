@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News & Updates - Volta River Authority</title>
+    <title>What We Do: Hydro Generation - VRA</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <!-- Chosen Palette: "Warm Neutrals & Deep Blue" - A professional and calming palette using a deep blue for primary actions, a softer slate for secondary elements, and warm off-white/beige tones for backgrounds. -->
-    <!-- Application Structure Plan: This SPA is designed to present VRA's News & Updates. It features a Hero section. The main content area includes a search bar and a year filter for dynamic interaction. The "Latest News & Updates" section displays news items as a grid of clickable cards, each with a date and title. JavaScript handles the filtering and searching functionality, allowing users to easily find relevant news. This structure prioritizes user interaction and efficient content discovery. -->
-    <!-- Visualization & Content Choices: - Report Info: News articles (titles, dates). -> Goal: Inform & Facilitate Discovery. -> Viz/Presentation Method: Interactive filterable/searchable grid of "News Cards". Each card is a clickable link with date and title. -> Interaction: Users can type in a search bar to filter by keywords or select a year from a dropdown to filter by date. JavaScript updates the displayed news items dynamically. -> Justification: A filterable grid is highly effective for managing and presenting a potentially large list of news items, improving user experience by allowing them to quickly find relevant content. -->
+    <!-- Application Structure Plan: This SPA is designed to detail VRA's Hydro Generation capabilities. It features a Hero section. An "Introduction" provides an overview of hydro power's importance to VRA. The core content is structured into dedicated sections for "Akosombo Hydro Plant" and "Kpong Hydro Plant". Each plant section uses an alternating two-column layout (text on one side, conceptual visual placeholder on the other) to present details and key facts. This alternating layout provides visual variety and clear separation between the two main assets. -->
+    <!-- Visualization & Content Choices: - Report Info: Details of Akosombo and Kpong Hydro Plants (descriptions, facts). -> Goal: Inform & Showcase Assets. -> Viz/Presentation Method: Alternating two-column layout for each plant, combining text with a conceptual "visual placeholder" (a colored div with text). -> Interaction: None (direct presentation). -> Justification: The alternating layout breaks up the content visually, making it more engaging than a simple stacked layout. The placeholders adhere to the no-raster-image constraint while still suggesting where visual content would be. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         /* RESET MARGINS, PADDING, AND BORDERS */
@@ -300,112 +300,93 @@
             margin-bottom: var(--spacing-xl);
             text-align: center;
         }
-        .page-section p {
+        .page-section h3 {
+            font-size: var(--h4-font-size);
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-md);
+            margin-top: var(--spacing-lg); /* Space above sub-headings */
+        }
+        .page-section p, .page-section ul {
             font-size: var(--general-font-size);
             color: var(--color-text-secondary);
             margin-bottom: var(--spacing-md);
         }
+        .page-section ul {
+            list-style: none; /* Override default list-style for specific sections */
+            padding: 0;
+            margin: 0;
+        }
+        .page-section ul li {
+            margin-bottom: var(--spacing-sm);
+        }
+        .page-section ul li:last-child {
+            margin-bottom: 0;
+        }
+        .page-section a {
+            color: var(--primary-color);
+        }
+        .page-section a:hover {
+            color: var(--secondary-color);
+        }
 
-        /* Filters and Search */
-        .filters-container {
-            display: flex;
-            flex-direction: column; /* Stack on small screens */
-            gap: var(--spacing-md);
-            margin-bottom: var(--spacing-xl);
-            max-width: 960px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: var(--spacing-md);
-            background-color: var(--white);
-            border-radius: var(--border-radius-md);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        /* Plant Details Layout */
+        .plant-details-grid {
+            display: grid;
+            grid-template-columns: 1fr; /* Stack on small screens */
+            gap: var(--spacing-xl);
+            align-items: center; /* Vertically align content */
+            margin-top: var(--spacing-xl);
         }
         @media (min-width: 768px) {
-            .filters-container {
-                flex-direction: row; /* Row on larger screens */
-                justify-content: space-between;
-                align-items: center;
+            .plant-details-grid {
+                grid-template-columns: 1fr 1fr; /* Two columns on larger screens */
+            }
+            /* Reverse order for alternating layout */
+            .plant-details-grid.reverse > *:first-child {
+                order: 2;
+            }
+            .plant-details-grid.reverse > *:last-child {
+                order: 1;
             }
         }
 
-        .filters-container input[type="text"],
-        .filters-container select {
-            padding: var(--spacing-sm) var(--spacing-md);
-            border: 1px solid var(--grey);
-            border-radius: var(--border-radius-sm);
-            font-size: var(--general-font-size);
-            color: var(--black);
-            background-color: var(--color-background-light);
-            flex-grow: 1; /* Allow input/select to grow */
+        .plant-info {
+            text-align: left;
         }
-        .filters-container select {
-            appearance: none; /* Remove default arrow */
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23004370'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 0.7em top 50%;
-            background-size: 0.8em auto;
-            padding-right: 2.5em; /* Space for custom arrow */
+        .plant-info ul {
+            list-style: disc;
+            padding-left: 1.5rem;
+            list-style-position: inside;
+            margin-top: var(--spacing-md);
+        }
+        .plant-info ul li {
+            margin-bottom: var(--spacing-xs);
+        }
+        .plant-info strong {
+            color: var(--primary-color);
         }
 
-        /* News List Styling */
-        .news-list {
-            list-style: none;
-            padding: 0;
-            margin-top: var(--spacing-xl);
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--spacing-md); /* Smaller gap for list items */
-        }
-        @media (min-width: 640px) {
-            .news-list {
-                grid-template-columns: repeat(2, 1fr); /* Two columns on small tablets */
-            }
-        }
-        @media (min-width: 900px) {
-            .news-list {
-                grid-template-columns: repeat(3, 1fr); /* Three columns on larger screens */
-            }
-        }
-
-        .news-item {
-            background-color: var(--white);
-            border-radius: var(--border-radius-md);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            height: 100%; /* Ensure cards are same height in grid */
+        .plant-visual-placeholder {
+            min-height: 250px;
+            background-color: var(--grey);
+            border-radius: var(--border-radius-xl);
             display: flex;
-            flex-direction: column;
-        }
-        .news-item:hover {
-            transform: translateY(-3px);
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: var(--h4-font-size);
+            text-align: center;
+            padding: var(--spacing-md);
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
-
-        .news-item a {
-            padding: var(--spacing-md);
-            display: flex;
-            flex-direction: column;
-            text-decoration: none;
-            color: inherit; /* Inherit color from parent for default text */
-            flex-grow: 1;
-        }
-
-        .news-item .news-date {
-            font-size: var(--font-size-sm);
-            color: var(--secondary-color);
-            margin-bottom: var(--spacing-xs);
-            font-weight: 500;
-        }
-
-        .news-item .news-title {
-            font-size: var(--general-font-size);
-            font-weight: 600;
+        .plant-visual-placeholder.akosombo {
+            background-color: #A7D9F7; /* Light blue */
             color: var(--primary-color);
-            line-height: 1.4;
         }
-
-        .hidden {
-            display: none;
+        .plant-visual-placeholder.kpong {
+            background-color: #B2EBF2; /* Light cyan */
+            color: var(--primary-color);
         }
 
         /* Footer */
@@ -432,6 +413,9 @@
             .page-section h2 {
                 font-size: var(--h2-font-size);
             }
+            .page-section h3 {
+                font-size: var(--h3-font-size);
+            }
         }
     </style>
 </head>
@@ -440,98 +424,63 @@
     <!-- Hero Section -->
     <header class="hero-section">
         <div class="hero-content">
-            <h1>News & Updates</h1>
-            <p>Stay informed with the latest developments, announcements, and stories from the Volta River Authority.</p>
+            <h1>Hydro Generation</h1>
+            <p>Harnessing the power of water to provide clean, reliable, and sustainable energy for Ghana's development.</p>
         </div>
     </header>
 
     <main>
-        <!-- News & Updates Section -->
-        <section id="news-updates-content" class="page-section bg-light">
+        <!-- Introduction Section -->
+        <section id="introduction" class="page-section">
             <div class="container">
-                <h2>Latest News & Updates</h2>
-                <p style="text-align: center; margin-bottom: var(--spacing-xl); color: var(--color-text-secondary);">Browse our recent news articles and announcements.</p>
-                
-                <!-- Filters and Search -->
-                <div class="filters-container">
-                    <input type="text" id="search-input" placeholder="Search news by keyword..." aria-label="Search news">
-                    <select id="year-filter" aria-label="Filter news by year">
-                        <option value="all">All Years</option>
-                        <!-- Years will be populated by JavaScript -->
-                    </select>
-                </div>
+                <h2>The Backbone of Ghana's Power Supply</h2>
+                <p style="max-width: 960px; margin: 0 auto var(--spacing-xl); text-align: center;">Hydroelectric power remains the cornerstone of the Volta River Authority's generation portfolio. Utilizing the vast resources of the Volta River, our hydro plants provide a significant portion of Ghana's electricity, contributing to energy security, economic growth, and environmental sustainability.</p>
+            </div>
+        </section>
 
-                <!-- News List -->
-                <ul id="news-list" class="news-list">
-                    <!-- News items will be dynamically loaded here by JavaScript -->
-                    <li class="news-item" data-year="2025">
-                        <a href="#">
-                            <span class="news-date">July 11, 2025</span>
-                            <span class="news-title">VRA Leadership Mourns with Family of Former Chief Executive E.A. Kalitsi</span>
-                        </a>
-                    </li>
-                    <li class="news-item" data-year="2025">
-                        <a href="#">
-                            <span class="news-date">June 20, 2025</span>
-                            <span class="news-title">Towards Strong Stakeholder Relations - Governing Board of GEA pays Courtesy visit to VRA</span>
-                        </a>
-                    </li>
-                    <li class="news-item" data-year="2025">
-                        <a href="#">
-                            <span class="news-date">May 15, 2025</span>
-                            <span class="news-title">VRA Kicks Off Its Annual EPP/EMP Sensitization Workshop in the Eastern Region</span>
-                        </a>
-                    </li>
-                    <li class="news-item" data-year="2025">
-                        <a href="#">
-                            <span class="news-date">April 10, 2025</span>
-                            <span class="news-title">VRA, Energy Ministry Launch Major Renewable Energy Expansion at Lala, Sene East District</span>
-                        </a>
-                    </li>
-                    <li class="news-item" data-year="2025">
-                        <a href="#">
-                            <span class="news-date">March 5, 2025</span>
-                            <span class="news-title">Association of Ghana Industries (AGI) Pays Courtesy Visit to AG. Chief Executive of VRA</span>
-                        </a>
-                    </li>
-                    <li class="news-item" data-year="2025">
-                        <a href="#">
-                            <span class="news-date">January 20, 2025</span>
-                            <span class="news-title">VRA @ 64 - Embracing Innovation and Investing in Workplace to Provide Reliable Power</span>
-                        </a>
-                    </li>
-                    <li class="news-item" data-year="2024">
-                        <a href="#">
-                            <span class="news-date">December 1, 2024</span>
-                            <span class="news-title">Environmental Impact Assessment for Proposed 95MW Solar Power Project at Loagri in the West Mamprusi Municipality of the Northern Region under Phase 2 of VRA's REDP</span>
-                        </a>
-                    </li>
-                    <li class="news-item" data-year="2024">
-                        <a href="#">
-                            <span class="news-date">November 15, 2024</span>
-                            <span class="news-title">Environmental Impact Assessment for Proposed 20MW Solar Power Project at Sherigu in the Bolgatanga Municipality of the Upper East Region under Phase 2 of VRA's REDP</span>
-                        </a>
-                    </li>
-                    <li class="news-item" data-year="2024">
-                        <a href="#">
-                            <span class="news-date">October 1, 2024</span>
-                            <span class="news-title">Environmental Impact Assessment for Proposed 20MW Solar Power Project at Zebilla in the Bawku West District of the Upper East Region under Phase 2 of VRA's REDP</span>
-                        </a>
-                    </li>
-                    <li class="news-item" data-year="2024">
-                        <a href="#">
-                            <span class="news-date">September 10, 2024</span>
-                            <span class="news-title">Environmental Impact Assessment for Proposed 68MW Solar Power Project at Sawla in the Sawla-Tuna-Kalba District of the Savanna Region under Phase 2 of VRA's REDP</span>
-                        </a>
-                    </li>
-                    <li class="news-item" data-year="2024">
-                        <a href="#">
-                            <span class="news-date">August 25, 2024</span>
-                            <span class="news-title">Ing. Edward Ekow Obeng-Kenzo is Acting Chief Executive of VRA</span>
-                        </a>
-                    </li>
-                    <!-- Add more news items here with their respective data-year attributes -->
-                </ul>
+        <!-- Akosombo Hydro Plant Section -->
+        <section id="akosombo-plant" class="page-section bg-light">
+            <div class="container">
+                <h2>Akosombo Hydro Plant</h2>
+                <div class="plant-details-grid">
+                    <div class="plant-info">
+                        <h3>Ghana's Energy Landmark</h3>
+                        <p>The Akosombo Hydroelectric Power Plant, located on the Volta River, is a monumental engineering achievement and a symbol of Ghana's post-independence development. Commissioned in 1965, it is the largest hydroelectric power plant in Ghana and has been instrumental in providing reliable and affordable electricity to the nation and the West African sub-region.</p>
+                        <p>The plant's operations are crucial for managing the Volta Lake, which serves multiple purposes including inland transportation, fishing, and irrigation.</p>
+                        <ul>
+                            <li><strong>Installed Capacity:</strong> 1,020 MW</li>
+                            <li><strong>Commissioned:</strong> 1965</li>
+                            <li><strong>Type:</strong> Hydroelectric</li>
+                            <li><strong>Key Feature:</strong> Powers the national grid and contributes to regional energy stability.</li>
+                        </ul>
+                    </div>
+                    <div class="plant-visual-placeholder akosombo">
+                        [Conceptual Image: Akosombo Dam & Lake]
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kpong Hydro Plant Section -->
+        <section id="kpong-plant" class="page-section">
+            <div class="container">
+                <h2>Kpong Hydro Plant</h2>
+                <div class="plant-details-grid reverse">
+                    <div class="plant-info">
+                        <h3>Optimizing the Volta River System</h3>
+                        <p>The Kpong Hydroelectric Power Plant, commissioned in 1981, is strategically located downstream from the Akosombo Dam. It plays a vital role in optimizing the power generation from the Volta River system by utilizing the regulated outflow from Akosombo. Kpong enhances the overall efficiency and reliability of VRA's hydroelectric operations.</p>
+                        <p>Its design allows for efficient power generation while contributing to the management of water resources in the lower Volta Basin.</p>
+                        <ul>
+                            <li><strong>Installed Capacity:</strong> 160 MW</li>
+                            <li><strong>Commissioned:</strong> 1981</li>
+                            <li><strong>Type:</strong> Hydroelectric</li>
+                            <li><strong>Key Feature:</strong> Enhances efficiency of the Volta River power system.</li>
+                        </ul>
+                    </div>
+                    <div class="plant-visual-placeholder kpong">
+                        [Conceptual Image: Kpong Dam & River]
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -546,46 +495,6 @@
         document.addEventListener('DOMContentLoaded', () => {
             // Set current year in footer
             document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-            const searchInput = document.getElementById('search-input');
-            const yearFilter = document.getElementById('year-filter');
-            const newsList = document.getElementById('news-list');
-            const newsItems = Array.from(newsList.getElementsByClassName('news-item'));
-
-            // Populate year filter dropdown
-            const years = new Set(newsItems.map(item => item.dataset.year));
-            Array.from(years).sort((a, b) => b - a).forEach(year => {
-                const option = document.createElement('option');
-                option.value = year;
-                option.textContent = year;
-                yearFilter.appendChild(option);
-            });
-
-            const filterNews = () => {
-                const searchTerm = searchInput.value.toLowerCase();
-                const selectedYear = yearFilter.value;
-
-                newsItems.forEach(item => {
-                    const title = item.querySelector('.news-title').textContent.toLowerCase();
-                    const date = item.querySelector('.news-date').textContent.toLowerCase();
-                    const itemYear = item.dataset.year;
-
-                    const matchesSearch = searchTerm === '' || title.includes(searchTerm) || date.includes(searchTerm);
-                    const matchesYear = selectedYear === 'all' || itemYear === selectedYear;
-
-                    if (matchesSearch && matchesYear) {
-                        item.classList.remove('hidden');
-                    } else {
-                        item.classList.add('hidden');
-                    }
-                });
-            };
-
-            searchInput.addEventListener('input', filterNews);
-            yearFilter.addEventListener('change', filterNews);
-
-            // Initial filter to display all news
-            filterNews();
         });
     </script>
 </body>

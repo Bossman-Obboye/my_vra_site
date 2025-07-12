@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Who We Are: Our Values - VRA</title>
+    <title>Newsletters - Volta River Authority</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <!-- Chosen Palette: "Warm Neutrals & Deep Blue" - A professional and calming palette using a deep blue for primary actions, a softer slate for secondary elements, and warm off-white/beige tones for backgrounds. -->
-    <!-- Application Structure Plan: This SPA is designed to articulate VRA's core values. It features a Hero section for context. An "Introduction" emphasizes the importance of these values. The core "Our Core Values" section uses a responsive grid layout, where each value is presented within a distinct "feature block" or "value card." Each card includes a unique color-coded circle as a visual identifier, the value name, and a concise description. A "Living Our Values" section concludes by explaining how these values are integrated into daily operations. This structure provides a clear, visually distinct, and engaging presentation of VRA's foundational values. -->
-    <!-- Visualization & Content Choices: - Report Info: VRA's core organizational values. -> Goal: Inform & Inspire. -> Viz/Presentation Method: Responsive Grid of "Value Cards" with unique color-coded circular markers. -> Interaction: None (direct presentation). -> Justification: This layout offers a clean, modern, and visually distinct way to present multiple values. The color-coded circles provide a simple, scalable, and non-raster visual cue for each value, adhering to constraints while offering a fresh aesthetic. The grid adapts well to different screen sizes. -->
+    <!-- Application Structure Plan: This SPA is designed to provide access to VRA's newsletters. It features a Hero section for the title. The main content section, "VRA Newsletters", includes a brief introduction and then presents a list of recent newsletters. Each newsletter is displayed as a clickable card-like link with a prominent emoji, leading to a placeholder PDF. This structure prioritizes clear presentation and easy access to downloadable content. -->
+    <!-- Visualization & Content Choices: - Report Info: List of VRA newsletters (titles, links). -> Goal: Provide Access & Organize. -> Viz/Presentation Method: List of clickable "Newsletter Cards" with a prominent emoji icon. -> Interaction: Clicking the card/link opens a placeholder PDF. -> Justification: A card-like list makes each newsletter entry distinct and easy to click. The emoji serves as a simple, scalable, and non-raster icon for a document, adhering to constraints. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         /* RESET MARGINS, PADDING, AND BORDERS */
@@ -35,14 +35,6 @@
             --color-text-secondary: rgb(113, 128, 150); /* 718096 for gray-600 */
             --color-text-primary-dark: rgb(43, 108, 176); /* 2B6CB0 for blue-800 */
             --color-light-blue-bg: rgb(235, 248, 255); /* EBF8FF for blue-50 equivalent */
-
-            /* Specific colors for value circles */
-            --value-color-1: #007bff; /* Blue */
-            --value-color-2: #28a745; /* Green */
-            --value-color-3: #ffc107; /* Yellow */
-            --value-color-4: #dc3545; /* Red */
-            --value-color-5: #6f42c1; /* Purple */
-            --value-color-6: #17a2b8; /* Cyan */
 
 
             /*-- TYPOGRAPHY --*/
@@ -245,7 +237,7 @@
 
         /* SPA Specific Styles (Adjusted to use new variables) */
         .container {
-            max-width: 1280px;
+            max-width: 960px; /* Slightly narrower for content focus */
             margin-left: auto;
             margin-right: auto;
             padding-left: var(--spacing-lg);
@@ -269,7 +261,7 @@
         .hero-content {
             position: relative;
             z-index: 10;
-            max-width: 960px;
+            max-width: 768px;
             margin-left: auto;
             margin-right: auto;
             padding-left: var(--spacing-lg);
@@ -282,7 +274,7 @@
         }
         .hero-section p {
             font-size: var(--h5-font-size);
-            max-width: 768px;
+            max-width: 640px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -308,121 +300,70 @@
             margin-bottom: var(--spacing-xl);
             text-align: center;
         }
-        .page-section h3 {
-            font-size: var(--h4-font-size);
-            font-weight: 600;
-            color: var(--primary-color);
-            margin-bottom: var(--spacing-md);
-            margin-top: var(--spacing-lg); /* Space above sub-headings */
-        }
-        .page-section p, .page-section ul {
+        .page-section p {
             font-size: var(--general-font-size);
             color: var(--color-text-secondary);
             margin-bottom: var(--spacing-md);
         }
-        .page-section ul {
-            list-style: none; /* Override default list-style for specific sections */
-            padding: 0;
-            margin: 0;
-        }
-        .page-section ul li {
-            margin-bottom: var(--spacing-sm);
-        }
-        .page-section ul li:last-child {
-            margin-bottom: 0;
-        }
-        .page-section a {
-            color: var(--primary-color);
-        }
-        .page-section a:hover {
-            color: var(--secondary-color);
-        }
 
-        /* Values Grid Layout */
-        .values-grid {
-            display: grid;
-            grid-template-columns: 1fr; /* Default to one column on small screens */
-            gap: var(--spacing-xl);
+        /* Newsletter List Styling */
+        .newsletter-list {
+            list-style: none;
+            padding: 0;
             margin-top: var(--spacing-xl);
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-md); /* Smaller gap for list items */
         }
-        @media (min-width: 640px) { /* Small breakpoint */
-            .values-grid {
+        @media (min-width: 640px) {
+            .newsletter-list {
                 grid-template-columns: repeat(2, 1fr); /* Two columns on small tablets */
             }
         }
-        @media (min-width: 1024px) { /* Large breakpoint */
-            .values-grid {
-                grid-template-columns: repeat(3, 1fr); /* Three columns on desktop */
+        @media (min-width: 900px) {
+            .newsletter-list {
+                grid-template-columns: repeat(3, 1fr); /* Three columns on larger screens */
             }
         }
 
-        .value-card {
-            background-color: var(--white);
-            padding: var(--spacing-xl);
-            border-radius: var(--border-radius-md);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .value-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-        }
-
-        .value-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: var(--border-radius-circle);
-            margin: 0 auto var(--spacing-md);
+        .newsletter-item a {
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 2rem; /* Size for potential icon/initial if used */
-            color: var(--white); /* Text color for icon */
-            font-weight: 700;
-        }
-
-        /* Specific background colors for each value icon */
-        .value-icon.integrity { background-color: var(--value-color-1); }
-        .value-icon.excellence { background-color: var(--value-color-2); }
-        .value-icon.sustainability { background-color: var(--value-color-3); }
-        .value-icon.teamwork { background-color: var(--value-color-4); }
-        .value-icon.customer-focus { background-color: var(--value-color-5); }
-        .value-icon.innovation { background-color: var(--value-color-6); }
-
-
-        .value-card h3 {
-            color: var(--primary-color);
-            font-size: var(--h4-font-size);
-            margin-bottom: var(--spacing-sm);
-            margin-top: 0; /* Override default h3 margin-top */
-        }
-
-        .value-card p {
-            color: var(--color-text-secondary);
-            font-size: var(--general-font-size);
-            margin-bottom: 0; /* Remove default p margin-bottom if it's the last element */
-        }
-
-        /* Living Our Values Section */
-        .living-values-section .info-block {
+            gap: var(--spacing-sm);
+            padding: var(--spacing-md);
             background-color: var(--white);
-            padding: var(--spacing-xl);
             border-radius: var(--border-radius-md);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-            max-width: 960px;
-            margin: var(--spacing-xl) auto 0;
-            text-align: left;
+            color: var(--primary-color);
+            font-weight: 500;
+            transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            height: 100%; /* Ensure cards are same height in grid */
         }
-        .living-values-section ul {
-            list-style: disc;
-            padding-left: 1.5rem;
-            list-style-position: inside;
+        .newsletter-item a:hover {
+            background-color: var(--color-light-blue-bg);
+            color: var(--color-dark-blue-active-tab);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
-        .living-values-section ul li {
-            margin-bottom: var(--spacing-sm);
+        .newsletter-item .icon {
+            font-size: 1.8rem; /* Icon size for newsletter */
+            line-height: 1;
+            flex-shrink: 0; /* Prevent icon from shrinking */
         }
-
+        .newsletter-item .text-content {
+            flex-grow: 1; /* Allow text to take available space */
+        }
+        .newsletter-item .newsletter-title {
+            font-size: var(--general-font-size);
+            font-weight: 600;
+            color: var(--primary-color);
+            display: block; /* Ensure title is block for margin */
+            margin-bottom: var(--spacing-xs);
+        }
+        .newsletter-item .newsletter-date {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+        }
 
         /* Footer */
         .main-footer {
@@ -448,9 +389,6 @@
             .page-section h2 {
                 font-size: var(--h2-font-size);
             }
-            .page-section h3 {
-                font-size: var(--h3-font-size);
-            }
         }
     </style>
 </head>
@@ -459,75 +397,48 @@
     <!-- Hero Section -->
     <header class="hero-section">
         <div class="hero-content">
-            <h1>Our Values</h1>
-            <p>The fundamental principles that guide every action, decision, and interaction at the Volta River Authority.</p>
+            <h1>Newsletters</h1>
+            <p>Stay informed with the latest updates, insights, and developments from the Volta River Authority.</p>
         </div>
     </header>
 
     <main>
-        <!-- Introduction Section -->
-        <section id="introduction" class="page-section">
+        <!-- Newsletters Section -->
+        <section id="newsletters-content" class="page-section bg-light">
             <div class="container">
-                <h2>The Foundation of Our Success</h2>
-                <p style="max-width: 960px; margin: 0 auto var(--spacing-xl); text-align: center;">At the Volta River Authority, our values are more than just words; they are the bedrock of our culture, defining who we are and how we operate. They inspire us to achieve excellence, foster innovation, and contribute meaningfully to Ghana's development. These core values guide our relationships with employees, customers, partners, and the communities we serve.</p>
-            </div>
-        </section>
-
-        <!-- Our Core Values Section -->
-        <section id="core-values" class="page-section bg-light">
-            <div class="container">
-                <h2>Our Core Values</h2>
-                <div class="values-grid">
-                    <div class="value-card">
-                        <div class="value-icon integrity"></div>
-                        <h3>Integrity</h3>
-                        <p>We uphold the highest ethical standards, acting with honesty, transparency, and accountability in all our dealings.</p>
-                    </div>
-                    <div class="value-card">
-                        <div class="value-icon excellence"></div>
-                        <h3>Excellence</h3>
-                        <p>We are committed to continuous improvement, striving for superior performance in every aspect of our operations and services.</p>
-                    </div>
-                    <div class="value-card">
-                        <div class="value-icon sustainability"></div>
-                        <h3>Sustainability</h3>
-                        <p>We are dedicated to environmentally responsible practices and ensuring the long-term viability of our resources and impacts.</p>
-                    </div>
-                    <div class="value-card">
-                        <div class="value-icon teamwork"></div>
-                        <h3>Teamwork</h3>
-                        <p>We foster a collaborative environment, valuing diverse perspectives and working together to achieve shared goals.</p>
-                    </div>
-                    <div class="value-card">
-                        <div class="value-icon customer-focus"></div>
-                        <h3>Customer Focus</h3>
-                        <p>We prioritize the needs of our customers and stakeholders, delivering reliable services and building strong, trusting relationships.</p>
-                    </div>
-                    <div class="value-card">
-                        <div class="value-icon innovation"></div>
-                        <h3>Innovation</h3>
-                        <p>We embrace creativity and new technologies, constantly seeking innovative solutions to energy challenges and operational efficiencies.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Living Our Values Section -->
-        <section id="living-values" class="page-section living-values-section">
-            <div class="container">
-                <h2>Living Our Values Every Day</h2>
-                <p style="max-width: 960px; margin: 0 auto var(--spacing-md); text-align: center;">Our values are not just statements; they are embedded in our daily operations, decision-making processes, and interactions. We believe that by consistently living these values, we can achieve our mission and contribute positively to Ghana's future.</p>
-                <div class="info-block">
-                    <h3>How We Practice Our Values:</h3>
-                    <ul>
-                        <li><strong>Ethical Decision-Making:</strong> Ensuring all business decisions are made with integrity and transparency.</li>
-                        <li><strong>Quality Assurance:</strong> Implementing rigorous standards to maintain the highest quality in our energy generation and services.</li>
-                        <li><strong>Environmental Responsibility:</strong> Investing in sustainable technologies and practices to protect our natural resources.</li>
-                        <li><strong>Employee Development:</strong> Providing opportunities for growth and fostering a supportive work environment.</li>
-                        <li><strong>Stakeholder Engagement:</strong> Actively listening to and collaborating with our customers, communities, and partners.</li>
-                        <li><strong>Research & Development:</strong> Continuously exploring new technologies and methods to improve our operations.</li>
-                    </ul>
-                </div>
+                <h2>Recent Editions of VRA Newsletter</h2>
+                <p style="text-align: center; margin-bottom: var(--spacing-xl); color: var(--color-text-secondary);">Follow the links below to download the recent editions of the VRA Newsletter:</p>
+                
+                <ul class="newsletter-list">
+                    <li class="newsletter-item">
+                        <a href="https://example.com/newsletter-2024-q3.pdf" target="_blank">
+                            <span class="icon" role="img" aria-label="Newspaper">📰</span>
+                            <div class="text-content">
+                                <span class="newsletter-title">Third Quarter 2024 Newsletter</span>
+                                <span class="newsletter-date">Published: October 2024</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="newsletter-item">
+                        <a href="https://example.com/newsletter-2024-q2.pdf" target="_blank">
+                            <span class="icon" role="img" aria-label="Newspaper">📰</span>
+                            <div class="text-content">
+                                <span class="newsletter-title">Second Quarter 2024 Newsletter</span>
+                                <span class="newsletter-date">Published: July 2024</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="newsletter-item">
+                        <a href="https://example.com/newsletter-2024-q1.pdf" target="_blank">
+                            <span class="icon" role="img" aria-label="Newspaper">📰</span>
+                            <div class="text-content">
+                                <span class="newsletter-title">First Quarter 2024 Newsletter</span>
+                                <span class="newsletter-date">Published: April 2024</span>
+                            </div>
+                        </a>
+                    </li>
+                    <!-- Add more newsletter items here as needed, following the same structure -->
+                </ul>
             </div>
         </section>
     </main>

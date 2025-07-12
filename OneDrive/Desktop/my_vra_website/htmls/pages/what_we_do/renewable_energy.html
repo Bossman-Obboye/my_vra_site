@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vendor Registration - VRA</title>
+    <title>What We Do: Renewables - VRA</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <!-- Chosen Palette: "Warm Neutrals & Deep Blue" - A professional and calming palette using a deep blue for primary actions, a softer slate for secondary elements, and warm off-white/beige tones for backgrounds. -->
-    <!-- Application Structure Plan: This SPA is designed to streamline the vendor registration process. It begins with a clear Hero section to set the context. An "Overview" section explains the purpose and benefits. The core "Registration Process" is presented using interactive tabs, allowing vendors to easily navigate through each step. A "Requirements" section lists necessary documents and criteria for clarity. Finally, a "Support & Next Steps" section provides contact information and a prominent call to action to initiate registration. This structure prioritizes user understanding of the process and encourages completion. -->
-    <!-- Visualization & Content Choices: - Report Info: Vendor registration process steps. -> Goal: Organize & Inform. -> Viz/Presentation Method: Interactive Tabbed Layout. -> Interaction: Users click tabs to reveal detailed instructions for each step, breaking down a potentially complex process into manageable chunks. -> Justification: Improves usability by allowing focused consumption of sequential information. -> Library/Method: Vanilla JS toggling CSS 'hidden' class. - Report Info: Requirements and support details. -> Goal: Inform. -> Viz/Presentation Method: Structured lists and text blocks. -> Interaction: Standard links for contact. -> Justification: Direct presentation is most effective for clear instructions and contact information. -->
+    <!-- Application Structure Plan: This SPA is designed to showcase VRA's Renewable Energy initiatives. It features a Hero section. An "Introduction" provides an overview of VRA's commitment to clean energy. The core "Our Solar Power Plants" section uses a responsive grid layout with distinct cards for each solar facility, featuring a sun emoji and key facts. A separate "Wind Energy Initiatives" section is presented as a wider, single block to differentiate it. A "Future Outlook" section concludes by highlighting VRA's ongoing efforts in renewables. This structure provides a clear, organized, and visually engaging presentation of diverse renewable assets. -->
+    <!-- Visualization & Content Choices: - Report Info: Details of solar and wind energy projects (descriptions, facts). -> Goal: Inform & Showcase Green Initiatives. -> Viz/Presentation Method: Responsive Grid of "Plant Cards" for solar, and a distinct single block for wind. Emojis (☀️, 🌬️) are used as scalable visual cues for each energy type. -> Interaction: None (direct presentation). -> Justification: Card-based grids are effective for displaying multiple distinct entities (solar plants). A differentiated block for wind energy helps to visually separate it as a different type of renewable source. Emojis adhere to the no-raster-image constraint while providing clear visual identification. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         /* RESET MARGINS, PADDING, AND BORDERS */
@@ -253,7 +253,7 @@
             padding-top: var(--spacing-160px);
             padding-bottom: var(--spacing-160px);
             overflow: hidden;
-            min-height: 300px;
+            min-height: 250px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -305,6 +305,7 @@
             font-weight: 600;
             color: var(--primary-color);
             margin-bottom: var(--spacing-md);
+            margin-top: var(--spacing-lg); /* Space above sub-headings */
         }
         .page-section p, .page-section ul {
             font-size: var(--general-font-size);
@@ -312,7 +313,7 @@
             margin-bottom: var(--spacing-md);
         }
         .page-section ul {
-            list-style: none;
+            list-style: none; /* Override default list-style for specific sections */
             padding: 0;
             margin: 0;
         }
@@ -329,90 +330,115 @@
             color: var(--secondary-color);
         }
 
-        /* Grid Layouts */
-        .info-grid {
+        /* Renewable Energy Cards Grid */
+        .renewable-grid {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr; /* Stack on small screens */
             gap: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
         }
-        @media (min-width: 768px) {
-            .info-grid {
-                grid-template-columns: repeat(2, 1fr);
+        @media (min-width: 640px) { /* Small breakpoint */
+            .renewable-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Flexible columns */
             }
         }
-        @media (min-width: 1024px) {
-            .info-grid {
-                grid-template-columns: repeat(3, 1fr);
+        @media (min-width: 1024px) { /* Large breakpoint */
+            .renewable-grid {
+                grid-template-columns: repeat(3, 1fr); /* Three columns on desktop */
             }
         }
 
-        /* Tabs (reused from previous SPAs) */
-        .tabs-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: var(--spacing-sm);
-            margin-bottom: var(--spacing-32px);
-        }
-        .tab-btn {
-            padding: var(--spacing-12px) var(--spacing-lg);
-            border-radius: var(--border-radius-full);
-            font-weight: 600;
-            font-size: var(--general-font-size);
-            transition: all var(--transition-speed) var(--transition-ease);
-            border: none;
-            cursor: pointer;
-            outline: none;
-        }
-        .tab-active {
-            background-color: var(--color-dark-blue-active-tab);
-            color: var(--color-white);
-        }
-        .tab-inactive {
-            background-color: var(--color-light-indigo-inactive-tab);
-            color: var(--color-dark-blue-active-tab);
-        }
-        .tab-btn:hover:not(.tab-active) {
-            background-color: var(--color-dark-blue-active-tab);
-            color: var(--color-white);
-            opacity: 0.9;
-        }
-
-        /* Tab Content */
-        .tab-content-container {
-            max-width: 896px;
-            margin-left: auto;
-            margin-right: auto;
+        .renewable-card {
             background-color: var(--white);
-            padding: var(--spacing-32px);
-            border-radius: var(--border-radius-2xl);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            text-align: left;
+            padding: var(--spacing-xl);
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        .tab-content h3 {
-            font-size: var(--h5-font-size);
-            font-weight: 700;
-            color: var(--color-text-primary-dark);
+        .renewable-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .renewable-card .emoji {
+            font-size: 4rem; /* Large emoji size */
             margin-bottom: var(--spacing-md);
+            line-height: 1; /* Remove extra line height for emoji */
         }
-        .tab-content ul {
+
+        .renewable-card h3 {
+            color: var(--primary-color);
+            font-size: var(--h4-font-size);
+            margin-bottom: var(--spacing-sm);
+            margin-top: 0; /* Override default h3 margin-top */
+        }
+
+        .renewable-card p {
+            color: var(--color-text-secondary);
+            font-size: var(--general-font-size);
+            margin-bottom: var(--spacing-md);
+            flex-grow: 1; /* Allow description to take available space */
+        }
+
+        .renewable-card ul {
             list-style: disc;
             padding-left: 1.5rem;
             list-style-position: inside;
-            margin-left: 0;
+            margin-top: var(--spacing-md);
             color: var(--color-text-secondary);
+            text-align: left; /* Align list items left within card */
+            width: 100%; /* Ensure list takes full width */
         }
-        .tab-content ul li {
-            margin-bottom: var(--spacing-12px);
+        .renewable-card ul li {
+            margin-bottom: var(--spacing-xs);
         }
-        .tab-content ul li:last-child {
+        .renewable-card ul li:last-child {
             margin-bottom: 0;
         }
-        .tab-content p {
-            color: var(--color-text-secondary);
+        .renewable-card strong {
+            color: var(--primary-color);
         }
-        .hidden {
-            display: none;
+
+        /* Wind Energy Specific Block Style */
+        .wind-energy-block {
+            background-color: var(--white);
+            padding: var(--spacing-xl);
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            margin-top: var(--spacing-xl);
+        }
+        .wind-energy-block .emoji {
+            font-size: 5rem; /* Even larger emoji for single block */
+            margin-bottom: var(--spacing-md);
+            line-height: 1;
+        }
+        .wind-energy-block h3 {
+            color: var(--primary-color);
+            font-size: var(--h3-font-size);
+            margin-bottom: var(--spacing-md);
+        }
+        .wind-energy-block p {
+            color: var(--color-text-secondary);
+            font-size: var(--general-font-size);
+            max-width: 800px;
+            margin: 0 auto var(--spacing-md);
+        }
+        .wind-energy-block ul {
+            list-style: disc;
+            padding-left: 1.5rem;
+            list-style-position: inside;
+            margin: var(--spacing-md) auto 0;
+            color: var(--color-text-secondary);
+            max-width: 600px; /* Constrain list width */
+            text-align: left;
+        }
+        .wind-energy-block ul li {
+            margin-bottom: var(--spacing-xs);
         }
 
         /* Footer */
@@ -450,147 +476,101 @@
     <!-- Hero Section -->
     <header class="hero-section">
         <div class="hero-content">
-            <h1>Vendor Registration</h1>
-            <p>Partner with VRA: Join our network of trusted suppliers and service providers to contribute to Ghana's energy future.</p>
+            <h1>Renewables</h1>
+            <p>Pioneering Ghana's transition to a cleaner, more sustainable energy future through solar and wind power.</p>
         </div>
     </header>
 
     <main>
-        <!-- Overview Section -->
-        <section id="overview" class="page-section">
+        <!-- Introduction Section -->
+        <section id="introduction" class="page-section">
             <div class="container">
-                <h2>Overview of Vendor Registration</h2>
-                <p style="margin-bottom: var(--spacing-xl);">VRA is committed to fostering strong, transparent, and mutually beneficial relationships with its vendors. Our vendor registration process ensures that we partner with qualified and reliable suppliers who can meet our operational needs and contribute to our mission. This page outlines the steps and requirements for becoming a registered vendor with the Volta River Authority.</p>
-                <div class="info-grid">
-                    <div>
-                        <h3>Why Register with VRA?</h3>
-                        <ul>
-                            <li>Access to VRA's procurement opportunities.</li>
-                            <li>Opportunity to contribute to national development.</li>
-                            <li>Ensures fair and transparent procurement processes.</li>
-                            <li>Builds long-term partnerships.</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3>Who Should Register?</h3>
-                        <p>Any company or individual interested in providing goods, works, or services to the Volta River Authority, provided they meet the pre-qualification criteria and legal requirements in Ghana.</p>
-                    </div>
-                    <div>
-                        <h3>Our Commitment to Vendors</h3>
-                        <p>We are dedicated to fair treatment, clear communication, and timely payments. We value our vendor relationships as essential to our success and efficiency.</p>
-                    </div>
-                </div>
+                <h2>Embracing a Sustainable Energy Future</h2>
+                <p style="max-width: 960px; margin: 0 auto var(--spacing-xl); text-align: center;">The Volta River Authority is at the forefront of Ghana's renewable energy transition. Recognizing the imperative for climate action and diversified energy sources, we are actively investing in solar and exploring other clean technologies to complement our hydropower and thermal generation, ensuring a resilient and environmentally friendly power supply for the nation.</p>
             </div>
         </section>
 
-        <!-- Registration Process Section -->
-        <section id="registration-process" class="page-section bg-light">
-            <div class="container text-center">
-                <h2>The Registration Process</h2>
-                <p style="margin-bottom: var(--spacing-xl);">Follow these simple steps to become a registered vendor with VRA.</p>
+        <!-- Our Solar Power Plants Section -->
+        <section id="solar-plants" class="page-section bg-light">
+            <div class="container">
+                <h2>Our Solar Power Plants</h2>
+                <p style="text-align: center; margin-bottom: var(--spacing-xl); color: var(--color-text-secondary);">Harnessing the abundant sunshine of Ghana to generate clean electricity.</p>
                 
-                <!-- Tabs for Process Steps -->
-                <div id="tabs-container" class="tabs-container">
-                    <button data-tab="step-1" class="tab-btn tab-active">Step 1: Application</button>
-                    <button data-tab="step-2" class="tab-btn tab-inactive">Step 2: Document Submission</button>
-                    <button data-tab="step-3" class="tab-btn tab-inactive">Step 3: Evaluation</button>
-                    <button data-tab="step-4" class="tab-btn tab-inactive">Step 4: Approval & Notification</button>
-                </div>
+                <div class="renewable-grid">
+                    <!-- Plant 1: Navrongo Solar Power Plant -->
+                    <div class="renewable-card">
+                        <span class="emoji" role="img" aria-label="Sun with face">☀️</span>
+                        <h3>Navrongo Solar Power Plant</h3>
+                        <p>Located in the Upper East Region, the Navrongo Solar Power Plant was VRA's first utility-scale solar facility. It represents a significant step in diversifying Ghana's energy mix and demonstrates the viability of solar PV technology in the region.</p>
+                        <ul>
+                            <li><strong>Installed Capacity:</strong> 2.5 MW</li>
+                            <li><strong>Location:</strong> Navrongo, Upper East Region</li>
+                            <li><strong>Type:</strong> Photovoltaic (PV)</li>
+                        </ul>
+                    </div>
 
-                <!-- Tab Content for Process Steps -->
-                <div id="tab-content-container" class="tab-content-container">
-                    <div id="step-1-content" class="tab-content">
-                        <h3>Step 1: Obtain Application Form</h3>
-                        <p>Begin by obtaining the official Vendor Registration Application Form. This can typically be downloaded from our procurement portal or requested from the Procurement Department.</p>
+                    <!-- Plant 2: Lawra Solar Power Plant -->
+                    <div class="renewable-card">
+                        <span class="emoji" role="img" aria-label="Sun with face">☀️</span>
+                        <h3>Lawra Solar Power Plant</h3>
+                        <p>The Lawra Solar Power Plant, situated in the Upper West Region, further expands VRA's solar footprint. This plant enhances grid stability and provides clean energy to local communities, contributing to regional development.</p>
                         <ul>
-                            <li><strong>Action:</strong> Download or request form.</li>
-                            <li><strong>Tip:</strong> Read all instructions carefully before filling out.</li>
+                            <li><strong>Installed Capacity:</strong> 6.5 MW</li>
+                            <li><strong>Location:</strong> Lawra, Upper West Region</li>
+                            <li><strong>Type:</strong> Photovoltaic (PV)</li>
                         </ul>
                     </div>
-                    <div id="step-2-content" class="tab-content hidden">
-                        <h3>Step 2: Prepare & Submit Documents</h3>
-                        <p>Complete the application form and gather all required supporting documents. Ensure all copies are certified where necessary. Submit the complete package to the designated VRA Procurement office.</p>
+
+                    <!-- Plant 3: Kaleo Solar Power Plant (A & B) -->
+                    <div class="renewable-card">
+                        <span class="emoji" role="img" aria-label="Sun with face">☀️</span>
+                        <h3>Kaleo Solar Power Plant</h3>
+                        <p>The Kaleo Solar Power Plant, developed in phases (A and B), is another key solar asset in the Upper West Region. These plants collectively contribute a substantial amount of renewable energy to the national grid, reinforcing VRA's commitment to clean power.</p>
                         <ul>
-                            <li><strong>Action:</strong> Complete form, gather documents, submit.</li>
-                            <li><strong>Tip:</strong> Create a checklist to ensure no document is missed.</li>
-                        </ul>
-                    </div>
-                    <div id="step-3-content" class="tab-content hidden">
-                        <h3>Step 3: Verification & Evaluation</h3>
-                        <p>Your application and submitted documents will undergo a thorough verification and evaluation process by the VRA Procurement Department. This includes checking legal compliance, financial standing, and technical capabilities.</p>
-                        <ul>
-                            <li><strong>Action:</strong> Await review.</li>
-                            <li><strong>Tip:</strong> Ensure all information provided is accurate and up-to-date.</li>
-                        </ul>
-                    </div>
-                    <div id="step-4-content" class="tab-content hidden">
-                        <h3>Step 4: Approval & Notification</h3>
-                        <p>Upon successful evaluation, your company will be approved for vendor registration. You will receive an official notification confirming your status as a registered VRA vendor, along with your unique vendor ID.</p>
-                        <ul>
-                            <li><strong>Action:</strong> Receive confirmation.</li>
-                            <li><strong>Tip:</strong> Keep your vendor ID secure for future interactions.</li>
+                            <li><strong>Installed Capacity:</strong> 28 MW (Phase A: 13 MW, Phase B: 15 MW)</li>
+                            <li><strong>Location:</strong> Kaleo, Upper West Region</li>
+                            <li><strong>Type:</strong> Photovoltaic (PV)</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Requirements Section -->
-        <section id="requirements" class="page-section">
+        <!-- Wind Energy Initiatives Section -->
+        <section id="wind-energy" class="page-section">
             <div class="container">
-                <h2>Key Requirements for Registration</h2>
-                <p style="margin-bottom: var(--spacing-xl);">To ensure a smooth registration process, please prepare the following documents and meet the stated criteria:</p>
-                <div class="info-grid">
-                    <div>
-                        <h3>Legal & Statutory Documents</h3>
-                        <ul>
-                            <li>Certificate of Incorporation/Registration.</li>
-                            <li>Commencement of Business Certificate.</li>
-                            <li>Valid Tax Clearance Certificate.</li>
-                            <li>SSNIT Clearance Certificate.</li>
-                            <li>VAT Registration Certificate (if applicable).</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3>Financial & Technical Capacity</h3>
-                        <ul>
-                            <li>Audited Financial Statements (last 3 years).</li>
-                            <li>Bank Reference Letter.</li>
-                            <li>Company Profile detailing experience and capabilities.</li>
-                            <li>List of key personnel and their qualifications.</li>
-                            <li>References from previous clients (minimum 3).</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3>Other Important Information</h3>
-                        <ul>
-                            <li>Proof of physical business address.</li>
-                            <li>Contact details for key personnel.</li>
-                            <li>Any relevant licenses or permits specific to your industry.</li>
-                            <li>Commitment to VRA's ethical and environmental policies.</li>
-                        </ul>
-                    </div>
+                <h2>Wind Energy Initiatives</h2>
+                <p style="text-align: center; margin-bottom: var(--spacing-xl); color: var(--color-text-secondary);">Exploring the potential of wind power to further diversify Ghana's renewable energy portfolio.</p>
+                
+                <div class="wind-energy-block">
+                    <span class="emoji" role="img" aria-label="Wind Blowing">🌬️</span>
+                    <h3>Future of Wind Power in Ghana</h3>
+                    <p>While VRA's current operational renewable capacity is predominantly solar, we are actively exploring the feasibility and potential of wind energy projects across Ghana's coastal and northern regions. Wind power offers a complementary renewable source that can contribute to energy security and reduce reliance on fossil fuels.</p>
+                    <p>Feasibility studies and resource assessments are ongoing to identify optimal sites and develop strategies for integrating large-scale wind farms into the national grid, aligning with Ghana's long-term renewable energy targets.</p>
+                    <ul>
+                        <li><strong>Status:</strong> Under exploration and feasibility assessment.</li>
+                        <li><strong>Potential Areas:</strong> Coastal regions, Northern Ghana.</li>
+                        <li><strong>Goal:</strong> Diversify renewable energy mix and enhance grid stability.</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
-        <!-- Support & Next Steps Section -->
-        <section id="support" class="page-section bg-light">
-            <div class="container text-center">
-                <h2>Support & Next Steps</h2>
-                <p style="margin-bottom: var(--spacing-xl);">If you require assistance or have further questions regarding vendor registration, please do not hesitate to contact our Procurement Department.</p>
+        <!-- Future Outlook Section -->
+        <section id="future-outlook" class="page-section bg-light">
+            <div class="container">
+                <h2>Future Outlook for Renewables</h2>
                 <div class="info-grid">
                     <div>
-                        <h3>Contact Procurement</h3>
-                        <p>
-                            Phone: <a href="tel:+233302664941">+233 (0)302 664 941 (Ext. XXX)</a> <br>
-                            Email: <a href="mailto:procurement@vra.com">procurement@vra.com</a>
-                        </p>
+                        <p>VRA is committed to expanding its renewable energy footprint significantly in the coming years. Our strategy involves continued investment in solar PV, exploring new wind energy projects, and researching other emerging clean technologies. This expansion is crucial for meeting Ghana's growing energy demand sustainably and contributing to global climate action.</p>
                     </div>
                     <div>
-                        <h3>Ready to Register?</h3>
-                        <p>Click the button below to access the online registration portal or download the full application kit.</p>
-                        <button class="primary-btn">Start Registration Now</button>
+                        <p>We aim to integrate more variable renewable energy sources seamlessly into the national grid, leveraging smart grid technologies and energy storage solutions to ensure reliability. Our focus remains on providing clean, affordable, and sustainable power for all Ghanaians.</p>
+                        <ul>
+                            <li><strong>Expansion Plans:</strong> Continued growth in solar, potential for wind.</li>
+                            <li><strong>Technological Integration:</strong> Focus on smart grids and energy storage.</li>
+                            <li><strong>National Impact:</strong> Contributing to Ghana's climate goals and energy independence.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -605,34 +585,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Tab switching logic for registration process
-            const tabsContainer = document.getElementById('tabs-container');
-            const contentContainer = document.getElementById('tab-content-container');
-            const tabs = tabsContainer.querySelectorAll('.tab-btn');
-            const contents = contentContainer.querySelectorAll('.tab-content');
-
-            tabsContainer.addEventListener('click', (e) => {
-                const targetButton = e.target.closest('.tab-btn');
-                if (!targetButton) return;
-
-                const tabId = targetButton.dataset.tab;
-                
-                tabs.forEach(tab => {
-                    tab.classList.remove('tab-active');
-                    tab.classList.add('tab-inactive');
-                });
-                targetButton.classList.add('tab-active');
-                targetButton.classList.remove('tab-inactive');
-                
-                contents.forEach(content => {
-                    if (content.id === `${tabId}-content`) {
-                        content.classList.remove('hidden');
-                    } else {
-                        content.classList.add('hidden');
-                    }
-                });
-            });
-
             // Set current year in footer
             document.getElementById('currentYear').textContent = new Date().getFullYear();
         });

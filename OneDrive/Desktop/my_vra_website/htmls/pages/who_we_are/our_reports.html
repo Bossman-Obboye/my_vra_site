@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Reports - Volta River Authority</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: "Warm Neutrals & Deep Blue" - A professional and calming palette using a deep blue for primary actions, a softer slate for secondary elements, and warm off-white/beige tones for backgrounds. -->
+    <!-- Application Structure Plan: This SPA is designed to organize and present VRA's various reports. It features a Hero section. The core "Our Comprehensive Reports" section utilizes a tabbed interface to categorize reports into "Annual Reports", "Sustainability Reports", and "Greenhouse Gas Inventory Report". Each tab's content displays a list of reports with appropriate icons (emojis). This structure allows for efficient navigation through a large volume of documents, ensuring a clean and user-friendly experience. -->
+    <!-- Visualization & Content Choices: - Report Info: Various types of reports (Annual, Sustainability, GHG). -> Goal: Organize & Provide Access. -> Viz/Presentation Method: Interactive Tabbed Layout for main categories, with lists of reports under each tab. Emojis are used as scalable icons for each report link. -> Interaction: Users click tabs to switch between report categories. Clicking report links opens the respective PDF (placeholder links). -> Justification: Tabs are excellent for organizing distinct categories of content without overwhelming the user. Emojis serve as simple, universally supported, and non-raster icons for document types. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        /* RESET MARGINS, PADDING, AND BORDERS */
+        *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* SITE SETTINGS VARIABLES */
+        :root {
+            /*-- COLORS --*/
+            --white: rgb(255, 255, 255);
+            --black: rgb(0, 0, 0);
+            --grey: rgb(190, 200, 207);
+            --primary-color: rgb(0, 67, 112);
+            --secondary-color: rgb(22, 154, 242);
+
+            /* Custom colors for SPA, mapped or retained */
+            --color-dark-blue-active-tab: rgb(30, 58, 138); /* 1E3A8A */
+            --color-light-indigo-inactive-tab: rgb(224, 231, 255); /* E0E7FF */
+            --color-background-light: rgb(253, 253, 251); /* FDFDFB */
+            --color-text-secondary: rgb(113, 128, 150); /* 718096 for gray-600 */
+            --color-text-primary-dark: rgb(43, 108, 176); /* 2B6CB0 for blue-800 */
+            --color-light-blue-bg: rgb(235, 248, 255); /* EBF8FF for blue-50 equivalent */
+
+
+            /*-- TYPOGRAPHY --*/
+            --default-font-family: "Open Sans", Roboto, Roboto-fallback;
+            --general-font-size: 16px;
+            --font-size-sm: 14px;
+            --font-size-xs: 12px;
+            --font-size-min: 8px;
+            --general-line-height: 1.6;
+
+            /* Heading Font Sizes */
+            --h1-font-size: 48px;
+            --h2-font-size: 40px ;
+            --h3-font-size: 32px;
+            --h4-font-size: 28px ;
+            --h5-font-size: 24px;
+            --h6-font-size: 20px;
+
+            /* Heading Line Heights */
+            --h1-line-height: 1.2;
+            --h2-line-height: 1.3;
+            --h3-line-height: 1.3;
+            --h4-line-height: 1.4;
+            --h5-line-height: 1.4;
+            --h6-line-height: 1.5;
+
+            /* — SPACING — (Mapped to user's provided values) */
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 48px;
+            --spacing-xxl: 80px;
+            --spacing-xxxl: 120px; /* From previous turn */
+
+            /* Custom spacing values from SPA that don't directly map to user's provided ones, using rem for consistency */
+            --spacing-12px: 0.75rem; /* For original spacing-3 */
+            --spacing-32px: 2rem;    /* For original spacing-8 */
+            --spacing-40px: 2.5rem;  /* For original spacing-10 */
+            --spacing-112px: 7rem;   /* For original spacing-28 */
+            --spacing-160px: 10rem;  /* For original spacing-40 */
+
+
+            /* — BORDER RADIUS (PX) — */
+            --border-radius-sm: 4px;
+            --border-radius-md: 8px;
+            --border-radius-lg: 12px;
+            --border-radius-xl: 16px;
+            --border-radius-xxl: 20px;
+            --border-radius-max: 40px;
+            --border-radius-circle: 50%;
+
+            /* Custom border radius from SPA */
+            --border-radius-2xl: 1rem; /* 16px, maps to var(--border-radius-xl) */
+            --border-radius-full: 9999px; /* Retain for full circle */
+
+            /* Transitions */
+            --transition-speed: 0.3s;
+            --transition-ease: ease-in-out;
+        }
+
+        /* SET CONSISTENT HTML */
+        html {
+            font-size: 100%;
+            scroll-behavior: smooth;
+        }
+
+        /* SET BODY BASELINE */
+        body {
+            min-height: 100vh;
+            line-height: var(--general-line-height);
+            background-color: var(--white);
+            color: var(--black);
+            text-rendering: optimizeLegibility;
+            font-family: var(--default-font-family); /* Apply default font family */
+            font-size: var(--general-font-size); /* Apply general font size */
+        }
+
+        /* SETTING DEFAULT STYLES */
+        button, select, input, textarea {
+            font-family: inherit;
+            font-size: inherit;
+        }
+
+        /* LIST DEFAULT SETTINGS */
+        ul, ol {
+            list-style: none;
+        }
+
+        /* PROVIDING GENERAL STYLES TO HEADINGS */
+        h1, .h1 {
+            font-size: var(--h1-font-size);
+            line-height: var(--h1-line-height);
+            margin-bottom: var(--spacing-md);
+            font-family: var(--font-family-display); /* Specific font for display headings */
+        }
+
+        h2, .h2 {
+            font-size: var(--h2-font-size);
+            line-height: var(--h2-line-height);
+            margin-bottom: var(--spacing-md);
+            font-family: var(--font-family-display); /* Specific font for display headings */
+        }
+
+        h3, .h3 {
+            font-size: var(--h3-font-size);
+            line-height: var(--h3-line-height);
+            margin-bottom: var(--spacing-sm);
+            font-family: var(--font-family-display); /* Specific font for display headings */
+        }
+
+        h4, .h4 {
+            font-size: var(--h4-font-size);
+            line-height: var(--h4-line-height);
+            margin-bottom: var(--spacing-sm);
+            font-family: var(--font-family-display); /* Specific font for display headings */
+        }
+
+        h5, .h5 {
+            font-size: var(--h5-font-size);
+            line-height: var(--h5-line-height);
+            margin-bottom: var(--spacing-sm);
+            font-family: var(--font-family-display); /* Specific font for display headings */
+        }
+
+        h6, .h6 {
+            font-size: var(--h6-font-size);
+            line-height: var(--h6-line-height);
+            margin-bottom: var(--spacing-sm);
+            font-weight: normal;
+            color: #555; /* Specific color for h6 */
+            font-family: var(--font-family-display); /* Specific font for display headings */
+        }
+
+        /* APPLYING DEFAULT STYLE TO LINKS */
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color var(--transition-speed) var(--transition-ease);
+        }
+
+        a:hover, a:focus {
+            color: var(--secondary-color);
+            outline: none;
+        }
+
+        /* IMAGES */
+        img { 
+            max-width: 100%;
+            display: block;
+        }
+
+        /* Button Styles (integrated from your settings) */
+        .white-btn {
+            padding: 15px 30px;
+            background-color: var(--white);
+            color: var(--primary-color);
+            font-size: var(--general-font-size);
+            transition: background-color 0.3s ease;
+            border-radius: var(--border-radius-max);
+            border: none; /* Ensure no default button border */
+            cursor: pointer;
+        }
+        .white-btn:hover, .white-btn:focus {
+            color: var(--primary-color);
+            background-color: var(--secondary-color);
+        }
+
+        .primary-btn {
+            padding: 15px 30px;
+            background-color: var(--primary-color);
+            color: var(--white); 
+            font-size: var(--general-font-size);
+            transition: background-color 0.3s ease;
+            border-radius: var(--border-radius-max);
+            border: none; /* Ensure no default button border */
+            cursor: pointer;
+        }
+        .primary-btn:hover, .primary-btn:focus {
+            color: var(--primary-color);
+            background-color: var(--secondary-color);
+        }
+
+        .outlined-btn {
+            padding: var(--spacing-sm) var(--spacing-md);
+            background-color: transparent; 
+            color: var(--primary-color);
+            font-size: var(--general-font-size);
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius-max);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            cursor: pointer;
+        }
+        .outlined-btn:hover, .outlined-btn:focus {
+            color: var(--primary-color);
+            background-color: var(--secondary-color);
+            border: 2px solid var(--secondary-color);
+        }
+
+
+        /* SPA Specific Styles (Adjusted to use new variables) */
+        .container {
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: var(--spacing-lg);
+            padding-right: var(--spacing-lg);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            background-color: var(--primary-color); /* Solid color background */
+            color: var(--white);
+            text-align: center;
+            padding-top: var(--spacing-160px);
+            padding-bottom: var(--spacing-160px);
+            overflow: hidden;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 960px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: var(--spacing-lg);
+            padding-right: var(--spacing-lg);
+        }
+        .hero-section h1 {
+            font-size: var(--h1-font-size);
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+        }
+        .hero-section p {
+            font-size: var(--h5-font-size);
+            max-width: 768px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Section Styling */
+        .page-section {
+            padding-top: var(--spacing-xxl);
+            padding-bottom: var(--spacing-xxl);
+            background-color: var(--white);
+            border-bottom: 1px solid var(--grey); /* Subtle separator */
+        }
+        .page-section:last-of-type {
+            border-bottom: none;
+        }
+        .page-section.bg-light {
+            background-color: var(--color-light-blue-bg);
+        }
+
+        .page-section h2 {
+            font-size: var(--h2-font-size);
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-xl);
+            text-align: center;
+        }
+        .page-section h3 {
+            font-size: var(--h4-font-size);
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-md);
+            margin-top: var(--spacing-lg); /* Space above sub-headings */
+        }
+        .page-section p, .page-section ul {
+            font-size: var(--general-font-size);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+        .page-section ul {
+            list-style: none; /* Override default list-style for specific sections */
+            padding: 0;
+            margin: 0;
+        }
+        .page-section ul li {
+            margin-bottom: var(--spacing-sm);
+        }
+        .page-section ul li:last-child {
+            margin-bottom: 0;
+        }
+        .page-section a {
+            color: var(--primary-color);
+        }
+        .page-section a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Tabs for Report Categories */
+        .tabs-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-32px);
+        }
+        .tab-btn {
+            padding: var(--spacing-12px) var(--spacing-lg);
+            border-radius: var(--border-radius-full);
+            font-weight: 600;
+            font-size: var(--general-font-size);
+            transition: all var(--transition-speed) var(--transition-ease);
+            border: none;
+            cursor: pointer;
+            outline: none;
+        }
+        .tab-active {
+            background-color: var(--color-dark-blue-active-tab);
+            color: var(--white);
+        }
+        .tab-inactive {
+            background-color: var(--color-light-indigo-inactive-tab);
+            color: var(--color-dark-blue-active-tab);
+        }
+        .tab-btn:hover:not(.tab-active) {
+            background-color: var(--color-dark-blue-active-tab);
+            color: var(--white);
+            opacity: 0.9;
+        }
+
+        /* Tab Content for Reports */
+        .tab-content-container {
+            max-width: 960px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: var(--white);
+            padding: var(--spacing-xl);
+            border-radius: var(--border-radius-2xl);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            text-align: left;
+        }
+        .report-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-md);
+        }
+        @media (min-width: 640px) {
+            .report-list {
+                grid-template-columns: repeat(2, 1fr); /* Two columns for reports on small tablets */
+            }
+        }
+        @media (min-width: 1024px) {
+            .report-list {
+                grid-template-columns: repeat(3, 1fr); /* Three columns for reports on desktop */
+            }
+        }
+
+        .report-list li {
+            margin-bottom: 0; /* Remove default list item margin */
+        }
+        .report-list a {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-md);
+            background-color: var(--color-background-light);
+            border-radius: var(--border-radius-md);
+            color: var(--primary-color);
+            font-weight: 500;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            text-decoration: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .report-list a:hover {
+            background-color: var(--color-light-blue-bg);
+            color: var(--color-dark-blue-active-tab);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .report-list .icon {
+            font-size: 1.5rem; /* Icon size for report type */
+            line-height: 1;
+        }
+        .report-list .report-year {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        .report-list .report-title {
+            color: var(--color-text-secondary);
+        }
+
+        /* Specific style for external link reports */
+        .external-report-link {
+            display: block;
+            text-align: center;
+            margin-top: var(--spacing-xl);
+            padding: var(--spacing-lg) var(--spacing-xl);
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: var(--border-radius-max);
+            font-size: var(--h5-font-size);
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .external-report-link:hover {
+            background-color: var(--secondary-color);
+        }
+        .external-report-link .icon {
+            margin-right: var(--spacing-sm);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Footer */
+        .main-footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding-top: var(--spacing-40px);
+            padding-bottom: var(--spacing-40px);
+            text-align: center;
+        }
+        .main-footer .container {
+            padding-left: var(--spacing-lg);
+            padding-right: var(--spacing-lg);
+        }
+
+        /* Responsive Adjustments */
+        @media (min-width: 768px) {
+            .hero-section h1 {
+                font-size: var(--h1-font-size);
+            }
+            .hero-section p {
+                font-size: var(--h5-font-size);
+            }
+            .page-section h2 {
+                font-size: var(--h2-font-size);
+            }
+            .page-section h3 {
+                font-size: var(--h3-font-size);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="hero-content">
+            <h1>Our Reports</h1>
+            <p>Access the Volta River Authority's comprehensive reports, detailing our performance, sustainability efforts, and environmental stewardship.</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- Introduction Section -->
+        <section id="introduction" class="page-section">
+            <div class="container">
+                <h2>Transparency Through Reporting</h2>
+                <p style="max-width: 960px; margin: 0 auto var(--spacing-xl); text-align: center;">At VRA, we are committed to transparency and accountability. Our reports provide detailed insights into our operations, financial performance, environmental impact, and social contributions. We invite you to explore our comprehensive documentation to understand our commitment to sustainable development.</p>
+            </div>
+        </section>
+
+        <!-- Our Comprehensive Reports Section (Tabbed Interface) -->
+        <section id="comprehensive-reports" class="page-section bg-light">
+            <div class="container text-center">
+                <h2>Explore Our Reports</h2>
+                <p style="margin-bottom: var(--spacing-xl); color: var(--color-text-secondary);">Navigate through our various report categories below.</p>
+                
+                <!-- Tabs for Report Categories -->
+                <div id="tabs-container" class="tabs-container">
+                    <button data-tab="annual-reports" class="tab-btn tab-active">Annual Reports</button>
+                    <button data-tab="sustainability-reports" class="tab-btn tab-inactive">Sustainability Reports</button>
+                    <button data-tab="ghg-report" class="tab-btn tab-inactive">Greenhouse Gas Inventory Report</button>
+                </div>
+
+                <!-- Tab Content -->
+                <div id="tab-content-container" class="tab-content-container">
+                    <!-- Annual Reports Content -->
+                    <div id="annual-reports-content" class="tab-content">
+                        <h3>Annual Reports</h3>
+                        <p style="margin-bottom: var(--spacing-md); color: var(--color-text-secondary);">Detailed accounts of VRA's yearly performance, financial statements, and operational highlights.</p>
+                        <ul class="report-list">
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">2023</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">2022</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">2021</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">2020</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">2019</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">2018</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">2017</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">2016</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">2015</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">2014</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">2013</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">2012</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">2011</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">2010</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">2009</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">2004</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">2002</span> Annual Report - Chairman's Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">1991</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">1990</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">1989</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">1988</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">1987</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">1986</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">1985</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">1984</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">1983</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">1982</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">1981</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">1980</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">1978</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">1977</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">1976</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">1975</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">1974</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">1973</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">1972</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">1971</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">1970</span> Annual Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Document">📄</span> <span class="report-year">1969</span> Annual Report</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Sustainability Reports Content -->
+                    <div id="sustainability-reports-content" class="tab-content hidden">
+                        <h3>Sustainability Reports</h3>
+                        <p style="margin-bottom: var(--spacing-md); color: var(--color-text-secondary);">Our commitment to environmental stewardship, social responsibility, and sustainable governance.</p>
+                        <ul class="report-list">
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Leaf">🌿</span> <span class="report-year">2023</span> VRA Sustainability Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Leaf">🌿</span> <span class="report-year">2022</span> VRA Sustainability Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Leaf">🌿</span> <span class="report-year">2021</span> VRA Sustainability Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Leaf">🌿</span> <span class="report-year">2020</span> VRA Sustainability Report</a></li>
+                            <li><a href="#" target="_blank"><span class="icon" role="img" aria-label="Leaf">🌿</span> <span class="report-year">2019</span> VRA Sustainability Report</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Greenhouse Gas Inventory Report Content -->
+                    <div id="ghg-report-content" class="tab-content hidden">
+                        <h3>Greenhouse Gas Inventory Report</h3>
+                        <p style="margin-bottom: var(--spacing-md); color: var(--color-text-secondary);">Our detailed assessment of greenhouse gas emissions from VRA's operations.</p>
+                        <a href="https://example.com/ghg-inventory-report.pdf" target="_blank" class="external-report-link">
+                            <span class="icon" role="img" aria-label="Cloud">☁️</span> View Latest GHG Inventory Report (PDF)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; <span id="currentYear"></span> Volta River Authority. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Tab switching logic
+            const tabsContainer = document.getElementById('tabs-container');
+            const contentContainer = document.getElementById('tab-content-container');
+            const tabs = tabsContainer.querySelectorAll('.tab-btn');
+            const contents = contentContainer.querySelectorAll('.tab-content');
+
+            tabsContainer.addEventListener('click', (e) => {
+                const targetButton = e.target.closest('.tab-btn');
+                if (!targetButton) return;
+
+                const tabId = targetButton.dataset.tab;
+                
+                tabs.forEach(tab => {
+                    tab.classList.remove('tab-active');
+                    tab.classList.add('tab-inactive');
+                });
+                targetButton.classList.add('tab-active');
+                targetButton.classList.remove('tab-inactive');
+                
+                contents.forEach(content => {
+                    if (content.id === `${tabId}-content`) {
+                        content.classList.remove('hidden');
+                    } else {
+                        content.classList.add('hidden');
+                    }
+                });
+            });
+
+            // Set current year in footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>

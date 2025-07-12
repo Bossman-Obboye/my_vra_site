@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News & Updates - Volta River Authority</title>
+    <title>VRA Business Bulletin</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <!-- Chosen Palette: "Warm Neutrals & Deep Blue" - A professional and calming palette using a deep blue for primary actions, a softer slate for secondary elements, and warm off-white/beige tones for backgrounds. -->
-    <!-- Application Structure Plan: This SPA is designed to present VRA's News & Updates. It features a Hero section. The main content area includes a search bar and a year filter for dynamic interaction. The "Latest News & Updates" section displays news items as a grid of clickable cards, each with a date and title. JavaScript handles the filtering and searching functionality, allowing users to easily find relevant news. This structure prioritizes user interaction and efficient content discovery. -->
-    <!-- Visualization & Content Choices: - Report Info: News articles (titles, dates). -> Goal: Inform & Facilitate Discovery. -> Viz/Presentation Method: Interactive filterable/searchable grid of "News Cards". Each card is a clickable link with date and title. -> Interaction: Users can type in a search bar to filter by keywords or select a year from a dropdown to filter by date. JavaScript updates the displayed news items dynamically. -> Justification: A filterable grid is highly effective for managing and presenting a potentially large list of news items, improving user experience by allowing them to quickly find relevant content. -->
+    <!-- Application Structure Plan: This SPA is designed to provide access to VRA's Business Bulletins. It features a Hero section for the title. The main content section, "Latest Business Bulletins", includes a brief introduction and then presents a list of recent bulletins. Each bulletin is displayed as a clickable card-like link with a prominent emoji, leading to a placeholder PDF. This structure prioritizes clear presentation and easy access to downloadable content, similar to the Newsletters page but distinct in content focus. -->
+    <!-- Visualization & Content Choices: - Report Info: List of VRA business bulletins (titles, dates, links). -> Goal: Provide Access & Organize. -> Viz/Presentation Method: List of clickable "Bulletin Cards" with a prominent emoji icon. -> Interaction: Clicking the card/link opens a placeholder PDF. -> Justification: A card-like list makes each bulletin entry distinct and easy to click. The emoji serves as a simple, scalable, and non-raster icon for a document, adhering to constraints. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         /* RESET MARGINS, PADDING, AND BORDERS */
@@ -237,7 +237,7 @@
 
         /* SPA Specific Styles (Adjusted to use new variables) */
         .container {
-            max-width: 1280px;
+            max-width: 960px; /* Slightly narrower for content focus */
             margin-left: auto;
             margin-right: auto;
             padding-left: var(--spacing-lg);
@@ -261,7 +261,7 @@
         .hero-content {
             position: relative;
             z-index: 10;
-            max-width: 960px;
+            max-width: 768px;
             margin-left: auto;
             margin-right: auto;
             padding-left: var(--spacing-lg);
@@ -274,7 +274,7 @@
         }
         .hero-section p {
             font-size: var(--h5-font-size);
-            max-width: 768px;
+            max-width: 640px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -306,49 +306,8 @@
             margin-bottom: var(--spacing-md);
         }
 
-        /* Filters and Search */
-        .filters-container {
-            display: flex;
-            flex-direction: column; /* Stack on small screens */
-            gap: var(--spacing-md);
-            margin-bottom: var(--spacing-xl);
-            max-width: 960px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: var(--spacing-md);
-            background-color: var(--white);
-            border-radius: var(--border-radius-md);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-        }
-        @media (min-width: 768px) {
-            .filters-container {
-                flex-direction: row; /* Row on larger screens */
-                justify-content: space-between;
-                align-items: center;
-            }
-        }
-
-        .filters-container input[type="text"],
-        .filters-container select {
-            padding: var(--spacing-sm) var(--spacing-md);
-            border: 1px solid var(--grey);
-            border-radius: var(--border-radius-sm);
-            font-size: var(--general-font-size);
-            color: var(--black);
-            background-color: var(--color-background-light);
-            flex-grow: 1; /* Allow input/select to grow */
-        }
-        .filters-container select {
-            appearance: none; /* Remove default arrow */
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23004370'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 0.7em top 50%;
-            background-size: 0.8em auto;
-            padding-right: 2.5em; /* Space for custom arrow */
-        }
-
-        /* News List Styling */
-        .news-list {
+        /* Bulletin List Styling */
+        .bulletin-list {
             list-style: none;
             padding: 0;
             margin-top: var(--spacing-xl);
@@ -357,55 +316,53 @@
             gap: var(--spacing-md); /* Smaller gap for list items */
         }
         @media (min-width: 640px) {
-            .news-list {
+            .bulletin-list {
                 grid-template-columns: repeat(2, 1fr); /* Two columns on small tablets */
             }
         }
         @media (min-width: 900px) {
-            .news-list {
+            .bulletin-list {
                 grid-template-columns: repeat(3, 1fr); /* Three columns on larger screens */
             }
         }
 
-        .news-item {
+        .bulletin-item a {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-md);
             background-color: var(--white);
             border-radius: var(--border-radius-md);
+            color: var(--primary-color);
+            font-weight: 500;
+            transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
             height: 100%; /* Ensure cards are same height in grid */
-            display: flex;
-            flex-direction: column;
         }
-        .news-item:hover {
-            transform: translateY(-3px);
+        .bulletin-item a:hover {
+            background-color: var(--color-light-blue-bg);
+            color: var(--color-dark-blue-active-tab);
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
-
-        .news-item a {
-            padding: var(--spacing-md);
-            display: flex;
-            flex-direction: column;
-            text-decoration: none;
-            color: inherit; /* Inherit color from parent for default text */
-            flex-grow: 1;
+        .bulletin-item .icon {
+            font-size: 1.8rem; /* Icon size for bulletin */
+            line-height: 1;
+            flex-shrink: 0; /* Prevent icon from shrinking */
         }
-
-        .news-item .news-date {
-            font-size: var(--font-size-sm);
-            color: var(--secondary-color);
-            margin-bottom: var(--spacing-xs);
-            font-weight: 500;
+        .bulletin-item .text-content {
+            flex-grow: 1; /* Allow text to take available space */
         }
-
-        .news-item .news-title {
+        .bulletin-item .bulletin-title {
             font-size: var(--general-font-size);
             font-weight: 600;
             color: var(--primary-color);
-            line-height: 1.4;
+            display: block; /* Ensure title is block for margin */
+            margin-bottom: var(--spacing-xs);
         }
-
-        .hidden {
-            display: none;
+        .bulletin-item .bulletin-date {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
         }
 
         /* Footer */
@@ -440,97 +397,46 @@
     <!-- Hero Section -->
     <header class="hero-section">
         <div class="hero-content">
-            <h1>News & Updates</h1>
-            <p>Stay informed with the latest developments, announcements, and stories from the Volta River Authority.</p>
+            <h1>VRA Business Bulletin</h1>
+            <p>Stay updated with the latest business insights, operational highlights, and corporate news from the Volta River Authority.</p>
         </div>
     </header>
 
     <main>
-        <!-- News & Updates Section -->
-        <section id="news-updates-content" class="page-section bg-light">
+        <!-- Business Bulletins Section -->
+        <section id="business-bulletins-content" class="page-section bg-light">
             <div class="container">
-                <h2>Latest News & Updates</h2>
-                <p style="text-align: center; margin-bottom: var(--spacing-xl); color: var(--color-text-secondary);">Browse our recent news articles and announcements.</p>
+                <h2>Recent Editions of VRA Business Bulletin</h2>
+                <p style="text-align: center; margin-bottom: var(--spacing-xl); color: var(--color-text-secondary);">Follow the links below to download the recent editions of the VRA Business Bulletin:</p>
                 
-                <!-- Filters and Search -->
-                <div class="filters-container">
-                    <input type="text" id="search-input" placeholder="Search news by keyword..." aria-label="Search news">
-                    <select id="year-filter" aria-label="Filter news by year">
-                        <option value="all">All Years</option>
-                        <!-- Years will be populated by JavaScript -->
-                    </select>
-                </div>
-
-                <!-- News List -->
-                <ul id="news-list" class="news-list">
-                    <!-- News items will be dynamically loaded here by JavaScript -->
-                    <li class="news-item" data-year="2025">
-                        <a href="#">
-                            <span class="news-date">July 11, 2025</span>
-                            <span class="news-title">VRA Leadership Mourns with Family of Former Chief Executive E.A. Kalitsi</span>
+                <ul class="bulletin-list">
+                    <li class="bulletin-item">
+                        <a href="https://example.com/vra-business-bulletin-volume3.pdf" target="_blank">
+                            <span class="icon" role="img" aria-label="Briefcase">💼</span>
+                            <div class="text-content">
+                                <span class="bulletin-title">VRA Business Bulletin (Volume 3)</span>
+                                <span class="bulletin-date">Latest Edition</span>
+                            </div>
                         </a>
                     </li>
-                    <li class="news-item" data-year="2025">
-                        <a href="#">
-                            <span class="news-date">June 20, 2025</span>
-                            <span class="news-title">Towards Strong Stakeholder Relations - Governing Board of GEA pays Courtesy visit to VRA</span>
+                    <li class="bulletin-item">
+                        <a href="https://example.com/vra-business-bulletin-volume2.pdf" target="_blank">
+                            <span class="icon" role="img" aria-label="Briefcase">💼</span>
+                            <div class="text-content">
+                                <span class="bulletin-title">VRA Business Bulletin (Volume 2)</span>
+                                <span class="bulletin-date">Previous Edition</span>
+                            </div>
                         </a>
                     </li>
-                    <li class="news-item" data-year="2025">
-                        <a href="#">
-                            <span class="news-date">May 15, 2025</span>
-                            <span class="news-title">VRA Kicks Off Its Annual EPP/EMP Sensitization Workshop in the Eastern Region</span>
+                    <li class="bulletin-item">
+                        <a href="https://example.com/vra-business-bulletin-maiden.pdf" target="_blank">
+                            <span class="icon" role="img" aria-label="Briefcase">💼</span>
+                            <div class="text-content">
+                                <span class="bulletin-title">VRA Business Bulletin (Maiden Edition)</span>
+                                <span class="bulletin-date">First Release</span>
+                            </div>
                         </a>
                     </li>
-                    <li class="news-item" data-year="2025">
-                        <a href="#">
-                            <span class="news-date">April 10, 2025</span>
-                            <span class="news-title">VRA, Energy Ministry Launch Major Renewable Energy Expansion at Lala, Sene East District</span>
-                        </a>
-                    </li>
-                    <li class="news-item" data-year="2025">
-                        <a href="#">
-                            <span class="news-date">March 5, 2025</span>
-                            <span class="news-title">Association of Ghana Industries (AGI) Pays Courtesy Visit to AG. Chief Executive of VRA</span>
-                        </a>
-                    </li>
-                    <li class="news-item" data-year="2025">
-                        <a href="#">
-                            <span class="news-date">January 20, 2025</span>
-                            <span class="news-title">VRA @ 64 - Embracing Innovation and Investing in Workplace to Provide Reliable Power</span>
-                        </a>
-                    </li>
-                    <li class="news-item" data-year="2024">
-                        <a href="#">
-                            <span class="news-date">December 1, 2024</span>
-                            <span class="news-title">Environmental Impact Assessment for Proposed 95MW Solar Power Project at Loagri in the West Mamprusi Municipality of the Northern Region under Phase 2 of VRA's REDP</span>
-                        </a>
-                    </li>
-                    <li class="news-item" data-year="2024">
-                        <a href="#">
-                            <span class="news-date">November 15, 2024</span>
-                            <span class="news-title">Environmental Impact Assessment for Proposed 20MW Solar Power Project at Sherigu in the Bolgatanga Municipality of the Upper East Region under Phase 2 of VRA's REDP</span>
-                        </a>
-                    </li>
-                    <li class="news-item" data-year="2024">
-                        <a href="#">
-                            <span class="news-date">October 1, 2024</span>
-                            <span class="news-title">Environmental Impact Assessment for Proposed 20MW Solar Power Project at Zebilla in the Bawku West District of the Upper East Region under Phase 2 of VRA's REDP</span>
-                        </a>
-                    </li>
-                    <li class="news-item" data-year="2024">
-                        <a href="#">
-                            <span class="news-date">September 10, 2024</span>
-                            <span class="news-title">Environmental Impact Assessment for Proposed 68MW Solar Power Project at Sawla in the Sawla-Tuna-Kalba District of the Savanna Region under Phase 2 of VRA's REDP</span>
-                        </a>
-                    </li>
-                    <li class="news-item" data-year="2024">
-                        <a href="#">
-                            <span class="news-date">August 25, 2024</span>
-                            <span class="news-title">Ing. Edward Ekow Obeng-Kenzo is Acting Chief Executive of VRA</span>
-                        </a>
-                    </li>
-                    <!-- Add more news items here with their respective data-year attributes -->
                 </ul>
             </div>
         </section>
@@ -546,46 +452,6 @@
         document.addEventListener('DOMContentLoaded', () => {
             // Set current year in footer
             document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-            const searchInput = document.getElementById('search-input');
-            const yearFilter = document.getElementById('year-filter');
-            const newsList = document.getElementById('news-list');
-            const newsItems = Array.from(newsList.getElementsByClassName('news-item'));
-
-            // Populate year filter dropdown
-            const years = new Set(newsItems.map(item => item.dataset.year));
-            Array.from(years).sort((a, b) => b - a).forEach(year => {
-                const option = document.createElement('option');
-                option.value = year;
-                option.textContent = year;
-                yearFilter.appendChild(option);
-            });
-
-            const filterNews = () => {
-                const searchTerm = searchInput.value.toLowerCase();
-                const selectedYear = yearFilter.value;
-
-                newsItems.forEach(item => {
-                    const title = item.querySelector('.news-title').textContent.toLowerCase();
-                    const date = item.querySelector('.news-date').textContent.toLowerCase();
-                    const itemYear = item.dataset.year;
-
-                    const matchesSearch = searchTerm === '' || title.includes(searchTerm) || date.includes(searchTerm);
-                    const matchesYear = selectedYear === 'all' || itemYear === selectedYear;
-
-                    if (matchesSearch && matchesYear) {
-                        item.classList.remove('hidden');
-                    } else {
-                        item.classList.add('hidden');
-                    }
-                });
-            };
-
-            searchInput.addEventListener('input', filterNews);
-            yearFilter.addEventListener('change', filterNews);
-
-            // Initial filter to display all news
-            filterNews();
         });
     </script>
 </body>

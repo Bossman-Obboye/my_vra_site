@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>What We Do: Non-Power Activities - VRA</title>
+    <title>Power Generation: Facts & Figures - VRA</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <!-- Chosen Palette: "Warm Neutrals & Deep Blue" - A professional and calming palette using a deep blue for primary actions, a softer slate for secondary elements, and warm off-white/beige tones for backgrounds. -->
-    <!-- Application Structure Plan: This SPA is designed to showcase VRA's Non-Power Activities. It features a Hero section. An "Introduction" provides an overview of these diverse contributions. The core "Our Community & Environmental Initiatives" section uses a responsive grid layout with distinct cards for each activity area (Local Authority & Township Management, Education & Health Services, Malaria Control & Public Health, Environmental Restoration & Afforestation). Each card features a relevant emoji and a concise description. This structure provides a clear, organized, and visually engaging presentation of VRA's broader societal and environmental roles. -->
-    <!-- Visualization & Content Choices: - Report Info: Various non-power activities (local governance, health, education, environment). -> Goal: Inform & Highlight Social/Environmental Responsibility. -> Viz/Presentation Method: Responsive Grid of "Activity Cards". Each card contains structured text (heading, paragraph, list of initiatives) and a relevant Emoji as a scalable visual cue. -> Interaction: None (direct presentation). -> Justification: A card-based grid is effective for displaying multiple distinct initiatives in a visually appealing and scannable format. Emojis adhere to the no-raster-image constraint while providing clear visual identification for each activity type. -->
+    <!-- Application Structure Plan: This SPA is designed to present key operational data for VRA's power generation. It features a Hero section. The "Akosombo Lake Level" section provides a prominent display for this critical hydrological data, updated dynamically. The core "VRA Installed Generation Capacity" section presents detailed plant information in a clear, responsive table format, allowing users to easily view and compare data. A "Total Capacity" summary is also highlighted. This structure prioritizes the clear and accessible presentation of numerical and tabular data. -->
+    <!-- Visualization & Content Choices: - Report Info: Akosombo Lake Level (numerical data). -> Goal: Provide Real-time/Current Data. -> Viz/Presentation Method: Large, prominent numbers within a dedicated card-like block. -> Interaction: None (direct display). -> Justification: Highlighting this critical single data point with large typography makes it immediately noticeable and easy to read. - Report Info: Installed Generation Capacity (tabular data). -> Goal: Organize & Compare. -> Viz/Presentation Method: A well-styled, responsive HTML table. -> Interaction: None (direct display). -> Justification: A table is the most effective way to present structured comparative data for multiple plants, types, and fuel sources. Responsiveness is handled to ensure readability on various devices. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         /* RESET MARGINS, PADDING, AND BORDERS */
@@ -330,92 +330,83 @@
             color: var(--secondary-color);
         }
 
-        /* Activity Cards Grid */
-        .activity-grid {
-            display: grid;
-            grid-template-columns: 1fr; /* Stack on small screens */
-            gap: var(--spacing-xl);
-            margin-top: var(--spacing-xl);
-        }
-        @media (min-width: 768px) { /* Medium breakpoint */
-            .activity-grid {
-                grid-template-columns: repeat(2, 1fr); /* Two columns on tablets and larger */
-            }
-        }
-        @media (min-width: 1024px) { /* Large breakpoint */
-            .activity-grid {
-                grid-template-columns: repeat(2, 1fr); /* Still two columns for a cleaner 2x2 layout */
-            }
-        }
-
-        .activity-card {
-            background-color: var(--white);
-            padding: var(--spacing-xl);
-            border-radius: var(--border-radius-md);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-            text-align: left;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-        .activity-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-        }
-
-        .activity-card .emoji {
-            font-size: 3.5rem; /* Large emoji size */
-            margin-bottom: var(--spacing-md);
-            line-height: 1; /* Remove extra line height for emoji */
-            display: block; /* Ensure it's on its own line and centers */
-            text-align: center;
-        }
-
-        .activity-card h3 {
-            color: var(--primary-color);
-            font-size: var(--h4-font-size);
-            margin-bottom: var(--spacing-md);
-            margin-top: 0; /* Override default h3 margin-top */
-            text-align: center;
-        }
-
-        .activity-card p {
-            color: var(--color-text-secondary);
-            font-size: var(--general-font-size);
-            margin-bottom: var(--spacing-md);
-            flex-grow: 1; /* Allow description to take available space */
-        }
-
-        .activity-card ul {
-            list-style: disc;
-            padding-left: 1.5rem;
-            list-style-position: inside;
-            margin-top: var(--spacing-md);
-            color: var(--color-text-secondary);
-            text-align: left; /* Align list items left within card */
-            width: 100%; /* Ensure list takes full width */
-        }
-        .activity-card ul li {
-            margin-bottom: var(--spacing-xs);
-        }
-        .activity-card ul li:last-child {
-            margin-bottom: 0;
-        }
-        .activity-card strong {
-            color: var(--primary-color);
-        }
-
-        /* Footer */
-        .main-footer {
+        /* Akosombo Lake Level Card */
+        .lake-level-card {
             background-color: var(--primary-color);
             color: var(--white);
-            padding-top: var(--spacing-40px);
-            padding-bottom: var(--spacing-40px);
+            padding: var(--spacing-xl);
+            border-radius: var(--border-radius-xl);
             text-align: center;
+            max-width: 400px; /* Constrain width */
+            margin: 0 auto; /* Center the card */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
-        .main-footer .container {
-            padding-left: var(--spacing-lg);
-            padding-right: var(--spacing-lg);
+        .lake-level-card .level-value {
+            font-family: 'DM Serif Display', serif;
+            font-size: 4rem; /* Large font for the number */
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: var(--spacing-sm);
+        }
+        .lake-level-card .level-units {
+            font-size: var(--h5-font-size);
+            margin-bottom: var(--spacing-md);
+        }
+        .lake-level-card .date-info {
+            font-size: var(--font-size-sm);
+            opacity: 0.8;
+        }
+
+        /* Responsive Table for Installed Capacity */
+        .table-container {
+            overflow-x: auto; /* Enable horizontal scrolling for small screens */
+            margin-top: var(--spacing-xl);
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            background-color: var(--white);
+        }
+
+        .capacity-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px; /* Ensure table is wide enough to scroll if needed */
+        }
+
+        .capacity-table th, .capacity-table td {
+            padding: var(--spacing-md);
+            text-align: left;
+            border-bottom: 1px solid var(--grey);
+        }
+
+        .capacity-table th {
+            background-color: var(--primary-color);
+            color: var(--white);
+            font-weight: 600;
+            font-size: var(--font-size-lg); /* Slightly larger font for headers */
+            white-space: nowrap; /* Prevent wrapping for headers */
+        }
+
+        .capacity-table tbody tr:nth-child(odd) {
+            background-color: var(--color-background-light); /* Light alternate row */
+        }
+
+        .capacity-table tbody tr:hover {
+            background-color: var(--color-light-blue-bg); /* Hover effect */
+        }
+
+        .capacity-table .total-row {
+            background-color: var(--primary-color);
+            color: var(--white);
+            font-weight: 700;
+        }
+        .capacity-table .total-row td {
+            border-bottom: none; /* No border for the last row */
+        }
+        .capacity-table .total-row td:first-child {
+            text-align: right; /* Align 'TOTAL CAPACITY' to the right */
+        }
+        .capacity-table .total-row td:nth-child(2) {
+            font-size: var(--h5-font-size); /* Larger font for total capacity number */
         }
 
         /* Responsive Adjustments */
@@ -433,6 +424,19 @@
                 font-size: var(--h3-font-size);
             }
         }
+
+        /* Footer */
+        .main-footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding-top: var(--spacing-40px);
+            padding-bottom: var(--spacing-40px);
+            text-align: center;
+        }
+        .main-footer .container {
+            padding-left: var(--spacing-lg);
+            padding-right: var(--spacing-lg);
+        }
     </style>
 </head>
 <body>
@@ -440,71 +444,124 @@
     <!-- Hero Section -->
     <header class="hero-section">
         <div class="hero-content">
-            <h1>Non-Power Activities</h1>
-            <p>Beyond electricity, VRA's commitment to community development, public health, and environmental stewardship in our operational areas.</p>
+            <h1>Power Generation: Facts & Figures</h1>
+            <p>Explore the key operational data and installed capacity that define VRA's role in Ghana's energy landscape.</p>
         </div>
     </header>
 
     <main>
-        <!-- Introduction Section -->
-        <section id="introduction" class="page-section">
+        <!-- Akosombo Lake Level Section -->
+        <section id="lake-level" class="page-section">
             <div class="container">
-                <h2>Our Broader Impact: Beyond Energy</h2>
-                <p style="max-width: 960px; margin: 0 auto var(--spacing-xl); text-align: center;">The Volta River Authority's mandate extends beyond power generation to encompass significant social and environmental responsibilities. We actively engage in a range of non-power activities that contribute to the well-being of our host communities and the sustainable management of natural resources, reflecting our commitment to being a responsible corporate citizen.</p>
+                <h2>Akosombo Lake Level</h2>
+                <div class="lake-level-card">
+                    <p class="date-info" id="currentDate"></p>
+                    <div class="level-value">259.96</div>
+                    <div class="level-units">feet</div>
+                    <p class="level-units">(79.236 meters)</p>
+                </div>
             </div>
         </section>
 
-        <!-- Our Community & Environmental Initiatives Section -->
-        <section id="community-environmental-initiatives" class="page-section bg-light">
+        <!-- VRA Installed Generation Capacity Section -->
+        <section id="installed-capacity" class="page-section bg-light">
             <div class="container">
-                <h2>Our Community & Environmental Initiatives</h2>
-                <p style="text-align: center; margin-bottom: var(--spacing-xl); color: var(--color-text-secondary);">Exploring the diverse ways VRA contributes to societal development and environmental protection.</p>
+                <h2>VRA Installed Generation Capacity</h2>
+                <p style="text-align: center; margin-bottom: var(--spacing-xl); color: var(--color-text-secondary);">A detailed breakdown of our power plants by type, installed capacity, and fuel source.</p>
                 
-                <div class="activity-grid">
-                    <!-- Activity 1: Local Authority & Township Management -->
-                    <div class="activity-card">
-                        <span class="emoji" role="img" aria-label="Cityscape">🏙️</span>
-                        <h3>Local Authority & Township Management</h3>
-                        <p>In accordance with Executive Instrument (EI) 42, 1989, VRA administers Local Authority functions in Akosombo Township. We also manage and provide property, facility management, property development, and security services to the Akosombo Township and the VRA community (Township) at Akuse, ensuring well-maintained and secure environments for residents.</p>
-                        <ul>
-                            <li><strong>Scope:</strong> Akosombo Township, Akuse Township.</li>
-                            <li><strong>Services:</strong> Local governance, property management, security.</li>
-                        </ul>
-                    </div>
-
-                    <!-- Activity 2: Education & Health Services -->
-                    <div class="activity-card">
-                        <span class="emoji" role="img" aria-label="School and Hospital">🏥📚</span>
-                        <h3>Education & Health Services</h3>
-                        <p>VRA is committed to supporting human capital development and public health. The Authority continues to manage its first and second cycle schools located at Aboadze, Akosombo, and Akuse. We also provide for the health needs of staff, their dependents, and local communities within our operational areas, including Akosombo, Aboadze, Akuse, and Accra.</p>
-                        <ul>
-                            <li><strong>Education:</strong> Management of schools in key operational areas.</li>
-                            <li><strong>Health:</strong> Provision of healthcare services to staff, dependents, and communities.</li>
-                        </ul>
-                    </div>
-
-                    <!-- Activity 3: Malaria Control & Public Health -->
-                    <div class="activity-card">
-                        <span class="emoji" role="img" aria-label="Mosquito and Syringe">🦟💉</span>
-                        <h3>Malaria Control & Public Health</h3>
-                        <p>In a significant public health effort, VRA has signed a Memorandum of Understanding with the Asuogyaman District Health Management Team (DHMT) to provide services to communities along the Volta Lake in the fight against Malaria, Bilharzia, and other water-borne diseases. Additionally, with assistance from the John Hopkins University Center for Communication, VRA has developed a comprehensive strategy document for malaria control, aiming to create a malaria-free environment for its workforce, their families, and surrounding communities.</p>
-                        <ul>
-                            <li><strong>Partnerships:</strong> Collaboration with Asuogyaman DHMT, John Hopkins University.</li>
-                            <li><strong>Focus:</strong> Malaria, Bilharzia, water-borne diseases.</li>
-                        </ul>
-                    </div>
-
-                    <!-- Activity 4: Environmental Restoration & Afforestation -->
-                    <div class="activity-card">
-                        <span class="emoji" role="img" aria-label="Tree with Roots">🌳🌱</span>
-                        <h3>Environmental Restoration & Afforestation</h3>
-                        <p>VRA actively engages in environmental protection initiatives. This includes maintaining a dredging programme at the estuary of the Volta River at Ada to reduce the incidence of Bilharzia and restore the ecosystem in the area. Furthermore, VRA runs extensive afforestation programmes aimed at reducing siltation of the Volta Lake through the restoration of permanent vegetative cover on the slopes bordering the Lake, ensuring the long-term health of this vital resource.</p>
-                        <ul>
-                            <li><strong>Dredging:</strong> At Volta River estuary (Ada) for ecosystem restoration.</li>
-                            <li><strong>Afforestation:</strong> Programmes to reduce siltation of Volta Lake.</li>
-                        </ul>
-                    </div>
+                <div class="table-container">
+                    <table class="capacity-table">
+                        <thead>
+                            <tr>
+                                <th>Plant</th>
+                                <th>Installed Capacity (MW)</th>
+                                <th>Type of Plant</th>
+                                <th>Fuel Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Akosombo GS</td>
+                                <td>1,020</td>
+                                <td>Hydro</td>
+                                <td>Water</td>
+                            </tr>
+                            <tr>
+                                <td>Kpong GS</td>
+                                <td>160</td>
+                                <td>Hydro</td>
+                                <td>Water</td>
+                            </tr>
+                            <tr>
+                                <td>TAPCO (T1)</td>
+                                <td>330</td>
+                                <td>Thermal</td>
+                                <td>Gas/LCO</td>
+                            </tr>
+                            <tr>
+                                <td>TICO (T2)</td>
+                                <td>340</td>
+                                <td>Thermal</td>
+                                <td>Gas/LCO</td>
+                            </tr>
+                            <tr>
+                                <td>Tema Thermal 1 Plant (TT1PP)</td>
+                                <td>110</td>
+                                <td>Thermal</td>
+                                <td>Gas</td>
+                            </tr>
+                            <tr>
+                                <td>Tema Thermal 2 Plant (TT2PP)</td>
+                                <td>80</td>
+                                <td>Thermal</td>
+                                <td>Gas</td>
+                            </tr>
+                            <tr>
+                                <td>Kpone Thermal Power Station (KTPS)</td>
+                                <td>220</td>
+                                <td>Thermal</td>
+                                <td>Gas/Diesel</td>
+                            </tr>
+                            <tr>
+                                <td>Anwomaso Thermal Power Station</td>
+                                <td>150**</td>
+                                <td>Thermal</td>
+                                <td>Gas</td>
+                            </tr>
+                            <tr>
+                                <td>Navrongo Solar Plant</td>
+                                <td>2.5</td>
+                                <td>Renewable</td>
+                                <td>Solar</td>
+                            </tr>
+                            <tr>
+                                <td>Lawra Solar Plant</td>
+                                <td>6.5</td>
+                                <td>Renewable</td>
+                                <td>Solar</td>
+                            </tr>
+                            <tr>
+                                <td>Kaleo Solar Plant (A)</td>
+                                <td>13</td>
+                                <td>Renewable</td>
+                                <td>Solar</td>
+                            </tr>
+                            <tr>
+                                <td>Kaleo Solar Plant (B)</td>
+                                <td>15</td>
+                                <td>Renewable</td>
+                                <td>Solar</td>
+                            </tr>
+                            <tr class="total-row">
+                                <td>TOTAL CAPACITY</td>
+                                <td>2,547</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
+                <p style="text-align: center; margin-top: var(--spacing-md); font-size: var(--font-size-sm); color: var(--color-text-secondary);">** Note: Capacity figures are indicative and subject to change.</p>
             </div>
         </section>
     </main>
@@ -519,6 +576,10 @@
         document.addEventListener('DOMContentLoaded', () => {
             // Set current year in footer
             document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+            // Set current date for Akosombo Lake Level
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', options);
         });
     </script>
 </body>
