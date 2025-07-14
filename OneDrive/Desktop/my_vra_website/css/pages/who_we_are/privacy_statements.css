@@ -1,0 +1,84 @@
+/* Section Styling */
+.policy-section {
+  padding-top: var(--spacing-xxl);
+  padding-bottom: var(--spacing-xxl);
+  background-color: var(--white);
+  border-bottom: 1px solid var(--grey); /* Subtle separator */
+}
+.policy-section:last-of-type {
+  border-bottom: none;
+}
+.policy-section.bg-light {
+  background-color: var(--color-light-blue-bg);
+}
+
+.policy-section h2 {
+  font-size: var(--h2-font-size);
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+}
+.policy-section h3 {
+  font-size: var(--h4-font-size);
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-md);
+  margin-top: var(--spacing-lg); /* Space above sub-headings */
+}
+.policy-section p,
+.policy-section ul,
+.policy-section ol {
+  font-size: var(--general-font-size);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-md);
+}
+.policy-section ul,
+.policy-section ol {
+  padding-left: var(--spacing-md); /* Indent lists */
+  list-style-type: disc;
+}
+.policy-section ol {
+  list-style-type: decimal;
+}
+.policy-section ul li,
+.policy-section ol li {
+  margin-bottom: var(--spacing-sm);
+}
+.policy-section ul li:last-child,
+.policy-section ol li:last-child {
+  margin-bottom: 0;
+}
+.policy-section a {
+  color: var(--primary-color);
+}
+.policy-section a:hover {
+  color: var(--secondary-color);
+}
+
+/* Effective Date specific style */
+.effective-date {
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-top: var(--spacing-xl);
+  margin-bottom: var(--spacing-lg);
+}
+
+
+
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+  .hero-section h1 {
+    font-size: var(--h1-font-size);
+  }
+  .hero-section p {
+    font-size: var(--h5-font-size);
+  }
+  .policy-section h2 {
+    font-size: var(--h2-font-size);
+  }
+  .policy-section h3 {
+    font-size: var(--h3-font-size);
+  }
+}

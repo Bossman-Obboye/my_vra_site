@@ -1,0 +1,158 @@
+/* Section Styling */
+.page-section {
+  padding-top: var(--spacing-xxl);
+  padding-bottom: var(--spacing-xxl);
+  background-color: var(--white);
+  border-bottom: 1px solid var(--grey); /* Subtle separator */
+}
+.page-section:last-of-type {
+  border-bottom: none;
+}
+.page-section.bg-light {
+  background-color: var(--color-light-blue-bg);
+}
+
+.page-section h2 {
+  font-size: var(--h2-font-size);
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+}
+.page-section h3 {
+  font-size: var(--h4-font-size);
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-md);
+}
+.page-section p,
+.page-section ul {
+  font-size: var(--general-font-size);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-md);
+}
+.page-section ul {
+  list-style: none; /* Override default list-style for specific sections */
+  padding: 0;
+  margin: 0;
+}
+.page-section ul li {
+  margin-bottom: var(--spacing-sm);
+}
+.page-section ul li:last-child {
+  margin-bottom: 0;
+}
+.page-section a {
+  color: var(--primary-color);
+}
+.page-section a:hover {
+  color: var(--secondary-color);
+}
+
+/* Impact Areas Grid */
+.impact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
+}
+@media (min-width: 768px) {
+  .impact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .impact-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.impact-item {
+  background-color: var(--white);
+  padding: var(--spacing-xl);
+  border-radius: var(--border-radius-md);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.impact-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.impact-item .emoji {
+  font-size: 4rem; /* Large emoji size */
+  margin-bottom: var(--spacing-md);
+  display: block; /* Ensure it takes full width for centering */
+  line-height: 1; /* Remove extra line height for emoji */
+}
+
+.impact-item h3 {
+  color: var(--primary-color);
+  font-size: var(--h4-font-size);
+  margin-bottom: var(--spacing-sm);
+  margin-top: 0; /* Override default h3 margin-top */
+}
+
+.impact-item p {
+  color: var(--color-text-secondary);
+  font-size: var(--general-font-size);
+  margin-bottom: 0; /* Remove default p margin-bottom if it's the last element */
+}
+
+/* Key Figures/Counters (reused from previous SPAs) */
+.glance-section {
+  padding-top: var(--spacing-xxl);
+  padding-bottom: var(--spacing-xxl);
+  background-color: var(--white);
+}
+.glance-section h2 {
+  font-size: var(--h2-font-size);
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+}
+.glance-grid {
+  display: grid;
+  gap: var(--spacing-32px);
+}
+.glance-item {
+  background-color: var(--color-light-blue-bg);
+  padding: var(--spacing-32px);
+  border-radius: var(--border-radius-2xl);
+  text-align: center;
+}
+.stat-number {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--color-text-primary-dark);
+}
+.stat-number-suffix {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--color-text-primary-dark);
+}
+.glance-item p {
+  font-size: var(--general-font-size);
+  margin-top: var(--spacing-sm);
+  color: var(--color-text-secondary);
+}
+
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+  .hero-section h1 {
+    font-size: var(--h1-font-size);
+  }
+  .hero-section p {
+    font-size: var(--h5-font-size);
+  }
+  .page-section h2 {
+    font-size: var(--h2-font-size);
+  }
+  .page-section h3 {
+    font-size: var(--h3-font-size);
+  }
+  .glance-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

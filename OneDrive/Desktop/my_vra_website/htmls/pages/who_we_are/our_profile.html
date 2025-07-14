@@ -1,127 +1,636 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us - VRA</title>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../../css/styles.css">
-  <link rel="stylesheet" href="../../../css/pages/about/about_us.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile of VRA - Volta River Authority</title>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- Inter font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet" />
+
+    <!-- Your site styles -->
+    <link rel="stylesheet" href="../../../css/styles.css" />
+    <link rel="stylesheet" href="../../../css/pages/who_we_are/our_profile.css">
 </head>
 <body>
 
-  <!-- Header will go here (as per your note) -->
-  <!-- IMPORTANT: Ensure your header has a defined height and is positioned, e.g., position: fixed; top: 0; width: 100%; z-index: 100; -->
+   
+    <!-- HEADER SECTION -->
+    <header>
+        <nav class="navbar">
+            <div class="navbar-container">
+                <div class="navbar-left">
+                    <!-- Hamburger Menu -->
+                    <button id="menu-toggle" class="menu-toggle">
+                        <div class="hamburger-icon" id="hamburger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </button>
 
-  <!-- Sidebar Container -->
-  <div class="sidebar-container">
-    <button class="sidebar-toggle-btn" aria-expanded="false" aria-controls="sidebar-menu">
-      <span class="sr-only">Toggle Table of Contents</span>
-      <!-- GIF for Table of Contents Icon -->
-      <!-- REPLACE THE SRC WITH YOUR ACTUAL GIF URL -->
-      <img src="../../../assets/images/icon/toc.png" alt="Table of Contents Icon" class="toc-gif-icon">
-    </button>
-    <aside id="sidebar-menu" class="sidebar">
-      <nav class="sidebar-nav">
-        <h3>Page Contents</h3>
-        <ul>
-          <li><a href="#our-story">Our Story</a></li>
-          <li><a href="#mission-vision">Mission & Vision</a></li>
-          <li><a href="#core-values">Our Core Values</a></li>
-          <li><a href="#contact-us">Contact Us</a></li>
-        </ul>
-      </nav>
-    </aside>
-  </div>
+                    <!-- VRA Logo -->
+                    <a href="../../../index.html" class="vra-logo">
+                        <img class="icon" src="../../../assets/images/logos/vra_logo.png" alt="Logo">
+                        <span class="text">VOLTA RIVER AUTHORITY</span>
+                    </a>
+                </div>
 
-  <!-- Blur Overlay -->
-  <div class="overlay"></div>
+                <!-- NAVBAR Headline -->
+                <div class="navbar-headline">
+                    <span>Our Vision</span>
+                    <span class="separator">|</span>
+                    <a href="../../../htmls/pages/who_we_are/our_profile.html">To
+                        be a
+                        Model of Excellence for Power Utilities in
+                        Africa.</a>
+                </div>
+            </div>
 
-  <main class="main-content">
-    <section class="about-hero">
-      <div class="container hero-content">
-        <h1>Empowering Progress, Sustaining Tomorrow</h1>
-        <p>At VRA, we are committed to driving national development through reliable and sustainable energy solutions. Discover our journey, our purpose, and the values that guide us.</p>
-      </div>
-    </section>
+            <!-- DRAWER -->
+            <div id="drawer" class="drawer">
+                <!-- DRAWER HEADER -->
+                <div class="drawer-header">
+                    <button id="close-menu" class="close-drawer-btn">
+                        <i class="fas fa-times icon"></i>
+                    </button>
+                </div>
 
-    <section class="about-section" id="our-story">
-      <div class="container">
-        <h2 class="section-heading">Our Story: A Legacy of Excellence</h2>
-        <div class="about-content">
-          <div class="about-text">
-            <h3>From Humble Beginnings to National Impact</h3>
-            <p>Founded with a vision to power the future, VRA has grown to become a cornerstone of Ghana's infrastructure. For decades, we have been at the forefront of energy generation, transmission, and distribution, adapting to evolving needs and embracing innovative technologies. Our history is intertwined with the nation's progress, marked by milestones that reflect our unwavering dedication to service.</p>
-            <p>We are proud of our heritage and the significant role we play in the lives of millions, providing the essential energy that fuels homes, industries, and communities across the country.</p>
-          </div>
-          <div class="about-image">
-            <img src="https://placehold.co/600x400/004370/FFFFFF?text=VRA+History" alt="Historical image of VRA facility">
-          </div>
+                <!-- DRAWER CONTENT -->
+                <div class="drawer-content">
+                    <div class="main-drawer-menus-wrapper">
+                        <ul>
+                            <li><a href="#" class="drawer-menu-item" data-target="who-we-are">Who We Are <i
+                                        class="fas fa-chevron-right arrow-icon"></i></a></li>
+                            <li><a href="#" class="drawer-menu-item" data-target="what-we-do">What We Do <i
+                                        class="fas fa-chevron-right arrow-icon"></i></a></li>
+                            <li><a href="#" class="drawer-menu-item active" data-target="our-companies">Our
+                                    Companies <i class="fas fa-chevron-right arrow-icon"></i></a></li>
+                            <li><a href="#" class="drawer-menu-item" data-target="resources">Resources <i
+                                        class="fas fa-chevron-right arrow-icon"></i></a></li>
+                            <li><a href="#" class="drawer-menu-item" data-target="news">News & Media<i
+                                        class="fas fa-chevron-right arrow-icon"></i></a></li>
+                            <li><a href="#" class="drawer-menu-item" data-target="stakeholders">Our
+                                    Stakeholders<i class="fas fa-chevron-right arrow-icon"></i></a></li>
+                            <li><a href="#" class="drawer-menu-item" data-target="contact-us">Contact Us
+                                    <i class="fas fa-chevron-right arrow-icon"></i></a></li>
+                            <li><a href="#" class="drawer-menu-item" data-target="videos">Videos About VRA
+                                    <i class="fas fa-chevron-right arrow-icon"></i></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="drawer-sub-menu-section" id="sub-menu-content">
+                        <ul id="our-companies-sub-menu">
+                            <li><a href="../../../htmls/pages/companies/akosombo_details.html">Akosombo
+                                    Hotels Limited</a></li>
+                            <li><a href="../../../htmls/pages/companies/kpong_farms.html">Kpong
+                                     </a></li>
+                            <li><a href="../../../htmls/pages/companies/northern_electricity_com.html">Northern
+                                    Electricity Distribution
+                                    Company</a></li>
+                            <li><a href="../../../htmls/pages/companies/volta_lake_transport.html">Volta
+                                    Lake Transport Company</a></li>
+                            <li><a href="../../../htmls/pages/companies/vra_health_service.html">VRA
+                                    Health Services</a></li>
+                            <li><a href="../../../htmls/pages/companies/vra_international_schools.html">VRA
+                                    International Schools</a></li>
+                        </ul>
+                        <!-- Other sub-menu contents can be hidden and shown based on active menu item -->
+                        <ul id="who-we-are-sub-menu" style="display: none;">
+                            <li><a href="../../../htmls/pages/who_we_are/our_profile.html">Our
+                                    Profile</a></li>
+                            <li><a href="../../../htmls/pages/who_we_are/our_impact.html">Our
+                                    Impact</a></li>
+                            <li><a href="../../../htmls/pages/who_we_are/our_team.html">Our
+                                    Team Members</a></li>
+                            <li><a href="../../../htmls/pages/who_we_are/facts_and_figures.html" target="_blank">Facts &
+                                    Figures about
+                                    Our Power Generation</a></li>
+                            <!-- <li><a href="../../../htmls/pages/who_we_are/policy_statement.html">Our Policies</a></li> -->
+                            <li><a href="../../../htmls/pages/who_we_are/our_reports.html">Our
+                                    Reports </a></li>
+                            <li><a href="../../../htmls/pages/about_us/visiting_our_plants.html">Visiting
+                                    Our Plants</a></li>
+
+                        </ul>
+
+                        <ul id="contact-us-sub-menu" style="display: none;">
+
+                            <li><a href="../../../htmls/pages/contact/contant_details.html" target="_blank">Contact
+                                    Details</a></li>
+                            <li><a href="../../../htmls/pages/contact/business_relation.html" target="_blank">Business
+                                    Relations</a></li>
+                            <li><a href="https://fa-ewye-saasfaprod1.fa.ocs.oraclecloud.com/fscmUI/redwood/supplier-registration/register-supplier/register-supplier-verification?id=FmU2Qw9F7t8MAOaxcq9VOvWYIJlJkTWJ9j2mvzfrlu2pl7ED9u8s1POLUzLqz40n"
+                                    target="_blank">Vendor
+                                    Registration</a></li>
+                            <li><a href="https://www.vra.com/VAS.pdf" target="_blank">Our Value Added Services
+                                    (VAS)</a></li>
+                        </ul>
+
+                        <ul id="what-we-do-sub-menu" style="display: none;">
+                            <li><a href="../../../htmls/pages/what_we_do/hydro_generation.html">Hydro
+                                    Generation </a></li>
+                            <li><a href="../../../htmls/pages/what_we_do/thermal_generation.html">Thermal
+                                    Generation</a></li>
+                            <li><a href="../../../htmls/pages/what_we_do/renewable_energy.html">Renewable
+                                    Energy Generation</a></li>
+                            <li><a href="../../../htmls/pages/what_we_do/non_power_activities.html">Non
+                                    Power Activities </a></li>
+                        </ul>
+
+                        <ul id="resources-sub-menu" style="display: none;">
+                            <li><a href="../../../htmls/pages/resources/newsletters.html">Newsletters
+                                </a></li>
+                            <li><a href="../../../htmls/pages/resources/vra_business_insight.html">VRA
+                                    Business Insights</a></li>
+                            <li><a href="https://forms.office.com/r/TNZBmt6BtQ" target="_blank">Vendor Registration &
+                                    Guidelines</a></li>
+                            <li><a href="https://www.vra.com/resources/VRA%20Code%20of%20Ethics.pdf" target="_blank">VRA
+                                    Code of
+                                    Ethics</a></li>
+                            <li><a href="http://www.vra.com/resources/others/lcpd.pdf" target="_blank">VRA Local Content
+                                    Policies</a></li>
+                            <li><a href="https://www.vra.com/media/2020/Corporate%20Environmental%20Policy%20Statement.pdf"
+                                    target="_blank">VRA Corporate
+                                    Environmental Policy Statement</a></li>
+
+                            <li><a href="http://www.vra.com/resources/others/Implementation%20Guidelines%20for%20Framework%20for%20Aquaculture%20Development%20on%20the%20Volta%20Lake.pdf"
+                                    target="_blank">Download the Framework
+                                    for Acquaculture Development on the
+                                    Volter Lake</a></li>
+                            <li><a href="https://youtu.be/FGuWqkwdYjs?si=uV6_kd5TLGDJVoLz" target="_blank">Documentary:
+                                    Kaleo Solar Power Plant (Phase
+                                    II)</a></li>
+                            <li><a href="https://www.youtube.com/embed/XVT5tutY5FI?si=lmRWMHXjvI512cxi"
+                                    target="_blank">Documentary: Anwomaso
+                                    Thermal Power Station</a></li>
+                            <li><a href="https://youtu.be/iPLFtbSZSOo?si=vSgECPacTSXkTMfB" target="_blank">Documentary:
+                                    Oral
+                                    History of the Akosombo Dam</a></li>
+                        </ul>
+
+                        <ul id="stakeholders-sub-menu" style="display: none;">
+                            <li><a href="https://www.energymin.gov.gh/" target="_blank">Ministry of
+                                    Energy</a></li>
+                            <li><a href="https://gridcogh.com/" target="_blank">GRIDCo</a></li>
+                            <li><a href="http://www.ecgonline.info/" target="_blank">Electricty Company Ghana
+                                    Limited</a></li>
+                            <li><a href="https://www.purc.com.gh/" target="_blank">Public Utilities
+                                    Regulatory Commission</a></li>
+                            <li><a href="https://www.energycom.gov.gh/" target="_blank">Energy
+                                    Commission</a></li>
+                            <li><a href="https://siga.gov.gh/" target="_blank">State Interests and
+                                    Governance Authority</a></li>
+                            <li><a href="https://www.unglobalcompactghana.com/" target="_blank">Global Compact Network
+                                    Ghana</a></li>
+                            <li><a href="https://efghana.org/" target="_blank">Energy
+                                    Foundation</a></li>
+                            <li><a href="https://buipower.com/" target="_blank">Abui Power
+                                    Authority</a></li>
+                            <li><a href="https://www.anglogoldashanti.com/" target="_blank">Anglo Gold
+                                    Ashanti</a></li>
+                            <li><a href="https://www.gnpcghana.com/" target="_blank">Ghana National Petroleum
+                                    Corporation</a></li>
+                            <li><a href="https://apua-asea.org/en/updea/ang/" target="_blank">Apua Asea</a></li>
+                            <li><a href="https://www.valcotema.com/" target="_blank">VALCO</a></li>
+                            <li><a href="https://www.ecowapp.org/en" target="_blank">West Africa Power
+                                    Pool</a></li>
+                            <li><a href="https://www.epa.gov.gh/new/" target="_blank">Environmental Protection
+                                    Agency</a></li>
+                            <li><a href="https://www.hydropower.org/who-we-are/about-iha"
+                                    target="_blank"></a>International
+                                HydroPower Association</li>
+                            <li><a href="https://cfi.co/" target="_blank">CFI</a></li>
+
+                        </ul>
+
+                        <ul id="videos-sub-menu" style="display: none;">
+                            <li><a href="https://youtu.be/dGcOySJNHKo?si=D7LUAAnOV83vuyXt" target="_blank">Profile of
+                                    the Volta
+                                    River Authority</a></li>
+                            <li><a href="https://youtu.be/CmWJOkHA4BU?si=zHqr6I92zNCUesn6" target="_blank">VRA @ 57 -
+                                    Interview
+                                    with Emmanuel Antwi-Darkwa, Chief
+                                    Executive, VRA</a></li>
+                            <li><a href="https://youtu.be/zUYv5UJ8O2Q?si=gFoTncW9bE8yHY9i" target="_blank">ORAL HISTORY
+                                    OF THE
+                                    AKOSOMBO DAM</a></li>
+                            <li><a href="https://youtu.be/rH4tthChAzY?si=9R0nJRAZc7xmXYec" target="_blank">Akosombo Dam
+                                    Eastern
+                                    Region Ghana 3D Photogrammetry</a></li>
+                            <li><a href="https://youtu.be/79n-mgnRpB0?si=x0IzsGFtZmQHJ6hk" target="_blank">Uncover the
+                                    Volta River
+                                    Authority (VRA) AKOSOMBO DAM on VOLTA
+                                    RIVER - Akosombo hydroelectric
+                                    plant!</a></li>
+                            <li><a href="https://youtu.be/-W0jKHww9ns?si=eg_wvyBgCasYpMZU" target="_blank">AEFTV 2018
+                                    Interview;
+                                    Emmanuel Antwi Darkwa, CEO, Volta River
+                                    Authority (VRA)</a></li>
+                            <li><a href="https://youtu.be/B5BXOOotgl0?si=rEtFbeQL3mX-stiW" target="_blank">SHOCKING -
+                                    The Truth
+                                    About Ghana’s Biggest Projects Exposed
+                                    $250M Bank of Ghana & VRA
+                                    Project</a></li>
+                            <li><a href="https://youtu.be/P3dh-CIiPvk?si=ZMUEKBZh9RgO5DZu" target="_blank">We can't
+                                    recycle
+                                    Akosombo water to generate electricity -
+                                    VRA Boss</a></li>
+                            <li><a href="https://youtu.be/ZJfQV87GvDI?si=acYTNpFQNljrmFjF" target="_blank">Visit to
+                                    Volta River
+                                    Authority & Akosombo Dam🇬🇭</a></li>
+                        </ul>
+
+                        <ul id="news-sub-menu" style="display: none;">
+                            <li><a href="../../../htmls/pages/media/latest_news.html">Latest
+                                    News</a></li>
+                            <li><a href="../../../htmls/pages/media/tenders.html">Tenders</a></li>
+                            <li><a href="https://www.vra.com/media/2024/VRA-Power-Supply.jpg" target="_blank">Press
+                                    Releases</a></li>
+                            <li><a href="https://www.vra.com/media/2025/Solar%20Scoping%20Report%20-Loagri.pdf"
+                                    target="_blank">Scoping
+                                    Reports /
+                                    Notices</a></li>
+                            <li><a href="https://www.vra.com/media/2023/VRA%20ENDS%20CONTROLLED%20SPILLAGE%20FROM%20AKOSOMBO%20DAM.jpg"
+                                    target="_blank">Akosombo
+                                    Spillage
+                                    Controlled</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1>Profile of VRA</h1>
+            <p>Discover the history, mandate, operations, and strategic vision of the Volta River Authority, Ghana's leading power generator.</p>
         </div>
       </div>
-    </section>
 
-    <section class="about-section" id="mission-vision">
-      <div class="container">
-        <h2 class="section-heading">Our Mission & Vision</h2>
-        <div class="about-content about-content-reverse">
-          <div class="about-text">
-            <h3>Powering a Brighter Future</h3>
-            <p>Our **mission** is to generate, transmit, and distribute reliable and affordable electricity while promoting sustainable development and environmental stewardship. We strive to be an exemplary corporate citizen, contributing positively to the socio-economic well-being of the communities we serve.</p>
-            <p>Our **vision** is to be a leading, diversified, and globally competitive energy company, driven by innovation and excellence, contributing significantly to the economic transformation of Ghana and the West African sub-region.</p>
-          </div>
-          <div class="about-image">
-            <img src="https://placehold.co/600x400/169AF2/FFFFFF?text=VRA+Mission+Vision" alt="Illustration of mission and vision">
-          </div>
+    <main>
+        <!-- Establishment and Mandate Section -->
+        <section id="establishment-mandate" class="page-section">
+            <div class="container">
+                <h2>Our Foundation and Evolution</h2>
+                <p>The Volta River Authority (VRA) was established on <strong>April 26, 1961</strong> with the mandate to generate, transmit and distribute electricity under the Volta River Development Act, Act 46 of the Republic of Ghana.</p>
+                <p>However, following the promulgation of a major amendment to the Act within the context of the Ghana Government Power Sector Reforms in 2005, the VRA's mandate has now been largely restricted to generation of electricity. This amendment has created an enabling environment to attract Independent Power Producers (IPPs) into the Ghana Energy market.</p>
+                <p>The amendment also hived-off the VRA's transmission function into a separate entity designated the Ghana Grid Company (GRIDCo), while the distribution agency, the Northern Electricity Department (NED), established in April 1987, also evolved into the Northern Electricity Distribution Company (NEDCo), a wholly-owned standalone subsidiary of the VRA.</p>
+            </div>
+        </section>
+
+        <!-- Our Vision, Mission, Strategy & Core Values Section (MOVED TO TOP) -->
+        <section id="vision-mission-values" class="page-section bg-light vision-mission-section">
+            <div class="container">
+                <h2>Our Vision, Mission, Strategy & Core Values</h2>
+                
+                <div class="content-block">
+                    <h3>Our Vision</h3>
+                    <p>To be a Model of Excellence for Power Utilities in Africa.</p>
+                </div>
+
+                <div class="content-block">
+                    <h3>Our Mission</h3>
+                    <p>The Volta River Authority exists to power economies and raise the living standards of the people of Ghana and West Africa. We supply electricity and related services in a reliable, safe and environmentally friendly manner to add economic, financial and social values to our customers and meet stakeholders’ expectations.</p>
+                </div>
+
+                <div class="content-block">
+                    <h3>Our Strategic Objectives ('SPICE')</h3>
+                    <p>The strategic objectives ('SPICE') under our 'BRAISE' strategy are as follows:</p>
+                    <ul class="spice-list">
+                        <li><strong>S</strong> - Sustain operational and service excellence in a clean and digital environment</li>
+                        <li><strong>P</strong> - Promote Financial Responsibility</li>
+                        <li><strong>I</strong> - Improve Health, Safety, Security and Work Environment (HSSE)</li>
+                        <li><strong>C</strong> - Cultivate a Diverse, Committed and Future-ready Workforce</li>
+                        <li><strong>E</strong> - Enrich Customer and Stakeholder Experience to Drive Growth</li>
+                    </ul>
+                </div>
+
+                <div class="content-block">
+                    <h3>Our Core Values</h3>
+                    <ul class="no-bullet">
+                        <li>Safety</li>
+                        <li>Ownership</li>
+                        <li>Constructive Thinking</li>
+                        <li>Integrity</li>
+                        <li>Excellence</li>
+                        <li>Teamwork</li>
+                        <li>Innovation</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Power Activities Section -->
+        <section id="power-activities" class="page-section">
+            <div class="container">
+                <h2>Power Activities</h2>
+                <p>The VRA has diversified its power generation portfolio to take advantage of available and sustainable sources of energy, mainly hydro, and natural gas and renewables. The Authority owns and operates a total installed electricity generation capacity of <strong>2,547MW</strong>.</p>
+                <div class="two-column-grid">
+                    <div>
+                        <h3>Hydro Power</h3>
+                        <p>The two main hydro plants, Akosombo and Kpong Generating Stations both located on the Volta River have <strong>1,020MW</strong> and <strong>160MW</strong> respectively.</p>
+                        <h3>Renewable Energy</h3>
+                        <p>These are complemented by a <strong>2.5MW</strong> Solar PV Plant at Navrongo in the Upper East Region, a <strong>6.54MW</strong> Solar PV Plant at Lawra (in the Upper West Region), and <strong>13MW</strong> and <strong>15MW</strong> Solar PV Plants both at Kaleo in the Upper West Region.</p>
+                    </div>
+                    <div>
+                        <h3>Thermal Power</h3>
+                        <p>The VRA also owns a number of thermal plants located in Aboadze near Takoradi, Tema and Anwomaso in the Ashanti Region. The Authority’s thermal facilities include:</p>
+                        <ul>
+                            <li><strong>330MW</strong> Takoradi Thermal (T1) Power Station</li>
+                            <li><strong>340MW</strong> Takoradi International Company Thermal (T2) Power Plant (JV with TAQA from Abu Dhabi)</li>
+                            <li><strong>110MW</strong> Tema Thermal 1 Power Plant (TT1PP) now designated Station 2</li>
+                            <li><strong>80MW</strong> Tema Thermal 2 Power Plant (TT2PP) designated as Station 3</li>
+                            <li><strong>220MW</strong> Kpone Thermal Power Station (KTPS)</li>
+                            <li><strong>150MW</strong> Anwomaso Thermal Power Station (ATPS), with an additional 100MW yet to be relocated from Aboadze to Anwomaso.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Power Expansion Activities Section -->
+        <section id="power-expansion" class="page-section bg-light">
+            <div class="container">
+                <h2>Power Expansion Activities</h2>
+                <p>As part of the Authority's expansion programme, VRA is exploring the re-powering of the <strong>132MW T3 Plant</strong> at Takoradi and converting the existing <strong>220MW Kpone Thermal Power Plant (KTPP)</strong> into a combined cycle power plant.</p>
+                <p>The Tema TT1PP/CENIT simple-cycle plants are being converted into combined cycle as a Joint Venture with CENIT Energy Limited (CEL), a subsidiary of the Social Security and National Insurance Trust (SSNIT).</p>
+                <h3>Renewable Energy Development Programme (REDP)</h3>
+                <p>To diversify the Authority’s generation portfolio and assist in achieving the Government’s Renewable Energy (RE) Policy objective, VRA formulated a Renewable Energy (RE) Policy to develop and operate RE plants in an efficient, cost-effective and environmentally sustainable manner.</p>
+                <ul>
+                    <li>The first phase of the REDP (2011-2015) targeted <strong>14.5MW</strong> of solar PV and <strong>150MW</strong> of Wind Energy.</li>
+                    <li>The second phase (2016-2020) targeted about <strong>100MW</strong> of Solar PV and <strong>200MW</strong> of Wind Energy.</li>
+                    <li>As at the end of 2020, <strong>9.6MW</strong> of Solar PV was in commercial operation and <strong>13.0MW</strong> was under construction at Kaleo, expected to be completed by end of 2021.</li>
+                    <li>The Kaleo and Lawra solar projects have been expanded from a total of <strong>19.5MW to 35MW</strong>.</li>
+                    <li>A Rooftop Solar Photovoltaic and a Solar Car Park Installation with a capacity of <strong>148kWp</strong> has been installed at the Head Office, Electro-Volta House, estimated to reduce electricity consumption by at least 23%. Plans are underway for similar installations.</li>
+                </ul>
+                <h3>Wind Power Development</h3>
+                <p>The VRA is currently working to develop about <strong>150MW</strong> of Wind Power at identified sites in the southern parts of the country. Feasibility Studies, Environmental and Social Impact Assessment (ESIA) and Grid Impact studies have been concluded for the first <strong>75MW</strong> Wind Power project at Anloga, Srogbe and Anyanui in the Volta Region, for the project to kick-off in 2022.</p>
+                <h3>Ameri Power Plant Relocation</h3>
+                <p>In order to ensure reliable plant operations and grid stability, the Government of Ghana and the Authority have relocated the <strong>150MW</strong> of the erstwhile Ameri Power Plant from Aboadze to Anwomaso in the Ashanti Region (with an additional 100MW yet to be relocated).</p>
+                <h3>Pwalugu Multipurpose Dam Project</h3>
+                <p>His Excellency President of Ghana, Nana Addo Dankwa Akufo-Addo, cut the sod for the Pwalugu Multipurpose Dam Project in November 2019. The project comprises a <strong>60MW hydroelectric power plant, a 50 MW Solar Plant and a 25,000-hectare irrigation scheme</strong>. The power component will improve power supply reliability in the northern part of Ghana. The irrigation scheme, managed by the Ghana Irrigation Development Authority, will increase annual rice and maize production by 117,000 tonnes and 49,000 tonnes, respectively. The dam’s construction will reduce the perennial flooding in the White Volta Basin caused by heavy rainfall in the rainy season and the associated spilling of water from the Bagre Dam in Burkina Faso. VRA has completed preliminary project activities, including the Environmental Impact Assessment and Resettlement Action Plan and the construction of road to the site.</p>
+            </div>
+        </section>
+
+        <!-- Links with Customers and Neighbouring Countries Section -->
+        <section id="customer-links" class="page-section">
+            <div class="container">
+                <h2>Links with Customers and Neighbouring Countries</h2>
+                <p>The VRA reaches its customers in Ghana and neighbouring countries through the Ghana Grid Company’s (GRIDCo) transmission system, which links up with the national electricity grids of Cote d’Ivoire-Compagnie Ivoirienne d’Électricité (CIE), Togo-Communauté Electrique du Benin (CEB), and Burkina Faso (SONABEL). These interconnections serve as part of the transmission network under the West Africa Power Pool (WAPP).</p>
+                <h3>Major Bulk Customers:</h3>
+                <p>The VRA’s major bulk customers include the following distribution companies:</p>
+                <ul class="no-bullet">
+                    <li><strong>Electricity Company of Ghana (ECG)</strong></li>
+                    <li><strong>Northern Electricity Distribution Company Ltd. (NEDCo)</strong></li>
+                    <li><strong>Enclave Power Company (EPC)</strong> - caters for industrial and commercial concerns in the Tema Free Zone.</li>
+                </ul>
+                <p>The Authority also makes bulk sales to a number of mining companies, which include AngloGold Ashanti, Newmont Ghana Gold Limited, Goldfields Ghana Limited and Golden Star Resources Group.</p>
+                <p>Other customers are Aluworks, Akosombo Textiles Limited, Diamond Cement Ghana Limited, Adansi Gold Ghana Limited, Drillworx Limited, Perseus Mining Ghana Limited, New Century Mines, Prestea Sankofa Gold Mine Limited, Great Consolidated Diamond Limited, Ghana Free Zones Board, International Land Development Co. Limited (ILDC), Kpong   Limited, Owere Mines Limited and Prestea Gold Resources Limited. The rest are TV3 Network Services (Media General Ghana Ltd), Volta Aluminium Company Limited, Adamus Resources Limited, Nzema Gold Operations, Savanna Diamond Limited, Newmont Golden Ridge Limited, Asanko Gold Ghana Limited, and BlackIvy Ghana Limited.</p>
+            </div>
+        </section>
+
+        <!-- Sub-Regional Cooperation Section -->
+        <section id="sub-regional-cooperation" class="page-section bg-light">
+            <div class="container">
+                <h2>Sub-Regional Cooperation</h2>
+                <p>The VRA is a Foundation Customer in the development of the West Africa Gas Pipeline (WAGP), which guarantees its competitiveness in power delivery in the sub-region. The Authority is also participating in the development of a power pooling mechanism to provide the West Africa subregion with increased accessibility, availability and affordability to electricity under the auspices of the Economic Community of West African States (ECOWAS). The Authority continues to collaborate with the West African Power Pool (WAPP) to provide the West African Sub-Region with increased accessibility, availability and affordability of electricity.</p>
+                <p>The West Africa Regional Electricity Market was officially launched by West African Power Pool (WAPP) in 2018, with the first phase becoming operational in the year 2020. The market will facilitate and regularize cross-border electricity trade and thus introduce efficiency in both local and regional markets.</p>
+                <p>The Authority remains a key player in the affairs of the West African Gas Pipeline Company Limited (WAPCo), a limited liability company that owns and operates the 678km West African Gas Pipeline (WAGP). The VRA through the Takoradi Power Company Limited (TAPCO), a wholly owned subsidiary of VRA, holds shares of <strong>16.3%</strong> in WAPCo on behalf of the Government of Ghana.</p>
+                <p>From the Commercial Operations Date (CoD) of November 1, 2011, WAPCo’s main mandate has been to transport natural gas from Nigeria to customers in Benin, Togo and Ghana in a safe, responsible and reliable manner, at prices competitive with other fuel alternatives. Since June 2019, the WAGP now has the capability of delivering gas from Western Ghana (Takoradi) in a reverse flow mode to the East (Tema) as a result of the completion of the Takoradi Tema Interconnection Project (TTIP).</p>
+                <h3>Emergency Power Programme (EPP) in Liberia</h3>
+                <p>Under the Emergency Power Programme (EPP) in Liberia after years of conflict, the VRA was appointed the principal consulting agency to implement the two-phase construction and operation of the power system in Liberia. VRA, acknowledged by the United Nations Development Programme (UNDP) for its distinctive competencies, provided a <strong>2.6MVA</strong> electric power to a section of Monrovia through the distribution grids in Congo Town and Kru Town.</p>
+                <h3>Association of Power Utilities of Africa (APUA)</h3>
+                <p>The VRA is a founding member of the Association of Power Utilities of Africa (APUA), previously known as Union of Producers, Transporters and Distributors of Electric Power in Africa (UPDEA). APUA aims at promoting, integrating and developing the African power sector through active cooperation among its members on one hand and international power sector organizations and donors on the other. APUA is a permanent member of the Executive Council of the African Energy Commission and a preferred partner of the New Partnership for Africa’s Development (NEPAD).</p>
+            </div>
+        </section>
+
+        <!-- Relations with Statutory Regulatory Bodies Section -->
+        <section id="regulatory-relations" class="page-section">
+            <div class="container">
+                <h2>Relations with Statutory Regulatory Bodies</h2>
+                <p>In pursuance of the Authority’s operations, the VRA has working relations with the following statutory bodies:</p>
+                <ul class="no-bullet">
+                    <li><strong>The Ministry of Energy</strong></li>
+                    <li><strong>The Ministry of Finance</strong></li>
+                    <li><strong>Ministry of Public Enterprises</strong> - play a supervisory role.</li>
+                    <li><strong>The Public Utilities Regulatory Commission (PURC)</strong> - commercial regulator.</li>
+                    <li><strong>The Energy Commission (EC)</strong> - technical regulator.</li>
+                    <li><strong>The State Interest and Governance Authority (SIGA)</strong> - supports in the area of corporate governance.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Non Power Activities Section -->
+        <section id="non-power-activities" class="page-section bg-light">
+            <div class="container">
+                <h2>Non-Power Activities</h2>
+                <p>In accordance with Executive Instrument (EI) 42, 1989, the VRA administers and exercises Local Authority functions in the Akosombo Township. It also manages and provides property, facility management, property development and security services the Akosombo township, the VRA community at Akuse and the Aboadze township. The Authority continues to provide and manage first and second cycle schools in Aboadze, Akosombo and Akuse. In addition, VRA provides health care services for staff, their dependents and local communities within its operational areas in Akosombo, Aboadze, Akuse and Accra.</p>
+                <p>The VRA also carries out a dredging programme at the estuary of the Volta River at Ada to reduce the incidents of Bilharzia, and restore the ecosystem in the area. To ensure the sustainable management of the Akosombo and Kpong Dams, the Authority maintains an aquatic weed harvesting program, which aims at eliminating or reducing the prevalence of Bilharzia, improving the water quality, transforming the livelihoods of the riparian communities in the Lower Volta area and preserving of the ecosystem.</p>
+            </div>
+        </section>
+
+        <!-- Climate Change Agenda Section -->
+        <section id="climate-change-agenda" class="page-section">
+            <div class="container">
+                <h2>Climate Change Agenda</h2>
+                <p>In response to the global clarion call for a cohesive approach to confronting the challenges of climate change, the VRA in its Renewable Energy Policy, has developed a <strong>Carbon Footprint Management Programme (CFMP)</strong>, which details planned actions towards pollution prevention, waste reduction and sustainable development. The CFMP has guided the development and introduction of climate-smart interventions in the operations of the Authority.</p>
+                <p>Interventions such as the Volta Gorge Reforestation Programme, Climate Smart Stove Initiative and Corporate initiatives such as the Corporate Waste Segregation Programme and the use of less carbon-intensive fuels in generation activities have been implemented to reduce Greenhouse Gas emission levels of the Authority.</p>
+                <p>The Authority, has since 2018, operated all its thermal plants on natural gas leading to significant reduction in carbon emissions. Two major tree-planting programmes, the Volta Gorge Reforestation Programme and the Buffer Zone Reforestation Programme, serving as carbon sinks, cover about <strong>5,300 Ha</strong> of land in and around the Volta Gorge Area and other parts of the Lake.</p>
+                <p>In 2021, as part of Government's "Greening Ghana Project", the Authority collaborated with the Ministry of Lands and Natural Resources to plant <strong>600 tree seedlings</strong> across all work locations of the Authority. Internally, the Authority has initiated conscious actions to operate sustainably and reduce waste generation through its "Corporate Solid Waste Segregation Programme". The programme is aimed at separating solid wastes into its components at source to facilitate easy recycling. So far <strong>5.9 tons</strong> of Office Wastepaper has been transferred for recycling.</p>
+                <p>The Authority has also incorporated in its workflow, innovations in ICT to ensure business continuity in a paper-less work environment. This includes the introduction of an Electronic Documents & Records Management System and substantial improvement in ICT infrastructure to meet changing trends in sustainable operations in the Energy Sector.</p>
+                <p>There has also been a shift from the traditional reliance on firewood as domestic fuel with the introduction of fuel-efficient and energy saving improved cook stoves in 2016, termed as "Climate Smart Stoves" (CSS) in the riparian communities. This initiative, which is a collaborative action with the Fisheries Department in the Asuogyaman District has resulted in the construction of <strong>500 stoves</strong>. About <strong>1,000 stoves</strong> are expected to be constructed by 2024 in other districts.</p>
+            </div>
+        </section>
+
+        <!-- Corporate Social Responsibility Section -->
+        <section id="csr" class="page-section bg-light">
+            <div class="container">
+                <h2>Corporate Social Responsibility</h2>
+                <p>The Authority is also committed to ensuring that its operations and activities remain relevant, competitive and agile in the power sector. Key to the implementation of this strategy is the championing of viable solutions that ensure the strengthening of existing partnerships between the Authority and impacted communities within our areas of operation.</p>
+                <h3>VRA Resettlement Trust Fund</h3>
+                <p>In 1995, a combined effort between VRA and the Ghana Government realised the establishment of a special fund known as the <strong>VRA Resettlement Trust Fund</strong>, aimed at providing socio-economic interventions and economic empowerment solutions to <strong>52-resettlement townships</strong> as approved by the Managing Trustees. VRA continues to contribute annually an equivalent of <strong>five hundred thousand United States Dollars (US$500,000)</strong> to the fund towards poverty alleviation initiatives for the people living in the 52-resettlement townships.</p>
+                <p>In addition to this fund, VRA has devoted extra resources to its CSR programme intended at improving standards of living through the provision of employability and entrepreneurial skills set to persons within the impacted communities. Thus, the Community Relations Unit was established in 2003 to endear a stable relationship with communities affected by the Authority’s operations and provide solutions to problems that were not catered for under the Resettlement Trust Fund.</p>
+                
+                <h3>Community Development Programme (CDP)</h3>
+                <p>In 2012, VRA launched a CSR programme called the Community Development Programme (CDP) in communities impacted by its operations. The CDP represents a common ground for cooperation and partnership between VRA and the communities on the identification and provision of solutions to critical areas that stimulate economic and human capital development. The programme is also aimed at the development and implementation of social and economic activities in all communities and the transformation of these communities into 'opportunity communities'.</p>
+                <p>The Authority has provided interventions in the areas of:</p>
+                <ul>
+                    <li><strong>Education:</strong> Scholarships and internship opportunities have been provided to needy but brilliant students of impacted communities. A total of <strong>449 students</strong> have so far benefited from the scholarship, which was instituted in 2011. The number comprises <strong>234</strong> at the Senior High School and <strong>215</strong> at the Tertiary level.</li>
+                    <li><strong>Socio-Economic Empowerment:</strong> VRA in its efforts to support Communities affected by its operations in riparian areas, provides training in bee-keeping and fruit tree planting through its Poverty Alleviation Programme. As at 2020, the total number of installed bee hives increased from 124 in 2019 to <strong>134</strong> for about <strong>60 members</strong> of Community-Based Organisations in 5 impacted communities.</li>
+                    <li><strong>Sanitation:</strong> VRA has provided over <strong>90 biofil sanitation facilities</strong> in Central Tongu, South Tongu, Shama and Manya Krobo Districts. These facilities are part of preventive measures deployed towards disease eradication in communities along the Lower Volta Basin. Construction has also begun towards the provision of about <strong>40 biofil sanitation facilities</strong> for the Kade Government Hospital in the Kade District and some communities within the Authority’s operational areas. The Authority in collaboration with the Project Maji Foundation has provided solar-powered mechanized borehole water facilities in five communities. Marginal reductions have been recorded in the bilharzia prevalence rates in endemic communities along the Volta Basin due to the provision of the potable water and sanitation facilities.</li>
+                    <li><strong>Disease Eradication:</strong> The Authority maintains collaborative efforts with the Asuogyaman District Health Management Team in the eradication of malaria, bilharzia and other water-borne diseases. These activities are guided by a Memorandum of Understanding that details plans for the eradication of Malaria with support from the Johns Hopkins University Center for Communication. The Authority also provided fumigation and disinfection services for five (5) communities and all work locations as part of efforts in the eradication of the COVID-19 virus.</li>
+                    <li><strong>Public Health:</strong> The Authority through its Schistosomiasis Control Programme undertakes a Mass Drug Administration Programme frequently in communities along the Basin. Studies by the Ghana Health Service in 2018, showed a reduction in the prevalence levels of Urinary schistosomiasis over the previous year in forty-two (42) communities within six districts namely - South, North and Central Tongu, South Dayi, Ada East and Shai Osudoku districts.</li>
+                </ul>
+                <p>The VRA has earned an excellent reputation through its diverse CSR initiatives and activities, which has at its core the intense motivation to help the society while creating and enhancing business value, and increasing power generation through diversity to support the development of the Ghanaian economy. In 2020, the Authority was adjudged <strong>“CSR Company of the Year”</strong> at the prestigious Ghana Energy Awards. Ianmatsun Global Services Limited, organizers of the Sustainability and Social Investment Awards, also conferred on the Authority, Best Company in Clean Water Provision Project and Best Company in Project Providing Sanitation Facilities in 2020.</p>
+            </div>
+        </section>
+    </main>
+    
+        <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Footer Top Section: Logo, Sub-links, Social Media -->
+            <div class="footer-top-section">
+                <div class="footer-logo-and-sublinks">
+                    <!-- Logo Section -->
+                    <a href="../../../index.html" class="footer-logo">
+                        <img class="icon" src="../../../assets/images/logos/vra_logo.png" alt="VRA Logo" />
+                        <span class="text">VOLTA RIVER AUTHORITY</span>
+                    </a>
+                    <!-- Sub-links -->
+                    <ul class="footer-sub-links">
+                        <li><a href="../../../htmls/pages/who_we_are/our_impact.html">CSR</a></li>
+                        <li><a href="../../../htmls/pages/rti/rti.html">RTI</a></li>
+                        <li><a href="https://www.vra.com/VAS.pdf" target="_blank">VAS</a></li>
+                    </ul>
+                </div>
+
+                <!-- Social Buttons -->
+                <div class="footer-social-media">
+                    <a href="https://www.facebook.com/vraghana" target="_blank" aria-label="Facebook"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.twitter.com/vraghana" target="_blank" aria-label="Twitter"><i
+                            class="fab fa-twitter"></i></a>
+                    <a href="https://www.youtube.com/channel/UC2EEOLsbn2tt9MoCaP3yUwA?feature=watch" target="_blank"
+                        aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <!-- Footer Middle Section: Link Columns -->
+            <div class="footer-middle-section">
+                <!-- Column 1: Who We Are -->
+                <div class="footer-links-column">
+                    <h3>Who We Are</h3>
+                    <ul>
+                        <li>
+                            <a href="../../../htmls/pages/who_we_are/our_profile.html">Our
+                                Profile</a>
+                        </li>
+                        <li>
+                            <a href="../../../htmls/pages/who_we_are/our_impact.html">Our
+                                Impact</a>
+                        </li>
+                        <li>
+                            <a href="../../../htmls/pages/who_we_are/our_project.html">Our
+                                Projects</a>
+                        </li>
+
+                        <li>
+                            <a href="../../../htmls/pages/who_we_are/our_team.html">Our
+                                Team
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../../../htmls/pages/who_we_are/our_reports.html">
+                                Our Reports</a>
+                        </li>
+                        <li>
+                            <a href="../../../htmls/pages/who_we_are/facts_and_figures.html">Facts
+                                and Figures</a>
+                        </li>
+                        <li>
+                            <a href="../../../htmls/pages/who_we_are/policy_statement.html">Our
+                                Policies</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: Our Companies -->
+                <div class="footer-links-column">
+                    <h3>Our Companies</h3>
+                    <ul>
+                        <li>
+                            <a href="../../../htmls/pages/companies/akosombo_details.html">Akosombo
+                                Hotels Limited</a>
+                        </li>
+                        <li>
+                            <a href="../../../htmls/pages/companies/kpong_farms.html">Kpong  </a>
+                        </li>
+                        <li>
+                            <a href="../../../htmls/pages/companies/northern_electricity_com.html">Northern
+                                Electricity Distribution Company</a>
+                        </li>
+                        <li>
+                            <a href="../../../htmls/pages/companies/volta_lake_transport.html">Volta
+                                Lake Transport Company</a>
+                        </li>
+                        <li>
+                            <a href="../../../htmls/pages/companies/vra_health_service.html">VRA
+                                Health Services</a>
+                        </li>
+                        <li>
+                            <a href="../../../htmls/pages/companies/vra_international_schools.html">VRA
+                                International Schools</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: News & Media -->
+                <div class="footer-links-column">
+                    <h3>News & Media</h3>
+                    <ul>
+                        <li>
+                            <a href="../../../htmls/pages/media/latest_news.html">Latest
+                                News</a>
+                        </li>
+                        <li>
+                            <a href="../../../htmls/pages/media/tenders.html">Tenders</a>
+                        </li>
+                        <li>
+                            <a href="https://www.vra.com/media/2024/VRA-Power-Supply.jpg" target="_blank">Press
+                                Releases</a>
+                        </li>
+                        <li>
+                            <a href="https://www.vra.com/media/2025/Solar%20Scoping%20Report%20-Loagri.pdf"
+                                target="_blank">Scoping Reports /
+                                Notices</a>
+                        </li>
+                        <li>
+                            <a href="https://www.vra.com/media/2023/VRA%20ENDS%20CONTROLLED%20SPILLAGE%20FROM%20AKOSOMBO%20DAM.jpg"
+                                target="_blank">Akosombo Spillage
+                                Controlled</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Others -->
+                <div class="footer-links-column">
+                    <h3>Others</h3>
+                    <ul>
+                        <li>
+                            <a href="../../../htmls/pages/contact/contant_details.html">Contact</a>
+                        </li>
+                        <li>
+                            <a href="https://www.vra.com/csr/CDP-Scholarship-Application-Form.pdf"
+                                target="_blank">Scholarship Forms</a>
+                        </li>
+                        <li>
+                            <a href="../../../htmls/pages/resources/newsletters.html">Newsletters</a>
+                        </li>
+
+                </div>
+            </div>
+
+            <!-- Footer Bottom Section: Copyright & Legal Links -->
+            <div class="footer-bottom-section">
+                <span class="footer-copyright">© 2025 Volta River
+                    Authority. All Rights Reserved.</span>
+            </div>
         </div>
-      </div>
-    </section>
+    </footer>
 
-    <section class="about-section" id="core-values">
-      <div class="container">
-        <h2 class="section-heading">Our Core Values</h2>
-        <div class="values-grid">
-          <div class="value-item">
-            <h4>Integrity</h4>
-            <p>Upholding the highest ethical standards in all our operations and interactions.</p>
-          </div>
-          <div class="value-item">
-            <h4>Excellence</h4>
-            <p>Striving for superior performance and continuous improvement in every aspect of our work.</p>
-          </div>
-          <div class="value-item">
-            <h4>Sustainability</h4>
-            <p>Committed to environmentally responsible practices and long-term resource management.</p>
-          </div>
-          <div class="value-item">
-            <h4>Teamwork</h4>
-            <p>Fostering collaboration, mutual respect, and shared success among our employees.</p>
-          </div>
-          <div class="value-item">
-            <h4>Customer Focus</h4>
-            <p>Dedicated to meeting the needs of our customers with reliable and efficient service.</p>
-          </div>
-          <div class="value-item">
-            <h4>Innovation</h4>
-            <p>Embracing new technologies and creative solutions to address energy challenges.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta-section" id="contact-us">
-      <div class="container">
-        <h2>Join Us in Powering the Future</h2>
-        <p>Whether you're a prospective partner, a community member, or looking to join our team, we invite you to connect with us and be part of Ghana's energy transformation.</p>
-        <a href="/contact" class="cta-button">Contact Us Today</a>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer will go here (as per your note) -->
-
-  <!-- Link to JavaScript file -->
-  <script src="../../../scripts/components/sidebar.js"></script>
-
+      <script src="../../../scripts/shared_components.js"></script>
 </body>
 </html>

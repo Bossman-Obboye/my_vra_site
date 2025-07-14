@@ -1,0 +1,147 @@
+/* Section Styling */
+.page-section {
+  padding-top: var(--spacing-xxl);
+  padding-bottom: var(--spacing-xxl);
+  background-color: var(--white);
+  border-bottom: 1px solid var(--grey); /* Subtle separator */
+}
+.page-section:last-of-type {
+  border-bottom: none;
+}
+.page-section.bg-light {
+  background-color: var(--color-light-blue-bg);
+}
+
+.page-section h2 {
+  font-size: var(--h2-font-size);
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+}
+.page-section h3 {
+  font-size: var(--h4-font-size);
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-md);
+  margin-top: var(--spacing-lg); /* Space above sub-headings */
+}
+.page-section p,
+.page-section ul {
+  font-size: var(--general-font-size);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-md);
+}
+.page-section ul {
+  list-style: none; /* Override default list-style for specific sections */
+  padding: 0;
+  margin: 0;
+}
+.page-section ul li {
+  margin-bottom: var(--spacing-sm);
+}
+.page-section ul li:last-child {
+  margin-bottom: 0;
+}
+.page-section a {
+  color: var(--primary-color);
+}
+.page-section a:hover {
+  color: var(--secondary-color);
+}
+
+/* Akosombo Lake Level Card */
+.lake-level-card {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: var(--spacing-xl);
+  border-radius: var(--border-radius-xl);
+  text-align: center;
+  max-width: 400px; /* Constrain width */
+  margin: 0 auto; /* Center the card */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.lake-level-card .level-value {
+  font-family: "DM Serif Display", serif;
+  font-size: 4rem; /* Large font for the number */
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: var(--spacing-sm);
+}
+.lake-level-card .level-units {
+  font-size: var(--h5-font-size);
+  margin-bottom: var(--spacing-md);
+}
+.lake-level-card .date-info {
+  font-size: var(--font-size-sm);
+  opacity: 0.8;
+}
+
+/* Responsive Table for Installed Capacity */
+.table-container {
+  overflow-x: auto; /* Enable horizontal scrolling for small screens */
+  margin-top: var(--spacing-xl);
+  border-radius: var(--border-radius-md);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  background-color: var(--white);
+}
+
+.capacity-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px; /* Ensure table is wide enough to scroll if needed */
+}
+
+.capacity-table th,
+.capacity-table td {
+  padding: var(--spacing-md);
+  text-align: left;
+  border-bottom: 1px solid var(--grey);
+}
+
+.capacity-table th {
+  background-color: var(--primary-color);
+  color: var(--white);
+  font-weight: 600;
+  font-size: var(--font-size-lg); /* Slightly larger font for headers */
+  white-space: nowrap; /* Prevent wrapping for headers */
+}
+
+.capacity-table tbody tr:nth-child(odd) {
+  background-color: var(--color-background-light); /* Light alternate row */
+}
+
+.capacity-table tbody tr:hover {
+  background-color: var(--color-light-blue-bg); /* Hover effect */
+}
+
+.capacity-table .total-row {
+  background-color: var(--primary-color);
+  color: var(--white);
+  font-weight: 700;
+}
+.capacity-table .total-row td {
+  border-bottom: none; /* No border for the last row */
+}
+.capacity-table .total-row td:first-child {
+  text-align: right; /* Align 'TOTAL CAPACITY' to the right */
+}
+.capacity-table .total-row td:nth-child(2) {
+  font-size: var(--h5-font-size); /* Larger font for total capacity number */
+}
+
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+  .hero-section h1 {
+    font-size: var(--h1-font-size);
+  }
+  .hero-section p {
+    font-size: var(--h5-font-size);
+  }
+  .page-section h2 {
+    font-size: var(--h2-font-size);
+  }
+  .page-section h3 {
+    font-size: var(--h3-font-size);
+  }
+}

@@ -1,0 +1,364 @@
+   /* Hero Section */
+        .hero-section {
+            position: relative;
+            background-color: var(--primary-color);
+            /* Changed from image to solid color */
+            color: var(--white);
+            text-align: center;
+            padding-top: var(--spacing-160px);
+            /* Using var(--spacing-40) from original */
+            padding-bottom: var(--spacing-160px);
+            /* Using var(--spacing-40) from original */
+            overflow: hidden;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 960px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: var(--spacing-lg);
+            padding-right: var(--spacing-lg);
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hero-section p {
+            font-size: var(--h5-font-size);
+            /* text-xl equivalent */
+            max-width: 768px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Our Identity Section */
+        .identity-section {
+            padding-top: var(--spacing-xxl);
+            /* Using var(--spacing-20) from original */
+            padding-bottom: var(--spacing-xxl);
+            /* Using var(--spacing-20) from original */
+            background-color: var(--white);
+        }
+
+        .identity-grid {
+            display: grid;
+            gap: var(--spacing-xl);
+            /* Using var(--spacing-12) from original */
+            align-items: center;
+        }
+
+        .identity-text-left {
+            text-align: center;
+        }
+
+        .identity-section h2 {
+            font-size: var(--h2-font-size);
+            /* text-4xl equivalent */
+            font-weight: 700;
+            color: var(--primary-color);
+            /* Using var(--color-blue-900) from original */
+            margin-bottom: var(--spacing-lg);
+            /* Using var(--spacing-6) from original */
+        }
+
+        .identity-section p {
+            font-size: var(--general-font-size);
+            /* text-lg equivalent */
+            color: var(--color-text-secondary);
+            /* Using var(--color-gray-600) from original */
+        }
+
+        .identity-space-y-8>div+div {
+            margin-top: var(--spacing-32px);
+            /* Using var(--spacing-8) from original */
+        }
+
+        .identity-section h3 {
+            font-size: var(--h5-font-size);
+            /* text-2xl equivalent */
+            font-weight: 700;
+            color: var(--color-text-primary-dark);
+            /* Using var(--color-blue-800) from original */
+            margin-bottom: var(--spacing-sm);
+            /* Using var(--spacing-2) from original */
+        }
+
+        /* Interactive Services & Impact Section */
+        .services-section {
+            padding-top: var(--spacing-xxl);
+            /* Using var(--spacing-20) from original */
+            padding-bottom: var(--spacing-xxl);
+            /* Using var(--spacing-20) from original */
+            background-color: var(--color-light-blue-bg);
+            /* Using var(--color-blue-50) from original */
+        }
+
+        .services-section h2 {
+            font-size: var(--h2-font-size);
+            /* text-4xl equivalent */
+            font-weight: 700;
+            color: var(--primary-color);
+            /* Using var(--color-blue-900) from original */
+            margin-bottom: var(--spacing-md);
+            /* Using var(--spacing-4) from original */
+        }
+
+        .services-section>.container>p {
+            font-size: var(--general-font-size);
+            /* text-lg equivalent */
+            color: var(--color-text-secondary);
+            /* Using var(--color-gray-600) from original */
+            max-width: 768px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: var(--spacing-xl);
+            /* Using var(--spacing-12) from original */
+        }
+
+        /* Tabs */
+        .tabs-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            /* Using var(--spacing-2) from original */
+            margin-bottom: var(--spacing-32px);
+            /* Using var(--spacing-8) from original */
+        }
+
+        .tab-btn {
+            padding: var(--spacing-12px) var(--spacing-lg);
+            /* Using var(--spacing-3) var(--spacing-6) from original */
+            border-radius: var(--border-radius-full);
+            font-weight: 600;
+            font-size: var(--general-font-size);
+            /* text-lg equivalent */
+            transition: all var(--transition-speed) var(--transition-ease);
+            border: none;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .tab-active {
+            background-color: var(--color-dark-blue-active-tab);
+            color: var(--color-white);
+        }
+
+        .tab-inactive {
+            background-color: var(--color-light-indigo-inactive-tab);
+            color: var(--color-dark-blue-active-tab);
+        }
+
+        .tab-btn:hover:not(.tab-active) {
+            background-color: var(--color-dark-blue-active-tab);
+            color: var(--color-white);
+            opacity: 0.9;
+        }
+
+        /* Tab Content */
+        .tab-content-container {
+            max-width: 896px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: var(--white);
+            padding: var(--spacing-32px);
+            /* Using var(--spacing-8) from original */
+            border-radius: var(--border-radius-2xl);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            text-align: left;
+        }
+
+        .tab-content h3 {
+            font-size: var(--h5-font-size);
+            /* text-2xl equivalent */
+            font-weight: 700;
+            color: var(--color-text-primary-dark);
+            /* Using var(--color-blue-800) from original */
+            margin-bottom: var(--spacing-md);
+            /* Using var(--spacing-4) from original */
+        }
+
+        .tab-content ul {
+            list-style: disc;
+            padding-left: 1.5rem;
+            list-style-position: inside;
+            margin-left: 0;
+            color: var(--color-text-secondary);
+            /* Using var(--color-gray-600) from original */
+        }
+
+        .tab-content ul li {
+            margin-bottom: var(--spacing-12px);
+            /* Using var(--spacing-3) from original */
+        }
+
+        .tab-content ul li:last-child {
+            margin-bottom: 0;
+        }
+
+        .tab-content p {
+            color: var(--color-text-secondary);
+            /* Using var(--color-gray-600) from original */
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* At a Glance Section */
+        .glance-section {
+            padding-top: var(--spacing-xxl);
+            /* Using var(--spacing-20) from original */
+            padding-bottom: var(--spacing-xxl);
+            /* Using var(--spacing-20) from original */
+            background-color: var(--white);
+        }
+
+        .glance-section h2 {
+            font-size: var(--h2-font-size);
+            /* text-4xl equivalent */
+            font-weight: 700;
+            color: var(--primary-color);
+            /* Using var(--color-blue-900) from original */
+            margin-bottom: var(--spacing-xl);
+            /* Using var(--spacing-12) from original */
+            text-align: center;
+        }
+
+        .glance-grid {
+            display: grid;
+            gap: var(--spacing-32px);
+            /* Using var(--spacing-8) from original */
+        }
+
+        .glance-item {
+            background-color: var(--color-light-blue-bg);
+            /* Using var(--color-blue-50) from original */
+            padding: var(--spacing-32px);
+            /* Using var(--spacing-8) from original */
+            border-radius: var(--border-radius-2xl);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            /* text-5xl equivalent */
+            font-weight: 700;
+            color: var(--color-text-primary-dark);
+            /* Using var(--color-blue-800) from original */
+        }
+
+        .stat-number-suffix {
+            font-size: 3rem;
+            /* Same size as stat-number */
+            font-weight: 700;
+            color: var(--color-text-primary-dark);
+        }
+
+        .glance-item p {
+            font-size: var(--general-font-size);
+            /* text-lg equivalent */
+            margin-top: var(--spacing-sm);
+            /* Using var(--spacing-2) from original */
+            color: var(--color-text-secondary);
+            /* Using var(--color-gray-600) from original */
+        }
+
+        /* Footer */
+        .main-footer {
+            background-color: var(--primary-color);
+            /* Using var(--color-blue-900) from original */
+            color: var(--white);
+            padding-top: var(--spacing-40px);
+            /* Using var(--spacing-10) from original */
+            padding-bottom: var(--spacing-40px);
+            /* Using var(--spacing-10) from original */
+            text-align: center;
+        }
+
+        .main-footer .container {
+            padding-left: var(--spacing-lg);
+            padding-right: var(--spacing-lg);
+        }
+
+        /* Responsive Adjustments */
+        @media (min-width: 768px) {
+
+            /* md breakpoint */
+            .hero-section h1 {
+                font-size: var(--h1-font-size);
+                /* md:text-7xl equivalent */
+            }
+
+            .hero-section p {
+                font-size: var(--h5-font-size);
+                /* md:text-2xl equivalent */
+            }
+
+            .identity-section {
+                padding-top: var(--spacing-112px);
+                /* Using var(--spacing-28) from original */
+                padding-bottom: var(--spacing-112px);
+                /* Using var(--spacing-28) from original */
+            }
+
+            .identity-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .identity-text-left {
+                text-align: left;
+            }
+
+            .identity-section h2 {
+                font-size: var(--h2-font-size);
+                /* md:text-5xl equivalent */
+            }
+
+            .services-section {
+                padding-top: var(--spacing-112px);
+                /* Using var(--spacing-28) from original */
+                padding-bottom: var(--spacing-112px);
+                /* Using var(--spacing-28) from original */
+            }
+
+            .services-section h2 {
+                font-size: var(--h2-font-size);
+                /* md:text-5xl equivalent */
+            }
+
+            .tabs-container {
+                gap: var(--spacing-md);
+                /* Using var(--spacing-4) from original */
+            }
+
+            .tab-content-container {
+                padding: var(--spacing-xl);
+                /* Using var(--spacing-12) from original */
+            }
+
+            .glance-section {
+                padding-top: var(--spacing-112px);
+                /* Using var(--spacing-28) from original */
+                padding-bottom: var(--spacing-112px);
+                /* Using var(--spacing-28) from original */
+            }
+
+            .glance-section h2 {
+                font-size: var(--h2-font-size);
+                /* md:text-5xl equivalent */
+            }
+
+            .glance-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }

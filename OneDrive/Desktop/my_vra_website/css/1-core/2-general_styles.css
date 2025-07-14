@@ -1,7 +1,7 @@
 */* RESET MARGINS, PADDINTS AND BORDERS */
  *::before, *::after {
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
     box-sizing: border-box;
 }
 
@@ -93,5 +93,13 @@ a:hover, a:focus {
 img { 
     max-width: 100%;
     display: block;
+}
+
+.container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-lg);
+  padding-right: var(--spacing-lg);
 }
 

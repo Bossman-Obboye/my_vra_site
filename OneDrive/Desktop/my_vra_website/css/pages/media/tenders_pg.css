@@ -1,0 +1,103 @@
+
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 250px;
+        }
+       
+
+        /* Section Styling */
+        .page-section {
+            padding-top: var(--spacing-xxl);
+            padding-bottom: var(--spacing-xxl);
+            background-color: var(--white);
+            border-bottom: 1px solid var(--grey); /* Subtle separator */
+        }
+        .page-section:last-of-type {
+            border-bottom: none;
+        }
+        .page-section.bg-light {
+            background-color: var(--color-light-blue-bg);
+        }
+
+        .page-section h2 {
+            font-size: var(--h2-font-size);
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-xl);
+            text-align: center;
+        }
+        .page-section p {
+            font-size: var(--general-font-size);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        /* Tenders List Styling */
+        .tenders-list {
+            list-style: none;
+            padding: 0;
+            margin-top: var(--spacing-xl);
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-md); /* Smaller gap for list items */
+        }
+        @media (min-width: 640px) {
+            .tenders-list {
+                grid-template-columns: repeat(1, 1fr); /* Keep single column for better readability of long titles */
+            }
+        }
+
+        .tender-item a {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md); /* Increased gap for icon and text */
+            padding: var(--spacing-lg); /* More padding for a larger clickable area */
+            background-color: var(--white);
+            border-radius: var(--border-radius-md);
+            color: var(--primary-color);
+            font-weight: 500;
+            transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            height: 100%; /* Ensure cards are same height in grid */
+        }
+        .tender-item a:hover {
+            background-color: var(--color-light-blue-bg);
+            color: var(--color-dark-blue-active-tab);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .tender-item .icon {
+            font-size: 2.2rem; /* Larger icon size */
+            line-height: 1;
+            flex-shrink: 0; /* Prevent icon from shrinking */
+        }
+        .tender-item .text-content {
+            flex-grow: 1; /* Allow text to take available space */
+        }
+        .tender-item .tender-title {
+            font-size: var(--h5-font-size); /* Larger font for titles */
+            font-weight: 600;
+            color: var(--primary-color);
+            display: block; /* Ensure title is block for margin */
+            margin-bottom: var(--spacing-xs);
+        }
+        .tender-item .tender-description {
+            font-size: var(--general-font-size);
+            color: var(--color-text-secondary);
+            display: block;
+        }
+
+       
+        /* Responsive Adjustments */
+        @media (min-width: 768px) {
+            .hero-section h1 {
+                font-size: var(--h1-font-size);
+            }
+            .hero-section p {
+                font-size: var(--h5-font-size);
+            }
+            .page-section h2 {
+                font-size: var(--h2-font-size);
+            }
+        }

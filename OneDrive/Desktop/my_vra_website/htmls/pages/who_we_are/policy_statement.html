@@ -1,555 +1,908 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - Volta River Authority</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Privacy Policy - Volta River Authority</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        /* RESET MARGINS, PADDING, AND BORDERS */
-        *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        /* SITE SETTINGS VARIABLES */
-        :root {
-            /*-- COLORS --*/
-            --white: rgb(255, 255, 255);
-            --black: rgb(0, 0, 0);
-            --grey: rgb(190, 200, 207);
-            --primary-color: rgb(0, 67, 112);
-            --secondary-color: rgb(22, 154, 242);
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-            /* Custom colors for SPA, mapped or retained */
-            --color-dark-blue-active-tab: rgb(30, 58, 138); /* 1E3A8A */
-            --color-light-indigo-inactive-tab: rgb(224, 231, 255); /* E0E7FF */
-            --color-background-light: rgb(253, 253, 251); /* FDFDFB */
-            --color-text-secondary: rgb(113, 128, 150); /* 718096 for gray-600 */
-            --color-text-primary-dark: rgb(43, 108, 176); /* 2B6CB0 for blue-800 */
-            --color-light-blue-bg: rgb(235, 248, 255); /* EBF8FF for blue-50 equivalent */
+    <!-- Inter font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet" />
 
+    <!-- Your site styles -->
+    <link rel="stylesheet" href="../../../css/styles.css" />
+        <link rel="stylesheet"
+            href="../../../css/pages/who_we_are/privacy_statements.css">
 
-            /*-- TYPOGRAPHY --*/
-            --default-font-family: "Open Sans", Roboto, Roboto-fallback;
-            --general-font-size: 16px;
-            --font-size-sm: 14px;
-            --font-size-xs: 12px;
-            --font-size-min: 8px;
-            --general-line-height: 1.6;
+    </head>
+    <body>
 
-            /* Heading Font Sizes */
-            --h1-font-size: 48px;
-            --h2-font-size: 40px ;
-            --h3-font-size: 32px;
-            --h4-font-size: 28px ;
-            --h5-font-size: 24px;
-            --h6-font-size: 20px;
+        <!-- HEADER SECTION -->
+        <header>
+            <nav class="navbar">
+                <div class="navbar-container">
+                    <div class="navbar-left">
+                        <!-- Hamburger Menu -->
+                        <button id="menu-toggle" class="menu-toggle">
+                            <div class="hamburger-icon" id="hamburger">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </button>
 
-            /* Heading Line Heights */
-            --h1-line-height: 1.2;
-            --h2-line-height: 1.3;
-            --h3-line-height: 1.3;
-            --h4-line-height: 1.4;
-            --h5-line-height: 1.4;
-            --h6-line-height: 1.5;
+                        <!-- VRA Logo -->
+                        <a href="../../../index.html" class="vra-logo">
+                            <img class="icon"
+                                src="../../../assets/images/logos/vra_logo.png"
+                                alt="Logo">
+                            <span class="text">VOLTA RIVER AUTHORITY</span>
+                        </a>
+                    </div>
 
-            /* — SPACING — (Mapped to user's provided values) */
-            --spacing-xs: 4px;
-            --spacing-sm: 8px;
-            --spacing-md: 16px;
-            --spacing-lg: 24px;
-            --spacing-xl: 48px;
-            --spacing-xxl: 80px;
-            --spacing-xxxl: 120px; /* From previous turn */
+                    <!-- NAVBAR Headline -->
+                    <div class="navbar-headline">
+                        <span>Our Vision</span>
+                        <span class="separator">|</span>
+                        <a
+                            href="../../../htmls/pages/who_we_are/our_profile.html">To
+                            be a
+                            Model of Excellence for Power Utilities in
+                            Africa.</a>
+                    </div>
+                </div>
 
-            /* Custom spacing values from SPA that don't directly map to user's provided ones, using rem for consistency */
-            --spacing-12px: 0.75rem; /* For original spacing-3 */
-            --spacing-32px: 2rem;    /* For original spacing-8 */
-            --spacing-40px: 2.5rem;  /* For original spacing-10 */
-            --spacing-112px: 7rem;   /* For original spacing-28 */
-            --spacing-160px: 10rem;  /* For original spacing-40 */
+                <!-- DRAWER -->
+                <div id="drawer" class="drawer">
+                    <!-- DRAWER HEADER -->
+                    <div class="drawer-header">
+                        <button id="close-menu" class="close-drawer-btn">
+                            <i class="fas fa-times icon"></i>
+                        </button>
+                    </div>
 
+                    <!-- DRAWER CONTENT -->
+                    <div class="drawer-content">
+                        <div class="main-drawer-menus-wrapper">
+                            <ul>
+                                <li><a href="#" class="drawer-menu-item"
+                                        data-target="who-we-are">Who We Are <i
+                                            class="fas fa-chevron-right arrow-icon"></i></a></li>
+                                <li><a href="#" class="drawer-menu-item"
+                                        data-target="what-we-do">What We Do <i
+                                            class="fas fa-chevron-right arrow-icon"></i></a></li>
+                                <li><a href="#" class="drawer-menu-item active"
+                                        data-target="our-companies">Our
+                                        Companies <i
+                                            class="fas fa-chevron-right arrow-icon"></i></a></li>
+                                <li><a href="#" class="drawer-menu-item"
+                                        data-target="resources">Resources <i
+                                            class="fas fa-chevron-right arrow-icon"></i></a></li>
+                                <li><a href="#" class="drawer-menu-item"
+                                        data-target="news">News & Media<i
+                                            class="fas fa-chevron-right arrow-icon"></i></a></li>
+                                <li><a href="#" class="drawer-menu-item"
+                                        data-target="stakeholders">Our
+                                        Stakeholders<i
+                                            class="fas fa-chevron-right arrow-icon"></i></a></li>
+                                <li><a href="#" class="drawer-menu-item"
+                                        data-target="contact-us">Contact Us
+                                        <i
+                                            class="fas fa-chevron-right arrow-icon"></i></a></li>
+                                <li><a href="#" class="drawer-menu-item"
+                                        data-target="videos">Videos About VRA
+                                        <i
+                                            class="fas fa-chevron-right arrow-icon"></i></a></li>
+                            </ul>
+                        </div>
 
-            /* — BORDER RADIUS (PX) — */
-            --border-radius-sm: 4px;
-            --border-radius-md: 8px;
-            --border-radius-lg: 12px;
-            --border-radius-xl: 16px;
-            --border-radius-xxl: 20px;
-            --border-radius-max: 40px;
-            --border-radius-circle: 50%;
+                        <div class="drawer-sub-menu-section"
+                            id="sub-menu-content">
+                            <ul id="our-companies-sub-menu">
+                                <li><a
+                                        href="../../../htmls/pages/companies/akosombo_details.html">Akosombo
+                                        Hotels Limited</a></li>
+                                <li><a
+                                        href="../../../htmls/pages/companies/kpong_farms.html">Kpong
+                                         </a></li>
+                                <li><a
+                                        href="../../../htmls/pages/companies/northern_electricity_com.html">Northern
+                                        Electricity Distribution
+                                        Company</a></li>
+                                <li><a
+                                        href="../../../htmls/pages/companies/volta_lake_transport.html">Volta
+                                        Lake Transport Company</a></li>
+                                <li><a
+                                        href="../../../htmls/pages/companies/vra_health_service.html">VRA
+                                        Health Services</a></li>
+                                <li><a
+                                        href="../../../htmls/pages/companies/vra_international_schools.html">VRA
+                                        International Schools</a></li>
+                            </ul>
+                            <!-- Other sub-menu contents can be hidden and shown based on active menu item -->
+                            <ul id="who-we-are-sub-menu" style="display: none;">
+                                <li><a
+                                        href="../../../htmls/pages/who_we_are/our_profile.html">Our
+                                        Profile</a></li>
+                                <li><a
+                                        href="../../../htmls/pages/who_we_are/our_impact.html">Our
+                                        Impact</a></li>
+                                <li><a
+                                        href="../../../htmls/pages/who_we_are/our_team.html">Our
+                                        Team Members</a></li>
+                                <li><a
+                                        href="../../../htmls/pages/who_we_are/facts_and_figures.html"
+                                        target="_blank">Facts &
+                                        Figures about
+                                        Our Power Generation</a></li>
+                                <!-- <li><a href="../../../htmls/pages/who_we_are/policy_statement.html">Our Policies</a></li> -->
+                                <li><a
+                                        href="../../../htmls/pages/who_we_are/our_reports.html">Our
+                                        Reports </a></li>
+                                <li><a
+                                        href="../../../htmls/pages/about_us/visiting_our_plants.html">Visiting
+                                        Our Plants</a></li>
 
-            /* Custom border radius from SPA */
-            --border-radius-2xl: 1rem; /* 16px, maps to var(--border-radius-xl) */
-            --border-radius-full: 9999px; /* Retain for full circle */
+                            </ul>
 
-            /* Transitions */
-            --transition-speed: 0.3s;
-            --transition-ease: ease-in-out;
-        }
+                            <ul id="contact-us-sub-menu" style="display: none;">
 
-        /* SET CONSISTENT HTML */
-        html {
-            font-size: 100%;
-            scroll-behavior: smooth;
-        }
+                                <li><a
+                                        href="../../../htmls/pages/contact/contant_details.html"
+                                        target="_blank">Contact
+                                        Details</a></li>
+                                <li><a
+                                        href="../../../htmls/pages/contact/business_relation.html"
+                                        target="_blank">Business
+                                        Relations</a></li>
+                                <li><a
+                                        href="https://fa-ewye-saasfaprod1.fa.ocs.oraclecloud.com/fscmUI/redwood/supplier-registration/register-supplier/register-supplier-verification?id=FmU2Qw9F7t8MAOaxcq9VOvWYIJlJkTWJ9j2mvzfrlu2pl7ED9u8s1POLUzLqz40n"
+                                        target="_blank">Vendor
+                                        Registration</a></li>
+                                <li><a href="https://www.vra.com/VAS.pdf"
+                                        target="_blank">Our Value Added Services
+                                        (VAS)</a></li>
+                            </ul>
 
-        /* SET BODY BASELINE */
-        body {
-            min-height: 100vh;
-            line-height: var(--general-line-height);
-            background-color: var(--white);
-            color: var(--black);
-            text-rendering: optimizeLegibility;
-            font-family: var(--default-font-family); /* Apply default font family */
-            font-size: var(--general-font-size); /* Apply general font size */
-        }
+                            <ul id="what-we-do-sub-menu" style="display: none;">
+                                <li><a
+                                        href="../../../htmls/pages/what_we_do/hydro_generation.html">Hydro
+                                        Generation </a></li>
+                                <li><a
+                                        href="../../../htmls/pages/what_we_do/thermal_generation.html">Thermal
+                                        Generation</a></li>
+                                <li><a
+                                        href="../../../htmls/pages/what_we_do/renewable_energy.html">Renewable
+                                        Energy Generation</a></li>
+                                <li><a
+                                        href="../../../htmls/pages/what_we_do/non_power_activities.html">Non
+                                        Power Activities </a></li>
+                            </ul>
 
-        /* SETTING DEFAULT STYLES */
-        button, select, input, textarea {
-            font-family: inherit;
-            font-size: inherit;
-        }
+                            <ul id="resources-sub-menu" style="display: none;">
+                                <li><a
+                                        href="../../../htmls/pages/resources/newsletters.html">Newsletters
+                                    </a></li>
+                                <li><a
+                                        href="../../../htmls/pages/resources/vra_business_insight.html">VRA
+                                        Business Insights</a></li>
+                                <li><a
+                                        href="https://forms.office.com/r/TNZBmt6BtQ"
+                                        target="_blank">Vendor Registration &
+                                        Guidelines</a></li>
+                                <li><a
+                                        href="https://www.vra.com/resources/VRA%20Code%20of%20Ethics.pdf"
+                                        target="_blank">VRA
+                                        Code of
+                                        Ethics</a></li>
+                                <li><a
+                                        href="http://www.vra.com/resources/others/lcpd.pdf"
+                                        target="_blank">VRA Local Content
+                                        Policies</a></li>
+                                <li><a
+                                        href="https://www.vra.com/media/2020/Corporate%20Environmental%20Policy%20Statement.pdf"
+                                        target="_blank">VRA Corporate
+                                        Environmental Policy Statement</a></li>
 
-        /* LIST DEFAULT SETTINGS */
-        ul, ol {
-            list-style: none;
-        }
+                                <li><a
+                                        href="http://www.vra.com/resources/others/Implementation%20Guidelines%20for%20Framework%20for%20Aquaculture%20Development%20on%20the%20Volta%20Lake.pdf"
+                                        target="_blank">Download the Framework
+                                        for Acquaculture Development on the
+                                        Volter Lake</a></li>
+                                <li><a
+                                        href="https://youtu.be/FGuWqkwdYjs?si=uV6_kd5TLGDJVoLz"
+                                        target="_blank">Documentary:
+                                        Kaleo Solar Power Plant (Phase
+                                        II)</a></li>
+                                <li><a
+                                        href="https://www.youtube.com/embed/XVT5tutY5FI?si=lmRWMHXjvI512cxi"
+                                        target="_blank">Documentary: Anwomaso
+                                        Thermal Power Station</a></li>
+                                <li><a
+                                        href="https://youtu.be/iPLFtbSZSOo?si=vSgECPacTSXkTMfB"
+                                        target="_blank">Documentary:
+                                        Oral
+                                        History of the Akosombo Dam</a></li>
+                            </ul>
 
-        /* PROVIDING GENERAL STYLES TO HEADINGS */
-        h1, .h1 {
-            font-size: var(--h1-font-size);
-            line-height: var(--h1-line-height);
-            margin-bottom: var(--spacing-md);
-            font-family: var(--font-family-display); /* Specific font for display headings */
-        }
+                            <ul id="stakeholders-sub-menu"
+                                style="display: none;">
+                                <li><a href="https://www.energymin.gov.gh/"
+                                        target="_blank">Ministry of
+                                        Energy</a></li>
+                                <li><a href="https://gridcogh.com/"
+                                        target="_blank">GRIDCo</a></li>
+                                <li><a href="http://www.ecgonline.info/"
+                                        target="_blank">Electricty Company Ghana
+                                        Limited</a></li>
+                                <li><a href="https://www.purc.com.gh/"
+                                        target="_blank">Public Utilities
+                                        Regulatory Commission</a></li>
+                                <li><a href="https://www.energycom.gov.gh/"
+                                        target="_blank">Energy
+                                        Commission</a></li>
+                                <li><a href="https://siga.gov.gh/"
+                                        target="_blank">State Interests and
+                                        Governance Authority</a></li>
+                                <li><a
+                                        href="https://www.unglobalcompactghana.com/"
+                                        target="_blank">Global Compact Network
+                                        Ghana</a></li>
+                                <li><a href="https://efghana.org/"
+                                        target="_blank">Energy
+                                        Foundation</a></li>
+                                <li><a href="https://buipower.com/"
+                                        target="_blank">Abui Power
+                                        Authority</a></li>
+                                <li><a href="https://www.anglogoldashanti.com/"
+                                        target="_blank">Anglo Gold
+                                        Ashanti</a></li>
+                                <li><a href="https://www.gnpcghana.com/"
+                                        target="_blank">Ghana National Petroleum
+                                        Corporation</a></li>
+                                <li><a
+                                        href="https://apua-asea.org/en/updea/ang/"
+                                        target="_blank">Apua Asea</a></li>
+                                <li><a href="https://www.valcotema.com/"
+                                        target="_blank">VALCO</a></li>
+                                <li><a href="https://www.ecowapp.org/en"
+                                        target="_blank">West Africa Power
+                                        Pool</a></li>
+                                <li><a href="https://www.epa.gov.gh/new/"
+                                        target="_blank">Environmental Protection
+                                        Agency</a></li>
+                                <li><a
+                                        href="https://www.hydropower.org/who-we-are/about-iha"
+                                        target="_blank"></a>International
+                                    HydroPower Association</li>
+                                <li><a href="https://cfi.co/"
+                                        target="_blank">CFI</a></li>
 
-        h2, .h2 {
-            font-size: var(--h2-font-size);
-            line-height: var(--h2-line-height);
-            margin-bottom: var(--spacing-md);
-            font-family: var(--font-family-display); /* Specific font for display headings */
-        }
+                            </ul>
 
-        h3, .h3 {
-            font-size: var(--h3-font-size);
-            line-height: var(--h3-line-height);
-            margin-bottom: var(--spacing-sm);
-            font-family: var(--font-family-display); /* Specific font for display headings */
-        }
+                            <ul id="videos-sub-menu" style="display: none;">
+                                <li><a
+                                        href="https://youtu.be/dGcOySJNHKo?si=D7LUAAnOV83vuyXt"
+                                        target="_blank">Profile of
+                                        the Volta
+                                        River Authority</a></li>
+                                <li><a
+                                        href="https://youtu.be/CmWJOkHA4BU?si=zHqr6I92zNCUesn6"
+                                        target="_blank">VRA @ 57 -
+                                        Interview
+                                        with Emmanuel Antwi-Darkwa, Chief
+                                        Executive, VRA</a></li>
+                                <li><a
+                                        href="https://youtu.be/zUYv5UJ8O2Q?si=gFoTncW9bE8yHY9i"
+                                        target="_blank">ORAL HISTORY
+                                        OF THE
+                                        AKOSOMBO DAM</a></li>
+                                <li><a
+                                        href="https://youtu.be/rH4tthChAzY?si=9R0nJRAZc7xmXYec"
+                                        target="_blank">Akosombo Dam
+                                        Eastern
+                                        Region Ghana 3D Photogrammetry</a></li>
+                                <li><a
+                                        href="https://youtu.be/79n-mgnRpB0?si=x0IzsGFtZmQHJ6hk"
+                                        target="_blank">Uncover the
+                                        Volta River
+                                        Authority (VRA) AKOSOMBO DAM on VOLTA
+                                        RIVER - Akosombo hydroelectric
+                                        plant!</a></li>
+                                <li><a
+                                        href="https://youtu.be/-W0jKHww9ns?si=eg_wvyBgCasYpMZU"
+                                        target="_blank">AEFTV 2018
+                                        Interview;
+                                        Emmanuel Antwi Darkwa, CEO, Volta River
+                                        Authority (VRA)</a></li>
+                                <li><a
+                                        href="https://youtu.be/B5BXOOotgl0?si=rEtFbeQL3mX-stiW"
+                                        target="_blank">SHOCKING -
+                                        The Truth
+                                        About Ghana’s Biggest Projects Exposed
+                                        $250M Bank of Ghana & VRA
+                                        Project</a></li>
+                                <li><a
+                                        href="https://youtu.be/P3dh-CIiPvk?si=ZMUEKBZh9RgO5DZu"
+                                        target="_blank">We can't
+                                        recycle
+                                        Akosombo water to generate electricity -
+                                        VRA Boss</a></li>
+                                <li><a
+                                        href="https://youtu.be/ZJfQV87GvDI?si=acYTNpFQNljrmFjF"
+                                        target="_blank">Visit to
+                                        Volta River
+                                        Authority & Akosombo Dam🇬🇭</a></li>
+                            </ul>
 
-        h4, .h4 {
-            font-size: var(--h4-font-size);
-            line-height: var(--h4-line-height);
-            margin-bottom: var(--spacing-sm);
-            font-family: var(--font-family-display); /* Specific font for display headings */
-        }
+                            <ul id="news-sub-menu" style="display: none;">
+                                <li><a
+                                        href="../../../htmls/pages/media/latest_news.html">Latest
+                                        News</a></li>
+                                <li><a
+                                        href="../../../htmls/pages/media/tenders.html">Tenders</a></li>
+                                <li><a
+                                        href="https://www.vra.com/media/2024/VRA-Power-Supply.jpg"
+                                        target="_blank">Press
+                                        Releases</a></li>
+                                <li><a
+                                        href="https://www.vra.com/media/2025/Solar%20Scoping%20Report%20-Loagri.pdf"
+                                        target="_blank">Scoping
+                                        Reports /
+                                        Notices</a></li>
+                                <li><a
+                                        href="https://www.vra.com/media/2023/VRA%20ENDS%20CONTROLLED%20SPILLAGE%20FROM%20AKOSOMBO%20DAM.jpg"
+                                        target="_blank">Akosombo
+                                        Spillage
+                                        Controlled</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
 
-        h5, .h5 {
-            font-size: var(--h5-font-size);
-            line-height: var(--h5-line-height);
-            margin-bottom: var(--spacing-sm);
-            font-family: var(--font-family-display); /* Specific font for display headings */
-        }
-
-        h6, .h6 {
-            font-size: var(--h6-font-size);
-            line-height: var(--h6-line-height);
-            margin-bottom: var(--spacing-sm);
-            font-weight: normal;
-            color: #555; /* Specific color for h6 */
-            font-family: var(--font-family-display); /* Specific font for display headings */
-        }
-
-        /* APPLYING DEFAULT STYLE TO LINKS */
-        a {
-            color: var(--primary-color);
-            text-decoration: none;
-            transition: color var(--transition-speed) var(--transition-ease);
-        }
-
-        a:hover, a:focus {
-            color: var(--secondary-color);
-            outline: none;
-        }
-
-        /* IMAGES */
-        img { 
-            max-width: 100%;
-            display: block;
-        }
-
-        /* Button Styles (integrated from your settings) */
-        .white-btn {
-            padding: 15px 30px;
-            background-color: var(--white);
-            color: var(--primary-color);
-            font-size: var(--general-font-size);
-            transition: background-color 0.3s ease;
-            border-radius: var(--border-radius-max);
-            border: none; /* Ensure no default button border */
-            cursor: pointer;
-        }
-        .white-btn:hover, .white-btn:focus {
-            color: var(--primary-color);
-            background-color: var(--secondary-color);
-        }
-
-        .primary-btn {
-            padding: 15px 30px;
-            background-color: var(--primary-color);
-            color: var(--white); 
-            font-size: var(--general-font-size);
-            transition: background-color 0.3s ease;
-            border-radius: var(--border-radius-max);
-            border: none; /* Ensure no default button border */
-            cursor: pointer;
-        }
-        .primary-btn:hover, .primary-btn:focus {
-            color: var(--primary-color);
-            background-color: var(--secondary-color);
-        }
-
-        .outlined-btn {
-            padding: var(--spacing-sm) var(--spacing-md);
-            background-color: transparent; 
-            color: var(--primary-color);
-            font-size: var(--general-font-size);
-            border: 2px solid var(--primary-color);
-            border-radius: var(--border-radius-max);
-            transition: background-color 0.3s ease, color 0.3s ease;
-            cursor: pointer;
-        }
-        .outlined-btn:hover, .outlined-btn:focus {
-            color: var(--primary-color);
-            background-color: var(--secondary-color);
-            border: 2px solid var(--secondary-color);
-        }
-
-
-        /* SPA Specific Styles (Adjusted to use new variables) */
-        .container {
-            max-width: 960px; /* Narrower for readability of long text */
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: var(--spacing-lg);
-            padding-right: var(--spacing-lg);
-        }
-
-        /* Hero Section */
-        .hero-section {
-            position: relative;
-            background-color: var(--primary-color); /* Solid color background */
-            color: var(--white);
-            text-align: center;
-            padding-top: var(--spacing-160px);
-            padding-bottom: var(--spacing-160px);
-            overflow: hidden;
-            min-height: 250px; /* Slightly smaller hero */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            max-width: 768px;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: var(--spacing-lg);
-            padding-right: var(--spacing-lg);
-        }
-        .hero-section h1 {
-            font-size: var(--h1-font-size);
-            font-weight: 700;
-            margin-bottom: var(--spacing-md);
-        }
-        .hero-section p {
-            font-size: var(--h5-font-size);
-            max-width: 640px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Section Styling */
-        .policy-section {
-            padding-top: var(--spacing-xxl);
-            padding-bottom: var(--spacing-xxl);
-            background-color: var(--white);
-            border-bottom: 1px solid var(--grey); /* Subtle separator */
-        }
-        .policy-section:last-of-type {
-            border-bottom: none;
-        }
-        .policy-section.bg-light {
-            background-color: var(--color-light-blue-bg);
-        }
-
-        .policy-section h2 {
-            font-size: var(--h2-font-size);
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: var(--spacing-xl);
-            text-align: center;
-        }
-        .policy-section h3 {
-            font-size: var(--h4-font-size);
-            font-weight: 600;
-            color: var(--primary-color);
-            margin-bottom: var(--spacing-md);
-            margin-top: var(--spacing-lg); /* Space above sub-headings */
-        }
-        .policy-section p, .policy-section ul, .policy-section ol {
-            font-size: var(--general-font-size);
-            color: var(--color-text-secondary);
-            margin-bottom: var(--spacing-md);
-        }
-        .policy-section ul, .policy-section ol {
-            padding-left: var(--spacing-md); /* Indent lists */
-            list-style-type: disc;
-        }
-        .policy-section ol {
-            list-style-type: decimal;
-        }
-        .policy-section ul li, .policy-section ol li {
-            margin-bottom: var(--spacing-sm);
-        }
-        .policy-section ul li:last-child, .policy-section ol li:last-child {
-            margin-bottom: 0;
-        }
-        .policy-section a {
-            color: var(--primary-color);
-        }
-        .policy-section a:hover {
-            color: var(--secondary-color);
-        }
-
-        /* Effective Date specific style */
-        .effective-date {
-            text-align: center;
-            font-size: var(--font-size-sm);
-            color: var(--color-text-secondary);
-            margin-top: var(--spacing-xl);
-            margin-bottom: var(--spacing-lg);
-        }
-
-        /* Footer */
-        .main-footer {
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding-top: var(--spacing-40px);
-            padding-bottom: var(--spacing-40px);
-            text-align: center;
-        }
-        .main-footer .container {
-            padding-left: var(--spacing-lg);
-            padding-right: var(--spacing-lg);
-        }
-
-        /* Responsive Adjustments */
-        @media (min-width: 768px) {
-            .hero-section h1 {
-                font-size: var(--h1-font-size);
-            }
-            .hero-section p {
-                font-size: var(--h5-font-size);
-            }
-            .policy-section h2 {
-                font-size: var(--h2-font-size);
-            }
-            .policy-section h3 {
-                font-size: var(--h3-font-size);
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <header class="hero-section">
-        <div class="hero-content">
-            <h1>Privacy Policy</h1>
-            <p>Your privacy is paramount. This policy outlines how the Volta River Authority collects, uses, protects, and discloses your personal information.</p>
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1>Privacy Policy</h1>
+                <p>Your privacy is paramount. This policy outlines how the Volta
+                    River Authority collects, uses, protects, and discloses your
+                    personal information.</p>
+            </div>
         </div>
-    </header>
 
-    <main>
-        <section id="introduction" class="policy-section">
-            <div class="container">
-                <h2>Our Commitment to Your Privacy</h2>
-                <p>The Volta River Authority (VRA) is committed to protecting the privacy and security of the personal data we collect and process. This Privacy Policy explains our practices regarding the collection, use, and disclosure of your information through our various services and interactions, in compliance with the Data Protection Act, 2012 (Act 843) of Ghana and other applicable laws.</p>
-                <p>By interacting with VRA, you consent to the practices described in this policy. We encourage you to read this Privacy Policy carefully to understand how we handle your personal data.</p>
-            </div>
-        </section>
+        <main>
+            <section id="introduction" class="policy-section">
+                <div class="container">
+                    <h2>Our Commitment to Your Privacy</h2>
+                    <p>The Volta River Authority (VRA) is committed to
+                        protecting the privacy and security of the personal data
+                        we collect and process. This Privacy Policy explains our
+                        practices regarding the collection, use, and disclosure
+                        of your information through our various services and
+                        interactions, in compliance with the Data Protection
+                        Act, 2012 (Act 843) of Ghana and other applicable
+                        laws.</p>
+                    <p>By interacting with VRA, you consent to the practices
+                        described in this policy. We encourage you to read this
+                        Privacy Policy carefully to understand how we handle
+                        your personal data.</p>
+                </div>
+            </section>
 
-        <section id="information-collection" class="policy-section bg-light">
-            <div class="container">
-                <h2>Information We Collect</h2>
-                <p>We collect various types of information to provide and improve our services, manage our operations, and fulfill our legal and regulatory obligations. The information we collect falls into two main categories:</p>
+            <section id="information-collection"
+                class="policy-section bg-light">
+                <div class="container">
+                    <h2>Information We Collect</h2>
+                    <p>We collect various types of information to provide and
+                        improve our services, manage our operations, and fulfill
+                        our legal and regulatory obligations. The information we
+                        collect falls into two main categories:</p>
 
-                <h3>1. Personal Data</h3>
-                <p>This refers to information that can be used to identify you directly or indirectly. Depending on your interaction with VRA (e.g., as a customer, employee, partner, or website visitor), this may include:</p>
-                <ul>
-                    <li><strong>Contact Information:</strong> Name, address, email address, phone number.</li>
-                    <li><strong>Identification Information:</strong> National ID, passport details, date of birth.</li>
-                    <li><strong>Financial Information:</strong> Bank account details for payments or billing, credit history (where relevant for service provision).</li>
-                    <li><strong>Utility Service Data:</strong> Meter numbers, consumption data (electricity, water where applicable), service history, billing records.</li>
-                    <li><strong>Employment Information:</strong> For job applicants or employees, this includes resumes, work history, educational background, and payroll information.</li>
-                    <li><strong>Communications Data:</strong> Records of your interactions with us, including calls, emails, and feedback.</li>
-                </ul>
+                    <h3>1. Personal Data</h3>
+                    <p>This refers to information that can be used to identify
+                        you directly or indirectly. Depending on your
+                        interaction with VRA (e.g., as a customer, employee,
+                        partner, or website visitor), this may include:</p>
+                    <ul>
+                        <li><strong>Contact Information:</strong> Name, address,
+                            email address, phone number.</li>
+                        <li><strong>Identification Information:</strong>
+                            National ID, passport details, date of birth.</li>
+                        <li><strong>Financial Information:</strong> Bank account
+                            details for payments or billing, credit history
+                            (where relevant for service provision).</li>
+                        <li><strong>Utility Service Data:</strong> Meter
+                            numbers, consumption data (electricity, water where
+                            applicable), service history, billing records.</li>
+                        <li><strong>Employment Information:</strong> For job
+                            applicants or employees, this includes resumes, work
+                            history, educational background, and payroll
+                            information.</li>
+                        <li><strong>Communications Data:</strong> Records of
+                            your interactions with us, including calls, emails,
+                            and feedback.</li>
+                    </ul>
 
-                <h3>2. Non-Personal Data (Usage Data)</h3>
-                <p>This includes information that cannot be used to identify you personally but is related to your use of our website and services. This may include:</p>
-                <ul>
-                    <li><strong>Device Information:</strong> IP address, browser type, operating system.</li>
-                    <li><strong>Usage Patterns:</strong> Pages visited, time spent on pages, navigation paths, referring websites.</li>
-                    <li><strong>Aggregated Data:</strong> Statistical or demographic data which we may derive from your personal data but which is anonymized and cannot identify you.</li>
-                </ul>
-            </div>
-        </section>
+                    <h3>2. Non-Personal Data (Usage Data)</h3>
+                    <p>This includes information that cannot be used to identify
+                        you personally but is related to your use of our website
+                        and services. This may include:</p>
+                    <ul>
+                        <li><strong>Device Information:</strong> IP address,
+                            browser type, operating system.</li>
+                        <li><strong>Usage Patterns:</strong> Pages visited, time
+                            spent on pages, navigation paths, referring
+                            websites.</li>
+                        <li><strong>Aggregated Data:</strong> Statistical or
+                            demographic data which we may derive from your
+                            personal data but which is anonymized and cannot
+                            identify you.</li>
+                    </ul>
+                </div>
+            </section>
 
-        <section id="information-usage" class="policy-section">
-            <div class="container">
-                <h2>How We Use Your Information</h2>
-                <p>VRA uses the collected information for various purposes, primarily to fulfill our mandate and provide efficient services:</p>
-                <ul>
-                    <li><strong>Service Provision:</strong> To provide, operate, maintain, and manage electricity generation and transmission services.</li>
-                    <li><strong>Billing and Payments:</strong> To process payments, manage billing cycles, and provide financial statements.</li>
-                    <li><strong>Customer Support:</strong> To respond to inquiries, complaints, and service requests.</li>
-                    <li><strong>Operations Management:</strong> To monitor and optimize our infrastructure, manage outages, and ensure reliability.</li>
-                    <li><strong>Safety and Security:</strong> To maintain the security of our operations, facilities, and systems, and to prevent fraud.</li>
-                    <li><strong>Compliance and Legal Obligations:</strong> To comply with legal, regulatory, and audit requirements (e.g., Data Protection Act 2012, energy sector regulations).</li>
-                    <li><strong>Internal Business Purposes:</strong> For data analysis, research, auditing, developing new services, improving our website, and identifying usage trends.</li>
-                    <li><strong>Communication:</strong> To send you service announcements, administrative messages, updates, and other relevant information.</li>
-                    <li><strong>Employment and HR:</strong> For recruitment, payroll, employee benefits, and managing employee relations.</li>
-                </ul>
-                <p>We process your personal data based on your consent, to fulfill contractual obligations, for compliance with legal obligations, or where we have a legitimate interest to do so.</p>
-            </div>
-        </section>
+            <section id="information-usage" class="policy-section">
+                <div class="container">
+                    <h2>How We Use Your Information</h2>
+                    <p>VRA uses the collected information for various purposes,
+                        primarily to fulfill our mandate and provide efficient
+                        services:</p>
+                    <ul>
+                        <li><strong>Service Provision:</strong> To provide,
+                            operate, maintain, and manage electricity generation
+                            and transmission services.</li>
+                        <li><strong>Billing and Payments:</strong> To process
+                            payments, manage billing cycles, and provide
+                            financial statements.</li>
+                        <li><strong>Customer Support:</strong> To respond to
+                            inquiries, complaints, and service requests.</li>
+                        <li><strong>Operations Management:</strong> To monitor
+                            and optimize our infrastructure, manage outages, and
+                            ensure reliability.</li>
+                        <li><strong>Safety and Security:</strong> To maintain
+                            the security of our operations, facilities, and
+                            systems, and to prevent fraud.</li>
+                        <li><strong>Compliance and Legal Obligations:</strong>
+                            To comply with legal, regulatory, and audit
+                            requirements (e.g., Data Protection Act 2012, energy
+                            sector regulations).</li>
+                        <li><strong>Internal Business Purposes:</strong> For
+                            data analysis, research, auditing, developing new
+                            services, improving our website, and identifying
+                            usage trends.</li>
+                        <li><strong>Communication:</strong> To send you service
+                            announcements, administrative messages, updates, and
+                            other relevant information.</li>
+                        <li><strong>Employment and HR:</strong> For recruitment,
+                            payroll, employee benefits, and managing employee
+                            relations.</li>
+                    </ul>
+                    <p>We process your personal data based on your consent, to
+                        fulfill contractual obligations, for compliance with
+                        legal obligations, or where we have a legitimate
+                        interest to do so.</p>
+                </div>
+            </section>
 
-        <section id="information-sharing" class="policy-section bg-light">
-            <div class="container">
-                <h2>How We Share Your Information</h2>
-                <p>VRA may share your information with third parties only when necessary and in accordance with this Privacy Policy and applicable laws. We do not sell your personal data to third parties.</p>
-                <ul>
-                    <li><strong>Service Providers:</strong> We may share data with third-party service providers who perform services on our behalf (e.g., IT support, payment processing, maintenance services, consulting). These providers are contractually obligated to protect your data and use it only for the purposes for which it was provided.</li>
-                    <li><strong>Regulatory Bodies and Government Agencies:</strong> We may disclose information to comply with legal or regulatory obligations, court orders, or government requests (e.g., Data Protection Commission, Energy Commission).</li>
-                    <li><strong>Affiliates and Subsidiaries:</strong> Information may be shared with VRA's subsidiary companies or affiliates for operational purposes, consistent with this policy.</li>
-                    <li><strong>Legal Requirements and Protection of Rights:</strong> We may disclose your information if we believe it's necessary to investigate, prevent, or take action regarding illegal activities, suspected fraud, situations involving potential threats to the physical safety of any person, or as evidence in litigation.</li>
-                    <li><strong>With Your Consent:</strong> We may share your information with other parties when we have your explicit consent to do so.</li>
-                </ul>
-            </div>
-        </section>
+            <section id="information-sharing" class="policy-section bg-light">
+                <div class="container">
+                    <h2>How We Share Your Information</h2>
+                    <p>VRA may share your information with third parties only
+                        when necessary and in accordance with this Privacy
+                        Policy and applicable laws. We do not sell your personal
+                        data to third parties.</p>
+                    <ul>
+                        <li><strong>Service Providers:</strong> We may share
+                            data with third-party service providers who perform
+                            services on our behalf (e.g., IT support, payment
+                            processing, maintenance services, consulting). These
+                            providers are contractually obligated to protect
+                            your data and use it only for the purposes for which
+                            it was provided.</li>
+                        <li><strong>Regulatory Bodies and Government
+                                Agencies:</strong> We may disclose information
+                            to comply with legal or regulatory obligations,
+                            court orders, or government requests (e.g., Data
+                            Protection Commission, Energy Commission).</li>
+                        <li><strong>Affiliates and Subsidiaries:</strong>
+                            Information may be shared with VRA's subsidiary
+                            companies or affiliates for operational purposes,
+                            consistent with this policy.</li>
+                        <li><strong>Legal Requirements and Protection of
+                                Rights:</strong> We may disclose your
+                            information if we believe it's necessary to
+                            investigate, prevent, or take action regarding
+                            illegal activities, suspected fraud, situations
+                            involving potential threats to the physical safety
+                            of any person, or as evidence in litigation.</li>
+                        <li><strong>With Your Consent:</strong> We may share
+                            your information with other parties when we have
+                            your explicit consent to do so.</li>
+                    </ul>
+                </div>
+            </section>
 
-        <section id="data-security" class="policy-section">
-            <div class="container">
-                <h2>Data Security</h2>
-                <p>VRA implements robust technical and organizational security measures to protect your personal data from unauthorized access, alteration, disclosure, or destruction. These measures include:</p>
-                <ul>
-                    <li><strong>Encryption:</strong> Using encryption for data transmission where appropriate.</li>
-                    <li><strong>Access Controls:</strong> Restricting access to personal data to authorized personnel only.</li>
-                    <li><strong>Physical Security:</strong> Protecting our facilities and equipment from unauthorized physical access.</li>
-                    <li><strong>Regular Audits and Monitoring:</strong> Continuously monitoring our systems for vulnerabilities and potential security breaches.</li>
-                    <li><strong>Employee Training:</strong> Ensuring our employees are trained on data protection best practices and policies.</li>
-                </ul>
-                <p>While we strive to use commercially acceptable means to protect your personal data, no method of transmission over the Internet or method of electronic storage is 100% secure. Therefore, we cannot guarantee its absolute security.</p>
-            </div>
-        </section>
+            <section id="data-security" class="policy-section">
+                <div class="container">
+                    <h2>Data Security</h2>
+                    <p>VRA implements robust technical and organizational
+                        security measures to protect your personal data from
+                        unauthorized access, alteration, disclosure, or
+                        destruction. These measures include:</p>
+                    <ul>
+                        <li><strong>Encryption:</strong> Using encryption for
+                            data transmission where appropriate.</li>
+                        <li><strong>Access Controls:</strong> Restricting access
+                            to personal data to authorized personnel only.</li>
+                        <li><strong>Physical Security:</strong> Protecting our
+                            facilities and equipment from unauthorized physical
+                            access.</li>
+                        <li><strong>Regular Audits and Monitoring:</strong>
+                            Continuously monitoring our systems for
+                            vulnerabilities and potential security
+                            breaches.</li>
+                        <li><strong>Employee Training:</strong> Ensuring our
+                            employees are trained on data protection best
+                            practices and policies.</li>
+                    </ul>
+                    <p>While we strive to use commercially acceptable means to
+                        protect your personal data, no method of transmission
+                        over the Internet or method of electronic storage is
+                        100% secure. Therefore, we cannot guarantee its absolute
+                        security.</p>
+                </div>
+            </section>
 
-        <section id="data-retention" class="policy-section bg-light">
-            <div class="container">
-                <h2>Data Retention</h2>
-                <p>We retain your personal data only for as long as necessary to fulfill the purposes for which it was collected, including for the purposes of satisfying any legal, accounting, or reporting requirements. When your personal data is no longer required, we will securely delete or anonymize it.</p>
-                <p>Factors that influence our retention periods include:</p>
-                <ul>
-                    <li>The duration of our relationship with you and the services we provide.</li>
-                    <li>Legal obligations that require us to retain data for specific periods.</li>
-                    <li>The necessity for fraud prevention and detection.</li>
-                    <li>The need to resolve disputes or enforce our agreements.</li>
-                </ul>
-            </div>
-        </section>
+            <section id="data-retention" class="policy-section bg-light">
+                <div class="container">
+                    <h2>Data Retention</h2>
+                    <p>We retain your personal data only for as long as
+                        necessary to fulfill the purposes for which it was
+                        collected, including for the purposes of satisfying any
+                        legal, accounting, or reporting requirements. When your
+                        personal data is no longer required, we will securely
+                        delete or anonymize it.</p>
+                    <p>Factors that influence our retention periods include:</p>
+                    <ul>
+                        <li>The duration of our relationship with you and the
+                            services we provide.</li>
+                        <li>Legal obligations that require us to retain data for
+                            specific periods.</li>
+                        <li>The necessity for fraud prevention and
+                            detection.</li>
+                        <li>The need to resolve disputes or enforce our
+                            agreements.</li>
+                    </ul>
+                </div>
+            </section>
 
-        <section id="your-rights" class="policy-section">
-            <div class="container">
-                <h2>Your Data Protection Rights</h2>
-                <p>Under the Data Protection Act, 2012 (Act 843), you have certain rights concerning your personal data. These rights may include:</p>
-                <ol>
-                    <li><strong>The Right to Be Informed:</strong> You have the right to be informed about the collection and use of your personal data.</li>
-                    <li><strong>The Right to Access:</strong> You have the right to request access to your personal data that we hold.</li>
-                    <li><strong>The Right to Rectification:</strong> You have the right to request that VRA correct any inaccurate or incomplete personal data.</li>
-                    <li><strong>The Right to Object to Processing:</strong> You have the right to object to the processing of your personal data in certain circumstances.</li>
-                    <li><strong>The Right to Prevent Processing for Direct Marketing:</strong> You have the right to prevent the processing of your personal data for direct marketing purposes.</li>
-                    <li><strong>The Right to Prevent Processing Causing Damage or Distress:</strong> You have the right to object to processing that causes or is likely to cause unwarranted substantial damage or distress.</li>
-                    <li><strong>The Right to Prevent Automated Decision Making:</strong> You have the right not to be subject to a decision based solely on automated processing.</li>
-                    <li><strong>The Right to Compensation:</strong> If you suffer damage by reason of contravention of any provision of Act 843, you may be entitled to compensation.</li>
-                </ol>
-                <p>To exercise any of these rights, please contact us using the details provided in the "Contact Us" section below. We may need to request specific information from you to help us confirm your identity and ensure your right to access your personal data (or to exercise any of your other rights).</p>
-            </div>
-        </section>
+            <section id="your-rights" class="policy-section">
+                <div class="container">
+                    <h2>Your Data Protection Rights</h2>
+                    <p>Under the Data Protection Act, 2012 (Act 843), you have
+                        certain rights concerning your personal data. These
+                        rights may include:</p>
+                    <ol>
+                        <li><strong>The Right to Be Informed:</strong> You have
+                            the right to be informed about the collection and
+                            use of your personal data.</li>
+                        <li><strong>The Right to Access:</strong> You have the
+                            right to request access to your personal data that
+                            we hold.</li>
+                        <li><strong>The Right to Rectification:</strong> You
+                            have the right to request that VRA correct any
+                            inaccurate or incomplete personal data.</li>
+                        <li><strong>The Right to Object to Processing:</strong>
+                            You have the right to object to the processing of
+                            your personal data in certain circumstances.</li>
+                        <li><strong>The Right to Prevent Processing for Direct
+                                Marketing:</strong> You have the right to
+                            prevent the processing of your personal data for
+                            direct marketing purposes.</li>
+                        <li><strong>The Right to Prevent Processing Causing
+                                Damage or Distress:</strong> You have the right
+                            to object to processing that causes or is likely to
+                            cause unwarranted substantial damage or
+                            distress.</li>
+                        <li><strong>The Right to Prevent Automated Decision
+                                Making:</strong> You have the right not to be
+                            subject to a decision based solely on automated
+                            processing.</li>
+                        <li><strong>The Right to Compensation:</strong> If you
+                            suffer damage by reason of contravention of any
+                            provision of Act 843, you may be entitled to
+                            compensation.</li>
+                    </ol>
+                    <p>To exercise any of these rights, please contact us using
+                        the details provided in the "Contact Us" section below.
+                        We may need to request specific information from you to
+                        help us confirm your identity and ensure your right to
+                        access your personal data (or to exercise any of your
+                        other rights).</p>
+                </div>
+            </section>
 
-        <section id="cookies" class="policy-section bg-light">
-            <div class="container">
-                <h2>Cookies and Tracking Technologies</h2>
-                <p>Our website may use "cookies" and similar tracking technologies to enhance your experience, analyze site usage, and improve our services. Cookies are small data files stored on your device.</p>
-                <ul>
-                    <li><strong>Strictly Necessary Cookies:</strong> Essential for the website to function correctly.</li>
-                    <li><strong>Analytical/Performance Cookies:</strong> Help us understand how visitors interact with our website by collecting information anonymously.</li>
-                    <li><strong>Functionality Cookies:</strong> Used to remember your preferences and provide enhanced, more personalized features.</li>
-                </ul>
-                <p>You can manage your cookie preferences through your browser settings. Please note that disabling certain cookies may affect the functionality of our website.</p>
-            </div>
-        </section>
+            <section id="cookies" class="policy-section bg-light">
+                <div class="container">
+                    <h2>Cookies and Tracking Technologies</h2>
+                    <p>Our website may use "cookies" and similar tracking
+                        technologies to enhance your experience, analyze site
+                        usage, and improve our services. Cookies are small data
+                        files stored on your device.</p>
+                    <ul>
+                        <li><strong>Strictly Necessary Cookies:</strong>
+                            Essential for the website to function
+                            correctly.</li>
+                        <li><strong>Analytical/Performance Cookies:</strong>
+                            Help us understand how visitors interact with our
+                            website by collecting information anonymously.</li>
+                        <li><strong>Functionality Cookies:</strong> Used to
+                            remember your preferences and provide enhanced, more
+                            personalized features.</li>
+                    </ul>
+                    <p>You can manage your cookie preferences through your
+                        browser settings. Please note that disabling certain
+                        cookies may affect the functionality of our website.</p>
+                </div>
+            </section>
 
-        <section id="external-links" class="policy-section">
-            <div class="container">
-                <h2>Links to Other Websites</h2>
-                <p>Our website may contain links to other websites that are not operated by VRA. If you click on a third-party link, you will be directed to that third party's site. We strongly advise you to review the Privacy Policy of every site you visit. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.</p>
-            </div>
-        </section>
+            <section id="external-links" class="policy-section">
+                <div class="container">
+                    <h2>Links to Other Websites</h2>
+                    <p>Our website may contain links to other websites that are
+                        not operated by VRA. If you click on a third-party link,
+                        you will be directed to that third party's site. We
+                        strongly advise you to review the Privacy Policy of
+                        every site you visit. We have no control over and assume
+                        no responsibility for the content, privacy policies, or
+                        practices of any third-party sites or services.</p>
+                </div>
+            </section>
 
-        <section id="children-privacy" class="policy-section bg-light">
-            <div class="container">
-                <h2>Children's Privacy</h2>
-                <p>Our services are not intended for individuals under the age of 18. We do not knowingly collect personally identifiable information from anyone under the age of 18. If you are a parent or guardian and you are aware that your child has provided us with personal data, please contact us. If we become aware that we have collected personal data from children without verification of parental consent, we will take steps to remove that information from our servers.</p>
-            </div>
-        </section>
+            <section id="children-privacy" class="policy-section bg-light">
+                <div class="container">
+                    <h2>Children's Privacy</h2>
+                    <p>Our services are not intended for individuals under the
+                        age of 18. We do not knowingly collect personally
+                        identifiable information from anyone under the age of
+                        18. If you are a parent or guardian and you are aware
+                        that your child has provided us with personal data,
+                        please contact us. If we become aware that we have
+                        collected personal data from children without
+                        verification of parental consent, we will take steps to
+                        remove that information from our servers.</p>
+                </div>
+            </section>
 
-        <section id="policy-changes" class="policy-section">
-            <div class="container">
-                <h2>Changes to This Privacy Policy</h2>
-                <p>VRA may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Effective Date" at the top of the policy. We encourage you to review this Privacy Policy periodically for any changes. Your continued use of our services after any modifications to this policy will constitute your acknowledgment of the modifications and your consent to abide and be bound by the modified Privacy Policy.</p>
-                <p class="effective-date"><strong>Last Updated: July 11, 2025</strong></p>
-            </div>
-        </section>
+            <section id="policy-changes" class="policy-section">
+                <div class="container">
+                    <h2>Changes to This Privacy Policy</h2>
+                    <p>VRA may update this Privacy Policy from time to time. We
+                        will notify you of any changes by posting the new
+                        Privacy Policy on this page and updating the
+                        "Effective Date" at the top of the policy. We encourage
+                        you to review this Privacy Policy periodically for any
+                        changes. Your continued use of our services after any
+                        modifications to this policy will constitute your
+                        acknowledgment of the modifications and your consent to
+                        abide and be bound by the modified Privacy Policy.</p>
+                    <p class="effective-date"><strong>Last Updated: July 11,
+                            2025</strong></p>
+                </div>
+            </section>
 
-        <section id="contact-us" class="policy-section bg-light">
-            <div class="container">
-                <h2>Contact Us</h2>
-                <p>If you have any questions or concerns about this Privacy Policy or our data practices, please contact us:</p>
-                <ul>
-                    <li><strong>By Email:</strong> privacy@vra.com.gh (placeholder email, would be real VRA contact)</li>
-                    <li><strong>By Mail:</strong> The Data Protection Officer, Volta River Authority, [VRA's Official Address in Accra, Ghana]</li>
-                    <li><strong>By Phone:</strong> [VRA's Official Contact Number]</li>
-                </ul>
-            </div>
-        </section>
-    </main>
-    
-    <footer class="main-footer">
-        <div class="container">
-            <p>&copy; <span id="currentYear"></span> Volta River Authority. All rights reserved.</p>
-        </div>
-    </footer>
+            <section id="contact-us" class="policy-section bg-light">
+                <div class="container">
+                    <h2>Contact Us</h2>
+                    <p>If you have any questions or concerns about this Privacy
+                        Policy or our data practices, please contact us:</p>
+                    <ul>
+                        <li><strong>By Email:</strong> privacy@vra.com.gh
+                            (placeholder email, would be real VRA contact)</li>
+                        <li><strong>By Mail:</strong> The Data Protection
+                            Officer, Volta River Authority, [VRA's Official
+                            Address in Accra, Ghana]</li>
+                        <li><strong>By Phone:</strong> [VRA's Official Contact
+                            Number]</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Set current year in footer
-            document.getElementById('currentYear').textContent = new Date().getFullYear();
-        });
-    </script>
-</body>
-</html>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-container">
+                <!-- Footer Top Section: Logo, Sub-links, Social Media -->
+                <div class="footer-top-section">
+                    <div class="footer-logo-and-sublinks">
+                        <!-- Logo Section -->
+                        <a href="../../../index.html" class="footer-logo">
+                            <img class="icon"
+                                src="../../../assets/images/logos/vra_logo.png"
+                                alt="VRA Logo" />
+                            <span class="text">VOLTA RIVER AUTHORITY</span>
+                        </a>
+                        <!-- Sub-links -->
+                        <ul class="footer-sub-links">
+                            <li><a
+                                    href="../../../htmls/pages/who_we_are/our_impact.html">CSR</a></li>
+                            <li><a
+                                    href="../../../htmls/pages/rti/rti.html">RTI</a></li>
+                            <li><a href="https://www.vra.com/VAS.pdf"
+                                    target="_blank">VAS</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Social Buttons -->
+                    <div class="footer-social-media">
+                        <a href="https://www.facebook.com/vraghana"
+                            target="_blank" aria-label="Facebook"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.twitter.com/vraghana"
+                            target="_blank" aria-label="Twitter"><i
+                                class="fab fa-twitter"></i></a>
+                        <a
+                            href="https://www.youtube.com/channel/UC2EEOLsbn2tt9MoCaP3yUwA?feature=watch"
+                            target="_blank"
+                            aria-label="YouTube"><i
+                                class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Footer Middle Section: Link Columns -->
+                <div class="footer-middle-section">
+                    <!-- Column 1: Who We Are -->
+                    <div class="footer-links-column">
+                        <h3>Who We Are</h3>
+                        <ul>
+                            <li>
+                                <a
+                                    href="../../../htmls/pages/who_we_are/our_profile.html">Our
+                                    Profile</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="../../../htmls/pages/who_we_are/our_impact.html">Our
+                                    Impact</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="../../../htmls/pages/who_we_are/our_project.html">Our
+                                    Projects</a>
+                            </li>
+
+                            <li>
+                                <a
+                                    href="../../../htmls/pages/who_we_are/our_team.html">Our
+                                    Team
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="../../../htmls/pages/who_we_are/our_reports.html">
+                                    Our Reports</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="../../../htmls/pages/who_we_are/facts_and_figures.html">Facts
+                                    and Figures</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="../../../htmls/pages/who_we_are/policy_statement.html">Our
+                                    Policies</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 2: Our Companies -->
+                    <div class="footer-links-column">
+                        <h3>Our Companies</h3>
+                        <ul>
+                            <li>
+                                <a
+                                    href="../../../htmls/pages/companies/akosombo_details.html">Akosombo
+                                    Hotels Limited</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="../../../htmls/pages/companies/kpong_farms.html">Kpong  </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="../../../htmls/pages/companies/northern_electricity_com.html">Northern
+                                    Electricity Distribution Company</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="../../../htmls/pages/companies/volta_lake_transport.html">Volta
+                                    Lake Transport Company</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="../../../htmls/pages/companies/vra_health_service.html">VRA
+                                    Health Services</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="../../../htmls/pages/companies/vra_international_schools.html">VRA
+                                    International Schools</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 3: News & Media -->
+                    <div class="footer-links-column">
+                        <h3>News & Media</h3>
+                        <ul>
+                            <li>
+                                <a
+                                    href="../../../htmls/pages/media/latest_news.html">Latest
+                                    News</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="../../../htmls/pages/media/tenders.html">Tenders</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="https://www.vra.com/media/2024/VRA-Power-Supply.jpg"
+                                    target="_blank">Press
+                                    Releases</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="https://www.vra.com/media/2025/Solar%20Scoping%20Report%20-Loagri.pdf"
+                                    target="_blank">Scoping Reports /
+                                    Notices</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="https://www.vra.com/media/2023/VRA%20ENDS%20CONTROLLED%20SPILLAGE%20FROM%20AKOSOMBO%20DAM.jpg"
+                                    target="_blank">Akosombo Spillage
+                                    Controlled</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 4: Others -->
+                    <div class="footer-links-column">
+                        <h3>Others</h3>
+                        <ul>
+                            <li>
+                                <a
+                                    href="../../../htmls/pages/contact/contant_details.html">Contact</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="https://www.vra.com/csr/CDP-Scholarship-Application-Form.pdf"
+                                    target="_blank">Scholarship Forms</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="../../../htmls/pages/resources/newsletters.html">Newsletters</a>
+                            </li>
+
+                        </div>
+                    </div>
+
+                    <!-- Footer Bottom Section: Copyright & Legal Links -->
+                    <div class="footer-bottom-section">
+                        <span class="footer-copyright">© 2025 Volta River
+                            Authority. All Rights Reserved.</span>
+                    </div>
+                </div>
+            </footer>
+
+            <script src="../../../scripts/shared_components.js"></script>
+
+        </body>
+    </html>

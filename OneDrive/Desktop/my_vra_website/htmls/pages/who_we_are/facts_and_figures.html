@@ -1,586 +1,692 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Power Generation: Facts & Figures - VRA</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- Chosen Palette: "Warm Neutrals & Deep Blue" - A professional and calming palette using a deep blue for primary actions, a softer slate for secondary elements, and warm off-white/beige tones for backgrounds. -->
-    <!-- Application Structure Plan: This SPA is designed to present key operational data for VRA's power generation. It features a Hero section. The "Akosombo Lake Level" section provides a prominent display for this critical hydrological data, updated dynamically. The core "VRA Installed Generation Capacity" section presents detailed plant information in a clear, responsive table format, allowing users to easily view and compare data. A "Total Capacity" summary is also highlighted. This structure prioritizes the clear and accessible presentation of numerical and tabular data. -->
-    <!-- Visualization & Content Choices: - Report Info: Akosombo Lake Level (numerical data). -> Goal: Provide Real-time/Current Data. -> Viz/Presentation Method: Large, prominent numbers within a dedicated card-like block. -> Interaction: None (direct display). -> Justification: Highlighting this critical single data point with large typography makes it immediately noticeable and easy to read. - Report Info: Installed Generation Capacity (tabular data). -> Goal: Organize & Compare. -> Viz/Presentation Method: A well-styled, responsive HTML table. -> Interaction: None (direct display). -> Justification: A table is the most effective way to present structured comparative data for multiple plants, types, and fuel sources. Responsiveness is handled to ensure readability on various devices. -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
-    <style>
-        /* RESET MARGINS, PADDING, AND BORDERS */
-        *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Power Generation: Facts & Figures - VRA</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        /* SITE SETTINGS VARIABLES */
-        :root {
-            /*-- COLORS --*/
-            --white: rgb(255, 255, 255);
-            --black: rgb(0, 0, 0);
-            --grey: rgb(190, 200, 207);
-            --primary-color: rgb(0, 67, 112);
-            --secondary-color: rgb(22, 154, 242);
+        <!-- Font Awesome -->
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-            /* Custom colors for SPA, mapped or retained */
-            --color-dark-blue-active-tab: rgb(30, 58, 138); /* 1E3A8A */
-            --color-light-indigo-inactive-tab: rgb(224, 231, 255); /* E0E7FF */
-            --color-background-light: rgb(253, 253, 251); /* FDFDFB */
-            --color-text-secondary: rgb(113, 128, 150); /* 718096 for gray-600 */
-            --color-text-primary-dark: rgb(43, 108, 176); /* 2B6CB0 for blue-800 */
-            --color-light-blue-bg: rgb(235, 248, 255); /* EBF8FF for blue-50 equivalent */
+        <!-- Inter font -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet" />
 
+        <!-- Your site styles -->
+        <link rel="stylesheet" href="../../../css/styles.css" />
+        <link rel="stylesheet"
+            href="../../../css/pages/who_we_are/fact_and_figures.css">
 
-            /*-- TYPOGRAPHY --*/
-            --default-font-family: "Open Sans", Roboto, Roboto-fallback;
-            --general-font-size: 16px;
-            --font-size-sm: 14px;
-            --font-size-xs: 12px;
-            --font-size-min: 8px;
-            --general-line-height: 1.6;
+    </head>
+    <body>
 
-            /* Heading Font Sizes */
-            --h1-font-size: 48px;
-            --h2-font-size: 40px ;
-            --h3-font-size: 32px;
-            --h4-font-size: 28px ;
-            --h5-font-size: 24px;
-            --h6-font-size: 20px;
+        <!-- HEADER SECTION -->
+        <header>
+            <nav class="navbar">
+                <div class="navbar-container">
+                    <div class="navbar-left">
+                        <!-- Hamburger Menu -->
+                        <button id="menu-toggle" class="menu-toggle">
+                            <div class="hamburger-icon" id="hamburger">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </button>
 
-            /* Heading Line Heights */
-            --h1-line-height: 1.2;
-            --h2-line-height: 1.3;
-            --h3-line-height: 1.3;
-            --h4-line-height: 1.4;
-            --h5-line-height: 1.4;
-            --h6-line-height: 1.5;
+                        <!-- VRA Logo -->
+                        <a href="../../../index.html" class="vra-logo">
+                            <img class="icon"
+                                src="../../../assets/images/logos/vra_logo.png"
+                                alt="Logo">
+                            <span class="text">VOLTA RIVER AUTHORITY</span>
+                        </a>
+                    </div>
 
-            /* — SPACING — (Mapped to user's provided values) */
-            --spacing-xs: 4px;
-            --spacing-sm: 8px;
-            --spacing-md: 16px;
-            --spacing-lg: 24px;
-            --spacing-xl: 48px;
-            --spacing-xxl: 80px;
-            --spacing-xxxl: 120px; /* From previous turn */
-
-            /* Custom spacing values from SPA that don't directly map to user's provided ones, using rem for consistency */
-            --spacing-12px: 0.75rem; /* For original spacing-3 */
-            --spacing-32px: 2rem;    /* For original spacing-8 */
-            --spacing-40px: 2.5rem;  /* For original spacing-10 */
-            --spacing-112px: 7rem;   /* For original spacing-28 */
-            --spacing-160px: 10rem;  /* For original spacing-40 */
-
-
-            /* — BORDER RADIUS (PX) — */
-            --border-radius-sm: 4px;
-            --border-radius-md: 8px;
-            --border-radius-lg: 12px;
-            --border-radius-xl: 16px;
-            --border-radius-xxl: 20px;
-            --border-radius-max: 40px;
-            --border-radius-circle: 50%;
-
-            /* Custom border radius from SPA */
-            --border-radius-2xl: 1rem; /* 16px, maps to var(--border-radius-xl) */
-            --border-radius-full: 9999px; /* Retain for full circle */
-
-            /* Transitions */
-            --transition-speed: 0.3s;
-            --transition-ease: ease-in-out;
-        }
-
-        /* SET CONSISTENT HTML */
-        html {
-            font-size: 100%;
-            scroll-behavior: smooth;
-        }
-
-        /* SET BODY BASELINE */
-        body {
-            min-height: 100vh;
-            line-height: var(--general-line-height);
-            background-color: var(--white);
-            color: var(--black);
-            text-rendering: optimizeLegibility;
-            font-family: var(--default-font-family); /* Apply default font family */
-            font-size: var(--general-font-size); /* Apply general font size */
-        }
-
-        /* SETTING DEFAULT STYLES */
-        button, select, input, textarea {
-            font-family: inherit;
-            font-size: inherit;
-        }
-
-        /* LIST DEFAULT SETTINGS */
-        ul, ol {
-            list-style: none;
-        }
-
-        /* PROVIDING GENERAL STYLES TO HEADINGS */
-        h1, .h1 {
-            font-size: var(--h1-font-size);
-            line-height: var(--h1-line-height);
-            margin-bottom: var(--spacing-md);
-            font-family: var(--font-family-display); /* Specific font for display headings */
-        }
-
-        h2, .h2 {
-            font-size: var(--h2-font-size);
-            line-height: var(--h2-line-height);
-            margin-bottom: var(--spacing-md);
-            font-family: var(--font-family-display); /* Specific font for display headings */
-        }
-
-        h3, .h3 {
-            font-size: var(--h3-font-size);
-            line-height: var(--h3-line-height);
-            margin-bottom: var(--spacing-sm);
-            font-family: var(--font-family-display); /* Specific font for display headings */
-        }
-
-        h4, .h4 {
-            font-size: var(--h4-font-size);
-            line-height: var(--h4-line-height);
-            margin-bottom: var(--spacing-sm);
-            font-family: var(--font-family-display); /* Specific font for display headings */
-        }
-
-        h5, .h5 {
-            font-size: var(--h5-font-size);
-            line-height: var(--h5-line-height);
-            margin-bottom: var(--spacing-sm);
-            font-family: var(--font-family-display); /* Specific font for display headings */
-        }
-
-        h6, .h6 {
-            font-size: var(--h6-font-size);
-            line-height: var(--h6-line-height);
-            margin-bottom: var(--spacing-sm);
-            font-weight: normal;
-            color: #555; /* Specific color for h6 */
-            font-family: var(--font-family-display); /* Specific font for display headings */
-        }
-
-        /* APPLYING DEFAULT STYLE TO LINKS */
-        a {
-            color: var(--primary-color);
-            text-decoration: none;
-            transition: color var(--transition-speed) var(--transition-ease);
-        }
-
-        a:hover, a:focus {
-            color: var(--secondary-color);
-            outline: none;
-        }
-
-        /* IMAGES */
-        img { 
-            max-width: 100%;
-            display: block;
-        }
-
-        /* Button Styles (integrated from your settings) */
-        .white-btn {
-            padding: 15px 30px;
-            background-color: var(--white);
-            color: var(--primary-color);
-            font-size: var(--general-font-size);
-            transition: background-color 0.3s ease;
-            border-radius: var(--border-radius-max);
-            border: none; /* Ensure no default button border */
-            cursor: pointer;
-        }
-        .white-btn:hover, .white-btn:focus {
-            color: var(--primary-color);
-            background-color: var(--secondary-color);
-        }
-
-        .primary-btn {
-            padding: 15px 30px;
-            background-color: var(--primary-color);
-            color: var(--white); 
-            font-size: var(--general-font-size);
-            transition: background-color 0.3s ease;
-            border-radius: var(--border-radius-max);
-            border: none; /* Ensure no default button border */
-            cursor: pointer;
-        }
-        .primary-btn:hover, .primary-btn:focus {
-            color: var(--primary-color);
-            background-color: var(--secondary-color);
-        }
-
-        .outlined-btn {
-            padding: var(--spacing-sm) var(--spacing-md);
-            background-color: transparent; 
-            color: var(--primary-color);
-            font-size: var(--general-font-size);
-            border: 2px solid var(--primary-color);
-            border-radius: var(--border-radius-max);
-            transition: background-color 0.3s ease, color 0.3s ease;
-            cursor: pointer;
-        }
-        .outlined-btn:hover, .outlined-btn:focus {
-            color: var(--primary-color);
-            background-color: var(--secondary-color);
-            border: 2px solid var(--secondary-color);
-        }
-
-
-        /* SPA Specific Styles (Adjusted to use new variables) */
-        .container {
-            max-width: 1280px;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: var(--spacing-lg);
-            padding-right: var(--spacing-lg);
-        }
-
-        /* Hero Section */
-        .hero-section {
-            position: relative;
-            background-color: var(--primary-color); /* Solid color background */
-            color: var(--white);
-            text-align: center;
-            padding-top: var(--spacing-160px);
-            padding-bottom: var(--spacing-160px);
-            overflow: hidden;
-            min-height: 250px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            max-width: 960px;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: var(--spacing-lg);
-            padding-right: var(--spacing-lg);
-        }
-        .hero-section h1 {
-            font-size: var(--h1-font-size);
-            font-weight: 700;
-            margin-bottom: var(--spacing-md);
-        }
-        .hero-section p {
-            font-size: var(--h5-font-size);
-            max-width: 768px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Section Styling */
-        .page-section {
-            padding-top: var(--spacing-xxl);
-            padding-bottom: var(--spacing-xxl);
-            background-color: var(--white);
-            border-bottom: 1px solid var(--grey); /* Subtle separator */
-        }
-        .page-section:last-of-type {
-            border-bottom: none;
-        }
-        .page-section.bg-light {
-            background-color: var(--color-light-blue-bg);
-        }
-
-        .page-section h2 {
-            font-size: var(--h2-font-size);
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: var(--spacing-xl);
-            text-align: center;
-        }
-        .page-section h3 {
-            font-size: var(--h4-font-size);
-            font-weight: 600;
-            color: var(--primary-color);
-            margin-bottom: var(--spacing-md);
-            margin-top: var(--spacing-lg); /* Space above sub-headings */
-        }
-        .page-section p, .page-section ul {
-            font-size: var(--general-font-size);
-            color: var(--color-text-secondary);
-            margin-bottom: var(--spacing-md);
-        }
-        .page-section ul {
-            list-style: none; /* Override default list-style for specific sections */
-            padding: 0;
-            margin: 0;
-        }
-        .page-section ul li {
-            margin-bottom: var(--spacing-sm);
-        }
-        .page-section ul li:last-child {
-            margin-bottom: 0;
-        }
-        .page-section a {
-            color: var(--primary-color);
-        }
-        .page-section a:hover {
-            color: var(--secondary-color);
-        }
-
-        /* Akosombo Lake Level Card */
-        .lake-level-card {
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: var(--spacing-xl);
-            border-radius: var(--border-radius-xl);
-            text-align: center;
-            max-width: 400px; /* Constrain width */
-            margin: 0 auto; /* Center the card */
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-        .lake-level-card .level-value {
-            font-family: 'DM Serif Display', serif;
-            font-size: 4rem; /* Large font for the number */
-            font-weight: 700;
-            line-height: 1;
-            margin-bottom: var(--spacing-sm);
-        }
-        .lake-level-card .level-units {
-            font-size: var(--h5-font-size);
-            margin-bottom: var(--spacing-md);
-        }
-        .lake-level-card .date-info {
-            font-size: var(--font-size-sm);
-            opacity: 0.8;
-        }
-
-        /* Responsive Table for Installed Capacity */
-        .table-container {
-            overflow-x: auto; /* Enable horizontal scrolling for small screens */
-            margin-top: var(--spacing-xl);
-            border-radius: var(--border-radius-md);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-            background-color: var(--white);
-        }
-
-        .capacity-table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 600px; /* Ensure table is wide enough to scroll if needed */
-        }
-
-        .capacity-table th, .capacity-table td {
-            padding: var(--spacing-md);
-            text-align: left;
-            border-bottom: 1px solid var(--grey);
-        }
-
-        .capacity-table th {
-            background-color: var(--primary-color);
-            color: var(--white);
-            font-weight: 600;
-            font-size: var(--font-size-lg); /* Slightly larger font for headers */
-            white-space: nowrap; /* Prevent wrapping for headers */
-        }
-
-        .capacity-table tbody tr:nth-child(odd) {
-            background-color: var(--color-background-light); /* Light alternate row */
-        }
-
-        .capacity-table tbody tr:hover {
-            background-color: var(--color-light-blue-bg); /* Hover effect */
-        }
-
-        .capacity-table .total-row {
-            background-color: var(--primary-color);
-            color: var(--white);
-            font-weight: 700;
-        }
-        .capacity-table .total-row td {
-            border-bottom: none; /* No border for the last row */
-        }
-        .capacity-table .total-row td:first-child {
-            text-align: right; /* Align 'TOTAL CAPACITY' to the right */
-        }
-        .capacity-table .total-row td:nth-child(2) {
-            font-size: var(--h5-font-size); /* Larger font for total capacity number */
-        }
-
-        /* Responsive Adjustments */
-        @media (min-width: 768px) {
-            .hero-section h1 {
-                font-size: var(--h1-font-size);
-            }
-            .hero-section p {
-                font-size: var(--h5-font-size);
-            }
-            .page-section h2 {
-                font-size: var(--h2-font-size);
-            }
-            .page-section h3 {
-                font-size: var(--h3-font-size);
-            }
-        }
-
-        /* Footer */
-        .main-footer {
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding-top: var(--spacing-40px);
-            padding-bottom: var(--spacing-40px);
-            text-align: center;
-        }
-        .main-footer .container {
-            padding-left: var(--spacing-lg);
-            padding-right: var(--spacing-lg);
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Hero Section -->
-    <header class="hero-section">
-        <div class="hero-content">
-            <h1>Power Generation: Facts & Figures</h1>
-            <p>Explore the key operational data and installed capacity that define VRA's role in Ghana's energy landscape.</p>
-        </div>
-    </header>
-
-    <main>
-        <!-- Akosombo Lake Level Section -->
-        <section id="lake-level" class="page-section">
-            <div class="container">
-                <h2>Akosombo Lake Level</h2>
-                <div class="lake-level-card">
-                    <p class="date-info" id="currentDate"></p>
-                    <div class="level-value">259.96</div>
-                    <div class="level-units">feet</div>
-                    <p class="level-units">(79.236 meters)</p>
+                    <!-- NAVBAR Headline -->
+                    <div class="navbar-headline">
+                        <span>Our Vision</span>
+                        <span class="separator">|</span>
+                        <a
+                            href="../../../htmls/pages/who_we_are/our_profile.html">To
+                            be a
+                            Model of Excellence for Power Utilities in
+                            Africa.</a>
+                    </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- VRA Installed Generation Capacity Section -->
-        <section id="installed-capacity" class="page-section bg-light">
-            <div class="container">
-                <h2>VRA Installed Generation Capacity</h2>
-                <p style="text-align: center; margin-bottom: var(--spacing-xl); color: var(--color-text-secondary);">A detailed breakdown of our power plants by type, installed capacity, and fuel source.</p>
-                
-                <div class="table-container">
-                    <table class="capacity-table">
-                        <thead>
-                            <tr>
-                                <th>Plant</th>
-                                <th>Installed Capacity (MW)</th>
-                                <th>Type of Plant</th>
-                                <th>Fuel Type</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Akosombo GS</td>
-                                <td>1,020</td>
-                                <td>Hydro</td>
-                                <td>Water</td>
-                            </tr>
-                            <tr>
-                                <td>Kpong GS</td>
-                                <td>160</td>
-                                <td>Hydro</td>
-                                <td>Water</td>
-                            </tr>
-                            <tr>
-                                <td>TAPCO (T1)</td>
-                                <td>330</td>
-                                <td>Thermal</td>
-                                <td>Gas/LCO</td>
-                            </tr>
-                            <tr>
-                                <td>TICO (T2)</td>
-                                <td>340</td>
-                                <td>Thermal</td>
-                                <td>Gas/LCO</td>
-                            </tr>
-                            <tr>
-                                <td>Tema Thermal 1 Plant (TT1PP)</td>
-                                <td>110</td>
-                                <td>Thermal</td>
-                                <td>Gas</td>
-                            </tr>
-                            <tr>
-                                <td>Tema Thermal 2 Plant (TT2PP)</td>
-                                <td>80</td>
-                                <td>Thermal</td>
-                                <td>Gas</td>
-                            </tr>
-                            <tr>
-                                <td>Kpone Thermal Power Station (KTPS)</td>
-                                <td>220</td>
-                                <td>Thermal</td>
-                                <td>Gas/Diesel</td>
-                            </tr>
-                            <tr>
-                                <td>Anwomaso Thermal Power Station</td>
-                                <td>150**</td>
-                                <td>Thermal</td>
-                                <td>Gas</td>
-                            </tr>
-                            <tr>
-                                <td>Navrongo Solar Plant</td>
-                                <td>2.5</td>
-                                <td>Renewable</td>
-                                <td>Solar</td>
-                            </tr>
-                            <tr>
-                                <td>Lawra Solar Plant</td>
-                                <td>6.5</td>
-                                <td>Renewable</td>
-                                <td>Solar</td>
-                            </tr>
-                            <tr>
-                                <td>Kaleo Solar Plant (A)</td>
-                                <td>13</td>
-                                <td>Renewable</td>
-                                <td>Solar</td>
-                            </tr>
-                            <tr>
-                                <td>Kaleo Solar Plant (B)</td>
-                                <td>15</td>
-                                <td>Renewable</td>
-                                <td>Solar</td>
-                            </tr>
-                            <tr class="total-row">
-                                <td>TOTAL CAPACITY</td>
-                                <td>2,547</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <!-- DRAWER -->
+                <div id="drawer" class="drawer">
+                    <!-- DRAWER HEADER -->
+                    <div class="drawer-header">
+                        <button id="close-menu" class="close-drawer-btn">
+                            <i class="fas fa-times icon"></i>
+                        </button>
+                    </div>
+
+                    <!-- DRAWER CONTENT -->
+                    <div class="drawer-content">
+                        <div class="main-drawer-menus-wrapper">
+                            <ul>
+                                <li><a href="#" class="drawer-menu-item"
+                                        data-target="who-we-are">Who We Are <i
+                                            class="fas fa-chevron-right arrow-icon"></i></a></li>
+                                <li><a href="#" class="drawer-menu-item"
+                                        data-target="what-we-do">What We Do <i
+                                            class="fas fa-chevron-right arrow-icon"></i></a></li>
+                                <li><a href="#" class="drawer-menu-item active"
+                                        data-target="our-companies">Our
+                                        Companies <i
+                                            class="fas fa-chevron-right arrow-icon"></i></a></li>
+                                <li><a href="#" class="drawer-menu-item"
+                                        data-target="resources">Resources <i
+                                            class="fas fa-chevron-right arrow-icon"></i></a></li>
+                                <li><a href="#" class="drawer-menu-item"
+                                        data-target="news">News & Media<i
+                                            class="fas fa-chevron-right arrow-icon"></i></a></li>
+                                <li><a href="#" class="drawer-menu-item"
+                                        data-target="stakeholders">Our
+                                        Stakeholders<i
+                                            class="fas fa-chevron-right arrow-icon"></i></a></li>
+                                <li><a href="#" class="drawer-menu-item"
+                                        data-target="contact-us">Contact Us
+                                        <i
+                                            class="fas fa-chevron-right arrow-icon"></i></a></li>
+                                <li><a href="#" class="drawer-menu-item"
+                                        data-target="videos">Videos About VRA
+                                        <i
+                                            class="fas fa-chevron-right arrow-icon"></i></a></li>
+                            </ul>
+                        </div>
+
+                        <div class="drawer-sub-menu-section"
+                            id="sub-menu-content">
+                            <ul id="our-companies-sub-menu">
+                                <li><a
+                                        href="../../../htmls/pages/companies/akosombo_details.html">Akosombo
+                                        Hotels Limited</a></li>
+                                <li><a
+                                        href="../../../htmls/pages/companies/kpong_farms.html">Kpong
+                                         </a></li>
+                                <li><a
+                                        href="../../../htmls/pages/companies/northern_electricity_com.html">Northern
+                                        Electricity Distribution
+                                        Company</a></li>
+                                <li><a
+                                        href="../../../htmls/pages/companies/volta_lake_transport.html">Volta
+                                        Lake Transport Company</a></li>
+                                <li><a
+                                        href="../../../htmls/pages/companies/vra_health_service.html">VRA
+                                        Health Services</a></li>
+                                <li><a
+                                        href="../../../htmls/pages/companies/vra_international_schools.html">VRA
+                                        International Schools</a></li>
+                            </ul>
+                            <!-- Other sub-menu contents can be hidden and shown based on active menu item -->
+                            <ul id="who-we-are-sub-menu" style="display: none;">
+                                <li><a
+                                        href="../../../htmls/pages/who_we_are/our_profile.html">Our
+                                        Profile</a></li>
+                                <li><a
+                                        href="../../../htmls/pages/who_we_are/our_impact.html">Our
+                                        Impact</a></li>
+                                <li><a
+                                        href="../../../htmls/pages/who_we_are/our_team.html">Our
+                                        Team Members</a></li>
+                                <li><a
+                                        href="../../../htmls/pages/who_we_are/facts_and_figures.html"
+                                        target="_blank">Facts &
+                                        Figures about
+                                        Our Power Generation</a></li>
+                                <!-- <li><a href="../../../htmls/pages/who_we_are/policy_statement.html">Our Policies</a></li> -->
+                                <li><a
+                                        href="../../../htmls/pages/who_we_are/our_reports.html">Our
+                                        Reports </a></li>
+                                <li><a
+                                        href="../../../htmls/pages/about_us/visiting_our_plants.html">Visiting
+                                        Our Plants</a></li>
+
+                            </ul>
+
+                            <ul id="contact-us-sub-menu" style="display: none;">
+
+                                <li><a
+                                        href="../../../htmls/pages/contact/contant_details.html"
+                                        target="_blank">Contact
+                                        Details</a></li>
+                                <li><a
+                                        href="../../../htmls/pages/contact/business_relation.html"
+                                        target="_blank">Business
+                                        Relations</a></li>
+                                <li><a
+                                        href="https://fa-ewye-saasfaprod1.fa.ocs.oraclecloud.com/fscmUI/redwood/supplier-registration/register-supplier/register-supplier-verification?id=FmU2Qw9F7t8MAOaxcq9VOvWYIJlJkTWJ9j2mvzfrlu2pl7ED9u8s1POLUzLqz40n"
+                                        target="_blank">Vendor
+                                        Registration</a></li>
+                                <li><a href="https://www.vra.com/VAS.pdf"
+                                        target="_blank">Our Value Added Services
+                                        (VAS)</a></li>
+                            </ul>
+
+                            <ul id="what-we-do-sub-menu" style="display: none;">
+                                <li><a
+                                        href="../../../htmls/pages/what_we_do/hydro_generation.html">Hydro
+                                        Generation </a></li>
+                                <li><a
+                                        href="../../../htmls/pages/what_we_do/thermal_generation.html">Thermal
+                                        Generation</a></li>
+                                <li><a
+                                        href="../../../htmls/pages/what_we_do/renewable_energy.html">Renewable
+                                        Energy Generation</a></li>
+                                <li><a
+                                        href="../../../htmls/pages/what_we_do/non_power_activities.html">Non
+                                        Power Activities </a></li>
+                            </ul>
+
+                            <ul id="resources-sub-menu" style="display: none;">
+                                <li><a
+                                        href="../../../htmls/pages/resources/newsletters.html">Newsletters
+                                    </a></li>
+                                <li><a
+                                        href="../../../htmls/pages/resources/vra_business_insight.html">VRA
+                                        Business Insights</a></li>
+                                <li><a
+                                        href="https://forms.office.com/r/TNZBmt6BtQ"
+                                        target="_blank">Vendor Registration &
+                                        Guidelines</a></li>
+                                <li><a
+                                        href="https://www.vra.com/resources/VRA%20Code%20of%20Ethics.pdf"
+                                        target="_blank">VRA
+                                        Code of
+                                        Ethics</a></li>
+                                <li><a
+                                        href="http://www.vra.com/resources/others/lcpd.pdf"
+                                        target="_blank">VRA Local Content
+                                        Policies</a></li>
+                                <li><a
+                                        href="https://www.vra.com/media/2020/Corporate%20Environmental%20Policy%20Statement.pdf"
+                                        target="_blank">VRA Corporate
+                                        Environmental Policy Statement</a></li>
+
+                                <li><a
+                                        href="http://www.vra.com/resources/others/Implementation%20Guidelines%20for%20Framework%20for%20Aquaculture%20Development%20on%20the%20Volta%20Lake.pdf"
+                                        target="_blank">Download the Framework
+                                        for Acquaculture Development on the
+                                        Volter Lake</a></li>
+                                <li><a
+                                        href="https://youtu.be/FGuWqkwdYjs?si=uV6_kd5TLGDJVoLz"
+                                        target="_blank">Documentary:
+                                        Kaleo Solar Power Plant (Phase
+                                        II)</a></li>
+                                <li><a
+                                        href="https://www.youtube.com/embed/XVT5tutY5FI?si=lmRWMHXjvI512cxi"
+                                        target="_blank">Documentary: Anwomaso
+                                        Thermal Power Station</a></li>
+                                <li><a
+                                        href="https://youtu.be/iPLFtbSZSOo?si=vSgECPacTSXkTMfB"
+                                        target="_blank">Documentary:
+                                        Oral
+                                        History of the Akosombo Dam</a></li>
+                            </ul>
+
+                            <ul id="stakeholders-sub-menu"
+                                style="display: none;">
+                                <li><a href="https://www.energymin.gov.gh/"
+                                        target="_blank">Ministry of
+                                        Energy</a></li>
+                                <li><a href="https://gridcogh.com/"
+                                        target="_blank">GRIDCo</a></li>
+                                <li><a href="http://www.ecgonline.info/"
+                                        target="_blank">Electricty Company Ghana
+                                        Limited</a></li>
+                                <li><a href="https://www.purc.com.gh/"
+                                        target="_blank">Public Utilities
+                                        Regulatory Commission</a></li>
+                                <li><a href="https://www.energycom.gov.gh/"
+                                        target="_blank">Energy
+                                        Commission</a></li>
+                                <li><a href="https://siga.gov.gh/"
+                                        target="_blank">State Interests and
+                                        Governance Authority</a></li>
+                                <li><a
+                                        href="https://www.unglobalcompactghana.com/"
+                                        target="_blank">Global Compact Network
+                                        Ghana</a></li>
+                                <li><a href="https://efghana.org/"
+                                        target="_blank">Energy
+                                        Foundation</a></li>
+                                <li><a href="https://buipower.com/"
+                                        target="_blank">Abui Power
+                                        Authority</a></li>
+                                <li><a href="https://www.anglogoldashanti.com/"
+                                        target="_blank">Anglo Gold
+                                        Ashanti</a></li>
+                                <li><a href="https://www.gnpcghana.com/"
+                                        target="_blank">Ghana National Petroleum
+                                        Corporation</a></li>
+                                <li><a
+                                        href="https://apua-asea.org/en/updea/ang/"
+                                        target="_blank">Apua Asea</a></li>
+                                <li><a href="https://www.valcotema.com/"
+                                        target="_blank">VALCO</a></li>
+                                <li><a href="https://www.ecowapp.org/en"
+                                        target="_blank">West Africa Power
+                                        Pool</a></li>
+                                <li><a href="https://www.epa.gov.gh/new/"
+                                        target="_blank">Environmental Protection
+                                        Agency</a></li>
+                                <li><a
+                                        href="https://www.hydropower.org/who-we-are/about-iha"
+                                        target="_blank"></a>International
+                                    HydroPower Association</li>
+                                <li><a href="https://cfi.co/"
+                                        target="_blank">CFI</a></li>
+
+                            </ul>
+
+                            <ul id="videos-sub-menu" style="display: none;">
+                                <li><a
+                                        href="https://youtu.be/dGcOySJNHKo?si=D7LUAAnOV83vuyXt"
+                                        target="_blank">Profile of
+                                        the Volta
+                                        River Authority</a></li>
+                                <li><a
+                                        href="https://youtu.be/CmWJOkHA4BU?si=zHqr6I92zNCUesn6"
+                                        target="_blank">VRA @ 57 -
+                                        Interview
+                                        with Emmanuel Antwi-Darkwa, Chief
+                                        Executive, VRA</a></li>
+                                <li><a
+                                        href="https://youtu.be/zUYv5UJ8O2Q?si=gFoTncW9bE8yHY9i"
+                                        target="_blank">ORAL HISTORY
+                                        OF THE
+                                        AKOSOMBO DAM</a></li>
+                                <li><a
+                                        href="https://youtu.be/rH4tthChAzY?si=9R0nJRAZc7xmXYec"
+                                        target="_blank">Akosombo Dam
+                                        Eastern
+                                        Region Ghana 3D Photogrammetry</a></li>
+                                <li><a
+                                        href="https://youtu.be/79n-mgnRpB0?si=x0IzsGFtZmQHJ6hk"
+                                        target="_blank">Uncover the
+                                        Volta River
+                                        Authority (VRA) AKOSOMBO DAM on VOLTA
+                                        RIVER - Akosombo hydroelectric
+                                        plant!</a></li>
+                                <li><a
+                                        href="https://youtu.be/-W0jKHww9ns?si=eg_wvyBgCasYpMZU"
+                                        target="_blank">AEFTV 2018
+                                        Interview;
+                                        Emmanuel Antwi Darkwa, CEO, Volta River
+                                        Authority (VRA)</a></li>
+                                <li><a
+                                        href="https://youtu.be/B5BXOOotgl0?si=rEtFbeQL3mX-stiW"
+                                        target="_blank">SHOCKING -
+                                        The Truth
+                                        About Ghana’s Biggest Projects Exposed
+                                        $250M Bank of Ghana & VRA
+                                        Project</a></li>
+                                <li><a
+                                        href="https://youtu.be/P3dh-CIiPvk?si=ZMUEKBZh9RgO5DZu"
+                                        target="_blank">We can't
+                                        recycle
+                                        Akosombo water to generate electricity -
+                                        VRA Boss</a></li>
+                                <li><a
+                                        href="https://youtu.be/ZJfQV87GvDI?si=acYTNpFQNljrmFjF"
+                                        target="_blank">Visit to
+                                        Volta River
+                                        Authority & Akosombo Dam🇬🇭</a></li>
+                            </ul>
+
+                            <ul id="news-sub-menu" style="display: none;">
+                                <li><a
+                                        href="../../../htmls/pages/media/latest_news.html">Latest
+                                        News</a></li>
+                                <li><a
+                                        href="../../../htmls/pages/media/tenders.html">Tenders</a></li>
+                                <li><a
+                                        href="https://www.vra.com/media/2024/VRA-Power-Supply.jpg"
+                                        target="_blank">Press
+                                        Releases</a></li>
+                                <li><a
+                                        href="https://www.vra.com/media/2025/Solar%20Scoping%20Report%20-Loagri.pdf"
+                                        target="_blank">Scoping
+                                        Reports /
+                                        Notices</a></li>
+                                <li><a
+                                        href="https://www.vra.com/media/2023/VRA%20ENDS%20CONTROLLED%20SPILLAGE%20FROM%20AKOSOMBO%20DAM.jpg"
+                                        target="_blank">Akosombo
+                                        Spillage
+                                        Controlled</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <p style="text-align: center; margin-top: var(--spacing-md); font-size: var(--font-size-sm); color: var(--color-text-secondary);">** Note: Capacity figures are indicative and subject to change.</p>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1>Power Generation: Facts & Figures</h1>
+                <p>Explore the key operational data and installed capacity that
+                    define VRA's role in Ghana's energy landscape.</p>
             </div>
-        </section>
-    </main>
-    
-    <footer class="main-footer">
-        <div class="container">
-            <p>&copy; <span id="currentYear"></span> Volta River Authority. All rights reserved.</p>
         </div>
-    </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Set current year in footer
-            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        <main>
+            <!-- Akosombo Lake Level Section -->
+            <section id="lake-level" class="page-section">
+                <div class="container">
+                    <h2>Akosombo Lake Level</h2>
+                    <div class="lake-level-card">
+                        <p class="date-info" id="currentDate"></p>
+                        <div class="level-value">259.96</div>
+                        <div class="level-units">feet</div>
+                        <p class="level-units">(79.236 meters)</p>
+                    </div>
+                </div>
+            </section>
 
-            // Set current date for Akosombo Lake Level
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', options);
-        });
-    </script>
-</body>
-</html>
+            <!-- VRA Installed Generation Capacity Section -->
+            <section id="installed-capacity" class="page-section bg-light">
+                <div class="container">
+                    <h2>VRA Installed Generation Capacity</h2>
+                    <p
+                        style="text-align: center; margin-bottom: var(--spacing-xl); color: var(--color-text-secondary);">A
+                        detailed breakdown of our power plants by type,
+                        installed capacity, and fuel source.</p>
+
+                    <div class="table-container">
+                        <table class="capacity-table">
+                            <thead>
+                                <tr>
+                                    <th>Plant</th>
+                                    <th>Installed Capacity (MW)</th>
+                                    <th>Type of Plant</th>
+                                    <th>Fuel Type</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Akosombo GS</td>
+                                    <td>1,020</td>
+                                    <td>Hydro</td>
+                                    <td>Water</td>
+                                </tr>
+                                <tr>
+                                    <td>Kpong GS</td>
+                                    <td>160</td>
+                                    <td>Hydro</td>
+                                    <td>Water</td>
+                                </tr>
+                                <tr>
+                                    <td>TAPCO (T1)</td>
+                                    <td>330</td>
+                                    <td>Thermal</td>
+                                    <td>Gas/LCO</td>
+                                </tr>
+                                <tr>
+                                    <td>TICO (T2)</td>
+                                    <td>340</td>
+                                    <td>Thermal</td>
+                                    <td>Gas/LCO</td>
+                                </tr>
+                                <tr>
+                                    <td>Tema Thermal 1 Plant (TT1PP)</td>
+                                    <td>110</td>
+                                    <td>Thermal</td>
+                                    <td>Gas</td>
+                                </tr>
+                                <tr>
+                                    <td>Tema Thermal 2 Plant (TT2PP)</td>
+                                    <td>80</td>
+                                    <td>Thermal</td>
+                                    <td>Gas</td>
+                                </tr>
+                                <tr>
+                                    <td>Kpone Thermal Power Station (KTPS)</td>
+                                    <td>220</td>
+                                    <td>Thermal</td>
+                                    <td>Gas/Diesel</td>
+                                </tr>
+                                <tr>
+                                    <td>Anwomaso Thermal Power Station</td>
+                                    <td>150**</td>
+                                    <td>Thermal</td>
+                                    <td>Gas</td>
+                                </tr>
+                                <tr>
+                                    <td>Navrongo Solar Plant</td>
+                                    <td>2.5</td>
+                                    <td>Renewable</td>
+                                    <td>Solar</td>
+                                </tr>
+                                <tr>
+                                    <td>Lawra Solar Plant</td>
+                                    <td>6.5</td>
+                                    <td>Renewable</td>
+                                    <td>Solar</td>
+                                </tr>
+                                <tr>
+                                    <td>Kaleo Solar Plant (A)</td>
+                                    <td>13</td>
+                                    <td>Renewable</td>
+                                    <td>Solar</td>
+                                </tr>
+                                <tr>
+                                    <td>Kaleo Solar Plant (B)</td>
+                                    <td>15</td>
+                                    <td>Renewable</td>
+                                    <td>Solar</td>
+                                </tr>
+                                <tr class="total-row">
+                                    <td>TOTAL CAPACITY</td>
+                                    <td>2,547</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p
+                        style="text-align: center; margin-top: var(--spacing-md); font-size: var(--font-size-sm); color: var(--color-text-secondary);">**
+                        Note: Capacity figures are indicative and subject to
+                        change.</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-container">
+                <!-- Footer Top Section: Logo, Sub-links, Social Media -->
+                <div class="footer-top-section">
+                    <div class="footer-logo-and-sublinks">
+                        <!-- Logo Section -->
+                        <a href="../../../index.html" class="footer-logo">
+                            <img class="icon"
+                                src="../../../assets/images/logos/vra_logo.png"
+                                alt="VRA Logo" />
+                            <span class="text">VOLTA RIVER AUTHORITY</span>
+                        </a>
+                        <!-- Sub-links -->
+                        <ul class="footer-sub-links">
+                            <li><a
+                                    href="../../../htmls/pages/who_we_are/our_impact.html">CSR</a></li>
+                            <li><a
+                                    href="../../../htmls/pages/rti/rti.html">RTI</a></li>
+                            <li><a href="https://www.vra.com/VAS.pdf"
+                                    target="_blank">VAS</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Social Buttons -->
+                    <div class="footer-social-media">
+                        <a href="https://www.facebook.com/vraghana"
+                            target="_blank" aria-label="Facebook"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.twitter.com/vraghana"
+                            target="_blank" aria-label="Twitter"><i
+                                class="fab fa-twitter"></i></a>
+                        <a
+                            href="https://www.youtube.com/channel/UC2EEOLsbn2tt9MoCaP3yUwA?feature=watch"
+                            target="_blank"
+                            aria-label="YouTube"><i
+                                class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Footer Middle Section: Link Columns -->
+                <div class="footer-middle-section">
+                    <!-- Column 1: Who We Are -->
+                    <div class="footer-links-column">
+                        <h3>Who We Are</h3>
+                        <ul>
+                            <li>
+                                <a
+                                    href="../../../htmls/pages/who_we_are/our_profile.html">Our
+                                    Profile</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="../../../htmls/pages/who_we_are/our_impact.html">Our
+                                    Impact</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="../../../htmls/pages/who_we_are/our_project.html">Our
+                                    Projects</a>
+                            </li>
+
+                            <li>
+                                <a
+                                    href="../../../htmls/pages/who_we_are/our_team.html">Our
+                                    Team
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="../../../htmls/pages/who_we_are/our_reports.html">
+                                    Our Reports</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="../../../htmls/pages/who_we_are/facts_and_figures.html">Facts
+                                    and Figures</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="../../../htmls/pages/who_we_are/policy_statement.html">Our
+                                    Policies</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 2: Our Companies -->
+                    <div class="footer-links-column">
+                        <h3>Our Companies</h3>
+                        <ul>
+                            <li>
+                                <a
+                                    href="../../../htmls/pages/companies/akosombo_details.html">Akosombo
+                                    Hotels Limited</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="../../../htmls/pages/companies/kpong_farms.html">Kpong
+                                     </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="../../../htmls/pages/companies/northern_electricity_com.html">Northern
+                                    Electricity Distribution Company</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="../../../htmls/pages/companies/volta_lake_transport.html">Volta
+                                    Lake Transport Company</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="../../../htmls/pages/companies/vra_health_service.html">VRA
+                                    Health Services</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="../../../htmls/pages/companies/vra_international_schools.html">VRA
+                                    International Schools</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 3: News & Media -->
+                    <div class="footer-links-column">
+                        <h3>News & Media</h3>
+                        <ul>
+                            <li>
+                                <a
+                                    href="../../../htmls/pages/media/latest_news.html">Latest
+                                    News</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="../../../htmls/pages/media/tenders.html">Tenders</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="https://www.vra.com/media/2024/VRA-Power-Supply.jpg"
+                                    target="_blank">Press
+                                    Releases</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="https://www.vra.com/media/2025/Solar%20Scoping%20Report%20-Loagri.pdf"
+                                    target="_blank">Scoping Reports /
+                                    Notices</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="https://www.vra.com/media/2023/VRA%20ENDS%20CONTROLLED%20SPILLAGE%20FROM%20AKOSOMBO%20DAM.jpg"
+                                    target="_blank">Akosombo Spillage
+                                    Controlled</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 4: Others -->
+                    <div class="footer-links-column">
+                        <h3>Others</h3>
+                        <ul>
+                            <li>
+                                <a
+                                    href="../../../htmls/pages/contact/contant_details.html">Contact</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="https://www.vra.com/csr/CDP-Scholarship-Application-Form.pdf"
+                                    target="_blank">Scholarship Forms</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="../../../htmls/pages/resources/newsletters.html">Newsletters</a>
+                            </li>
+
+                        </div>
+                    </div>
+
+                    <!-- Footer Bottom Section: Copyright & Legal Links -->
+                    <div class="footer-bottom-section">
+                        <span class="footer-copyright">© 2025 Volta River
+                            Authority. All Rights Reserved.</span>
+                    </div>
+                </div>
+            </footer>
+            <script src="../../../scripts/shared_components.js"></script>
+
+        </body>
+    </html>

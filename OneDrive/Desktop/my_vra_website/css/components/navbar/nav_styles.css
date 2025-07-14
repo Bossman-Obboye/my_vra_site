@@ -78,22 +78,22 @@
             display: none; /* Hidden by default on small screens */
             align-items: center;
             gap: 0.5rem;
-            font-size: 0.9rem;
+            font-size: 1.0rem;
             color: #d1d5db; /* Light gray */
         }
 
         .navbar-headline .separator {
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(8, 8, 8, 0.5);
         }
 
         .navbar-headline a {
-            color: #93c5fd; /* Blue-300 */
+            color: var(--primary-color); /* Blue-300 */
             text-decoration: none;
             transition: color 0.2s ease-in-out;
         }
 
         .navbar-headline a:hover {
-            color: #ffffff;
+            color: var(--secondary-color);
             text-decoration: underline;
         }
 

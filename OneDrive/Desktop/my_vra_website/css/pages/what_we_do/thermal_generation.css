@@ -1,0 +1,143 @@
+ /* Section Styling */
+        .page-section {
+            padding-top: var(--spacing-xxl);
+            padding-bottom: var(--spacing-xxl);
+            background-color: var(--white);
+            border-bottom: 1px solid var(--grey); /* Subtle separator */
+        }
+        .page-section:last-of-type {
+            border-bottom: none;
+        }
+        .page-section.bg-light {
+            background-color: var(--color-light-blue-bg);
+        }
+
+        .page-section h2 {
+            font-size: var(--h2-font-size);
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-xl);
+            text-align: center;
+        }
+        .page-section h3 {
+            font-size: var(--h4-font-size);
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-md);
+            margin-top: var(--spacing-lg); /* Space above sub-headings */
+        }
+        .page-section p, .page-section ul {
+            font-size: var(--general-font-size);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+        .page-section ul {
+            list-style: none; /* Override default list-style for specific sections */
+            padding: 0;
+            margin: 0;
+        }
+        .page-section ul li {
+            margin-bottom: var(--spacing-sm);
+        }
+        .page-section ul li:last-child {
+            margin-bottom: 0;
+        }
+        .page-section a {
+            color: var(--primary-color);
+        }
+        .page-section a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Thermal Plants Grid */
+        .thermal-plants-grid {
+            display: grid;
+            grid-template-columns: 1fr; /* Stack on small screens */
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
+        }
+        @media (min-width: 640px) { /* Small breakpoint */
+            .thermal-plants-grid {
+                grid-template-columns: repeat(2, 1fr); /* Two columns on small tablets */
+            }
+        }
+        @media (min-width: 1024px) { /* Large breakpoint */
+            .thermal-plants-grid {
+                grid-template-columns: repeat(2, 1fr); /* Still two columns for a cleaner 2x2 layout */
+            }
+        }
+
+        .plant-card {
+            background-color: var(--white);
+            padding: var(--spacing-xl);
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .plant-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .plant-card h3 {
+            color: var(--primary-color);
+            font-size: var(--h4-font-size);
+            margin-bottom: var(--spacing-md);
+            margin-top: 0; /* Override default h3 margin-top */
+        }
+
+        .plant-card p {
+            color: var(--color-text-secondary);
+            font-size: var(--general-font-size);
+            margin-bottom: var(--spacing-md);
+            flex-grow: 1; /* Allow description to take available space */
+        }
+
+        .plant-card ul {
+            list-style: disc;
+            padding-left: 1.5rem;
+            list-style-position: inside;
+            margin-top: var(--spacing-md);
+            color: var(--color-text-secondary);
+        }
+        .plant-card ul li {
+            margin-bottom: var(--spacing-xs);
+        }
+        .plant-card ul li:last-child {
+            margin-bottom: 0;
+        }
+        .plant-card strong {
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        .main-footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding-top: var(--spacing-40px);
+            padding-bottom: var(--spacing-40px);
+            text-align: center;
+        }
+        .main-footer .container {
+            padding-left: var(--spacing-lg);
+            padding-right: var(--spacing-lg);
+        }
+
+        /* Responsive Adjustments */
+        @media (min-width: 768px) {
+            .hero-section h1 {
+                font-size: var(--h1-font-size);
+            }
+            .hero-section p {
+                font-size: var(--h5-font-size);
+            }
+            .page-section h2 {
+                font-size: var(--h2-font-size);
+            }
+            .page-section h3 {
+                font-size: var(--h3-font-size);
+            }
+        }

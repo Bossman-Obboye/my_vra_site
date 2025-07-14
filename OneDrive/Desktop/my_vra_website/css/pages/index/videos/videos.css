@@ -1,0 +1,74 @@
+.video-section {
+  padding: 2rem;
+  background-color: #fff;
+}
+
+.video-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.video-carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.video-carousel {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  padding: 1rem 0;
+}
+
+.video-carousel iframe {
+  min-width: 320px;
+  height: 180px;
+  border: none;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation Arrows */
+.scroll-btn {
+  position: absolute;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+.scroll-btn:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.scroll-btn.left {
+  left: -15px;
+}
+
+.scroll-btn.right {
+  right: -15px;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 768px) {
+  .video-carousel iframe {
+    min-width: 260px;
+    height: 150px;
+  }
+
+  .scroll-btn {
+    display: none;
+  }
+}

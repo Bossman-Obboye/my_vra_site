@@ -1,0 +1,176 @@
+/* Section Styling */
+.page-section {
+  padding-top: var(--spacing-xxl);
+  padding-bottom: var(--spacing-xxl);
+  background-color: var(--white);
+  border-bottom: 1px solid var(--grey); /* Subtle separator */
+}
+.page-section:last-of-type {
+  border-bottom: none;
+}
+.page-section.bg-light {
+  background-color: var(--color-light-blue-bg);
+}
+
+.page-section h2 {
+  font-size: var(--h2-font-size);
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+}
+.page-section h3 {
+  font-size: var(--h4-font-size);
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-md);
+}
+.page-section p,
+.page-section ul {
+  font-size: var(--general-font-size);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-md);
+}
+.page-section ul {
+  list-style: none; /* Override default list-style for specific sections */
+  padding: 0;
+  margin: 0;
+}
+.page-section ul li {
+  margin-bottom: var(--spacing-sm);
+}
+.page-section ul li:last-child {
+  margin-bottom: 0;
+}
+.page-section a {
+  color: var(--primary-color);
+}
+.page-section a:hover {
+  color: var(--secondary-color);
+}
+
+/* Grid Layouts */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
+}
+@media (min-width: 768px) {
+  .info-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .info-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Timeline Specific Styles */
+.timeline {
+  position: relative;
+  max-width: 1000px; /* Constrain timeline width */
+  margin: 0 auto;
+  padding: var(--spacing-xl) 0;
+}
+.timeline::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  background-color: var(--primary-color);
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -2px;
+  z-index: 1;
+}
+
+.timeline-item {
+  padding: 10px 40px;
+  position: relative;
+  background-color: inherit;
+  width: 50%;
+  margin-bottom: var(--spacing-xl); /* Space between items */
+}
+.timeline-item::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: -14px; /* Adjust to center on the line */
+  background-color: var(--secondary-color);
+  border: 4px solid var(--primary-color);
+  top: 15px;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.timeline-content {
+  padding: var(--spacing-lg) var(--spacing-xl);
+  background-color: var(--color-light-blue-bg);
+  position: relative;
+  border-radius: var(--border-radius-md);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.timeline-content h3 {
+  color: var(--primary-color);
+  font-size: var(--h4-font-size);
+  margin-bottom: var(--spacing-sm);
+}
+.timeline-content p {
+  color: var(--color-text-secondary);
+  font-size: var(--general-font-size);
+  margin-bottom: 0; /* Remove default p margin-bottom if it's the last element */
+}
+
+/* Left-aligned timeline items */
+.timeline-item.left {
+  left: 0;
+}
+.timeline-item.left::after {
+  left: 50%;
+  margin-left: -14px; /* Adjust for circle size */
+}
+
+/* Right-aligned timeline items */
+.timeline-item.right {
+  left: 50%;
+}
+.timeline-item.right::after {
+  left: 50%;
+  margin-left: -14px; /* Adjust for circle size */
+}
+
+/* Responsive timeline for smaller screens */
+@media screen and (max-width: 767px) {
+  .timeline::after {
+    left: 30px; /* Move line to the left */
+  }
+  .timeline-item {
+    width: 100%;
+    padding-left: 70px; /* Space for line and circle */
+    padding-right: 25px;
+  }
+  .timeline-item::after {
+    left: 22px; /* Align circle with new line position */
+  }
+  .timeline-item.right {
+    left: 0%; /* All items left-aligned on small screens */
+  }
+}
+
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+  .hero-section h1 {
+    font-size: var(--h1-font-size);
+  }
+  .hero-section p {
+    font-size: var(--h5-font-size);
+  }
+  .page-section h2 {
+    font-size: var(--h2-font-size);
+  }
+  .page-section h3 {
+    font-size: var(--h3-font-size);
+  }
+}

@@ -1,0 +1,115 @@
+    /* Section Styling */
+        .page-section {
+            padding-top: var(--spacing-xxl);
+            padding-bottom: var(--spacing-xxl);
+            background-color: var(--white);
+            border-bottom: 1px solid var(--grey); /* Subtle separator */
+        }
+        .page-section:last-of-type {
+            border-bottom: none;
+        }
+        .page-section.bg-light {
+            background-color: var(--color-light-blue-bg);
+        }
+
+        .page-section h2 {
+            font-size: var(--h2-font-size);
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-xl);
+            text-align: center;
+        }
+        .page-section p {
+            font-size: var(--general-font-size);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        /* Newsletter List Styling */
+        .newsletter-list {
+            list-style: none;
+            padding: 0;
+            margin-top: var(--spacing-xl);
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-md); /* Smaller gap for list items */
+        }
+
+        .newsletter-item {
+            margin-bottom: 30px;
+        }
+        @media (min-width: 640px) {
+            .newsletter-list {
+                grid-template-columns: repeat(2, 1fr); 
+            }
+        }
+        @media (min-width: 900px) {
+            .newsletter-list {
+                grid-template-columns: repeat(3, 1fr); /* Three columns on larger screens */
+            }
+        }
+
+        .newsletter-item a {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-md);
+            background-color: var(--white);
+            border-radius: var(--border-radius-md);
+            color: var(--primary-color);
+            font-weight: 500;
+            transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            height: 100%; /* Ensure cards are same height in grid */
+        }
+        .newsletter-item a:hover {
+            background-color: var(--color-light-blue-bg);
+            color: var(--color-dark-blue-active-tab);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .newsletter-item .icon {
+            font-size: 1.8rem; /* Icon size for newsletter */
+            line-height: 1;
+            flex-shrink: 0; /* Prevent icon from shrinking */
+        }
+        .newsletter-item .text-content {
+            flex-grow: 1; /* Allow text to take available space */
+        }
+        .newsletter-item .newsletter-title {
+            font-size: var(--general-font-size);
+            font-weight: 600;
+            color: var(--primary-color);
+            display: block; /* Ensure title is block for margin */
+            margin-bottom: var(--spacing-xs);
+        }
+        .newsletter-item .newsletter-date {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+        }
+
+        /* Footer */
+        .main-footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding-top: var(--spacing-40px);
+            padding-bottom: var(--spacing-40px);
+            text-align: center;
+        }
+        .main-footer .container {
+            padding-left: var(--spacing-lg);
+            padding-right: var(--spacing-lg);
+        }
+
+        /* Responsive Adjustments */
+        @media (min-width: 768px) {
+            .hero-section h1 {
+                font-size: var(--h1-font-size);
+            }
+            .hero-section p {
+                font-size: var(--h5-font-size);
+            }
+            .page-section h2 {
+                font-size: var(--h2-font-size);
+            }
+        }

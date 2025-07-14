@@ -1,0 +1,139 @@
+.home-hero-section {
+  position: relative;
+  height: 100vh;
+  width: 100%; 
+  overflow: hidden; 
+}
+
+.hero-slides-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.hero-slide {
+  pointer-events: none; 
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+
+.hero-slide.active {
+  opacity: 1;
+  pointer-events: auto; 
+}
+
+/* Specific background images for each slide */
+.content_1 {
+  background-image: url("../../../../assets/images/bgs/slide_one.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.content_2 {
+  background-image: url("../../../../assets/images/bgs/slide_two.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.content_3 {
+  background-image: url("../../../../assets/images/bgs/slide_three.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+/* Slide Content Box */
+.slide-content {
+  max-width: 800px;
+  padding: 2rem; /* 32px */
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  );
+  border-radius: 0.75rem;
+}
+
+
+.slide-content h1 {
+  font-size: 2.25rem; 
+  line-height: 2.5rem; 
+  font-weight: 700; 
+  margin-bottom: 1rem; 
+}
+
+
+.slide-content p {
+  font-size: 1.125rem; 
+  line-height: 1.75rem; 
+  margin-bottom: 1.5rem;
+}
+
+
+@media (min-width: 768px) {
+  .slide-content h1 {
+    font-size: 3rem; 
+    line-height: 1; 
+  }
+  .slide-content p {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+}
+
+
+
+/* Navigation Arrows Container */
+.hero_content_nav_arrow {
+  position: absolute;
+  bottom: 100px; /* Position 100px from the bottom */
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  /* Removed transform: translateY(-50%); as it's no longer needed */
+  z-index: 10; /* Ensure arrows are above slides */
+  padding: 0 1rem; /* Add some padding on sides */
+  box-sizing: border-box; /* Include padding in width */
+}
+
+/* Navigation Arrow Styles */
+.nav-arrow {
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  font-size: 2rem; /* Larger arrows */
+  padding: 0.5rem 1rem;
+  background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
+  border-radius: 50%; /* Make them circular */
+  user-select: none; /* Prevent text selection */
+  transition: background-color 0.3s ease;
+}
+
+.nav-arrow:hover {
+  background-color: rgba(0, 0, 0, 0.6); /* Darker on hover */
+}
+
+.nav-arrow.prev {
+  margin-left: 1rem;
+}
+
+.nav-arrow.next {
+  margin-right: 1rem; 
+}
+
+
+

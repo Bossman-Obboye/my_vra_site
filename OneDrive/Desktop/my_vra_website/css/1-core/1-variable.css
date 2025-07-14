@@ -8,7 +8,14 @@
   --grey: rgb(190, 200, 207);
   --primary-color: rgb(0, 67, 112);
   --secondary-color: rgb(22, 154, 242);
-  --light-grey: rgb(245, 245, 245); /* Added for subtle section backgrounds */
+  --light-grey: rgb(245, 245, 245);
+
+  --color-dark-blue-active-tab: rgb(30, 58, 138);
+  --color-light-indigo-inactive-tab: rgb(224, 231, 255);
+  --color-background-light: rgb(253, 253, 251);
+  --color-text-secondary: rgb(113, 128, 150);
+  --color-text-primary-dark: rgb(43, 108, 176);
+  --color-light-blue-bg: rgb(235, 248, 255);
 
   /*-- TYPOGRAPHY --*/
   --default-font-family: "Open Sans", Roboto, Roboto-fallback;
@@ -17,13 +24,13 @@
   --font-size-xs: 12px;
   --font-size-min: 8px;
   --general-line-height: 1.6;
-  --header-height: 80px;  /* Example: If your header is 80px tall */
+  --header-height: 80px; /* Example: If your header is 80px tall */
 
   /* Heading Font Sizes */
   --h1-font-size: 48px;
-  --h2-font-size: 40px ;
+  --h2-font-size: 40px;
   --h3-font-size: 32px;
-  --h4-font-size: 28px ;
+  --h4-font-size: 28px;
   --h5-font-size: 24px;
   --h6-font-size: 20px;
 
@@ -34,7 +41,7 @@
   --h4-line-height: 1.4;
   --h5-line-height: 1.4;
   --h6-line-height: 1.5;
-  
+
   /* — SPACING — */
   --spacing-xs: 4px;
   --spacing-sm: 8px;
@@ -53,4 +60,21 @@
   --border-radius-max: 40px;
   --border-radius-circle: 50%;
 
+  /* Custom border radius from SPA */
+  --border-radius-2xl: 1rem;
+  /* 16px, maps to var(--border-radius-xl) */
+  --border-radius-full: 9999px;
+  /* Retain for full circle */
+
+  /* Custom spacing values from SPA that don't directly map to user's provided ones, using rem for consistency */
+  --spacing-12px: 0.75rem;
+  /* For original spacing-3 */
+  --spacing-32px: 2rem;
+  /* For original spacing-8 */
+  --spacing-40px: 2.5rem;
+  /* For original spacing-10 */
+  --spacing-112px: 7rem;
+  /* For original spacing-28 */
+  --spacing-160px: 10rem;
+  /* For original spacing-40 */
 }
