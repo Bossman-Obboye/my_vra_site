@@ -1,803 +1,688 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Volta River Authority</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Volta River Authority</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- Inter font -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-    <!-- Your site styles -->
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="css/pages/index/index.css" />
-  </head>
+  <!-- Inter font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-  <body>
-    <!-- HEADER SECTION -->
-    <header>
-      <nav class="navbar">
-        <div class="navbar-container">
-          <div class="navbar-left">
-            <!-- Hamburger Menu -->
-            <button id="menu-toggle" class="menu-toggle">
-              <div class="hamburger-icon" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-            </button>
+  <!-- Your site styles -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/pages/index/index.css" />
+</head>
 
-            <!-- VRA Logo -->
-            <a href="index.html" class="vra-logo">
-              <img class="icon"
-                src="assets/images/logos/vra_logo.png"
-                alt="Logo">
-              <span class="text">VOLTA RIVER AUTHORITY</span>
-            </a>
-          </div>
-
-          <!-- NAVBAR Headline -->
-          <div class="navbar-headline">
-            <span>Our Vision</span>
-            <span class="separator">|</span>
-            <a href="htmls/pages/who_we_are/our_profile.html">To be a
-              Model of Excellence for Power Utilities in
-              Africa.</a>
-          </div>
-        </div>
-
-        <!-- DRAWER -->
-        <div id="drawer" class="drawer">
-          <!-- DRAWER HEADER -->
-          <div class="drawer-header">
-            <button id="close-menu" class="close-drawer-btn">
-              <i class="fas fa-times icon"></i>
-            </button>
-          </div>
-
-          <!-- DRAWER CONTENT -->
-          <div class="drawer-content">
-            <div class="main-drawer-menus-wrapper">
-              <ul>
-                <li><a href="#" class="drawer-menu-item"
-                    data-target="who-we-are">Who We Are <i
-                      class="fas fa-chevron-right arrow-icon"></i></a></li>
-                <li><a href="#" class="drawer-menu-item"
-                    data-target="what-we-do">What We Do <i
-                      class="fas fa-chevron-right arrow-icon"></i></a></li>
-                <li><a href="#" class="drawer-menu-item active"
-                    data-target="our-companies">Our
-                    Companies <i
-                      class="fas fa-chevron-right arrow-icon"></i></a></li>
-                <li><a href="#" class="drawer-menu-item"
-                    data-target="resources">Resources <i
-                      class="fas fa-chevron-right arrow-icon"></i></a></li>
-                <li><a href="#" class="drawer-menu-item"
-                    data-target="news">News & Media<i
-                      class="fas fa-chevron-right arrow-icon"></i></a></li>
-                <li><a href="#" class="drawer-menu-item"
-                    data-target="stakeholders">Our
-                    Stakeholders<i
-                      class="fas fa-chevron-right arrow-icon"></i></a></li>
-                <li><a href="#" class="drawer-menu-item"
-                    data-target="contact-us">Contact Us
-                    <i
-                      class="fas fa-chevron-right arrow-icon"></i></a></li>
-                <li><a href="#" class="drawer-menu-item"
-                    data-target="videos">Videos About VRA
-                    <i
-                      class="fas fa-chevron-right arrow-icon"></i></a></li>
-              </ul>
+<body>
+  <!-- HEADER SECTION -->
+  <header>
+    <nav class="navbar">
+      <div class="navbar-container">
+        <div class="navbar-left">
+          <!-- Hamburger Menu -->
+          <button id="menu-toggle" class="menu-toggle">
+            <div class="hamburger-icon" id="hamburger">
+              <span></span>
+              <span></span>
+              <span></span>
             </div>
+          </button>
 
-            <div class="drawer-sub-menu-section"
-              id="sub-menu-content">
-              <ul id="our-companies-sub-menu">
-                <li><a
-                    href="htmls/pages/companies/akosombo_details.html">Akosombo
-                    Hotels Limited</a></li>
-                <li><a
-                    href="htmls/pages/companies/kpong_farms.html">Kpong
-                     </a></li>
-                <li><a
-                    href="htmls/pages/companies/northern_electricity_com.html">Northern
-                    Electricity Distribution
-                    Company</a></li>
-                <li><a
-                    href="htmls/pages/companies/volta_lake_transport.html">Volta
-                    Lake Transport Company</a></li>
-                <li><a
-                    href="htmls/pages/companies/vra_health_service.html">VRA
-                    Health Services</a></li>
-                <li><a
-                    href="htmls/pages/companies/vra_international_schools.html">VRA
-                    International Schools</a></li>
-              </ul>
-              <!-- Other sub-menu contents can be hidden and shown based on active menu item -->
-              <ul id="who-we-are-sub-menu" style="display: none;">
-                <li><a
-                    href="htmls/pages/who_we_are/our_profile.html">Our
-                    Profile</a></li>
-                <li><a
-                    href="htmls/pages/who_we_are/our_impact.html">Our
-                    Impact</a></li>
-                <li><a
-                    href="htmls/pages/who_we_are/our_team.html">Our
-                    Team Members</a></li>
-                <li><a
-                    href="htmls/pages/who_we_are/facts_and_figures.html"
-                    target="_blank">Facts & Figures about
-                    Our Power Generation</a></li>
-                <!-- <li><a href="htmls/pages/who_we_are/policy_statement.html">Our Policies</a></li> -->
-                <li><a
-                    href="htmls/pages/who_we_are/our_reports.html">Our
-                    Reports </a></li>
-                <li><a
-                    href="htmls/pages/about_us/visiting_our_plants.html">Visiting
-                    Our Plants</a></li>
-
-              </ul>
-
-              <ul id="contact-us-sub-menu" style="display: none;">
-
-                <li><a
-                    href="htmls/pages/contact/contant_details.html"
-                    target="_blank">Contact Details</a></li>
-                <li><a
-                    href="htmls/pages/contact/business_relation.html"
-                    target="_blank">Business
-                    Relations</a></li>
-                <li><a
-                    href="https://fa-ewye-saasfaprod1.fa.ocs.oraclecloud.com/fscmUI/redwood/supplier-registration/register-supplier/register-supplier-verification?id=FmU2Qw9F7t8MAOaxcq9VOvWYIJlJkTWJ9j2mvzfrlu2pl7ED9u8s1POLUzLqz40n"
-                    target="_blank">Vendor
-                    Registration</a></li>
-                <li><a href="https://www.vra.com/VAS.pdf"
-                    target="_blank">Our Value Added Services
-                    (VAS)</a></li>
-              </ul>
-
-              <ul id="what-we-do-sub-menu" style="display: none;">
-                <li><a
-                    href="htmls/pages/what_we_do/hydro_generation.html">Hydro
-                    Generation </a></li>
-                <li><a
-                    href="htmls/pages/what_we_do/thermal_generation.html">Thermal
-                    Generation</a></li>
-                <li><a
-                    href="htmls/pages/what_we_do/renewable_energy.html">Renewable
-                    Energy Generation</a></li>
-                <li><a
-                    href="htmls/pages/what_we_do/non_power_activities.html">Non
-                    Power Activities </a></li>
-              </ul>
-
-              <ul id="resources-sub-menu"
-                style="display: none;">
-                <li><a
-                    href="htmls/pages/resources/newsletters.html">Newsletters
-                  </a></li>
-                <li><a
-                    href="htmls/pages/resources/vra_business_insight.html">VRA
-                    Business Insights</a></li>
-                <li><a
-                    href="https://forms.office.com/r/TNZBmt6BtQ"
-                    target="_blank">Vendor Registration &
-                    Guidelines</a></li>
-                <li><a
-                    href="https://www.vra.com/resources/VRA%20Code%20of%20Ethics.pdf"
-                    target="_blank">VRA Code of
-                    Ethics</a></li>
-                <li><a
-                    href="http://www.vra.com/resources/others/lcpd.pdf"
-                    target="_blank">VRA Local Content
-                    Policies</a></li>
-                <li><a
-                    href="https://www.vra.com/media/2020/Corporate%20Environmental%20Policy%20Statement.pdf"
-                    target="_blank">VRA Corporate
-                    Environmental Policy Statement</a></li>
-
-                <li><a
-                    href="http://www.vra.com/resources/others/Implementation%20Guidelines%20for%20Framework%20for%20Aquaculture%20Development%20on%20the%20Volta%20Lake.pdf"
-                    target="_blank">Download the Framework
-                    for Acquaculture Development on the
-                    Volter Lake</a></li>
-                <li><a
-                    href="https://youtu.be/FGuWqkwdYjs?si=uV6_kd5TLGDJVoLz"
-                    target="_blank">Documentary:
-                    Kaleo Solar Power Plant (Phase
-                    II)</a></li>
-                <li><a
-                    href="https://www.youtube.com/embed/XVT5tutY5FI?si=lmRWMHXjvI512cxi"
-                    target="_blank">Documentary: Anwomaso
-                    Thermal Power Station</a></li>
-                <li><a
-                    href="https://youtu.be/iPLFtbSZSOo?si=vSgECPacTSXkTMfB"
-                    target="_blank">Documentary: Oral
-                    History of the Akosombo Dam</a></li>
-              </ul>
-
-              <ul id="stakeholders-sub-menu"
-                style="display: none;">
-                <li><a href="https://www.energymin.gov.gh/"
-                    target="_blank">Ministry of
-                    Energy</a></li>
-                <li><a href="https://gridcogh.com/"
-                    target="_blank">GRIDCo</a></li>
-                <li><a href="http://www.ecgonline.info/"
-                    target="_blank">Electricty Company Ghana
-                    Limited</a></li>
-                <li><a href="https://www.purc.com.gh/"
-                    target="_blank">Public Utilities
-                    Regulatory Commission</a></li>
-                <li><a href="https://www.energycom.gov.gh/"
-                    target="_blank">Energy
-                    Commission</a></li>
-                <li><a href="https://siga.gov.gh/"
-                    target="_blank">State Interests and
-                    Governance Authority</a></li>
-                <li><a
-                    href="https://www.unglobalcompactghana.com/"
-                    target="_blank">Global Compact Network
-                    Ghana</a></li>
-                <li><a href="https://efghana.org/"
-                    target="_blank">Energy
-                    Foundation</a></li>
-                <li><a href="https://buipower.com/"
-                    target="_blank">Abui Power
-                    Authority</a></li>
-                <li><a href="https://www.anglogoldashanti.com/"
-                    target="_blank">Anglo Gold
-                    Ashanti</a></li>
-                <li><a href="https://www.gnpcghana.com/"
-                    target="_blank">Ghana National Petroleum
-                    Corporation</a></li>
-                <li><a
-                    href="https://apua-asea.org/en/updea/ang/"
-                    target="_blank">Apua Asea</a></li>
-                <li><a href="https://www.valcotema.com/"
-                    target="_blank">VALCO</a></li>
-                <li><a href="https://www.ecowapp.org/en"
-                    target="_blank">West Africa Power
-                    Pool</a></li>
-                <li><a href="https://www.epa.gov.gh/new/"
-                    target="_blank">Environmental Protection
-                    Agency</a></li>
-                <li><a
-                    href="https://www.hydropower.org/who-we-are/about-iha"
-                    target="_blank"></a>International
-                  HydroPower Association</li>
-                <li><a href="https://cfi.co/"
-                    target="_blank">CFI</a></li>
-
-              </ul>
-
-              <ul id="videos-sub-menu" style="display: none;">
-                <li><a
-                    href="https://youtu.be/dGcOySJNHKo?si=D7LUAAnOV83vuyXt"
-                    target="_blank">Profile of the Volta
-                    River Authority</a></li>
-                <li><a
-                    href="https://youtu.be/CmWJOkHA4BU?si=zHqr6I92zNCUesn6"
-                    target="_blank">VRA @ 57 - Interview
-                    with Emmanuel Antwi-Darkwa, Chief
-                    Executive, VRA</a></li>
-                <li><a
-                    href="https://youtu.be/zUYv5UJ8O2Q?si=gFoTncW9bE8yHY9i"
-                    target="_blank">ORAL HISTORY OF THE
-                    AKOSOMBO DAM</a></li>
-                <li><a
-                    href="https://youtu.be/rH4tthChAzY?si=9R0nJRAZc7xmXYec"
-                    target="_blank">Akosombo Dam Eastern
-                    Region Ghana 3D Photogrammetry</a></li>
-                <li><a
-                    href="https://youtu.be/79n-mgnRpB0?si=x0IzsGFtZmQHJ6hk"
-                    target="_blank">Uncover the Volta River
-                    Authority (VRA) AKOSOMBO DAM on VOLTA
-                    RIVER - Akosombo hydroelectric
-                    plant!</a></li>
-                <li><a
-                    href="https://youtu.be/-W0jKHww9ns?si=eg_wvyBgCasYpMZU"
-                    target="_blank">AEFTV 2018 Interview;
-                    Emmanuel Antwi Darkwa, CEO, Volta River
-                    Authority (VRA)</a></li>
-                <li><a
-                    href="https://youtu.be/B5BXOOotgl0?si=rEtFbeQL3mX-stiW"
-                    target="_blank">SHOCKING - The Truth
-                    About Ghana’s Biggest Projects Exposed
-                    $250M Bank of Ghana & VRA
-                    Project</a></li>
-                <li><a
-                    href="https://youtu.be/P3dh-CIiPvk?si=ZMUEKBZh9RgO5DZu"
-                    target="_blank">We can't recycle
-                    Akosombo water to generate electricity -
-                    VRA Boss</a></li>
-                <li><a
-                    href="https://youtu.be/ZJfQV87GvDI?si=acYTNpFQNljrmFjF"
-                    target="_blank">Visit to Volta River
-                    Authority & Akosombo Dam🇬🇭</a></li>
-              </ul>
-
-              <ul id="news-sub-menu" style="display: none;">
-                <li><a
-                    href="htmls/pages/media/latest_news.html">Latest
-                    News</a></li>
-                <li><a
-                    href="htmls/pages/media/tenders.html">Tenders</a></li>
-                <li><a
-                    href="https://www.vra.com/media/2024/VRA-Power-Supply.jpg"
-                    target="_blank">Press
-                    Releases</a></li>
-                <li><a
-                    href="https://www.vra.com/media/2025/Solar%20Scoping%20Report%20-Loagri.pdf"
-                    target="_blank">Scoping
-                    Reports /
-                    Notices</a></li>
-                <li><a
-                    href="https://www.vra.com/media/2023/VRA%20ENDS%20CONTROLLED%20SPILLAGE%20FROM%20AKOSOMBO%20DAM.jpg"
-                    target="_blank">Akosombo
-                    Spillage
-                    Controlled</a></li>
-              </ul>
-            </div>
-          </div>
+          <!-- VRA Logo -->
+          <a href="index.html" class="vra-logo">
+            <img class="icon" src="assets/images/logos/vra_logo.png" alt="Logo">
+            <span class="text">VOLTA RIVER AUTHORITY</span>
+          </a>
         </div>
-      </nav>
-    </header>
 
-    <!-- Hero Section -->
-    <div class="home-hero-section">
-      <div class="hero-slides-container">
-        <div class="hero-slide content_1 active">
-          <div class="slide-content">
-            <h1>Driving Impact Through Our Subsidiaries</h1>
-            <p>
-              From VRA Resettlement Trust Fund to VRA Hospitals and Schools, our
-              sub-companies extend our mission beyond power — into lives,
-              health, and education.
-            </p>
-            <a href="htmls/pages/companies/akosombo_details.html"
-              class="white-btn">know Our Subsidiaries</a>
-
-          </div>
-        </div>
-        <div class="hero-slide content_2">
-          <div class="slide-content">
-            <h1>Reliable Energy, Enduring Progress</h1>
-            <p>
-              As West Africa's leading power generator, we innovate and deliver
-              essential electricity, fostering industrial growth and community
-              resilience.
-            </p>
-            <a href="htmls/pages/what_we_do/hydro_generation.html"
-              class="white-btn">
-              Know What We Do
-            </a>
-          </div>
-        </div>
-        <div class="hero-slide content_3">
-          <div class="slide-content">
-            <h1>Fueling National Growth, Empowering Every Home</h1>
-            <p>
-              Committed to illuminating lives and fostering sustainable
-              development through responsible energy production and strong
-              community partnerships.
-            </p>
-            <a href="htmls/pages/who_we_are/our_profile.html"
-              class="white-btn">
-              Know Our Support
-            </a>
-          </div>
+        <!-- NAVBAR Headline -->
+        <div class="navbar-headline">
+          <span>Our Vision</span>
+          <span class="separator">|</span>
+          <a href="htmls/pages/who_we_are/our_profile.html">To be a
+            Model of Excellence for Power Utilities in
+            Africa.</a>
         </div>
       </div>
 
-      <!-- Navigation Arrows -->
-      <div class="hero_content_nav_arrow">
-        <a class="nav-arrow prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="nav-arrow next" onclick="plusSlides(1)">&#10095;</a>
+      <!-- DRAWER -->
+      <div id="drawer" class="drawer">
+        <!-- DRAWER HEADER -->
+        <div class="drawer-header">
+          <button id="close-menu" class="close-drawer-btn">
+            <i class="fas fa-times icon"></i>
+          </button>
+        </div>
+
+        <!-- DRAWER CONTENT -->
+        <div class="drawer-content">
+          <div class="main-drawer-menus-wrapper">
+            <ul>
+              <li><a href="#" class="drawer-menu-item" data-target="who-we-are">Who We Are <i
+                    class="fas fa-chevron-right arrow-icon"></i></a></li>
+              <li><a href="#" class="drawer-menu-item" data-target="what-we-do">What We Do <i
+                    class="fas fa-chevron-right arrow-icon"></i></a></li>
+              <li><a href="#" class="drawer-menu-item active" data-target="our-companies">Our
+                  Companies <i class="fas fa-chevron-right arrow-icon"></i></a></li>
+              <li><a href="#" class="drawer-menu-item" data-target="resources">Resources <i
+                    class="fas fa-chevron-right arrow-icon"></i></a></li>
+              <li><a href="#" class="drawer-menu-item" data-target="news">News & Media<i
+                    class="fas fa-chevron-right arrow-icon"></i></a></li>
+              <li><a href="#" class="drawer-menu-item" data-target="stakeholders">Our
+                  Stakeholders<i class="fas fa-chevron-right arrow-icon"></i></a></li>
+              <li><a href="#" class="drawer-menu-item" data-target="contact-us">Contact Us
+                  <i class="fas fa-chevron-right arrow-icon"></i></a></li>
+              <li><a href="#" class="drawer-menu-item" data-target="videos">Videos About VRA
+                  <i class="fas fa-chevron-right arrow-icon"></i></a></li>
+            </ul>
+          </div>
+
+          <div class="drawer-sub-menu-section" id="sub-menu-content">
+            <ul id="our-companies-sub-menu">
+              <li><a href="htmls/pages/companies/akosombo_details.html">Akosombo
+                  Hotels Limited</a></li>
+              <li><a href="htmls/pages/companies/kpong_farms.html">Kpong
+                </a></li>
+              <li><a href="htmls/pages/companies/northern_electricity_com.html">Northern
+                  Electricity Distribution
+                  Company</a></li>
+              <li><a href="htmls/pages/companies/volta_lake_transport.html">Volta
+                  Lake Transport Company</a></li>
+              <li><a href="htmls/pages/companies/vra_health_service.html">VRA
+                  Health Services</a></li>
+              <li><a href="htmls/pages/companies/vra_international_schools.html">VRA
+                  International Schools</a></li>
+            </ul>
+            <!-- Other sub-menu contents can be hidden and shown based on active menu item -->
+            <ul id="who-we-are-sub-menu" style="display: none;">
+              <li><a href="htmls/pages/who_we_are/our_profile.html">Our
+                  Profile</a></li>
+              <li><a href="htmls/pages/who_we_are/our_impact.html">Our
+                  Impact</a></li>
+              <li><a href="htmls/pages/who_we_are/our_team.html">Our
+                  Team Members</a></li>
+              <li><a href="htmls/pages/who_we_are/facts_and_figures.html" target="_blank">Facts & Figures about
+                  Our Power Generation</a></li>
+              <!-- <li><a href="htmls/pages/who_we_are/policy_statement.html">Our Policies</a></li> -->
+              <li><a href="htmls/pages/who_we_are/our_reports.html">Our
+                  Reports </a></li>
+              <li><a href="htmls/pages/about_us/visiting_our_plants.html">Visiting
+                  Our Plants</a></li>
+
+            </ul>
+
+            <ul id="contact-us-sub-menu" style="display: none;">
+
+              <li><a href="htmls/pages/contact/contant_details.html" target="_blank">Contact Details</a></li>
+              <li><a href="htmls/pages/contact/business_relation.html" target="_blank">Business
+                  Relations</a></li>
+              <li><a
+                  href="https://fa-ewye-saasfaprod1.fa.ocs.oraclecloud.com/fscmUI/redwood/supplier-registration/register-supplier/register-supplier-verification?id=FmU2Qw9F7t8MAOaxcq9VOvWYIJlJkTWJ9j2mvzfrlu2pl7ED9u8s1POLUzLqz40n"
+                  target="_blank">Vendor
+                  Registration</a></li>
+              <li><a href="https://www.vra.com/VAS.pdf" target="_blank">Our Value Added Services
+                  (VAS)</a></li>
+            </ul>
+
+            <ul id="what-we-do-sub-menu" style="display: none;">
+              <li><a href="htmls/pages/what_we_do/hydro_generation.html">Hydro
+                  Generation </a></li>
+              <li><a href="htmls/pages/what_we_do/thermal_generation.html">Thermal
+                  Generation</a></li>
+              <li><a href="htmls/pages/what_we_do/renewable_energy.html">Renewable
+                  Energy Generation</a></li>
+              <li><a href="htmls/pages/what_we_do/non_power_activities.html">Non
+                  Power Activities </a></li>
+            </ul>
+
+            <ul id="resources-sub-menu" style="display: none;">
+              <li><a href="htmls/pages/resources/newsletters.html">Newsletters
+                </a></li>
+              <li><a href="htmls/pages/resources/vra_business_insight.html">VRA
+                  Business Insights</a></li>
+              <li><a href="https://forms.office.com/r/TNZBmt6BtQ" target="_blank">Vendor Registration &
+                  Guidelines</a></li>
+              <li><a href="https://www.vra.com/resources/VRA%20Code%20of%20Ethics.pdf" target="_blank">VRA Code of
+                  Ethics</a></li>
+              <li><a href="http://www.vra.com/resources/others/lcpd.pdf" target="_blank">VRA Local Content
+                  Policies</a></li>
+              <li><a href="https://www.vra.com/media/2020/Corporate%20Environmental%20Policy%20Statement.pdf"
+                  target="_blank">VRA Corporate
+                  Environmental Policy Statement</a></li>
+
+              <li><a
+                  href="http://www.vra.com/resources/others/Implementation%20Guidelines%20for%20Framework%20for%20Aquaculture%20Development%20on%20the%20Volta%20Lake.pdf"
+                  target="_blank">Download the Framework
+                  for Acquaculture Development on the
+                  Volter Lake</a></li>
+              <li><a href="https://youtu.be/FGuWqkwdYjs?si=uV6_kd5TLGDJVoLz" target="_blank">Documentary:
+                  Kaleo Solar Power Plant (Phase
+                  II)</a></li>
+              <li><a href="https://www.youtube.com/embed/XVT5tutY5FI?si=lmRWMHXjvI512cxi" target="_blank">Documentary:
+                  Anwomaso
+                  Thermal Power Station</a></li>
+              <li><a href="https://youtu.be/iPLFtbSZSOo?si=vSgECPacTSXkTMfB" target="_blank">Documentary: Oral
+                  History of the Akosombo Dam</a></li>
+            </ul>
+
+            <ul id="stakeholders-sub-menu" style="display: none;">
+              <li><a href="https://www.energymin.gov.gh/" target="_blank">Ministry of
+                  Energy</a></li>
+              <li><a href="https://gridcogh.com/" target="_blank">GRIDCo</a></li>
+              <li><a href="http://www.ecgonline.info/" target="_blank">Electricty Company Ghana
+                  Limited</a></li>
+              <li><a href="https://www.purc.com.gh/" target="_blank">Public Utilities
+                  Regulatory Commission</a></li>
+              <li><a href="https://www.energycom.gov.gh/" target="_blank">Energy
+                  Commission</a></li>
+              <li><a href="https://siga.gov.gh/" target="_blank">State Interests and
+                  Governance Authority</a></li>
+              <li><a href="https://www.unglobalcompactghana.com/" target="_blank">Global Compact Network
+                  Ghana</a></li>
+              <li><a href="https://efghana.org/" target="_blank">Energy
+                  Foundation</a></li>
+              <li><a href="https://buipower.com/" target="_blank">Abui Power
+                  Authority</a></li>
+              <li><a href="https://www.anglogoldashanti.com/" target="_blank">Anglo Gold
+                  Ashanti</a></li>
+              <li><a href="https://www.gnpcghana.com/" target="_blank">Ghana National Petroleum
+                  Corporation</a></li>
+              <li><a href="https://apua-asea.org/en/updea/ang/" target="_blank">Apua Asea</a></li>
+              <li><a href="https://www.valcotema.com/" target="_blank">VALCO</a></li>
+              <li><a href="https://www.ecowapp.org/en" target="_blank">West Africa Power
+                  Pool</a></li>
+              <li><a href="https://www.epa.gov.gh/new/" target="_blank">Environmental Protection
+                  Agency</a></li>
+              <li><a href="https://www.hydropower.org/who-we-are/about-iha" target="_blank"></a>International
+                HydroPower Association</li>
+              <li><a href="https://cfi.co/" target="_blank">CFI</a></li>
+
+            </ul>
+
+            <ul id="videos-sub-menu" style="display: none;">
+              <li><a href="https://youtu.be/dGcOySJNHKo?si=D7LUAAnOV83vuyXt" target="_blank">Profile of the Volta
+                  River Authority</a></li>
+              <li><a href="https://youtu.be/CmWJOkHA4BU?si=zHqr6I92zNCUesn6" target="_blank">VRA @ 57 - Interview
+                  with Emmanuel Antwi-Darkwa, Chief
+                  Executive, VRA</a></li>
+              <li><a href="https://youtu.be/zUYv5UJ8O2Q?si=gFoTncW9bE8yHY9i" target="_blank">ORAL HISTORY OF THE
+                  AKOSOMBO DAM</a></li>
+              <li><a href="https://youtu.be/rH4tthChAzY?si=9R0nJRAZc7xmXYec" target="_blank">Akosombo Dam Eastern
+                  Region Ghana 3D Photogrammetry</a></li>
+              <li><a href="https://youtu.be/79n-mgnRpB0?si=x0IzsGFtZmQHJ6hk" target="_blank">Uncover the Volta River
+                  Authority (VRA) AKOSOMBO DAM on VOLTA
+                  RIVER - Akosombo hydroelectric
+                  plant!</a></li>
+              <li><a href="https://youtu.be/-W0jKHww9ns?si=eg_wvyBgCasYpMZU" target="_blank">AEFTV 2018 Interview;
+                  Emmanuel Antwi Darkwa, CEO, Volta River
+                  Authority (VRA)</a></li>
+              <li><a href="https://youtu.be/B5BXOOotgl0?si=rEtFbeQL3mX-stiW" target="_blank">SHOCKING - The Truth
+                  About Ghana’s Biggest Projects Exposed
+                  $250M Bank of Ghana & VRA
+                  Project</a></li>
+              <li><a href="https://youtu.be/P3dh-CIiPvk?si=ZMUEKBZh9RgO5DZu" target="_blank">We can't recycle
+                  Akosombo water to generate electricity -
+                  VRA Boss</a></li>
+              <li><a href="https://youtu.be/ZJfQV87GvDI?si=acYTNpFQNljrmFjF" target="_blank">Visit to Volta River
+                  Authority & Akosombo Dam🇬🇭</a></li>
+            </ul>
+
+            <ul id="news-sub-menu" style="display: none;">
+              <li><a href="htmls/pages/media/latest_news.html">Latest
+                  News</a></li>
+              <li><a href="htmls/pages/media/tenders.html">Tenders</a></li>
+              <li><a href="https://www.vra.com/media/2024/VRA-Power-Supply.jpg" target="_blank">Press
+                  Releases</a></li>
+              <li><a href="https://www.vra.com/media/2025/Solar%20Scoping%20Report%20-Loagri.pdf"
+                  target="_blank">Scoping
+                  Reports /
+                  Notices</a></li>
+              <li><a
+                  href="https://www.vra.com/media/2023/VRA%20ENDS%20CONTROLLED%20SPILLAGE%20FROM%20AKOSOMBO%20DAM.jpg"
+                  target="_blank">Akosombo
+                  Spillage
+                  Controlled</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <div class="home-hero-section">
+    <div class="hero-slides-container">
+      <div class="hero-slide content_1 active">
+        <div class="slide-content">
+          <h1>Driving Impact Through Our Subsidiaries</h1>
+          <p>
+            From VRA Resettlement Trust Fund to VRA Hospitals and Schools, our
+            sub-companies extend our mission beyond power — into lives,
+            health, and education.
+          </p>
+          <a href="htmls/pages/companies/akosombo_details.html" class="white-btn">know Our Subsidiaries</a>
+
+        </div>
+      </div>
+      <div class="hero-slide content_2">
+        <div class="slide-content">
+          <h1>Reliable Energy, Enduring Progress</h1>
+          <p>
+            As West Africa's leading power generator, we innovate and deliver
+            essential electricity, fostering industrial growth and community
+            resilience.
+          </p>
+          <a href="htmls/pages/what_we_do/hydro_generation.html" class="white-btn">
+            Know What We Do
+          </a>
+        </div>
+      </div>
+      <div class="hero-slide content_3">
+        <div class="slide-content">
+          <h1>Fueling National Growth, Empowering Every Home</h1>
+          <p>
+            Committed to illuminating lives and fostering sustainable
+            development through responsible energy production and strong
+            community partnerships.
+          </p>
+          <a href="htmls/pages/who_we_are/our_profile.html" class="white-btn">
+            Know Our Support
+          </a>
+        </div>
       </div>
     </div>
 
-    <!-- KEY TO TOPICS -->
-    <section class="key-topics-section">
-      <div class="key-t-header">
-        <h2>Key Topics</h2>
+    <!-- Navigation Arrows -->
+    <div class="hero_content_nav_arrow">
+      <a class="nav-arrow prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="nav-arrow next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+  </div>
+
+  <!-- KEY TO TOPICS -->
+  <section class="key-topics-section">
+    <div class="key-t-header">
+      <h2>Key Topics</h2>
+      <hr />
+    </div>
+    <div class="key-t-grid">
+      <div class="key-topic-card">
+        <a href="htmls/pages/what_we_do/thermal_generation.html">
+          <img src="assets/images/bg/power_activities-bg.png" alt="Image 1" />
+          <h3>Generation, transmission, and distribution of electricity</h3>
+          <p class="story-type">WHAT WE DO</p>
+        </a>
+      </div>
+      <div class="key-topic-card">
+        <a href="htmls/pages/what_we_do/non_power_activities.html">
+          <img src="assets/images/bg/non-power-actiivities.png" alt="Image 2" />
+          <h3>VRA runs afforestation programmes aimed at reducing
+            siltation</h3>
+          <p class="story-type">Non-Power Activities</p>
+
+        </a>
+      </div>
+      <div class="key-topic-card">
+        <a href="htmls/pages/who_we_are/our_impact.html">
+          <img src="assets/images/csr/vra_donation.jpg" alt="Image 3" />
+          <h3>VRA Donates More Relief Items to Citizens</h3>
+          <p class="story-type">CSR</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Us  -->
+  <section class="about_us_section">
+    <div class="about_us_vid_wrapper">
+      <!-- Background Video -->
+      <video id="bgVideo" class="bg_video" loop muted autoplay playsinline>
+        <source src="assets/videos/akosombo_vid.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      <!-- Play/Pause Button -->
+      <button id="playPauseBtn" class="play-pause-btn">
+        <!-- Pause Icon (default) -->
+        <svg id="pauseIcon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z"
+            clip-rule="evenodd"></path>
+        </svg>
+        <!-- Play Icon (hidden by default) -->
+        <svg id="playIcon" class="hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.025A1 1 0 0111 7.7V12.3a1 1 0 01-1.445.876L6.5 10.3A1 1 0 016.5 9.7l3.055-2.675z"
+            clip-rule="evenodd"></path>
+        </svg>
+      </button>
+    </div>
+    <!-- Mission Display -->
+    <div class="circle-wrapper">
+      <div class="mission-box">
+        <h3>Our Mission</h3>
         <hr />
+        <h4>
+          We exist to power economies and provide related services; in a safe,
+          reliable and environmentally friendly manner, to add value and raise
+          the living standards of the people of Ghana and West Africa.
+        </h4>
+        <br />
+        <a href="htmls/pages/who_we_are/our_profile.html" class="white-btn">Learn More About Us</a>
       </div>
-      <div class="key-t-grid">
-        <div class="key-topic-card">
-          <a href="htmls/pages/what_we_do/thermal_generation.html">
-            <img
-              src="assets/images/bg/power_activities-bg.png"
-              alt="Image 1" />
-            <h3>Generation, transmission, and distribution of electricity</h3>
-            <p class="story-type">WHAT WE DO</p>
-          </a>
-        </div>
-        <div class="key-topic-card">
-          <a href="htmls/pages/what_we_do/non_power_activities.html">
-            <img
-              src="assets/images/bg/non-power-actiivities.png"
-              alt="Image 2" />
-            <h3>VRA runs afforestation programmes aimed at reducing
-              siltation</h3>
-            <p class="story-type">Non-Power Activities</p>
+    </div>
+  </section>
 
-          </a>
-        </div>
-        <div class="key-topic-card">
-          <a href="htmls/pages/who_we_are/our_impact.html">
-            <img
-              src="assets/images/csr/vra_donation.jpg"
-              alt="Image 3" />
-            <h3>VRA Donates More Relief Items to Citizens</h3>
-            <p class="story-type">CSR</p>
-          </a>
-        </div>
-      </div>
-    </section>
+  <!-- Latest News Section -->
+  <section class="latest-news-section">
+    <h2>NEWS AND UPDATES</h2>
+    <div class="news-carousel-container">
+      <div class="news-grid">
+        <!-- News Item 1 -->
+        <a href="https://www.vra.com/media/2025/Launch-of-SREP.php" target="_blank" class="news-item-link">
+          <div class="news-item simple-style">
+            <div class="news-content">
+              <span class="news-category">IMMERSIVE STORY</span>
 
-    <!-- About Us  -->
-    <section class="about_us_section">
-      <div class="about_us_vid_wrapper">
-        <!-- Background Video -->
-        <video id="bgVideo" class="bg_video" loop muted autoplay playsinline>
-          <source src="assets/videos/akosombo_vid.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-
-        <!-- Play/Pause Button -->
-        <button id="playPauseBtn" class="play-pause-btn">
-          <!-- Pause Icon (default) -->
-          <svg
-            id="pauseIcon"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg">
-            <path
-              fill-rule="evenodd"
-              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z"
-              clip-rule="evenodd"></path>
-          </svg>
-          <!-- Play Icon (hidden by default) -->
-          <svg
-            id="playIcon"
-            class="hidden"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg">
-            <path
-              fill-rule="evenodd"
-              d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.025A1 1 0 0111 7.7V12.3a1 1 0 01-1.445.876L6.5 10.3A1 1 0 016.5 9.7l3.055-2.675z"
-              clip-rule="evenodd"></path>
-          </svg>
-        </button>
-      </div>
-      <!-- Mission Display -->
-      <div class="circle-wrapper">
-        <div class="mission-box">
-          <h3>Our Mission</h3>
-          <hr />
-          <h4>
-            We exist to power economies and provide related services; in a safe,
-            reliable and environmentally friendly manner, to add value and raise
-            the living standards of the people of Ghana and West Africa.
-          </h4>
-          <br />
-          <a href="htmls/pages/who_we_are/our_profile.html"
-            class="white-btn">Learn More About Us</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Latest News Section -->
-    <section class="latest-news-section">
-      <h2>NEWS AND UPDATES</h2>
-      <div class="news-carousel-container">
-        <div class="news-grid">
-          <!-- News Item 1 -->
-          <a
-            href="https://www.vra.com/media/2025/Launch-of-SREP.php"
-            target="_blank"
-            class="news-item-link">
-            <div class="news-item simple-style">
-              <div class="news-content">
-                <span class="news-category">IMMERSIVE STORY</span>
-
-                <span class="news-date">June 25, 2025</span>
-              </div>
-              <div class="news-item-image-container">
-                <img
-                  src="assets/images/news/prestigious_awards.jpg"
-                  alt="News Image 1"
-                  class="news-item-image" />
-              </div>
+              <span class="news-date">June 25, 2025</span>
             </div>
-          </a>
-
-          <!-- News Item 2 -->
-          <a href="https://www.vra.com/media/2025/Courtesy-visit-by-GEA.php"
-            target="_blank" class="news-item-link">
-            <div class="news-item simple-style">
-              <div class="news-content">
-                <span class="news-category">FEATURE STORY</span>
-
-                <span class="news-date">June 30, 2025</span>
-              </div>
-              <div class="news-item-image-container">
-                <img
-                  src="assets/images/news/acting_chief_exe.jpg"
-                  alt="News Image 2"
-                  class="news-item-image" />
-              </div>
-            </div>
-          </a>
-
-          <!-- News Item 3 -->
-          <a href="https://www.vra.com/media/2025/Courtesy-visit-by-GEA.php"
-            target="_blank" class="news-item-link">
-            <div class="news-item simple-style">
-              <div class="news-content">
-                <span class="news-category">BLOG</span>
-
-                <span class="news-date">June 30, 2025</span>
-              </div>
-              <div class="news-item-image-container">
-                <img
-                  src="assets/images/news/agi_pays_courtesy.jpg"
-                  alt="News Image 3"
-                  class="news-item-image" />
-              </div>
-            </div>
-          </a>
-
-          <!-- News Item 4 -->
-          <a href="https://www.vra.com/media/2025/Launch-of-SREP.php"
-            target="_blank" class="news-item-link">
-            <div class="news-item simple-style">
-              <div class="news-content">
-                <span class="news-category">REPORT</span>
-
-                <span class="news-date">July 1, 2025</span>
-              </div>
-              <div class="news-item-image-container">
-                <img
-                  src="assets/images/news/embracing_innovation.jpg"
-                  alt="News Image 4"
-                  class="news-item-image" />
-              </div>
-            </div>
-          </a>
-
-          <!-- News Item 5 -->
-          <a href="https://www.vra.com/media/2025/Launch-of-SREP.php"
-            target="_blank" class="news-item-link">
-            <div class="news-item simple-style">
-              <div class="news-content">
-                <span class="news-category">PRESS RELEASE</span>
-
-                <span class="news-date">July 2, 2025</span>
-              </div>
-              <div class="news-item-image-container">
-                <img
-                  src="assets/images/news/energy_mins_launch.jpg"
-                  alt="News Image 5"
-                  class="news-item-image" />
-              </div>
-            </div>
-          </a>
-
-          <div class="carousel-controls">
-            <div id="carouselIndicators" class="carousel-indicators"></div>
-
-            <div>
-              <button id="scrollLeftBtn" class="carousel-btn">&lt;</button>
-              <button id="scrollRightBtn" class="carousel-btn">&gt;</button>
+            <div class="news-item-image-container">
+              <img src="assets/images/news/prestigious_awards.jpg" alt="News Image 1" class="news-item-image" />
             </div>
           </div>
-        </div>
-      </section>
+        </a>
 
-      <section class="video-section">
-        <h2>Videos</h2>
-        <div class="video-carousel-wrapper">
-          <div class="video-carousel" id="videoCarousel">
-            <iframe src="https://www.youtube.com/embed/dGcOySJNHKo"
-              title="Kaleo Phase 2" allowfullscreen></iframe>
-            <iframe src="https://www.youtube.com/embed/CmWJOkHA4BU"
-              title="Anwomaso Thermal" allowfullscreen></iframe>
-            <iframe src="https://www.youtube.com/embed/rH4tthChAzY"
-              title="VRA Profile" allowfullscreen></iframe>
-            <iframe src="https://www.youtube.com/embed/79n-mgnRpB0"
-              title="VRA Project 1" allowfullscreen></iframe>
-            <iframe src="https://www.youtube.com/embed/79n-mgnRpB0"
-              title="VRA Project 2" allowfullscreen></iframe>
-            <iframe src="https://www.youtube.com/embed/-W0jKHww9ns"
-              title="VRA Project 3" allowfullscreen></iframe>
+        <!-- News Item 2 -->
+        <a href="https://www.vra.com/media/2025/Courtesy-visit-by-GEA.php" target="_blank" class="news-item-link">
+          <div class="news-item simple-style">
+            <div class="news-content">
+              <span class="news-category">FEATURE STORY</span>
+
+              <span class="news-date">June 30, 2025</span>
+            </div>
+            <div class="news-item-image-container">
+              <img src="assets/images/news/acting_chief_exe.jpg" alt="News Image 2" class="news-item-image" />
+            </div>
+          </div>
+        </a>
+
+        <!-- News Item 3 -->
+        <a href="https://www.vra.com/media/2025/Courtesy-visit-by-GEA.php" target="_blank" class="news-item-link">
+          <div class="news-item simple-style">
+            <div class="news-content">
+              <span class="news-category">BLOG</span>
+
+              <span class="news-date">June 30, 2025</span>
+            </div>
+            <div class="news-item-image-container">
+              <img src="assets/images/news/agi_pays_courtesy.jpg" alt="News Image 3" class="news-item-image" />
+            </div>
+          </div>
+        </a>
+
+        <!-- News Item 4 -->
+        <a href="https://www.vra.com/media/2025/Launch-of-SREP.php" target="_blank" class="news-item-link">
+          <div class="news-item simple-style">
+            <div class="news-content">
+              <span class="news-category">REPORT</span>
+
+              <span class="news-date">July 1, 2025</span>
+            </div>
+            <div class="news-item-image-container">
+              <img src="assets/images/news/embracing_innovation.jpg" alt="News Image 4" class="news-item-image" />
+            </div>
+          </div>
+        </a>
+
+        <!-- News Item 5 -->
+        <a href="https://www.vra.com/media/2025/Launch-of-SREP.php" target="_blank" class="news-item-link">
+          <div class="news-item simple-style">
+            <div class="news-content">
+              <span class="news-category">PRESS RELEASE</span>
+
+              <span class="news-date">July 2, 2025</span>
+            </div>
+            <div class="news-item-image-container">
+              <img src="assets/images/news/energy_mins_launch.jpg" alt="News Image 5" class="news-item-image" />
+            </div>
+          </div>
+        </a>
+
+        <div class="carousel-controls">
+          <div id="carouselIndicators" class="carousel-indicators"></div>
+
+          <div>
+            <button id="scrollLeftBtn" class="carousel-btn">&lt;</button>
+            <button id="scrollRightBtn" class="carousel-btn">&gt;</button>
           </div>
         </div>
-      </section>
+      </div>
+  </section>
 
-      <!-- Footer -->
-      <footer class="footer">
+  <section class="video-section">
+    <h2>Videos</h2>
+    <div class="video-carousel-wrapper">
+      <div class="video-carousel" id="videoCarousel">
+        <iframe src="https://www.youtube.com/embed/dGcOySJNHKo" title="Kaleo Phase 2" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/CmWJOkHA4BU" title="Anwomaso Thermal" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/rH4tthChAzY" title="VRA Profile" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/79n-mgnRpB0" title="VRA Project 1" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/79n-mgnRpB0" title="VRA Project 2" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/-W0jKHww9ns" title="VRA Project 3" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+    <footer class="footer">
         <div class="footer-container">
-          <!-- Footer Top Section: Logo, Sub-links, Social Media -->
-          <div class="footer-top-section">
-            <div class="footer-logo-and-sublinks">
-              <!-- Logo Section -->
-              <a href="#" class="footer-logo">
-                <img
-                  class="icon"
-                  src="assets/images/logos/vra_logo.png"
-                  alt="VRA Logo" />
-                <span class="text">VOLTA RIVER AUTHORITY</span>
-              </a>
-              <!-- Sub-links -->
-              <ul class="footer-sub-links">
-                <li><a
-                    href="htmls/pages/who_we_are/our_impact.html">CSR</a></li>
-                <li><a href="htmls/pages/rti/rti.html">RTI</a></li>
-                <li><a href="https://www.vra.com/VAS.pdf"
-                    target="_blank">VAS</a></li>
-              </ul>
+            <!-- Footer Top Section: Logo, Sub-links, Social Media -->
+            <div class="footer-top-section">
+                <div class="footer-logo-and-sublinks">
+                    <!-- Logo Section -->
+                    <a href="index.html" class="footer-logo">
+                        <img class="icon" src="assets/images/logos/vra_logo.png" alt="VRA Logo" />
+                        <span class="text">VOLTA RIVER AUTHORITY</span>
+                    </a>
+                    <!-- Sub-links -->
+                    <ul class="footer-sub-links">
+                        <li><a href="htmls/pages/who_we_are/our_impact.html">CSR</a></li>
+                        <li><a href="htmls/pages/rti/rti.html">RTI</a></li>
+                        <li><a href="https://www.vra.com/VAS.pdf" target="_blank">VAS</a></li>
+                    </ul>
+                </div>
+
+                <!-- Social Buttons -->
+                <div class="footer-social-media">
+                    <a href="https://www.facebook.com/vraghana" target="_blank" aria-label="Facebook"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.twitter.com/vraghana" target="_blank" aria-label="Twitter"><i
+                            class="fab fa-twitter"></i></a>
+                    <a href="https://www.youtube.com/channel/UC2EEOLsbn2tt9MoCaP3yUwA?feature=watch" target="_blank"
+                        aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
             </div>
 
-            <!-- Social Buttons -->
-            <div class="footer-social-media">
-              <a
-                href="https://www.facebook.com/vraghana"
-                target="_blank"
-                aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-              <a
-                href="https://www.twitter.com/vraghana"
-                target="_blank"
-                aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-              <a
-                href="https://www.youtube.com/channel/UC2EEOLsbn2tt9MoCaP3yUwA?feature=watch"
-                target="_blank"
-                aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-            </div>
-          </div>
+            <!-- Footer Middle Section: Link Columns -->
+            <div class="footer-middle-section">
+                <!-- Column 1: Who We Are -->
+                <div class="footer-links-column">
+                    <h3>Who We Are</h3>
+                    <ul>
+                        <li>
+                            <a href="htmls/pages/who_we_are/our_profile.html">Our
+                                Profile</a>
+                        </li>
+                        <li>
+                            <a href="htmls/pages/who_we_are/our_impact.html">Our
+                                Impact</a>
+                        </li>
+                        <li>
+                            <a href="htmls/pages/who_we_are/our_project.html">Our
+                                Projects</a>
+                        </li>
 
-          <!-- Footer Middle Section: Link Columns -->
-          <div class="footer-middle-section">
-            <!-- Column 1: Who We Are -->
-            <div class="footer-links-column">
-              <h3>Who We Are</h3>
-              <ul>
-                <li>
-                  <a href="htmls/pages/who_we_are/our_profile.html">Our
-                    Profile</a>
-                </li>
-                <li>
-                  <a href="htmls/pages/who_we_are/our_impact.html">Our
-                    Impact</a>
-                </li>
-                <li>
-                  <a href="htmls/pages/who_we_are/our_project.html">Our
-                    Projects</a>
-                </li>
+                        <li>
+                            <a href="htmls/pages/who_we_are/our_team.html">Our
+                                Team
+                            </a>
+                        </li>
+                        <li>
+                            <a href="htmls/pages/who_we_are/our_reports.html">
+                                Our Reports</a>
+                        </li>
+                        <li>
+                            <a href="htmls/pages/who_we_are/facts_and_figures.html">Facts
+                                and Figures</a>
+                        </li>
+                        <li>
+                            <a href="htmls/pages/who_we_are/policy_statement.html">Our
+                                Policies</a>
+                        </li>
+                    </ul>
+                </div>
 
-                <li>
-                  <a href="htmls/pages/who_we_are/our_team.html">Our Team
-                  </a>
-                </li>
-                <li>
-                  <a href="htmls/pages/who_we_are/our_reports.html"> Our
-                    Reports</a>
-                </li>
-                <li>
-                  <a href="htmls/pages/who_we_are/facts_and_figures.html">Facts
-                    and
-                    Figures</a>
-                </li>
-                <li>
-                  <a href="htmls/pages/who_we_are/policy_statement.html">Our
-                    Policies</a>
-                </li>
-              </ul>
-            </div>
+                <!-- Column 2: Our Companies -->
+                <div class="footer-links-column">
+                    <h3>Our Companies</h3>
+                    <ul>
+                        <li>
+                            <a href="htmls/pages/companies/akosombo_details.html">Akosombo
+                                Hotels Limited</a>
+                        </li>
+                        <li>
+                            <a href="htmls/pages/companies/kpong_farms.html">Kpong
+                            </a>
+                        </li>
+                        <li>
+                            <a href="htmls/pages/companies/northern_electricity_com.html">Northern
+                                Electricity Distribution Company</a>
+                        </li>
+                        <li>
+                            <a href="htmls/pages/companies/volta_lake_transport.html">Volta
+                                Lake Transport Company</a>
+                        </li>
+                        <li>
+                            <a href="htmls/pages/companies/vra_health_service.html">VRA
+                                Health Services</a>
+                        </li>
+                        <li>
+                            <a href="htmls/pages/companies/vra_international_schools.html">VRA
+                                International Schools</a>
+                        </li>
+                    </ul>
+                </div>
 
-            <!-- Column 2: Our Companies -->
-            <div class="footer-links-column">
-              <h3>Our Companies</h3>
-              <ul>
-                <li>
-                  <a href="htmls/pages/companies/akosombo_details.html">Akosombo
-                    Hotels Limited</a>
-                </li>
-                <li>
-                  <a href="htmls/pages/companies/kpong_farms.html">Kpong
-                     </a>
-                </li>
-                <li>
-                  <a
-                    href="htmls/pages/companies/northern_electricity_com.html">Northern
-                    Electricity Distribution Company</a>
-                </li>
-                <li>
-                  <a
-                    href="htmls/pages/companies/volta_lake_transport.html">Volta
-                    Lake Transport Company</a>
-                </li>
-                <li>
-                  <a href="htmls/pages/companies/vra_health_service.html">VRA
-                    Health
-                    Services</a>
-                </li>
-                <li>
-                  <a
-                    href="htmls/pages/companies/vra_international_schools.html">VRA
-                    International Schools</a>
-                </li>
-              </ul>
-            </div>
+                <!-- Column 3: News & Media -->
+                <div class="footer-links-column">
+                    <h3>News & Media</h3>
+                    <ul>
+                        <li>
+                            <a href="htmls/pages/media/latest_news.html">Latest
+                                News</a>
+                        </li>
+                        <li>
+                            <a href="htmls/pages/media/tenders.html">Tenders</a>
+                        </li>
+                        <li>
+                            <a href="https://www.vra.com/media/2024/VRA-Power-Supply.jpg" target="_blank">Press
+                                Releases</a>
+                        </li>
+                        <li>
+                            <a href="https://www.vra.com/media/2025/Solar%20Scoping%20Report%20-Loagri.pdf"
+                                target="_blank">Scoping Reports /
+                                Notices</a>
+                        </li>
+                        <li>
+                            <a href="https://www.vra.com/media/2023/VRA%20ENDS%20CONTROLLED%20SPILLAGE%20FROM%20AKOSOMBO%20DAM.jpg"
+                                target="_blank">Akosombo Spillage
+                                Controlled</a>
+                        </li>
+                    </ul>
+                </div>
 
-            <!-- Column 3: News & Media -->
-            <div class="footer-links-column">
-              <h3>News & Media</h3>
-              <ul>
-                <li>
-                  <a href="htmls/pages/media/latest_news.html">Latest News</a>
-                </li>
-                <li>
-                  <a href="htmls/pages/media/tenders.html">Tenders</a>
-                </li>
-                <li>
-                  <a href="https://www.vra.com/media/2024/VRA-Power-Supply.jpg"
-                    target="_blank">Press Releases</a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.vra.com/media/2025/Solar%20Scoping%20Report%20-Loagri.pdf"
-                    target="_blank">Scoping Reports / Notices</a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.vra.com/media/2023/VRA%20ENDS%20CONTROLLED%20SPILLAGE%20FROM%20AKOSOMBO%20DAM.jpg"
-                    target="_blank">Akosombo Spillage Controlled</a>
-                </li>
-              </ul>
-            </div>
+                <!-- Column 4: Others -->
+                <div class="footer-links-column">
+                    <h3>Others</h3>
+                    <ul>
+                        <li>
+                            <a href="htmls/pages/contact/contant_details.html">Contact</a>
+                        </li>
+                        <li>
+                            <a href="https://www.vra.com/csr/CDP-Scholarship-Application-Form.pdf"
+                                target="_blank">Scholarship Forms</a>
+                        </li>
+                        <li>
+                            <a href="htmls/pages/resources/newsletters.html">Newsletters</a>
+                        </li>
 
-            <!-- Column 4: Others -->
-            <div class="footer-links-column">
-              <h3>Others</h3>
-              <ul>
-                <li>
-                  <a href="htmls/pages/contact/contant_details.html">Contact</a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.vra.com/csr/CDP-Scholarship-Application-Form.pdf"
-                    target="_blank">Scholarship Forms</a>
-                </li>
-                <li>
-                  <a
-                    href="htmls/pages/resources/newsletters.html">Newsletters</a>
-                </li>
+                </div>
 
-              </div>
+                <!-- Profile Card Integrated Here as a new column -->
+                <div class="footer-links-column">
+                    <h3>My Profile</h3> <!-- Title for the profile card column -->
+                    <div class="profile-container">
+                      
+
+                        <!-- Profile header section with gradient background -->
+                        <div class="profile-header-section">
+                            <div class="profile-picture-wrapper">
+                                 <img src="assets/images/profile_pic/profile.png" alt="Profile Picture"
+                                    class="profile-picture">
+                               
+                            </div>
+                            <!-- Profile name with a verified badge -->
+                            <h3 class="profile-name">Bossman Abraham Nhyiraba Obboye <span class="verified-icon"></span>
+                            </h3>
+                        </div>
+
+                        <!-- Index Number card -->
+                        <div class="card subscription-card">
+                            <p class="card-title">Index Number</p>
+                            <p class="card-content">BC/ITS/24/197</p>
+                        </div>
+
+                        <!-- Contact and other information card -->
+                        <div class="card info-card">
+                            <div class="info-item">
+                                <i class="fas fa-envelope info-icon"></i>
+                                <a href="mailto:abless024@gmail.com">abless024@gmail.com</a>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-phone-alt info-icon"></i>
+                                <a href="tel:+233593529509">+233593529509</a>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-map-marker-alt info-icon"></i>
+                                <a href="https://maps.google.com/?q=WS-633-7016" target="_blank">WS-633-7016</a>
+                            </div>
+                            <div class="info-item">
+                                <i class="fab fa-github info-icon"></i> 
+                                <a href="https://github.com/Bossman-Obboye"
+                                    target="_blank">https://github.com/Bossman-Obboye</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Footer Bottom Section: Copyright & Legal Links -->
             <div class="footer-bottom-section">
-              <span class="footer-copyright">© 2025 Volta River Authority. All
-                Rights Reserved.</span>
+                <span class="footer-copyright">© 2025 Volta River
+                    Authority. All Rights Reserved.</span>
             </div>
-          </div>
-        </footer>
+        </div>
+    </footer>
 
-        <script src="scripts/shared_components.js"></script>
-        <script src="scripts/pages/index/index.js"></script>
+  <script src="scripts/shared_components.js"></script>
+  <script src="scripts/pages/index/index.js"></script>
 
-      </body>
-    </html>
+</body>
+
+</html>
